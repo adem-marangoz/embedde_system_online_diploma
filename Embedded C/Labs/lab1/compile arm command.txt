@@ -1,2 +1,0 @@
-export PATH=../ARM/bin/:$PATH						// for access to open any file direct in this file
-arm-none-eabi-gcc.exe -c -g -O2 -mcpu=arm926j-s -I . app.c -o app.o 	// -mcpu=XXXX for using your cpu (-I . for including files)(-g debug information)(-O2 optimazition)
