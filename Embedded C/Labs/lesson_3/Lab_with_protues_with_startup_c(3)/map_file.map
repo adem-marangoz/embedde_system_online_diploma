@@ -1,0 +1,105 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000008000000 0x0000000000020000 xr
+SRAM             0x0000000020000000 0x0000000000005000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000008000000       0xd0
+ *(.vectors*)
+ .vectors       0x0000000008000000       0x18 startup.o
+                0x0000000008000000                vectors
+ *(.text*)
+ .text          0x0000000008000018       0x7c main.o
+                0x0000000008000018                main
+ .text          0x0000000008000094       0x3c startup.o
+                0x0000000008000094                Rest_Handler
+                0x00000000080000a0                NMI_Handler
+                0x00000000080000ac                Hard_Fualt_Handler
+                0x00000000080000b8                Bus_Fault_Handler
+                0x00000000080000c4                Usage_Fault_Handler
+ *(.rodata)
+
+.glue_7         0x00000000080000d0        0x0
+ .glue_7        0x00000000080000d0        0x0 linker stubs
+
+.glue_7t        0x00000000080000d0        0x0
+ .glue_7t       0x00000000080000d0        0x0 linker stubs
+
+.vfp11_veneer   0x00000000080000d0        0x0
+ .vfp11_veneer  0x00000000080000d0        0x0 linker stubs
+
+.v4_bx          0x00000000080000d0        0x0
+ .v4_bx         0x00000000080000d0        0x0 linker stubs
+
+.iplt           0x00000000080000d0        0x0
+ .iplt          0x00000000080000d0        0x0 main.o
+
+.rel.dyn        0x00000000080000d0        0x0
+ .rel.iplt      0x00000000080000d0        0x0 main.o
+
+.data           0x00000000080000d0        0x4
+ *(.data)
+ .data          0x00000000080000d0        0x4 main.o
+                0x00000000080000d0                R_ODR
+ .data          0x00000000080000d4        0x0 startup.o
+
+.igot.plt       0x00000000080000d4        0x0
+ .igot.plt      0x00000000080000d4        0x0 main.o
+
+.bss            0x0000000020000000        0x0
+ *(.bss)
+ .bss           0x0000000020000000        0x0 main.o
+ .bss           0x0000000020000000        0x0 startup.o
+LOAD main.o
+LOAD startup.o
+OUTPUT(learn_embedded.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x0000000000000000      0xc05
+ .debug_info    0x0000000000000000      0xaeb main.o
+ .debug_info    0x0000000000000aeb      0x11a startup.o
+
+.debug_abbrev   0x0000000000000000      0x279
+ .debug_abbrev  0x0000000000000000      0x201 main.o
+ .debug_abbrev  0x0000000000000201       0x78 startup.o
+
+.debug_loc      0x0000000000000000      0x114
+ .debug_loc     0x0000000000000000       0x38 main.o
+ .debug_loc     0x0000000000000038       0xdc startup.o
+
+.debug_aranges  0x0000000000000000       0x40
+ .debug_aranges
+                0x0000000000000000       0x20 main.o
+ .debug_aranges
+                0x0000000000000020       0x20 startup.o
+
+.debug_line     0x0000000000000000      0x4d1
+ .debug_line    0x0000000000000000      0x2e9 main.o
+ .debug_line    0x00000000000002e9      0x1e8 startup.o
+
+.debug_str      0x0000000000000000      0x584
+ .debug_str     0x0000000000000000      0x520 main.o
+                                        0x581 (size before relaxing)
+ .debug_str     0x0000000000000520       0x64 startup.o
+                                        0x1bb (size before relaxing)
+
+.comment        0x0000000000000000       0x53
+ .comment       0x0000000000000000       0x53 main.o
+                                         0x54 (size before relaxing)
+ .comment       0x0000000000000053       0x54 startup.o
+
+.ARM.attributes
+                0x0000000000000000       0x2d
+ .ARM.attributes
+                0x0000000000000000       0x2d main.o
+ .ARM.attributes
+                0x000000000000002d       0x2d startup.o
+
+.debug_frame    0x0000000000000000       0xc8
+ .debug_frame   0x0000000000000000       0x2c main.o
+ .debug_frame   0x000000000000002c       0x9c startup.o
