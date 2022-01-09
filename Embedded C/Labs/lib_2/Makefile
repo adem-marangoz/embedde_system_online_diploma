@@ -29,4 +29,4 @@ clear_all:
 	rm *.o *.elf *.bin *.map
 
 clear:
-	em *.elf *.bin *.map
+	rm *.elf *.bin *.map
