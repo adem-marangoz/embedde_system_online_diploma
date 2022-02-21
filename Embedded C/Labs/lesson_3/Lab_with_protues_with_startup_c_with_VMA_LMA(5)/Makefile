@@ -1,4 +1,4 @@
-#Mazen Talaat U3 L3 14-Nov-2021
+#Adem Alnajjar 13/01/2021
 CC=arm-none-eabi-
 CFLAGS=-mcpu=cortex-m3 -mthumb -gdwarf-2
 INCS=-I .

@@ -1,0 +1,219 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+Pressure_Value      0x4               ./Obj/main_algoritma.o
+Main_Al_State       0x1               ./Obj/main.o
+Timer_state         0x1               ./Obj/main.o
+Curr_Alarm_state    0x1               ./Obj/Alarm_driver.o
+Pressure_state      0x1               ./Obj/main.o
+Prev_Alarm_state    0x1               ./Obj/Alarm_driver.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000008000000 0x0000000000020000 xr
+SRAM             0x0000000020000000 0x0000000000005000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000008000000      0x384
+ *(.vectors*)
+ .vectors       0x0000000008000000       0x1c ./Obj/startup.o
+                0x0000000008000000                vectors
+ *(.text*)
+ .text          0x000000000800001c      0x104 ./Obj/Alarm_driver.o
+                0x000000000800001c                Alarm_init
+                0x0000000008000078                Al_Alarm_Off
+                0x00000000080000a8                Al_Alarm_On
+                0x00000000080000d8                Alarm_on_off_fun
+ .text          0x0000000008000120       0x58 ./Obj/main.o
+                0x0000000008000120                setup
+                0x0000000008000130                main
+ .text          0x0000000008000178       0x68 ./Obj/main_algoritma.o
+                0x0000000008000178                Algoritma_Data_waiting
+                0x0000000008000184                Algoritma_Calculate_data
+                0x00000000080001b4                Send_pressure_value
+ .text          0x00000000080001e0       0xa4 ./Obj/Pressure_sensor_driver.o
+                0x00000000080001e0                init_Pressure
+                0x0000000008000214                Pr_Reading_and_sending
+                0x0000000008000248                Pr_Waiting
+ .text          0x0000000008000284       0x8c ./Obj/startup.o
+                0x0000000008000284                Bus_Fault_Handler
+                0x0000000008000284                MM_Fault_Handler
+                0x0000000008000284                Default_Handler
+                0x0000000008000284                Usage_Fault_Handler
+                0x0000000008000284                Hard_Fault_Handler
+                0x0000000008000284                NMI_Handler
+                0x0000000008000290                Rest_Handler
+ .text          0x0000000008000310       0x74 ./Obj/Timer_management_alarm.o
+                0x0000000008000310                Timer_Timer_Alarm_Off
+                0x000000000800031e                Timer_Timer_Alarm_On
+                0x000000000800035c                Timer_starting
+ *(.rodata)
+                0x0000000008000384                _E_text = .
+
+.glue_7         0x0000000008000384        0x0
+ .glue_7        0x0000000008000384        0x0 linker stubs
+
+.glue_7t        0x0000000008000384        0x0
+ .glue_7t       0x0000000008000384        0x0 linker stubs
+
+.vfp11_veneer   0x0000000008000384        0x0
+ .vfp11_veneer  0x0000000008000384        0x0 linker stubs
+
+.v4_bx          0x0000000008000384        0x0
+ .v4_bx         0x0000000008000384        0x0 linker stubs
+
+.iplt           0x0000000008000384        0x0
+ .iplt          0x0000000008000384        0x0 ./Obj/Alarm_driver.o
+
+.rel.dyn        0x0000000008000384        0x0
+ .rel.iplt      0x0000000008000384        0x0 ./Obj/Alarm_driver.o
+
+.data           0x0000000020000000       0x14 load address 0x0000000008000384
+                0x0000000020000000                _S_DATA = .
+ *(.data)
+ .data          0x0000000020000000        0x4 ./Obj/Alarm_driver.o
+                0x0000000020000000                Alarm_p_fun
+ .data          0x0000000020000004        0x0 ./Obj/main.o
+ .data          0x0000000020000004        0x8 ./Obj/main_algoritma.o
+                0x0000000020000004                Threshold
+                0x0000000020000008                Main_p_fun
+ .data          0x000000002000000c        0x4 ./Obj/Pressure_sensor_driver.o
+                0x000000002000000c                Pressure_P_fun
+ .data          0x0000000020000010        0x0 ./Obj/startup.o
+ .data          0x0000000020000010        0x4 ./Obj/Timer_management_alarm.o
+                0x0000000020000010                Timer_p_fun
+                0x0000000020000014                _E_DATA = .
+
+.igot.plt       0x0000000020000014        0x0 load address 0x0000000008000398
+ .igot.plt      0x0000000020000014        0x0 ./Obj/Alarm_driver.o
+
+.bss            0x0000000020000014      0x3fc load address 0x0000000008000398
+                0x0000000020000014                _S_bss = .
+ *(.bss)
+ .bss           0x0000000020000014        0x0 ./Obj/Alarm_driver.o
+ .bss           0x0000000020000014        0x0 ./Obj/main.o
+ .bss           0x0000000020000014        0x0 ./Obj/main_algoritma.o
+ .bss           0x0000000020000014        0x4 ./Obj/Pressure_sensor_driver.o
+ .bss           0x0000000020000018        0x0 ./Obj/startup.o
+ .bss           0x0000000020000018        0x4 ./Obj/Timer_management_alarm.o
+                0x000000002000001c                . = ALIGN (0x4)
+                0x000000002000001c                _E_bss = .
+                0x000000002000001c                . = ALIGN (0x4)
+                0x0000000020000404                . = (. + 0x3e8)
+ *fill*         0x000000002000001c      0x3e8 
+                0x0000000020000404                _stack_top = .
+ COMMON         0x0000000020000404        0x2 ./Obj/Alarm_driver.o
+                0x0000000020000404                Curr_Alarm_state
+                0x0000000020000405                Prev_Alarm_state
+ COMMON         0x0000000020000406        0x3 ./Obj/main.o
+                0x0000000020000406                Main_Al_State
+                0x0000000020000407                Timer_state
+                0x0000000020000408                Pressure_state
+ *fill*         0x0000000020000409        0x3 
+ COMMON         0x000000002000040c        0x4 ./Obj/main_algoritma.o
+                0x000000002000040c                Pressure_Value
+LOAD ./Obj/Alarm_driver.o
+LOAD ./Obj/main.o
+LOAD ./Obj/main_algoritma.o
+LOAD ./Obj/Pressure_sensor_driver.o
+LOAD ./Obj/startup.o
+LOAD ./Obj/Timer_management_alarm.o
+OUTPUT(./Tgt/learn_embedded.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x0000000000000000     0x384e
+ .debug_info    0x0000000000000000      0xb21 ./Obj/Alarm_driver.o
+ .debug_info    0x0000000000000b21      0xb30 ./Obj/main.o
+ .debug_info    0x0000000000001651      0xac7 ./Obj/main_algoritma.o
+ .debug_info    0x0000000000002118      0xad5 ./Obj/Pressure_sensor_driver.o
+ .debug_info    0x0000000000002bed      0x1a1 ./Obj/startup.o
+ .debug_info    0x0000000000002d8e      0xac0 ./Obj/Timer_management_alarm.o
+
+.debug_abbrev   0x0000000000000000      0xba5
+ .debug_abbrev  0x0000000000000000      0x224 ./Obj/Alarm_driver.o
+ .debug_abbrev  0x0000000000000224      0x217 ./Obj/main.o
+ .debug_abbrev  0x000000000000043b      0x23a ./Obj/main_algoritma.o
+ .debug_abbrev  0x0000000000000675      0x23f ./Obj/Pressure_sensor_driver.o
+ .debug_abbrev  0x00000000000008b4       0xe4 ./Obj/startup.o
+ .debug_abbrev  0x0000000000000998      0x20d ./Obj/Timer_management_alarm.o
+
+.debug_loc      0x0000000000000000      0x400
+ .debug_loc     0x0000000000000000      0x128 ./Obj/Alarm_driver.o
+ .debug_loc     0x0000000000000128       0x58 ./Obj/main.o
+ .debug_loc     0x0000000000000180       0xcc ./Obj/main_algoritma.o
+ .debug_loc     0x000000000000024c       0xb4 ./Obj/Pressure_sensor_driver.o
+ .debug_loc     0x0000000000000300       0x7c ./Obj/startup.o
+ .debug_loc     0x000000000000037c       0x84 ./Obj/Timer_management_alarm.o
+
+.debug_aranges  0x0000000000000000       0xc0
+ .debug_aranges
+                0x0000000000000000       0x20 ./Obj/Alarm_driver.o
+ .debug_aranges
+                0x0000000000000020       0x20 ./Obj/main.o
+ .debug_aranges
+                0x0000000000000040       0x20 ./Obj/main_algoritma.o
+ .debug_aranges
+                0x0000000000000060       0x20 ./Obj/Pressure_sensor_driver.o
+ .debug_aranges
+                0x0000000000000080       0x20 ./Obj/startup.o
+ .debug_aranges
+                0x00000000000000a0       0x20 ./Obj/Timer_management_alarm.o
+
+.debug_line     0x0000000000000000      0xf2b
+ .debug_line    0x0000000000000000      0x324 ./Obj/Alarm_driver.o
+ .debug_line    0x0000000000000324      0x259 ./Obj/main.o
+ .debug_line    0x000000000000057d      0x218 ./Obj/main_algoritma.o
+ .debug_line    0x0000000000000795      0x312 ./Obj/Pressure_sensor_driver.o
+ .debug_line    0x0000000000000aa7      0x243 ./Obj/startup.o
+ .debug_line    0x0000000000000cea      0x241 ./Obj/Timer_management_alarm.o
+
+.debug_str      0x0000000000000000      0x791
+ .debug_str     0x0000000000000000      0x573 ./Obj/Alarm_driver.o
+                                        0x5f3 (size before relaxing)
+ .debug_str     0x0000000000000573       0x74 ./Obj/main.o
+                                        0x637 (size before relaxing)
+ .debug_str     0x00000000000005e7       0x72 ./Obj/main_algoritma.o
+                                        0x5d3 (size before relaxing)
+ .debug_str     0x0000000000000659       0x55 ./Obj/Pressure_sensor_driver.o
+                                        0x5de (size before relaxing)
+ .debug_str     0x00000000000006ae       0x83 ./Obj/startup.o
+                                        0x1d6 (size before relaxing)
+ .debug_str     0x0000000000000731       0x60 ./Obj/Timer_management_alarm.o
+                                        0x5ce (size before relaxing)
+
+.comment        0x0000000000000000       0x53
+ .comment       0x0000000000000000       0x53 ./Obj/Alarm_driver.o
+                                         0x54 (size before relaxing)
+ .comment       0x0000000000000053       0x54 ./Obj/main.o
+ .comment       0x0000000000000053       0x54 ./Obj/main_algoritma.o
+ .comment       0x0000000000000053       0x54 ./Obj/Pressure_sensor_driver.o
+ .comment       0x0000000000000053       0x54 ./Obj/startup.o
+ .comment       0x0000000000000053       0x54 ./Obj/Timer_management_alarm.o
+
+.ARM.attributes
+                0x0000000000000000       0x2d
+ .ARM.attributes
+                0x0000000000000000       0x2d ./Obj/Alarm_driver.o
+ .ARM.attributes
+                0x000000000000002d       0x2d ./Obj/main.o
+ .ARM.attributes
+                0x000000000000005a       0x2d ./Obj/main_algoritma.o
+ .ARM.attributes
+                0x0000000000000087       0x2d ./Obj/Pressure_sensor_driver.o
+ .ARM.attributes
+                0x00000000000000b4       0x2d ./Obj/startup.o
+ .ARM.attributes
+                0x00000000000000e1       0x2d ./Obj/Timer_management_alarm.o
+
+.debug_frame    0x0000000000000000      0x274
+ .debug_frame   0x0000000000000000       0x98 ./Obj/Alarm_driver.o
+ .debug_frame   0x0000000000000098       0x48 ./Obj/main.o
+ .debug_frame   0x00000000000000e0       0x74 ./Obj/main_algoritma.o
+ .debug_frame   0x0000000000000154       0x6c ./Obj/Pressure_sensor_driver.o
+ .debug_frame   0x00000000000001c0       0x50 ./Obj/startup.o
+ .debug_frame   0x0000000000000210       0x64 ./Obj/Timer_management_alarm.o

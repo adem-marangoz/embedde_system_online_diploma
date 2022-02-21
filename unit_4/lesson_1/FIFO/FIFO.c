@@ -35,7 +35,7 @@ FIFO_Status FIFO_push(FIFO_Buf_t *_p_fifo_buf,unsigned char value)
 		return FIFO_Null;
 	}
 
-	*(_p_fifo_buf->head)=value;*(_p_fifo_buf->head)=value;
+	*(_p_fifo_buf->head)=value;
 	Cprint("%d ",*(_p_fifo_buf->head));
 
 	if(_p_fifo_buf->counter>_p_fifo_buf->length)
