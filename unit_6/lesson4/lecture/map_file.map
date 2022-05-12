@@ -1,0 +1,206 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000008000000 0x0000000000020000 xr
+SRAM             0x0000000020000000 0x0000000000005000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000008000000      0x4f8
+ *(.vectors*)
+ .vectors       0x0000000008000000       0xec startup.o
+                0x0000000008000000                vectors
+ *(.text*)
+ .text          0x00000000080000ec       0xec main.o
+                0x0000000008000124                main
+                0x0000000008000148                config
+                0x00000000080001bc                EXTI0_Handler
+ .text          0x00000000080001d8       0x8c startup.o
+                0x00000000080001d8                FLASH_Handler
+                0x00000000080001d8                SVCall_Handler
+                0x00000000080001d8                SysTick_Handler
+                0x00000000080001d8                PendSv_Handler
+                0x00000000080001d8                USART3_Handler
+                0x00000000080001d8                DMA1_Channel7_Handler
+                0x00000000080001d8                NMI_Handler
+                0x00000000080001d8                DMA1_Channel6_Handler
+                0x00000000080001d8                CAN1_RX1_Handler
+                0x00000000080001d8                EXTI15_10_Handler
+                0x00000000080001d8                I2C1_EV_Handler
+                0x00000000080001d8                Bus_Fault_Handler
+                0x00000000080001d8                ADC1_2_Handler
+                0x00000000080001d8                WWDG_Handler
+                0x00000000080001d8                EXTI4_Handler
+                0x00000000080001d8                DMA1_Channel1_Handler
+                0x00000000080001d8                I2C1_ER_Handler
+                0x00000000080001d8                RTC_Handler
+                0x00000000080001d8                TIM1_CC_Handler
+                0x00000000080001d8                I2C2_ER_Handler
+                0x00000000080001d8                CAN1_SCE_Handler
+                0x00000000080001d8                TIM1_BRK_Handler
+                0x00000000080001d8                MM_Fault_Handler
+                0x00000000080001d8                EXTI1_Handler
+                0x00000000080001d8                TEMPER_Handler
+                0x00000000080001d8                EXTI3_Handler
+                0x00000000080001d8                EXTI2_Handler
+                0x00000000080001d8                EXTI9_5_Handler
+                0x00000000080001d8                TIM2_Handler
+                0x00000000080001d8                USART1_Handler
+                0x00000000080001d8                DMA1_Channel4_Handler
+                0x00000000080001d8                TIM3_Handler
+                0x00000000080001d8                Default_Handler
+                0x00000000080001d8                USBWakeUp_Handler
+                0x00000000080001d8                DMA1_Channel3_Handler
+                0x00000000080001d8                RTC_Alarm_Handler
+                0x00000000080001d8                TIM4_Handler
+                0x00000000080001d8                SPI2_Handler
+                0x00000000080001d8                DMA1_Channel2_Handler
+                0x00000000080001d8                Usage_Fault_Handler
+                0x00000000080001d8                TIM1_UP_Handler
+                0x00000000080001d8                DMA1_Channel5_Handler
+                0x00000000080001d8                USART2_Handler
+                0x00000000080001d8                SPI1_Handler
+                0x00000000080001d8                DebugMonitor_Handler
+                0x00000000080001d8                I2C2_EV_Handler
+                0x00000000080001d8                RCC_Handler
+                0x00000000080001d8                PVD_Handler
+                0x00000000080001d8                Hard_Fault_Handler
+                0x00000000080001d8                USB_LP_CAN1_RX0_Handler
+                0x00000000080001d8                USB_HP_CAN1_TX_Handler
+                0x00000000080001d8                TIM1_TRG_COM_Handler
+                0x00000000080001e4                Rest_Handler
+ .text          0x0000000008000264       0x28 Stm32f10xx_EXTI.o
+                0x0000000008000264                EXTI_EXTI_Clear_Handler
+ .text          0x000000000800028c      0x26c Stm32f10xx_GPIO.o
+                0x000000000800028c                Init_GPIO
+                0x00000000080004bc                Set_pin
+                0x00000000080004d8                Reset_pin
+ *(.rodata)
+                0x00000000080004f8                _E_text = .
+
+.glue_7         0x00000000080004f8        0x0
+ .glue_7        0x00000000080004f8        0x0 linker stubs
+
+.glue_7t        0x00000000080004f8        0x0
+ .glue_7t       0x00000000080004f8        0x0 linker stubs
+
+.vfp11_veneer   0x00000000080004f8        0x0
+ .vfp11_veneer  0x00000000080004f8        0x0 linker stubs
+
+.v4_bx          0x00000000080004f8        0x0
+ .v4_bx         0x00000000080004f8        0x0 linker stubs
+
+.iplt           0x00000000080004f8        0x0
+ .iplt          0x00000000080004f8        0x0 main.o
+
+.rel.dyn        0x00000000080004f8        0x0
+ .rel.iplt      0x00000000080004f8        0x0 main.o
+
+.data           0x0000000020000000        0x0 load address 0x00000000080004f8
+                0x0000000020000000                _S_DATA = .
+ *(.data)
+ .data          0x0000000020000000        0x0 main.o
+ .data          0x0000000020000000        0x0 startup.o
+ .data          0x0000000020000000        0x0 Stm32f10xx_EXTI.o
+ .data          0x0000000020000000        0x0 Stm32f10xx_GPIO.o
+ *(.data.*)
+                0x0000000020000000                _E_DATA = .
+
+.igot.plt       0x0000000020000000        0x0 load address 0x00000000080004f8
+ .igot.plt      0x0000000020000000        0x0 main.o
+
+.bss            0x0000000020000000      0x7d0 load address 0x00000000080004f8
+                0x0000000020000000                _S_bss = .
+ *(.bss)
+ .bss           0x0000000020000000        0x0 main.o
+ .bss           0x0000000020000000        0x0 startup.o
+ .bss           0x0000000020000000        0x0 Stm32f10xx_EXTI.o
+ .bss           0x0000000020000000        0x0 Stm32f10xx_GPIO.o
+ *(.bss.*)
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _E_bss = .
+                0x0000000020000000                . = ALIGN (0x4)
+                0x00000000200003e8                . = (. + 0x3e8)
+ *fill*         0x0000000020000000      0x3e8 
+                0x00000000200003e8                _heap_End = .
+                0x00000000200003e8                . = ALIGN (0x4)
+                0x00000000200007d0                . = (. + 0x3e8)
+ *fill*         0x00000000200003e8      0x3e8 
+                0x00000000200007d0                _stack_top = .
+LOAD main.o
+LOAD startup.o
+LOAD Stm32f10xx_EXTI.o
+LOAD Stm32f10xx_GPIO.o
+OUTPUT(learn_embedded.axf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x0000000000000000     0x152c
+ .debug_info    0x0000000000000000      0xf08 main.o
+ .debug_info    0x0000000000000f08      0x1a1 startup.o
+ .debug_info    0x00000000000010a9      0x120 Stm32f10xx_EXTI.o
+ .debug_info    0x00000000000011c9      0x363 Stm32f10xx_GPIO.o
+
+.debug_abbrev   0x0000000000000000      0x4ab
+ .debug_abbrev  0x0000000000000000      0x250 main.o
+ .debug_abbrev  0x0000000000000250       0xe4 startup.o
+ .debug_abbrev  0x0000000000000334       0x8b Stm32f10xx_EXTI.o
+ .debug_abbrev  0x00000000000003bf       0xec Stm32f10xx_GPIO.o
+
+.debug_loc      0x0000000000000000      0x2f0
+ .debug_loc     0x0000000000000000      0x104 main.o
+ .debug_loc     0x0000000000000104       0x7c startup.o
+ .debug_loc     0x0000000000000180       0x5c Stm32f10xx_EXTI.o
+ .debug_loc     0x00000000000001dc      0x114 Stm32f10xx_GPIO.o
+
+.debug_aranges  0x0000000000000000       0x80
+ .debug_aranges
+                0x0000000000000000       0x20 main.o
+ .debug_aranges
+                0x0000000000000020       0x20 startup.o
+ .debug_aranges
+                0x0000000000000040       0x20 Stm32f10xx_EXTI.o
+ .debug_aranges
+                0x0000000000000060       0x20 Stm32f10xx_GPIO.o
+
+.debug_line     0x0000000000000000      0xb70
+ .debug_line    0x0000000000000000      0x343 main.o
+ .debug_line    0x0000000000000343      0x240 startup.o
+ .debug_line    0x0000000000000583      0x1ef Stm32f10xx_EXTI.o
+ .debug_line    0x0000000000000772      0x3fe Stm32f10xx_GPIO.o
+
+.debug_str      0x0000000000000000      0xab5
+ .debug_str     0x0000000000000000      0x954 main.o
+                                        0x9d8 (size before relaxing)
+ .debug_str     0x0000000000000954       0x7f startup.o
+                                        0x1cc (size before relaxing)
+ .debug_str     0x00000000000009d3       0x6b Stm32f10xx_EXTI.o
+                                        0x1b8 (size before relaxing)
+ .debug_str     0x0000000000000a3e       0x77 Stm32f10xx_GPIO.o
+                                        0x28d (size before relaxing)
+
+.comment        0x0000000000000000       0x53
+ .comment       0x0000000000000000       0x53 main.o
+                                         0x54 (size before relaxing)
+ .comment       0x0000000000000053       0x54 startup.o
+ .comment       0x0000000000000053       0x54 Stm32f10xx_EXTI.o
+ .comment       0x0000000000000053       0x54 Stm32f10xx_GPIO.o
+
+.ARM.attributes
+                0x0000000000000000       0x2d
+ .ARM.attributes
+                0x0000000000000000       0x2d main.o
+ .ARM.attributes
+                0x000000000000002d       0x2d startup.o
+ .ARM.attributes
+                0x000000000000005a       0x2d Stm32f10xx_EXTI.o
+ .ARM.attributes
+                0x0000000000000087       0x2d Stm32f10xx_GPIO.o
+
+.debug_frame    0x0000000000000000      0x1a4
+ .debug_frame   0x0000000000000000       0x94 main.o
+ .debug_frame   0x0000000000000094       0x50 startup.o
+ .debug_frame   0x00000000000000e4       0x38 Stm32f10xx_EXTI.o
+ .debug_frame   0x000000000000011c       0x88 Stm32f10xx_GPIO.o
