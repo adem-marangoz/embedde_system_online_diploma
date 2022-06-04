@@ -15,6 +15,7 @@
 #include <util/delay.h>
 #include "EXTI.h"
 #include "avr/interrupt.h"
+#include "Seven_Segment.h"
 
 
 /**
@@ -38,21 +39,22 @@ void program(void);
 
 void init(void)
 {
-    /*Config PA0, PA1, PA2, PA3, PA4, PA5, PA6 and PA7 pin as Output */
+    /*Config PD0, PD1, PD2, PD3, PD4, PD5, PD6 and PA7 pin as Output */
     GPIO_config config_i_o = {0};
 	config_i_o.pin = PIN_0| PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 | PIN_7;
 	config_i_o.mode = OUTPUT;
-	Init_GPIO(PORT_A,&config_i_o);
+	Init_GPIO(PORT_D,&config_i_o);
 
 }
 
 void program(void)
 { 
 	volatile static uint8_t counter = 0;
-	if(counter < 8)
+	if(counter < 10)
 	{
-		Write_Pin(PORT_A,PIN_0 << counter, High);
+		Write_Regester(PORT_D,numbers[counter]);
 		counter ++;
+		if(counter == 10){counter = 0;}
 	}
 	
 }
