@@ -85,7 +85,7 @@ void Toggle_pin(St_GPIO *GPIO,uint8_t Pin)
 	GPIO->PORTx ^= Pin;
 }
 
-void Write_Regester(St_GPIO *GPIO,uint8_t Pin)
+void Write_Port_Register(St_GPIO *GPIO,uint8_t Pin)
 {
 	if(!(Check_PORT(GPIO))){return;}
 	GPIO->PORTx = Pin;

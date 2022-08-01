@@ -14,7 +14,7 @@
 #define GPIO_H_
 
 #include <Common.h>
-
+#include <avr/io.h>
 /* Pin Modes*/
 typedef enum
 {
@@ -36,15 +36,41 @@ typedef enum
 /* General GPIOs data structure base datesheet */
 typedef struct 
 {
-    uint8_t PINx;
-    uint8_t DDRx;
-    uint8_t PORTx;
+    volatile unsigned char Pin0 : 1;
+    volatile unsigned char Pin1 : 1;
+    volatile unsigned char Pin2 : 1;
+    volatile unsigned char Pin3 : 1;
+    volatile unsigned char Pin4 : 1;
+    volatile unsigned char Pin5 : 1;
+    volatile unsigned char Pin6 : 1;
+    volatile unsigned char Pin7 : 1;
+}St_GPIO_Pins;
+
+typedef struct 
+{
+    union 
+    {
+        volatile unsigned char PINx;
+        St_GPIO_Pins PINx_bit;
+    }Un_PINx;
+    
+    union 
+    {
+        volatile unsigned char DDRx;
+        St_GPIO_Pins DDRx_bit;
+    }Un_DDRx;
+
+    union 
+    {
+        volatile unsigned char PORTx;
+        St_GPIO_Pins PORTx_bit;
+    }Un_PORTx;
 }St_GPIO;
 
 /* API for GPIO for more easier*/
 typedef struct
 {
-    uint8_t pin;
+    unsigned char pin;
     En_Pin_config mode;
     En_PUD PUPD;
 }GPIO_config;
@@ -57,10 +83,10 @@ typedef enum
 }St_Pin_State;
 
 /*PORTS start Address*/
-#define PORT_A                  ((St_GPIO*)0x39)
-#define PORT_B                  ((St_GPIO*)0x36)
-#define PORT_C                  ((St_GPIO*)0x33)
-#define PORT_D                  ((St_GPIO*)0x30)
+#define PORT_A                  ((volatile St_GPIO*)0x39)
+#define PORT_B                  ((volatile St_GPIO*)0x36)
+#define PORT_C                  ((volatile St_GPIO*)0x33)
+#define PORT_D                  ((volatile St_GPIO*)0x30)
 
 
 #define GPIO_Number             (0x08)
@@ -88,7 +114,7 @@ typedef enum
  * @return 1: no problem
  *         0: exist problem in program 
  */
-uint8_t Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t);
+unsigned char Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t);
 
 /**
  * @brief This function is used to write on a pin, whether it is high or low
@@ -98,28 +124,52 @@ uint8_t Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t);
  * @return 1: no problem
  *         0: exist problem in program s
  */
-uint8_t Write_Pin(St_GPIO *GPIO, uint8_t Pin,St_Pin_State state);
+unsigned char Write_Pin(St_GPIO *GPIO, unsigned char Pin,St_Pin_State state);
 
 /**
- * @brief This function is used to read the status
+ * @brief This function is used to read the status pin
  * @param GPIO 
  * @param Pin 
  * @return St_Pin_State  @arg : High
  *                       @arg : Low
  */
-St_Pin_State Read_Pin(St_GPIO *GPIO, uint8_t Pin);
+St_Pin_State Read_Pin(St_GPIO *GPIO, unsigned char Pin);
+
+/**
+ * @brief This function is used to read the status of Pins port
+ * @param GPIO 
+ * @return Pins state 
+ */
+unsigned char Read_Pins(St_GPIO *GPIO);
 
 /**
  * @brief used to toggle pin status
  * @param GPIO 
  * @param Pin 
  */
-void Toggle_pin(St_GPIO *GPIO,uint8_t Pin);
+void Toggle_pin(St_GPIO *GPIO,unsigned char Pin);
 
 /**
  * @brief use to write 8 bit register
  * @param GPIO 
  * @param Pin 
  */
-void Write_Port_Register(St_GPIO *GPIO,uint8_t Pin);
+void Write_Port_Register(St_GPIO *GPIO,unsigned char Pin);
+
+/**
+ * @brief used to change Pin direction
+ * 
+ * @param GPIO 
+ * @param Pin 
+ * @param state
+ */
+void Change_Direction(St_GPIO *GPIO,unsigned char Pin,En_Pin_config state);
+
+/**
+ * @brief used to write 8 bit in DDRx register
+ * 
+ * @param GPIO 
+ * @param Pin 
+ */
+void Write_Dir_Register(St_GPIO *GPIO,unsigned char Pin);
 #endif

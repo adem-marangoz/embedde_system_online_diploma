@@ -16,7 +16,9 @@
 #include "EXTI.h"
 #include "avr/interrupt.h"
 #include "Seven_Segment.h"
-
+#include "LCD_16_2.h"
+#include "Key_pad.h"
+#include <stddef.h>
 
 /**
  * @brief In this function, the peripherials are initialized and the variables 
@@ -34,40 +36,28 @@ void init(void);
  */
 void program(void);
 
-
-
+LCD_16_2 Lcd_config = {0};
+St_Key_pad key_pad = {0};
 
 void init(void)
 {
-    /*Config PD0, PD1, PD2, PD3, PD4, PD5, PD6 and PA7 pin as Output */
-    GPIO_config config_i_o = {0};
-	config_i_o.pin = PIN_0| PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 | PIN_7;
-	config_i_o.mode = OUTPUT;
-	Init_GPIO(PORT_D,&config_i_o);
-
+	Lcd_config.Data_Port = PORT_A;
+	Lcd_config.Enable_Port = PORT_B;
+	Lcd_config.RS_Port = PORT_C;
+	Lcd_config.R_W_Port = PORT_D;
+	Lcd_config.Enable_Pin = PIN_0;
+	Lcd_config.R_W_Pin = PIN_0;
+	Lcd_config.RS_Pin = PIN_0;
+	LCD_init(&Lcd_config);
+	key_pad.input.Port = PORT_B;
+	key_pad.input.Pins = PIN_1|PIN_2|PIN_3|PIN_4;
+	key_pad.output.Port = PORT_C;
+	key_pad.output.Pins =PIN_1|PIN_2|PIN_3|PIN_4;
+	Key_pad_init(&key_pad);
 }
 
 void program(void)
 { 
-	volatile static uint8_t counter = 0;
-	if(counter < 10)
-	{
-		Write_Port_Register(PORT_D,numbers[counter]);
-		counter ++;
-		if(counter == 10){counter = 0;}
-	}
-	
-}
-
-/**
- * @brief Construct a new ISR object
- * @brief This function was defined by this name based on the startup file 
- *        and was called from within the interrupt file
- * @param: Hardware Interrupt Source base interupt vector table
- * @retval: None
- */
-ISR(INT2_vect)
-{
-    Toggle_pin(PORT_A,PIN_0);
+	Check_Prass_Button(&key_pad);
 }
 
