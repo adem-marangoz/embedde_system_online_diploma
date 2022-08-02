@@ -15,25 +15,6 @@
 #include "Stm32f10xx_Common.h"
 #include "Stm32f10xx_Address.h"
 
-/*RCC Registers*/
-typedef struct 
-{
-    __IO uint32_t RCC_CR; // Reset value: 0x0000 XX83
-    __IO uint32_t RCC_CFGR;
-    __IO uint32_t RCC_CIR;
-    __IO uint32_t RCC_APB2RSTR;
-    __IO uint32_t RCC_APB1RSTR;
-    __IO uint32_t RCC_AHBENR;
-    __IO uint32_t RCC_APB2ENR;
-    __IO uint32_t RCC_APB1ENR;
-    __IO uint32_t RCC_BCDR;
-    __IO uint32_t RCC_CSR;
-    __IO uint32_t RCC_AHBRSTR;
-    __IO uint32_t RCC_CFGR2;
-}St_RCC;
-
-/* RCC Register starts at 0x40021000 address */
-#define RCC_Regs                              ((St_RCC*)0x40021000)
 
 /* ---------------------------- RCC_CR Register ---------------------------- */
 #define __CR_PLLRDY()                          (READ_REG(RCC_Regs->RCC_CR) & 1<<25)

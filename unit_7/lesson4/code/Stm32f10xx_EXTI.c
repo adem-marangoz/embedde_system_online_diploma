@@ -13,7 +13,7 @@
 
 /**
   * @brief  This function handles EXTI interrupt request.
-  * @param  GPIO_Pin: Specifies the pins connected EXTI line
+  * @param[in]  GPIO_Pin: Specifies the pins connected EXTI line
   * @retval None
   */
 void EXTI_EXTI_Clear_Handler(uint32_t pin)

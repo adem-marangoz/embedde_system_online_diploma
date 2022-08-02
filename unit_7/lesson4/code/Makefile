@@ -17,12 +17,12 @@ all: $(Project).bin
 %.o: %.c
 	$(CC)gcc.exe -c $(CFLAGS) $(INCS) $< -o $@
 	
-$(Project).axf: $(OBJ) $(AsOBJ)
+$(Project).elf: $(OBJ) $(AsOBJ)
 	$(CC)ld.exe -T linker_script.ld $(LIBS) $(OBJ) $(AsOBJ) -o $@ -Map=map_file.map
 	
-$(Project).bin: $(Project).axf
+$(Project).bin: $(Project).elf
 	$(CC)objcopy.exe -O binary $< $@
-	
+
 clean_all:
 	rm -rf *.o *.elf *.bin *.map *.axf
 	@echo "-------------Clear Everything-----------------"

@@ -6,6 +6,7 @@
 #include "Stm32f10xx_EXTI.h"
 #include "Stm32f10xx_RCC.h"
 #include "Stm32f10xx_AFIO.h"
+#include "Stm32f10xx_Address.h"
 #include <stdio.h>
 
 void config(void);

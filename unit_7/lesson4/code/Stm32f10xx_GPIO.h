@@ -17,27 +17,7 @@
 #include "Stm32f10xx_Address.h"
 
 
-/*Peripheral GPIO Register*/
-typedef struct
-{
-    __IO uint32_t GPIO_CR[2];   // Reset value  0x44444444
-    __IO uint32_t GPIO_IDR;     // Reset value  0x00000000
-    __IO uint32_t GPIO_ODR;     // Reset value  0x00000000
-    __IO uint32_t GPIO_BSRR;    // Reset value  0x00000000
-    __IO uint32_t GPIO_BRR;     // Reset value  0x00000000
-    __IO uint32_t GPIO_LCKR;    // Reset value  0x00000000
-}St_GPIO;
-
-#define GPIO_PIN_NUMBER           15
-
-#define GPIOA               ((St_GPIO *) GPIOA_Base_Add)
-#define GPIOB               ((St_GPIO *) GPIOB_Base_Add)
-#define GPIOC               ((St_GPIO *) GPIOC_Base_Add)
-#define GPIOD               ((St_GPIO *) GPIOD_Base_Add)
-#define GPIOE               ((St_GPIO *) GPIOE_Base_Add)
-#define GPIOF               ((St_GPIO *) GPIOF_Base_Add)
-#define GPIOG               ((St_GPIO *) GPIOG_Base_Add)
-
+//@ref GPIO PINS_Define 
 #define GPIO_PIN_0                 ((uint16_t)0x0001)  /* Pin 0 selected    */
 #define GPIO_PIN_1                 ((uint16_t)0x0002)  /* Pin 1 selected    */
 #define GPIO_PIN_2                 ((uint16_t)0x0004)  /* Pin 2 selected    */
@@ -56,12 +36,13 @@ typedef struct
 #define GPIO_PIN_15                ((uint16_t)0x8000)  /* Pin 15 selected   */
 #define GPIO_PIN_All               ((uint16_t)0xFFFF)  /* All pins selected */
 
-#define GPIO_PIN_MASK              0x0000FFFFU /* PIN mask for assert test */
 
+#define GPIO_PIN_NUMBER            15
+#define GPIO_PIN_MASK              0x0000FFFFU /* PIN mask for assert test */
 #define GPIO_MODE0_Mask            0x03
 #define GPIO_CNF_Mask              0x03 << 2
 
-
+//@ref GPIO_Pin_State
 typedef enum
 {
   GPIO_PIN_RESET = 0,
@@ -104,6 +85,13 @@ typedef enum
 #define  GPIO_PULLUP                            0x00000001U   /*!< Pull-up activation                  */
 #define  GPIO_PULLDOWN                          0x00000002U   /*!< Pull-down activation                */
 
+/**
+ * @ref GPIO_SPEED_DEFINE
+ * 0 : GPIO_SPEED_FREQ_IN
+ * 1 : GPIO_SPEED_FREQ_2MHZ
+ * 2 : GPIO_SPEED_FREQ_10MHZ
+ * 3 : GPIO_SPEED_FREQ_50MHZ
+ */
 #define  GPIO_SPEED_FREQ_IN                     0x00000000U
 #define  GPIO_SPEED_FREQ_2MHZ                   0x00000001U
 #define  GPIO_SPEED_FREQ_10MHZ                  0x00000002U
@@ -176,15 +164,20 @@ typedef struct
                            This parameter can be a value of @ref GPIO_pull_define */
 
   uint32_t Speed;     /*!< Specifies the speed for the selected pins.
-                           This parameter can be a value of @ref GPIO_speed_define */
+                           This parameter can be a value of @ref GPIO_SPEED_DEFINE */
 
   uint32_t Alternate;  /*!< Peripheral to be connected to the selected pins. 
                             This parameter can be a value of @ref GPIO_Alternate_function_selection */
 }GPIO_InitTypeDef;
 
-void Init_GPIO(St_GPIO *GPIOx, GPIO_InitTypeDef *GPIO_init);
-void Set_pin(St_GPIO *GPIOx,uint16_t pin);
-void Reset_pin(St_GPIO *GPIOx,uint16_t pin);
-void Toggle_pin(St_GPIO *GPIO, uint16_t pin);
-GPIO_PinState Read_pin(St_GPIO *GPIO,uint16_t pin);
+void Init_GPIO(St_GPIO_Typedef *GPIOx, GPIO_InitTypeDef *GPIO_init);
+void Deinit_GPIO(St_GPIO_Typedef *GPIOx);
+void Set_pin(St_GPIO_Typedef *GPIOx,uint16_t pin);
+void Reset_pin(St_GPIO_Typedef *GPIOx,uint16_t pin);
+void Set_GPIO(St_GPIO_Typedef *GPIOx,uint32_t value);
+void Reset_GPIO(St_GPIO_Typedef *GPIOx);
+uint16_t Read_GPIO(St_GPIO_Typedef *GPIOx);
+void Toggle_pin(St_GPIO_Typedef *GPIOx, uint16_t pin);
+GPIO_PinState Read_pin(St_GPIO_Typedef *GPIOx,uint16_t pin);
+uint8_t Lock_GPIO(St_GPIO_Typedef *GPIOx,uint16_t pin);
 #endif

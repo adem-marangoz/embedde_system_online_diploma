@@ -17,39 +17,6 @@
 
 #define NVIC_EnableIRQ              __NVIC_EnableIRQ
 
-/* EXTI Registers */
-typedef struct
-{
-    __IO uint32_t EXTI_IMR;
-    __IO uint32_t EXTI_EMR;
-    __IO uint32_t EXTI_RTSR;
-    __IO uint32_t EXTI_FTSR;
-    __IO uint32_t EXTI_SWIER;
-    __IO uint32_t EXTI_RP;
-}St_EXTI;
-
-/* NVIC Registers */
-typedef struct
-{
-    __IO uint32_t ISER[8U];                 /*!< The NVIC_ISER0-NVIC_ISER7 registers enable interrupts, and show which interrupts are enabled */
-         uint32_t RESERVED0[24U];
-    __IO uint32_t ICER[8U];                 /*!< The NVIC_ICER0-NVIC_ICER7 registers disable interrupts, and show which interrupts are enabled */
-         uint32_t RESERVED1[24U];
-    __IO uint32_t ISPR0[8U];                /*!< The NVIC_ISPR0-NVIC_ISPR7 registers force interrupt into the pending state, and show which interrupts are pending */
-         uint32_t RESERVED2[24U];
-    __IO uint32_t ICPR0[8U];                /*!< The NVIC_ICPR0-NVIC_ICPR7 registers remove the pendig state from interrupts, and show which interrupts are pending */
-         uint32_t RESERVED3[24U];
-    __IO uint32_t IABR0[8U];                /*!< The NVIC_IABR0-NVIC_IABR7 registers indicate which interrupts are active */
-         uint32_t RESERVED4[56U];
-    __IO uint32_t IPR0[240U];                 /*!< The NVIC_IPR0-NVIC_IRP59 register provide an 8-bit priority field for each interrupt and each register holds four priority fields. These registers are byte-accessible*/
-         uint32_t RESERVED5[644U];
-    __IO uint32_t STIR;                 /*!< The to the STIR to generate an interrupt from sofware // When the USERSETMPEND bit in the SCR is set to 1, unprivileged software can access the STIR  // Only privileged software can enable unprivileged access to the STIR*/
-}St_NVIC;
-
-/* EXTI Register start at 0x40010400 address */
-#define EXTI                ((St_EXTI *) EXTI_Base_Add)
-/* NVIC Register start at 0xE000E100 address */
-#define NVIC                ((St_NVIC *) NVIC_Base_Add)
 
 /* Interrupt Tabol */
 typedef enum
@@ -115,7 +82,7 @@ typedef enum
   * @brief  Enables a device specific interrupt in the NVIC interrupt controller.
   * @note   To configure interrupts priority correctly, the NVIC_PriorityGroupConfig()
   *         function should be called before. 
-  * @param  IRQn External interrupt number.
+  * @param[in]  IRQn External interrupt number.
   *         This parameter can be an enumerator of IRQn_Type enumeration
   *         (For the complete STM32 Devices IRQ Channels list, please refer to the appropriate CMSIS device file (stm32f10xxx.h))
   * @retval None

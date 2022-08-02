@@ -11,15 +11,18 @@
 
 #include "Stm32f10xx_GPIO.h"
 #include "Stm32f10xx_AFIO.h"
+#include "Stm32f10xx_RCC.h"
 
 /**
   * @brief  Initializes the GPIOx peripheral according to the specified parameters in the GPIO_Init.
-  * @param  GPIOx: where x can be (A..G depending on device used) to select the GPIO peripheral
-  * @param  GPIO_Init: pointer to a GPIO_InitTypeDef structure that contains
+  * @param[in]  GPIOx: where x can be (A..G depending on device used) to select the GPIO peripheral
+  * @param[in]  GPIO_Init: pointer to a GPIO_InitTypeDef structure that contains
   *         the configuration information for the specified GPIO peripheral.
+  * @retval
+  * Note
   * @retval None
   */
-void Init_GPIO(St_GPIO *GPIOx, GPIO_InitTypeDef *GPIO_init)
+void Init_GPIO(St_GPIO_Typedef *GPIOx, GPIO_InitTypeDef *GPIO_init)
 {
     assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
     assert_param(IS_GPIO_PIN(GPIO_init->Pin));
@@ -99,31 +102,25 @@ void Init_GPIO(St_GPIO *GPIOx, GPIO_InitTypeDef *GPIO_init)
 
 /**
  * @brief Set Pin in GPIOx
- * @param GPIOx  @arg : GPIOA
- *               @arg : GPIOB
- *               @arg : GPIOC
- *               @arg : GPIOD
- *               @arg : GPIOE
- *               @arg : GPIOF
- * @param pin 
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO_PINS_Define 
+ * @retval
+ * Note
  */
-void Set_pin(St_GPIO *GPIOx,uint16_t pin)
+void Set_pin(St_GPIO_Typedef *GPIOx,uint16_t pin)
 {
     assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
     GPIOx->GPIO_BSRR = pin;
 }
 
 /**
- * @brief Reset Pin in GPIOx
- * @param GPIOx  @arg : GPIOA
- *               @arg : GPIOB
- *               @arg : GPIOC
- *               @arg : GPIOD
- *               @arg : GPIOE
- *               @arg : GPIOF
- * @param pin 
+ * @brief               -Reset Pin in GPIOx
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO_PINS_Define 
+ * @retval
+ * Note
  */
-void Reset_pin(St_GPIO *GPIOx,uint16_t pin)
+void Reset_pin(St_GPIO_Typedef *GPIOx,uint16_t pin)
 {
     assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
     GPIOx->GPIO_BSRR = pin << 16;
@@ -131,40 +128,128 @@ void Reset_pin(St_GPIO *GPIOx,uint16_t pin)
 
 
 /**
- * @brief Toggle Pin in GPIOx
- * @param GPIOx  @arg : GPIOA
- *               @arg : GPIOB
- *               @arg : GPIOC
- *               @arg : GPIOD
- *               @arg : GPIOE
- *               @arg : GPIOF
- * @param pin 
+ * @brief Toggle Specified GPIO Pin
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO PINS_Define 
+ * @retval
+ * Note
  */
-void Toggle_pin(St_GPIO *GPIO, uint16_t pin)
+void Toggle_pin(St_GPIO_Typedef *GPIOx, uint16_t pin)
 {
     assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
     assert_param(IS_GPIO_PIN(pin));
 
-    GPIO->GPIO_ODR ^= (uint32_t)pin;
+    GPIOx->GPIO_ODR ^= (uint32_t)pin;
 }
 
 
 /**
- * @brief Read Pin State in GPIOx
- * @param GPIOx  @arg : GPIOA
- *               @arg : GPIOB
- *               @arg : GPIOC
- *               @arg : GPIOD
- *               @arg : GPIOE
- *               @arg : GPIOF
- * @param pin 
- * @return GPIO_PinState @arg : GPIO_PIN_RESET
- *                       @arg : GPIO_PIN_SET
+ * @brief Read Specified GPIO Pin State
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO PINS_Define 
+ * @param[out] GPIO_PinState    -specified Pin state according to //@ref GPIO_Pin_State 
+ * @retval
+ * Note
  */
-GPIO_PinState Read_pin(St_GPIO *GPIO,uint16_t pin)
+GPIO_PinState Read_pin(St_GPIO_Typedef *GPIOx,uint16_t pin)
 {
     assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
     assert_param(IS_GPIO_PIN(pin));
-    if(GPIO->GPIO_IDR & pin){return GPIO_PIN_SET;}
+    if(GPIOx->GPIO_IDR & pin){return GPIO_PIN_SET;}
     return GPIO_PIN_RESET;
+}
+
+/**
+ * @brief Set specified GPIOx
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @retval
+ * Note
+ */
+void Set_GPIO(St_GPIO_Typedef *GPIOx,uint32_t value)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    GPIOx->GPIO_BSRR = value;
+}
+
+/**
+ * @brief Reset specified GPIOx
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @retval
+ * Note
+ */
+void Reset_GPIO(St_GPIO_Typedef *GPIOx)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    GPIOx->GPIO_BSRR = 0xFFFF << 16;
+}
+
+/**
+ * @brief Read specified GPIOx
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @retval
+ * Note
+ */
+uint16_t Read_GPIO(St_GPIO_Typedef *GPIOx)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    assert_param(IS_GPIO_PIN(pin));
+    return (uint16_t)(GPIOx->GPIO_IDR);
+}
+
+/**
+ * @brief               -This function is used to lock the configuration of the port bits
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO PINS_Define 
+ * @reval               -none
+ * @Note                -none
+ */
+uint8_t Lock_GPIO(St_GPIO_Typedef *GPIOx, uint16_t pin)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    assert_param(IS_GPIO_PIN(pin));
+    GPIOx->GPIO_LCKR |= pin;
+    GPIOx->GPIO_LCKR |= (GPIOx->GPIO_LCKR | 0x00010000);
+    GPIOx->GPIO_LCKR &= (GPIOx->GPIO_LCKR & 0x0000FFFF);
+    uint32_t temp = GPIOx->GPIO_LCKR;
+    if(temp & 1<<16) {return 0;}
+    return 1;
+}
+
+
+/**
+ * @brief               -reset all the GPIOx regisets
+ * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO PINS_Define 
+ * @reval               -none
+ * @Note                -none
+ */
+void Deinit_GPIO(St_GPIO_Typedef *GPIOx)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    if(GPIOx == GPIOA)
+    {
+
+    }else if (GPIOx == GPIOB)
+    {
+        __APB2RSTR_IOPARST();
+    }else if (GPIOx == GPIOB)
+    {
+        __APB2RSTR_IOPBRST();
+    }else if (GPIOx == GPIOC)
+    {
+        __APB2RSTR_IOPCRST();
+    }else if (GPIOx == GPIOD)
+    {
+        __APB2RSTR_IOPDRST();
+    }else if (GPIOx == GPIOE)
+    {
+        __APB2RSTR_IOPERST();
+    }else if (GPIOx == GPIOF)
+    {
+        __APB2RSTR_IOPFRST();
+    }else if (GPIOx == GPIOG)
+    {
+        __APB2RSTR_IOPGRST();
+    }
+    
 }

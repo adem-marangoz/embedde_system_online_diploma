@@ -16,20 +16,6 @@
 #include "Stm32f10xx_Address.h"
 
 
-/* AFIO Registers*/
-typedef struct 
-{
-    __IO uint32_t EVCR;
-    __IO uint32_t MAPR;
-    __IO uint32_t EXTICR[4];
-         uint32_t RESERVED0;
-    __IO uint32_t MAPR2;
-}St_AFIO;
-
-
-/* AFIO Register start at 0x40010000 address */
-#define AFIO                ((St_AFIO *) AFIO_Base_Add)
-
 /* Mask 4 Bit For GPIOS Mux to Line */
 #define AFIO_Line_Mask      0xFU
 
