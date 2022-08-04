@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff0b00000009000000aa020000da020000</PLACEMENT>
+  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff0c0000000a000000ab020000db020000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
    <POPUP w="400" x="5" flags="00000002" y="106" h="100" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">142</ITEM>
+     <ITEM name="Message Column Width">263</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -112,7 +112,7 @@
      <ITEM name="TopLineAddress">40007000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="268" flags="0000000a" y="329" h="32" pid="280" iid="1">
+   <POPUP w="16" x="752" flags="0000000b" y="40" h="4" pid="280" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -122,7 +122,7 @@
      <ITEM name="TopLineAddress">40010800</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="288" flags="0000000a" y="349" h="32" pid="290" iid="1">
+   <POPUP w="16" x="752" flags="0000000b" y="148" h="3" pid="290" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -332,9 +332,41 @@
      <ITEM name="TopLineAddress">E000E000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="600" x="271" flags="0000802b" y="382" h="400" pid="100" iid="1">
+   <POPUP w="600" x="421" flags="0000802b" y="325" h="400" pid="100" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"main",800012E,0041,0C72,BD94,1
+     <ITEM name="Breakpoint 0">"Kick_Enable_pin",800012A,0003,BEEC,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 1">"Kick_Enable_pin",800012A,0003,BEEC,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 10">"LCD_init",8000218,00B7,57A1,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 11">"LCD_init",8000218,00B7,1B54,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 12">"LCD_init",8000218,00B7,1B54,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 13">"main",80006BE,0005,099D,B601,1
+</ITEM>
+     <ITEM name="Breakpoint 14">"main",80006C2,0009,A913,B601,1
+</ITEM>
+     <ITEM name="Breakpoint 15">"main",80006C2,0009,3AB6,B601,1
+</ITEM>
+     <ITEM name="Breakpoint 16">"main",80006CA,0011,A957,B601,1
+</ITEM>
+     <ITEM name="Breakpoint 2">"Kick_Enable_pin",8000142,001B,3949,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 3">"Kick_Enable_pin",8000142,001B,3949,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 4">"Kick_Enable_pin",800014C,0025,B2F6,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 5">"Kick_Enable_pin",800014C,0025,B2F6,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 6">"LCD_init",800018C,002B,F464,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 7">"LCD_init",800018C,002B,F464,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 8">"LCD_init",80001B8,0057,6EAA,F479,1
+</ITEM>
+     <ITEM name="Breakpoint 9">"LCD_init",80001BC,005B,F14F,F479,1
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
@@ -342,7 +374,7 @@
      <ITEM name="DISPOPCODES">No</ITEM>
      <ITEM name="FIXUPBPTS">Yes</ITEM>
      <ITEM name="WordsOnly">No</ITEM>
-     <ITEM name="nBreakpoints">0</ITEM>
+     <ITEM name="nBreakpoints">17</ITEM>
     </PROPERTIES>
    </POPUP>
    <POPUP w="300" x="1051" flags="0000000b" y="428" h="300" pid="101" iid="1">
