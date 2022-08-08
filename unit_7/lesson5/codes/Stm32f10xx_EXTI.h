@@ -78,6 +78,7 @@ typedef enum
 }IRQn_Type;
 
 
+
 /**
   * @brief  Enables a device specific interrupt in the NVIC interrupt controller.
   * @note   To configure interrupts priority correctly, the NVIC_PriorityGroupConfig()
@@ -94,7 +95,6 @@ static inline void __NVIC_EnableIRQ(IRQn_Type IRQn)
     NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
   }
 }
-
 
 void NVIC_EXTI_Clear_Handler(uint32_t pin);
 
