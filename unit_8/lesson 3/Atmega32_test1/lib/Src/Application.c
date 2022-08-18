@@ -56,18 +56,26 @@ void init(void)
 	// key_pad.output.Pins =PIN_1|PIN_2|PIN_3|PIN_4;
 	// Key_pad_init(&key_pad);
 
-	UART_Config.BuadRate = 4012;
+	UART_Config.BuadRate = 9600;
 	UART_Config.Char_Size = Eight_bit;
 	UART_Config.Clk_Polarity = Rising_Edge;
 	UART_Config.Communcation_Mode = Full_Duplex;
-	UART_Config.Parity = Even_Parity;
-	UART_Config.Mode = synchronous;
+	UART_Config.Parity = Disable;
+	UART_Config.Mode = Asynchronous;
 	UART_Config.Stop = One_bit;
+	UART_Config.Speed = Normal_Speed;
 	Init_Uart(&UART_Config);
 }
 
 void program(void)
 { 
-	Check_Prass_Button(&key_pad);
+	//Check_Prass_Button(&key_pad);
+	char str[] = "You can do it \n\r";
+	for(unsigned char i = 0; str[i] != '\0';i++)
+	{
+		
+		Uart_send(str[i]);
+		_delay_ms(1000);	
+	}
 }
 

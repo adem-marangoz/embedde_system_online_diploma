@@ -64,7 +64,7 @@ typedef union
 
 #define UCSRA_R         ((volatile UCSRA_Register*)0x2B)
 #define UCSRB_R         ((volatile UCSRB_Register*)0x2A)
-//#define UCSRC_R         ((volatile UCSRC_Register*)0x40)
+#define UCSRC_R         ((volatile UCSRC_Register*)0x40)
 
 typedef enum
 {
@@ -108,6 +108,13 @@ typedef enum
     Falling_Edge
 }En_Clock_Polarity;
 
+
+typedef enum
+{
+    Normal_Speed = 16,
+    Double_Speed = 8
+}En_Uart_speed;
+
 typedef struct 
 {
     En_Uart_Mode Mode;
@@ -116,14 +123,16 @@ typedef struct
     En_Clock_Polarity Clk_Polarity;
     En_Parity_Mode Parity;
     En_Communcation_Mode Communcation_Mode;
+    En_Uart_speed Speed;
     unsigned int BuadRate;
 }St_UART_driver;
 
+
+
 #define BuadRate_Max            4095
 
-
 extern St_UART_driver UART_Config;
-
 uint8_t Init_Uart(St_UART_driver *_init_uart);
+void Uart_send(uint8_t msg);
 
 #endif
