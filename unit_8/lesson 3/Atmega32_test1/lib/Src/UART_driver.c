@@ -1,10 +1,16 @@
 #include "UART_driver.h"
 #include "GPIO.h"
+#include "avr/interrupt.h"
 
 
 St_UART_driver UART_Config = {0};
 
-
+/**
+ * @brief           This function is used to initialize the Uart Peripheral
+ * @param[in]       _init_uart: UART data structure containing the uart parameters specified by the user 
+ * @return uint8_t  0 : Fail
+ *                  1 : Success
+ */
 uint8_t Init_Uart(St_UART_driver *_init_uart)
 {   
     if((_init_uart->BuadRate >= 0) && (_init_uart <= BuadRate_Max))
@@ -27,9 +33,68 @@ uint8_t Init_Uart(St_UART_driver *_init_uart)
     return 1;
 }
 
-void Uart_send(unsigned char msg)
+/**
+ * @brief       Used to send a character through Uart
+ * @param[in]   msg: Character value   
+ */
+void Uart_send(unsigned int msg)
 {
     while(!(UCSRA_R->UCSRA_field & (1<<UDRE)));
 
-    UDR = msg;
+    UCSRB_R->UCSRB_bits.TXB8_b = 0;
+    if(msg & 0x100)
+        UCSRB_R->UCSRB_bits.TXB8_b = 1;
+
+    UDR = (unsigned char)msg;
+}
+
+
+/**
+ * @brief       Used to send a string through Uart     
+ * @param[in]   msg : Contain The first address of String  
+ */
+void Uart_Send_String(unsigned char *msg)
+{
+    for(int i = 0 ; *msg != '\0' ; msg++)
+    {
+        Uart_send(*msg);
+    }
+}
+
+/**
+ * @brief   Used to Receiv Data form UART by polling
+ * @return  unsigned char: return received value 
+ */
+unsigned char Uart_Receive()
+{
+    unsigned char status, resh, resl;
+    while(!(UCSRA_R->UCSRA_field & (1 << RXC)));
+
+    status = UCSRA_R->UCSRA_field;
+    resh = UCSRB_R->UCSRB_field;
+    resl = UDR;
+
+    if(status & ((1 << FE)|(1 << DOR)|(1 << PE)))
+        return -1;
+    resh = (resh >> 1) & 0x01;
+    return ((resh << 8) | resl);
+
+    return UDR;
+}
+
+ISR(USART_RXC_vect)
+{
+
+}
+
+
+ISR(USART_TXC_vect)
+{
+
+}
+
+
+ISR(USART_UDRE_vect)
+{
+    UCSRB_R->UCSRB_bits.UDRIE_b = 0;
 }

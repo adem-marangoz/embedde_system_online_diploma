@@ -132,6 +132,7 @@ unsigned char Write_String(const LCD_16_2 *lcd_instance,unsigned char *ch)
     {
         Write_Character(lcd_instance,*ch);
         ch++;
+        _delay_ms(300);
     }
 }
 

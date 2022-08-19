@@ -37,19 +37,19 @@ void init(void);
  */
 void program(void);
 
-LCD_16_2 Lcd_config = {0};
-St_Key_pad key_pad = {0};
+volatile LCD_16_2 Lcd_config = {0};
+volatile St_Key_pad key_pad = {0};
 
 void init(void)
 {
-	// Lcd_config.Data_Port = PORT_A;
-	// Lcd_config.Enable_Port = PORT_B;
-	// Lcd_config.RS_Port = PORT_C;
-	// Lcd_config.R_W_Port = PORT_D;
-	// Lcd_config.Enable_Pin = PIN_0;
-	// Lcd_config.R_W_Pin = PIN_0;
-	// Lcd_config.RS_Pin = PIN_0;
-	// LCD_init(&Lcd_config);
+	Lcd_config.Data_Port = PORT_A;
+	Lcd_config.Enable_Port = PORT_B;
+	Lcd_config.RS_Port = PORT_C;
+	Lcd_config.R_W_Port = PORT_D;
+	Lcd_config.Enable_Pin = PIN_0;
+	Lcd_config.R_W_Pin = PIN_2;
+	Lcd_config.RS_Pin = PIN_0;
+	LCD_init(&Lcd_config);
 	// key_pad.input.Port = PORT_B;
 	// key_pad.input.Pins = PIN_1|PIN_2|PIN_3|PIN_4;
 	// key_pad.output.Port = PORT_C;
@@ -65,17 +65,17 @@ void init(void)
 	UART_Config.Stop = One_bit;
 	UART_Config.Speed = Normal_Speed;
 	Init_Uart(&UART_Config);
+	unsigned char str[] = "You can do it \n\r";
+	Uart_Send_String(str);
+	Write_String(&Lcd_config,str);
+	Jump_to_coordinator(&Lcd_config,0,Seconde_R);
 }
 
+uint8_t R_msg = 0;
 void program(void)
 { 
 	//Check_Prass_Button(&key_pad);
-	char str[] = "You can do it \n\r";
-	for(unsigned char i = 0; str[i] != '\0';i++)
-	{
-		
-		Uart_send(str[i]);
-		_delay_ms(1000);	
-	}
+	R_msg = Uart_Receive();
+	Write_Character(&Lcd_config,R_msg);
 }
 

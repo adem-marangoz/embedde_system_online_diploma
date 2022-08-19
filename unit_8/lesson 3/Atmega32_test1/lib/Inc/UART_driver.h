@@ -5,6 +5,10 @@
 #include <avr/io.h>
 
 
+#define BuadRate_Max            4095
+
+
+/*UCSRA Register made to be access by field and bit*/
 typedef union
 {
     __IO uint8_t UCSRA_field;
@@ -23,7 +27,7 @@ typedef union
 
 
 
-
+/*UCSRB Register made to be access by field and bit*/
 typedef union
 {
     __IO uint8_t UCSRB_field;
@@ -41,7 +45,7 @@ typedef union
 }UCSRB_Register;
 
 
-
+/*UCSRC Register made to be access by field and bit*/
 typedef union
 {
     __IO uint8_t UCSRC_field;
@@ -66,12 +70,15 @@ typedef union
 #define UCSRB_R         ((volatile UCSRB_Register*)0x2A)
 #define UCSRC_R         ((volatile UCSRC_Register*)0x40)
 
+
+/*@En_Uart_Mode : In this Enumeration for select UART mode Asyn or Syn*/
 typedef enum
 {
     Asynchronous = 0,
     synchronous
 }En_Uart_Mode;
 
+/*@En_Communcation_Mode : In this Enumeration for select Uart mode : Rx,Tx or both*/
 typedef enum
 {
     Half_Duplex_Transimit = 1,
@@ -80,6 +87,7 @@ typedef enum
 }En_Communcation_Mode;
 
 
+/*@En_Parity_Mode : In this enumeration using for select parity bit in frame*/
 typedef enum
 {
     Disable = 0,
@@ -87,12 +95,15 @@ typedef enum
     Odd_Parity
 }En_Parity_Mode;
 
+
+/*@En_Stop_Mode : In this enumeration using for select stop bit in frame*/
 typedef enum
 {
     One_bit = 0,
     Two_bit
 }En_Stop_Mode;
 
+/*@En_Charachter_Size : In this enumeration using for select data size of frame*/
 typedef enum
 {
     Five_bit = 0,
@@ -102,37 +113,67 @@ typedef enum
     Night_bit = 7
 }En_Charachter_Size;
 
+/*@En_Clock_Polarity : In this enumeration using for select XCK detecting data mode for Syn mode*/
 typedef enum
 {
     Rising_Edge = 0,
     Falling_Edge
 }En_Clock_Polarity;
 
-
+/*@En_Uart_speed: In this enumeration using for select Uart Speed*/
 typedef enum
 {
     Normal_Speed = 16,
     Double_Speed = 8
 }En_Uart_speed;
 
+
+//=============================== UART API =====================================
 typedef struct 
 {
-    En_Uart_Mode Mode;
-    En_Stop_Mode Stop;
-    En_Charachter_Size Char_Size;
-    En_Clock_Polarity Clk_Polarity;
-    En_Parity_Mode Parity;
-    En_Communcation_Mode Communcation_Mode;
-    En_Uart_speed Speed;
-    unsigned int BuadRate;
+    En_Uart_Mode Mode;                      /*!< Specifies the UART mode to be configured.
+                                                This parameter can be any value of @ref En_Uart_Mode */
+    En_Stop_Mode Stop;                      /*!< Specifies the UART Frame stop bit to be configured.
+                                                This parameter can be any value of @ref En_Stop_Mode*/
+    En_Charachter_Size Char_Size;           /*!< Specifies the UART Charachter size to be configured.
+                                                This parameter can be any value of @ref En_Charachter_Size */
+    En_Clock_Polarity Clk_Polarity;         /*!< Specifies the UART XCK clock polarity to be configured.
+                                                This parameter can be any value of @ref En_Clock_Polarity */
+    En_Parity_Mode Parity;                  /*!< Specifies the UART parity to be configured.
+                                                This parameter can be any value of @ref En_Parity_Mode */
+    En_Communcation_Mode Communcation_Mode; /*!< Specifies the UART Asyn or Syn to be configured.
+                                                This parameter can be any value of @ref En_Communcation_Mode */
+    En_Uart_speed Speed;                    /*!< Specifies the UART Speed normal or double to be configured.
+                                                This parameter can be any value of @ref En_Uart_speed */
+    unsigned int BuadRate;                  /*!< Specifies the UART buard rate to be configured*/
 }St_UART_driver;
+//==============================================================================
 
 
+//====================== Interrupt Enable/Disable Macro ========================
+/*Enable Rx Complate interrupt*/
+#define Rx_Complate_Inter_En()                  UCSRB_R->UCSRB_bits.RXCIE_b = 1            
+/*Disable Rx Complate interrupt*/
+#define Rx_Complate_Inter_Dis()                 UCSRB_R->UCSRB_bits.RXCIE_b = 0
 
-#define BuadRate_Max            4095
+/*Enable Tx Complate interrupt*/
+#define Tx_Complate_inter_En()                  UCSRB_R->UCSRB_bits.TXCIE_b = 1
+/*Disable Tx Complate interrupt*/
+#define Tx_Complate_inter_Dis()                 UCSRB_R->UCSRB_bits.TXCIE_b = 0
 
+/*Enable Uart Data Empty*/
+#define Uart_Data_Empty_En()                    UCSRB_R->UCSRB_bits.UDRIE_b = 1
+/*Disable Uart Data Empty*/
+#define Uart_Data_Empty_Dis()                   UCSRB_R->UCSRB_bits.UDRIE_b = 0
+//==============================================================================
+
+
+//============================= Function Deceration ============================
 extern St_UART_driver UART_Config;
 uint8_t Init_Uart(St_UART_driver *_init_uart);
-void Uart_send(uint8_t msg);
+void Uart_send(unsigned int msg);
+void Uart_Send_String(unsigned char *msg);
+unsigned char Uart_Receive(void);
+//==============================================================================
 
 #endif
