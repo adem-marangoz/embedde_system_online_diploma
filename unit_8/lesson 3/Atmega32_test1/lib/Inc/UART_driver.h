@@ -146,6 +146,8 @@ typedef struct
     En_Uart_speed Speed;                    /*!< Specifies the UART Speed normal or double to be configured.
                                                 This parameter can be any value of @ref En_Uart_speed */
     unsigned int BuadRate;                  /*!< Specifies the UART buard rate to be configured*/
+
+    unsigned char *msg;                     /*Specifies the Uart receive firs address*/
 }St_UART_driver;
 //==============================================================================
 
@@ -173,7 +175,8 @@ extern St_UART_driver UART_Config;
 uint8_t Init_Uart(St_UART_driver *_init_uart);
 void Uart_send(unsigned int msg);
 void Uart_Send_String(unsigned char *msg);
-unsigned char Uart_Receive(void);
+unsigned char *Uart_Receive(St_UART_driver *_init_uart);
+
 //==============================================================================
 
 #endif

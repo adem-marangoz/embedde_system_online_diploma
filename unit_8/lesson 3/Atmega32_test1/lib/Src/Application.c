@@ -40,6 +40,9 @@ void program(void);
 volatile LCD_16_2 Lcd_config = {0};
 volatile St_Key_pad key_pad = {0};
 
+
+uint8_t R_msg[16] = {0};
+
 void init(void)
 {
 	Lcd_config.Data_Port = PORT_A;
@@ -64,6 +67,7 @@ void init(void)
 	UART_Config.Mode = Asynchronous;
 	UART_Config.Stop = One_bit;
 	UART_Config.Speed = Normal_Speed;
+	UART_Config.msg = R_msg;
 	Init_Uart(&UART_Config);
 	unsigned char str[] = "You can do it \n\r";
 	Uart_Send_String(str);
@@ -71,11 +75,21 @@ void init(void)
 	Jump_to_coordinator(&Lcd_config,0,Seconde_R);
 }
 
-uint8_t R_msg = 0;
+uint8_t *buffer_index = 0;
 void program(void)
 { 
 	//Check_Prass_Button(&key_pad);
-	R_msg = Uart_Receive();
-	Write_Character(&Lcd_config,R_msg);
+	
+	buffer_index = Uart_Receive(&UART_Config);
+	//Write_Character(&Lcd_config,'R');
+	//Write_String(&Lcd_config,UART_Config.msg);
+	//Write_String(&Lcd_config,buffer_index);
+	if(*buffer_index == '#')
+	{
+		*buffer_index = '\0';
+		Write_String(&Lcd_config,UART_Config.msg);
+	}
+	
+	
 }
 

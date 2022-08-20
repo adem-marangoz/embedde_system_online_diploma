@@ -1,10 +1,10 @@
 #include "UART_driver.h"
 #include "GPIO.h"
 #include "avr/interrupt.h"
-
+#include "LCD_16_2.h"
 
 St_UART_driver UART_Config = {0};
-
+extern volatile LCD_16_2 Lcd_config;
 /**
  * @brief           This function is used to initialize the Uart Peripheral
  * @param[in]       _init_uart: UART data structure containing the uart parameters specified by the user 
@@ -65,21 +65,31 @@ void Uart_Send_String(unsigned char *msg)
  * @brief   Used to Receiv Data form UART by polling
  * @return  unsigned char: return received value 
  */
-unsigned char Uart_Receive()
+unsigned char *Uart_Receive(St_UART_driver *_init_uart)
 {
+    uint8_t index = 0;
     unsigned char status, resh, resl;
-    while(!(UCSRA_R->UCSRA_field & (1 << RXC)));
+    
+    while(_init_uart->msg[index] != '#')
+    {
+        
+        while(!(UCSRA_R->UCSRA_field & (1 << RXC)));
 
-    status = UCSRA_R->UCSRA_field;
-    resh = UCSRB_R->UCSRB_field;
-    resl = UDR;
+        status = UCSRA_R->UCSRA_field;
+        resh = UCSRB_R->UCSRB_field;
+        resl = UDR;
 
-    if(status & ((1 << FE)|(1 << DOR)|(1 << PE)))
-        return -1;
-    resh = (resh >> 1) & 0x01;
-    return ((resh << 8) | resl);
+        if(status & ((1 << FE)|(1 << DOR)|(1 << PE)))
+            return -1;
+        resh = (resh >> 1) & 0x01;
+        if((index == 15) || (_init_uart->msg[index] == '#')){index = 0;}
+        _init_uart->msg[index] = ((resh << 8) | resl);
+        if(_init_uart->msg[index] == '#') {return &_init_uart->msg[index];}
+        index++;
+    }
+    
 
-    return UDR;
+    
 }
 
 ISR(USART_RXC_vect)
