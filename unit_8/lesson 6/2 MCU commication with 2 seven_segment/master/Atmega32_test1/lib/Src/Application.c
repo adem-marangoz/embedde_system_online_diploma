@@ -118,6 +118,6 @@ void program(void)
 			counter ++;
 			if(counter == 10){counter = 0;}
 		}
-		_delay_ms(1000);
+		_delay_ms(200);
 }
 

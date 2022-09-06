@@ -22,7 +22,8 @@
 #define MSTR                        4
 #define CPOL                        3
 #define CPHA                        2
-#define SPR1                        0
+#define SPR1                        1
+#define SPR0                        0
 //==============================================================================
 
 //_________________________________ SPSR _______________________________________
@@ -89,7 +90,7 @@ typedef struct
 
 uint8_t SPI_Init(St_SPI_API *SPIx);
 uint8_t SPI_MasterTransmit_Char(St_SPI_API *SPIx ,uint8_t data);
-uint8_t SPI_SlaveReceive_Char(St_SPI_API *SPIx);
-
+uint8_t SPI_MasterTransmit_ADD_Data(St_SPI_API *SPIx ,uint8_t Add, uint8_t data);
+uint8_t SPI_SlaveReceive_Char(St_SPI_API *SPIx, uint8_t data);
 //==============================================================================
 #endif

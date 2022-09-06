@@ -12,57 +12,113 @@
 
 #include "SPI_driver.h"
 #include <avr/io.h>
+#include <util/delay.h>
 #include "GPIO.h"
 
 
 #define DDR_SPI         PORT_B
-#define DD_SCK          1 << 7
-#define DD_MISO         1 << 6
-#define DD_MOSI         1 << 5
-#define DD_Pin          4
+#define DD_SCK          PIN_7
+#define DD_MISO         PIN_6
+#define DD_MOSI         PIN_5
+#define DD_SS           PIN_4
 
 /**
- * @brief Init the SPI
- * @param SPIx 
- * @return uint8_t 
- */
+ * @brief      : This function is used to initialize the SPI Peripheral
+ * @param SPIx : SPI data structure containing the SPI parameters specified by the user 
+ * @return uint8_t  0 : Fail
+ *                  1 : Success
+*/
 uint8_t SPI_Init(St_SPI_API *SPIx)
 {
+    GPIO_config gpio_config = {0};
     if(SPIx->Slave_Master)
     {
-        // Set MOSI and SCK output, all others input
-        DDR_SPI->Un_DDRx.DDRx = DD_SCK | DD_MOSI;
-        // Enable SPI, Master, Set Clock rate fck/16
-        SPCR = (1 << SPE) | (1 << MSTR) | (1 << SPR0);
+        // Set MOSI and SCK and SS output
+        gpio_config.mode = OUTPUT;
+        gpio_config.pin = DD_SCK | DD_MOSI | DD_SS;
+        Init_GPIO(DDR_SPI, &gpio_config);
+        // Set MISO as Input
+        gpio_config.mode = INPUT;
+        gpio_config.pin = DD_MISO;
+        Init_GPIO(DDR_SPI, &gpio_config);
     }
     else
     {
-        // Set MISO output, all others input
-        DDR_SPI->Un_DDRx.DDRx = DD_MISO;
-        // Enable SPI
-        SPCR = (1 << SPE);
+        // Set MOSI and SCK and SS INPUT
+        gpio_config.mode = INPUT;
+        gpio_config.pin = DD_SCK | DD_MOSI | DD_SS;
+        Init_GPIO(DDR_SPI, &gpio_config);
+        // Set MISO as Output
+        gpio_config.mode = OUTPUT;
+        gpio_config.pin = DD_MISO;
+        Init_GPIO(DDR_SPI, &gpio_config);
     }
+    // Confige SPI
+    SPCR = (1 << SPE) | (SPIx->Slave_Master) | (SPIx->SPI_Freq) | (SPIx->Data_Order) | (SPIx->En_interrupt) | (SPIx->Data_Modes);
+
     return 1;
 }
 
-
+/**
+ * @brief Send data through SPI as Master
+ * @param SPIx : SPI data structure containing the SPI parameters specified by the user 
+ * @param data The data to be sent through SPI
+ * @return uint8_t  0 : Fail
+ *                  1 : Success 
+ */
 uint8_t SPI_MasterTransmit_Char(St_SPI_API *SPIx ,uint8_t data)
 {
-    Write_Pin(PORT_B, DD_Pin,Low);
+    // Select Slave Low
+    Write_Pin(DDR_SPI,DD_SS,Low);
     // Start transimission
     SPDR = data;
     // Wait for transmission complate
     while(!(SPSR & (1 << SPIF)));
-    
-    Write_Pin(PORT_B, DD_Pin,Low);
+    // Select slave High
+    Write_Pin(DDR_SPI,DD_SS,High);
     return SPDR;    
 }
 
 
-uint8_t SPI_SlaveReceive_Char(St_SPI_API *SPIx)
-{
+/**
+ * @brief Receiving data from the Master
+ * @param SPIx : SPI data structure containing the SPI parameters specified by the user  
+ * @param data The data to be sent through SPI
+ * @return uint8_t  0 : Fail
+ *                  1 : Success 
+ */
+uint8_t SPI_SlaveReceive_Char(St_SPI_API *SPIx, uint8_t data)
+{   
+    
+    SPDR = data;
     // Wait for reception complate 
     while(!(SPSR & (1 << SPIF)));
     // return Data 
     return SPDR;
+}
+
+
+/**
+ * @brief Send address and data through SPI as Master
+ * @param SPIx : SPI data structure containing the SPI parameters specified by the user 
+ * @param Add Address to be sent through SPI
+ * @param data The data to be sent through SPI
+ * @return uint8_t  0 : Fail
+ *                  1 : Success 
+ */
+uint8_t SPI_MasterTransmit_ADD_Data(St_SPI_API *SPIx ,uint8_t Add, uint8_t data)
+{
+    // Select Slave Low
+    Write_Pin(DDR_SPI,DD_SS,Low);
+    // Start transimission
+    SPDR = Add;
+    // Wait for transmission complate
+    while(!(SPSR & (1 << SPIF)));
+    // Start transimission
+    SPDR = data;
+    // Wait for transmission complate
+    while(!(SPSR & (1 << SPIF)));
+    // Select slave High
+    Write_Pin(DDR_SPI,DD_SS,High);
+    return SPDR; 
 }
