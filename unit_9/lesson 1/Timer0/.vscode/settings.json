@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "uart_driver.h": "c",
+        "gpio.h": "c",
+        "spi_driver.h": "c"
+    }
+}
