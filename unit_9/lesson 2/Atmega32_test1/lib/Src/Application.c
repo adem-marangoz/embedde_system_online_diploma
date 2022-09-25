@@ -114,7 +114,5 @@ void program(void)
 		}
 	}
 
-	//_delay_ms(100);
-
 }
 
