@@ -8,16 +8,16 @@
 - [Unit 2: C Programming](Assignment/C) ![image](https://progress-bar.dev/100/)
 - [Unit 3: Embedded C](Unit_3_Embedded_C) ![image](https://progress-bar.dev/100/)
 - [Unit 4: System Architect](unit_4) ![image](https://progress-bar.dev/100/)
-- [Unit 5: First Term Projects](Unit_5_First_Term_Projects) ![image](https://progress-bar.dev/100/)
+- [Unit 5: First Term Projects](unit_5) ![image](https://progress-bar.dev/100/)
 
 ---
 
 ### Second Term ![image](https://progress-bar.dev/100/?title=Done&color=ff00ff)
 
-- [Unit 6: MCU Fundamentals](Unit_6_MCU_Fundamentals) ![image](https://progress-bar.dev/100/)
-- [Unit 7: MCU Essential Peripherals](Unit_7_MCU_Essential_Peripherals) ![image](https://progress-bar.dev/100/)
-- [Unit 8: MCU Interfacing](Unit_8_MCU_Interfacing) ![image](https://progress-bar.dev/100/)
-- [Unit 9: MCU Timers/ADC](Unit_9_MCU_Timer_%26_ADC) ![image](https://progress-bar.dev/100/)
+- [Unit 6: MCU Fundamentals](unit_6) ![image](https://progress-bar.dev/100/)
+- [Unit 7: MCU Essential Peripherals](unit_7) ![image](https://progress-bar.dev/100/)
+- [Unit 8: MCU Interfacing](unit_8) ![image](https://progress-bar.dev/100/)
+- [Unit 9: MCU Timers/ADC](unit_9) ![image](https://progress-bar.dev/100/)
 - [Unit 10: SW Testing/Validation](Unit_10_SW_Testing_Validation) ![image](https://progress-bar.dev/100/)
 - [Unit 11: Apply on Embedded Systems Jobs](https://github.com/Mina-Karam/Master_Embedded_Systems) ![image](https://progress-bar.dev/100/?title=Exams&color=bababa)
 
