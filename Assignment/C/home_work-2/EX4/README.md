@@ -2,14 +2,12 @@
 
 **This program takes a number fromuser and checks whether that number is either positive or negative or zero**
 
-Consol_Output
+<br>Consol_Output</br>
 
 ---
 Enter a number : 12.3
-
-12.30 is positive
+<br>12.30 is positive</br>
 
 ---
 Enter a number : 0
-
-You entered zero
+<br>You entered zero</br>

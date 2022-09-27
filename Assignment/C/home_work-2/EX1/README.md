@@ -7,14 +7,13 @@ Console_output
 
 ---
 Enter an integer you want to check : 25
-
-25 is odd
+<br>25 is odd
 
 ---
 Enter an integer you want to check : 12
+<br>12 is even
 
-12 is even
-
+---
 ## solution key
 ```C
 int num;

@@ -5,10 +5,8 @@ Console_output
 
 ---
 Enter an alphabet : i
-
-i is a vowel.
+<br>i is a vowel.
 
 ---
 Enter an alphabet : G
-
-G is a consonant.
+<br>G is a consonant.

@@ -5,5 +5,5 @@ Console-output
 ---
 
 Enter two integers: 12
-11
-Sum: 23
+<br>11
+<br>Sum: 23

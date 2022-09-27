@@ -5,5 +5,4 @@ Console-output
 ---
 Enter two numbers: 2.4 ,
 1.1
-
-Product: 2.640000
+<br>Product: 2.640000

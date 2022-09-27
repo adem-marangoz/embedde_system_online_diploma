@@ -4,5 +4,4 @@ Console_output
 
 ---
 Enter a character: G
-
-ASCII value of G = 71
+<br>ASCII value of G = 71

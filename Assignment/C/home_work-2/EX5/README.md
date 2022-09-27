@@ -2,17 +2,15 @@
 
 **This program takes a character from user and checks whether that character is an alphabet or not**
 
-Consol_Output
+<br>Consol_Output</br>
 
 ---
 Enter a character : *
-
-* is not an alphabet
+<br>* is not an alphabet</br>
 
 ---
 Enter a character : K
-
-K is an alphabet
+<br>K is an alphabet</br>
 
 ---
 Solution Key

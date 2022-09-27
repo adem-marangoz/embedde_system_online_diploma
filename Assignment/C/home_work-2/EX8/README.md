@@ -6,7 +6,5 @@ Consol_Output
 
 ---
 Enter operator either + or - or \* or divide : -
-
-Enter two operands : 3.4 , 8.4
-
+<br>Enter two operands : 3.4 , 8.4</br>
 3.4 - 8.4 = -5.0
