@@ -6,7 +6,7 @@
 
 - [Unit 1: Diploma Prerequisites](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/100/?title=No_Assignments&color=bababa)
 - [Unit 2: C Programming](Assignment/C) ![image](https://progress-bar.dev/100/)
-- [Unit 3: Embedded C](Embedded_C) ![image](https://progress-bar.dev/100/)
+- [Unit 3: Embedded C](Embedded\C) ![image](https://progress-bar.dev/100/)
 - [Unit 4: System Architect](unit_4) ![image](https://progress-bar.dev/100/)
 - [Unit 5: First Term Projects](unit_5) ![image](https://progress-bar.dev/100/)
 
