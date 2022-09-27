@@ -1,5 +1,5 @@
-## Write C Program to Multiply two Floating Point Numbers
-i should see the Console as following:
+## **Write C Program to Multiply two Floating Point Numbers**
+
 Console-output
 
 ---

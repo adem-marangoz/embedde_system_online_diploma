@@ -1,6 +1,5 @@
-## Write C Program to Add Two Integers
+## **Write C Program to Add Two Integers**
 
-i should see the Console as following:
 Console-output
 
 ---

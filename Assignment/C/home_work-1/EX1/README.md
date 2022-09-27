@@ -1,6 +1,4 @@
-## Write C Program to Print a Sentence
-
-i should see the Console as following:
+## **Write C Program to Print a Sentence**
 
 Console-output
 
