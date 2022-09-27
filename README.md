@@ -18,8 +18,8 @@
 - [Unit 7: MCU Essential Peripherals](unit_7) ![image](https://progress-bar.dev/100/)
 - [Unit 8: MCU Interfacing](unit_8) ![image](https://progress-bar.dev/100/)
 - [Unit 9: MCU Timers/ADC](unit_9) ![image](https://progress-bar.dev/100/)
-- [Unit 10: SW Testing/Validation](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/100/)
-- [Unit 11: Apply on Embedded Systems Jobs](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/100/?title=Exams&color=bababa)
+- [Unit 10: SW Testing/Validation](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/60/)
+- [Unit 11: Apply on Embedded Systems Jobs](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/00/?title=Exams&color=bababa)
 
 ---
 
@@ -35,10 +35,6 @@
 
 ## Overall progress ![image](https://progress-bar.dev/2/?scale=3&title=Terms&suffix=&width=230&color=aa00ff)
 
-[![image](https://github.com/adem-marangoz/embedded_system_online_diploma/blob/master/Certification.png)](https://www.learn-in-depth.com/online-diploma/minakaram.me%40gmail.com)
 
 ---
 
-## My Progress Profile: [Click Here](https://www.learn-in-depth.com/online-diploma/minakaram.me%40gmail.com)
-
----
