@@ -1,4 +1,4 @@
-## Write a makefile, linker_script and startup of the ARM926EJ-S microcontroller to turn the LED on and off and Run it through an emulator in Keil
+## Write a makefile, linker_script and startup of the ARM926EJ-S microcontroller with simple application
 <br></br>
 ![image](6.png)
 ![image](3.png)
