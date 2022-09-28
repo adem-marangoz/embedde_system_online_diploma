@@ -1,4 +1,4 @@
-## Write a program in C to print a string in reverse using a pointer The Alphabets are :
+## Write a program in C to print a string in reverse using a pointer.
 
 <br>Consol_Output</br>
 
