@@ -1,0 +1,2 @@
+- [Store Information (name ,roll and marks) of a student usign structure](EX1)
+- [Add Tow Distances (in incch-feet) system using structures](EX2)
