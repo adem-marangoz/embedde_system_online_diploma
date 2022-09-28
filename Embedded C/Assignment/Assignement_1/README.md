@@ -4,6 +4,4 @@
 <img src="https://github.com/adem-marangoz/embedded_system_online_diploma/blob/master/Embedded%20C/Assignment/Assignement_1/1-1.PNG" width="400px">
 
 
-Solarized dark             |  Solarized Ocean
-:-------------------------:|:-------------------------:
 ![](https://github.com/adem-marangoz/embedded_system_online_diploma/blob/master/Embedded%20C/Assignment/Assignement_1/1-1.PNG)  |  ![](https://github.com/adem-marangoz/embedded_system_online_diploma/blob/master/Embedded%20C/Assignment/Assignement_1/1-1.PNG)
