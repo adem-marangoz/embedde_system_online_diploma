@@ -7,4 +7,5 @@ LIFO is an abbreviation for last in, first out. It is a method for handling data
 <br></br>
 Consol_Output<br>
 | dynamic LIFO Buffer |
+| ------------------- |
 ![image](1.png)|
