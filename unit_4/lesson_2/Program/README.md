@@ -1,14 +1,5 @@
-## In This Lessoned machine in the theory of computation whose output values are determined by both its current state and current inputs.
+## **Implement Simple state machine in C using multiple Modules**
 
+**Ultrasonic obstacle-avoiding robot SW logical verfication**
 
-It is divided into three sections :
----
-**Moore**
-<br>**Mealy**
-<br>**State machine**<br>
-
-----
-<br>**We used the TTool program to draw a topological state machine.**
-
----
-<br>**We wrote a program to measure distance and acceleration in C language, for example, using a state machine topology**
+<h1><img align="center"><img src="https://github.com/adem-marangoz/embedded_system_online_diploma/blob/master/unit_4/lesson_2/Program/1.png"></h1>
