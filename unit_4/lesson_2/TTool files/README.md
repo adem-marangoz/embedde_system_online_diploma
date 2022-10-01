@@ -21,7 +21,7 @@
 | --------- |
 |![image](Use_case_Diagram.png)|
 
-|Middle Layer Logical Design|
+|Car Control Logical Design|
 | --------- |
 |![image](CA.png)|
 
