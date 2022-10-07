@@ -1,7 +1,7 @@
 /**
  * @file ADC.c
  * @author adem alnajjar (adem.maragoz95@gmail.com)
- * @brief 
+ * @brief Init ADC Peripheral
  * @version 0.1
  * @date 2022-09-22
  * 
