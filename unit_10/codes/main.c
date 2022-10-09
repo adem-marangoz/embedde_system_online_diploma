@@ -53,7 +53,7 @@ int main(void)
 {
     config(); // config RCC and GPIO
 
-    Display_seven_segment(&seven_config,3);
+    Write_Character(&Lcd_config, 'W');
     while (1)
     {
         
@@ -78,15 +78,15 @@ void config(void)
 
 
     //_________________________ Config LCD_Driver ______________________________
-    // Lcd_config.Data_Port = GPIOB;
-	// Lcd_config.Enable_Port = GPIOA;
-	// Lcd_config.RS_Port = GPIOA;
-	// Lcd_config.R_W_Port = GPIOA;
-	// Lcd_config.Enable_Pin = GPIO_PIN_0;
-	// Lcd_config.R_W_Pin = GPIO_PIN_1;
-	// Lcd_config.RS_Pin = GPIO_PIN_2;
-    // Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-    // LCD_init(&Lcd_config);
+    Lcd_config.Data_Port = GPIOB;
+	Lcd_config.Enable_Port = GPIOA;
+	Lcd_config.RS_Port = GPIOA;
+	Lcd_config.R_W_Port = GPIOA;
+	Lcd_config.Enable_Pin = GPIO_PIN_0;
+	Lcd_config.R_W_Pin = GPIO_PIN_1;
+	Lcd_config.RS_Pin = GPIO_PIN_2;
+    Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    LCD_init(&Lcd_config);
     //==========================================================================
 
 
@@ -100,12 +100,12 @@ void config(void)
 
 
     //_________________________ Config 7_Segment_Driver ________________________
-    seven_config.Port = GPIOB;
-    seven_config.Pin_D[0] = GPIO_PIN_0;
-    seven_config.Pin_D[1] = GPIO_PIN_4;
-    seven_config.Pin_D[2] = GPIO_PIN_7;
-    seven_config.Pin_D[3] = GPIO_PIN_5;
-    init_seven_segment(&seven_config);
+    // seven_config.Port = GPIOB;
+    // seven_config.Pin_D[0] = GPIO_PIN_0;
+    // seven_config.Pin_D[1] = GPIO_PIN_4;
+    // seven_config.Pin_D[2] = GPIO_PIN_7;
+    // seven_config.Pin_D[3] = GPIO_PIN_5;
+    // init_seven_segment(&seven_config);
     //==========================================================================
 
 
