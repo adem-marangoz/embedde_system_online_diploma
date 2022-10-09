@@ -1,3 +1,21 @@
+/**
+ * @file Seven_Segment.c
+ * @author adem alnajjar (adem.alnajjar95@gmail.com)
+ * @brief This soruce file for run 7 segment base on stm32f10xx
+ * @version 0.1
+ * @date 2022-10-08
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+//---------------------------------- NOTES --------------------------------------
+/*
+    - The ability to show a number on 7-segment provided that they are all on 
+    the same port. The pin order does not matter,
+*/
+//==============================================================================
+
 #include "Seven_Segment.h"
 
 uint32_t numbers[10] = {0};
