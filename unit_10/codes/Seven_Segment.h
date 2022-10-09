@@ -1,6 +1,6 @@
 /**
  * @file Seven_Segment.h
- * @author adem marangoz (adem.marangoz95@gmail.com)
+ * @author adem marangoz (adem.alnajjar95@gmail.com)
  * @brief seven_segment driver
  * @version 0.1
  * @date 2022-08-06
