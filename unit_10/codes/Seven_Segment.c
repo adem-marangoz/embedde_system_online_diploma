@@ -13,7 +13,7 @@ void init_seven_segment(St_7_segment const *seven_segment)
     gpio_seven_out.Speed = GPIO_SPEED_FREQ_10MHZ;
     gpio_seven_out.Pin = seven_segment->Pins;
     Init_GPIO(seven_segment->Port,&gpio_seven_out);  
-
+    //Test
     uint32_t io_current = 0;
     uint32_t io_position = 0;
     uint32_t start_pin_index = 0;
