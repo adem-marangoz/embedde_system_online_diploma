@@ -11,34 +11,9 @@ void init_seven_segment(St_7_segment const *seven_segment)
     GPIO_InitTypeDef gpio_seven_out = {0};
     gpio_seven_out.Mode = GPIO_MODE_OUTPUT_PP;
     gpio_seven_out.Speed = GPIO_SPEED_FREQ_10MHZ;
-    gpio_seven_out.Pin = seven_segment->Pins;
-    Init_GPIO(seven_segment->Port,&gpio_seven_out);  
-    //Test
-    uint32_t io_current = 0;
-    uint32_t io_position = 0;
-    uint32_t start_pin_index = 0;
-    for(uint16_t pos; pos <=  GPIO_PIN_NUMBER ; pos++)
-    {
-        io_position = 1 << pos;
-        io_current = (uint32_t)seven_segment->Pins & io_position;
-        if(io_position == io_current)
-        {
-            start_pin_index = io_position;
-            break;
-        }
-    }
-    numbers[0]= (io_position << 0)|(io_position << 1)|(io_position << 2)|(io_position << 3)|(io_position << 4)|(io_position << 5);
-    numbers[1]= (io_position << 1)|(io_position << 2);
-    numbers[2]= (io_position << 0)|(io_position << 1)|(io_position << 6)|(io_position << 4)|(io_position << 3);
-    numbers[3]= (io_position << 0)|(io_position << 1)|(io_position << 6)|(io_position << 2)|(io_position << 3);
-    numbers[4]= (io_position << 5)|(io_position << 6)|(io_position << 1)|(io_position << 2);
-    numbers[5]= (io_position << 0)|(io_position << 5)|(io_position << 6)|(io_position << 2)|(io_position << 3);
-    numbers[6]= (io_position << 0)|(io_position << 5)|(io_position << 6)|(io_position << 4)|(io_position << 3)|(io_position << 2);
-    numbers[7]= (io_position << 0)|(io_position << 1)|(io_position << 2);
-    numbers[8]= (io_position << 0)|(io_position << 1)|(io_position << 2)|(io_position << 3)|(io_position << 4)|(io_position << 5)|(io_position << 6);
-    numbers[9]= (io_position << 0)|(io_position << 1)|(io_position << 2)|(io_position << 3)|(io_position << 5)|(io_position << 6);
-
-
+    gpio_seven_out.Pin = seven_segment->Pin_D[0] | seven_segment->Pin_D[1] | seven_segment->Pin_D[2] | seven_segment->Pin_D[3];
+    Init_GPIO(seven_segment->Port,&gpio_seven_out); 
+   
 }
 
 /**
@@ -48,8 +23,16 @@ void init_seven_segment(St_7_segment const *seven_segment)
  */
 void Display_seven_segment(St_7_segment *seven_segment, uint8_t index)
 {
-    uint32_t temp = seven_segment->Port->GPIO_ODR;
-    temp &= ~(seven_segment->Pins);
-    temp |= numbers[index];
-    Set_GPIO_Value(seven_segment->Port,temp);
+
+    uint8_t temp = 0;
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        //temp = index & (1 << i) > 0 ? GPIO_PIN_SET : GPIO_PIN_RESET;
+        if(index & (1 << i))
+            temp = GPIO_PIN_SET;
+        else
+            temp = GPIO_PIN_RESET;
+        Change_State_Pin(seven_segment->Port, seven_segment->Pin_D[i], temp);
+    }
+
 }

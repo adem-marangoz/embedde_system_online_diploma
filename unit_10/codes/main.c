@@ -53,30 +53,13 @@ int main(void)
 {
     config(); // config RCC and GPIO
 
-    // Test Case 1
-    uint8_t data1[] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
-    uint8_t data2[7] = {0};
-
-    EEPROM_Write_NBytes(0xAF, data1, 7);
-    EEPROM_Read_Byte(0xAF, data2, 7);
-
-    // Test Case 2
-    data1[0] = 0x0A;
-    data1[1] = 0x0B;
-    data1[2] = 0x0C;
-    data1[3] = 0x0D;
-    data1[4] = 0x0E;
-    data1[5] = 0x0F;
-    data1[6] = 0x10;
-
-    EEPROM_Write_NBytes(0x0FFF, data1, 7);
-    EEPROM_Read_Byte(0x0FFF, data2, 7);
- 
+    Display_seven_segment(&seven_config,3);
     while (1)
     {
         
-    }    
-    return 0;
+    }
+    
+    return 1;
 }
 
 
@@ -88,8 +71,9 @@ void config(void)
     __APB2ENR_AFIOEN_En(); // Enable Alterntif Clock
     
 
+
     //___________________________ Config EEPROM ________________________________
-    EEPORM_Init(); 
+    // EEPORM_Init(); 
     //==========================================================================
 
 
@@ -116,9 +100,12 @@ void config(void)
 
 
     //_________________________ Config 7_Segment_Driver ________________________
-    // seven_config.Port = GPIOB;
-    // seven_config.Pins = GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
-    // init_seven_segment(&seven_config);
+    seven_config.Port = GPIOB;
+    seven_config.Pin_D[0] = GPIO_PIN_0;
+    seven_config.Pin_D[1] = GPIO_PIN_4;
+    seven_config.Pin_D[2] = GPIO_PIN_7;
+    seven_config.Pin_D[3] = GPIO_PIN_5;
+    init_seven_segment(&seven_config);
     //==========================================================================
 
 

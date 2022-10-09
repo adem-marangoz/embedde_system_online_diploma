@@ -224,6 +224,26 @@ void Reset_pin(St_GPIO_Typedef *GPIOx,uint16_t pin)
 
 
 /**
+ * @brief This function used to reset or set pin base on state parametre
+ * @param GPIOx -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
+ * @param pin -specifies the port bit to read. Set by @ref GPIO_PINS_Define 
+ * @param state -specifies the pin state base @ref GPIO_Pin_State
+ */
+void Change_State_Pin(St_GPIO_Typedef *GPIOx,uint16_t pin,GPIO_PinState state)
+{
+    assert_param(IS_GPIO_ALL_INSTANCE(GPIOx));
+    assert_param(IS_GPIO_PIN(pin));
+
+    if(state == GPIO_PIN_RESET)
+    {
+        GPIOx->GPIO_BSRR = pin << 16;
+    }else
+    {
+        GPIOx->GPIO_BSRR = pin;
+    }
+}
+
+/**
  * @brief Toggle Specified GPIO Pin
  * @param[in] GPIOx     -where x can be (A..G depending on device used ) to select the GPIO peripheral @ref GPIO_Instance
  * @param[in] pin       -specifies the port bit to read. Set by @ref GPIO PINS_Define 

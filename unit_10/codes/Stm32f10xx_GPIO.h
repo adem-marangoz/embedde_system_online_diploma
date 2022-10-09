@@ -169,6 +169,7 @@ void Init_GPIO(St_GPIO_Typedef *GPIOx, GPIO_InitTypeDef *GPIO_init);
 void Deinit_GPIO(St_GPIO_Typedef *GPIOx);
 void Set_pin(St_GPIO_Typedef *GPIOx,uint16_t pin);
 void Reset_pin(St_GPIO_Typedef *GPIOx,uint16_t pin);
+void Change_State_Pin(St_GPIO_Typedef *GPIOx,uint16_t pin, GPIO_PinState state);
 void Set_GPIO_Value(St_GPIO_Typedef *GPIOx,uint32_t value);
 void Reset_GPIO(St_GPIO_Typedef *GPIOx);
 uint16_t Read_GPIO(St_GPIO_Typedef *GPIOx);

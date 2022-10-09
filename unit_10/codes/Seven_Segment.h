@@ -20,7 +20,7 @@
 typedef struct 
 {
 	St_GPIO_Typedef *Port;
-    uint32_t Pins;
+    uint16_t Pin_D[4];
 }St_7_segment;
 
 void init_seven_segment(St_7_segment const *seven_segment);
