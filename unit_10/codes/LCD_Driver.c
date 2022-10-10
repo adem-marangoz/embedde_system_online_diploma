@@ -32,39 +32,32 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
  */
 unsigned char LCD_init(LCD_16_2 const *lcd_instance)
 {
+// Config Enable , RS and RW Pins
     GPIO_InitTypeDef gpio_confg;
     gpio_confg.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio_confg.Pin = (lcd_instance->R_W_Pin) | (lcd_instance->RS_Pin) | (lcd_instance->Enable_Pin);
+    gpio_confg.Pin = lcd_instance->R_W_Pin;
     gpio_confg.Speed = GPIO_SPEED_FREQ_10MHZ;
-    Init_GPIO(GPIOA,&gpio_confg);
+    Init_GPIO(lcd_instance->R_W_Port,&gpio_confg);
+    gpio_confg.Pin = lcd_instance->RS_Pin;
+    Init_GPIO(lcd_instance->RS_Port,&gpio_confg);
+    gpio_confg.Pin = lcd_instance->Enable_Pin;
+    Init_GPIO(lcd_instance->Enable_Port,&gpio_confg);
 
+// Init Enable, RS and RW Pins
     Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin); // instruction register
     Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin); // Write data
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin); // Enable read/write
 
+// Config Data Pins
     gpio_confg.Pin = lcd_instance->Data_Pin;
-    Init_GPIO(GPIOB,&gpio_confg);
+    Init_GPIO(lcd_instance->Data_Port,&gpio_confg);
     _delay_ms(50);
 
-    #ifdef LCD_8_Bit
-        Write_Command(lcd_instance,CMD_LCD_Clear);
-        Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N|CMD_LCD_OP_F);   // Function Set
-        Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
-        Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
-        Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_B|CMD_LCD_OP_C|CMD_LCD_OP_D);  // Display Is Active
-    #endif
-
-    #ifdef LCD_4_Bit
-        // Write_Port_Register(lcd_instance->Data_Port,(((CMD_LCD_Function_Set | CMD_LCD_OP_N | CMD_LCD_OP_F) >> 4));
-        // Write_Port_Register(lcd_instance->Data_Port,((CMD_LCD_Function_Set | CMD_LCD_OP_N | CMD_LCD_OP_F));
-        
-        // Write_Port_Register(lcd_instance->Data_Port,(((CMD_LCD_Display_On_Off|CMD_LCD_OP_D|CMD_LCD_OP_C|CMD_LCD_OP_B) >> 4));
-        // Write_Port_Register(lcd_instance->Data_Port,((CMD_LCD_Display_On_Off|CMD_LCD_OP_D|CMD_LCD_OP_C|CMD_LCD_OP_B)));
-
-        // Write_Port_Register(lcd_instance->Data_Port,((CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D|CMD_LCD_OP_S) >> 4)));
-        // Write_Port_Register(lcd_instance->Data_Port,((CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D|CMD_LCD_OP_S)));
-        
-    #endif
+    Write_Command(lcd_instance,CMD_LCD_Clear);
+    Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N|CMD_LCD_OP_F);   // Function Set
+    Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
+    Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
+    Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_B|CMD_LCD_OP_C|CMD_LCD_OP_D);  // Display Is Active
     
     _delay_ms(70);
 

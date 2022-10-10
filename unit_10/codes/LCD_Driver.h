@@ -52,7 +52,14 @@
 #define CMD_LCD_Entry_Mode_Set                      0b00000100 // 0,      0,      0,      0,      0,      0,      0,      1,      I/D,    S    Execution time 40us
 #define CMD_LCD_Display_On_Off                      0b00001000 // 0,      0,      0,      0,      0,      0,      1,      D,      C,      B    Execution time 40us
 #define CMD_LCD_Cursor_Display_Shift                0b00010000 // 0,      0,      0,      0,      0,      1,      S/C,    R/L,    x,      x    Execution time 40us
-#define CMD_LCD_Function_Set                        0b00110000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
+#ifdef  LCD_8_Bit
+   #define CMD_LCD_Function_Set                        0b00110000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
+
+#endif
+#ifdef LCD_4_Bit
+   #define CMD_LCD_Function_Set                        0b00100000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
+
+#endif
 #define CMD_LCD_Set_CGRam_Add                       0b01000000 // 0,      0,      0,      1,      CGRAM Add                                    Execution time 40us
 #define CMD_LCD_Set_DDRam_Add                       0b10000000 // 0,      0,      1,      DDRAM Add                                            Execution time 40us
 #define CMD_LCD_Read_Busy_flag_and_Add_Counter      0b01000000 // 0,      1,      BF,     DDRAM Add                                            Execution time 0us
@@ -75,7 +82,8 @@
    #define DATA_shift                                0x00 
 #endif
 #ifdef LCD_4_Bit
-   #define DATA_shift                                0x04 
+   #define DATA_shift                                0x04
+    
 #endif
 
 

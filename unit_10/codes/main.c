@@ -53,7 +53,7 @@ int main(void)
 {
     config(); // config RCC and GPIO
 
-    Write_Character(&Lcd_config, 'W');
+    Write_Character(&Lcd_config, 'D');
     while (1)
     {
         
