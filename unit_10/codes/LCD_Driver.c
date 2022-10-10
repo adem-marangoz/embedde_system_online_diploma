@@ -1,4 +1,13 @@
-
+/**
+ * @file LCD_Driver.c
+ * @author adem alnajjar (adem.alnajjar95@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-10
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 #include "LCD_Driver.h"
 #include <stddef.h>
