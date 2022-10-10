@@ -66,8 +66,8 @@ int main(void)
 void config(void)
 {
     /* Enable AFIO and GPIOA Clock */
-    __APB2ENR_IOPAEN_En(); // Enable alternatif Clock
-    __APB2ENR_IOPBEN_En(); // Enable GPIOA Clock
+    __APB2ENR_IOPAEN_En(); // Enable GPIOA Clock
+    __APB2ENR_IOPBEN_En(); // Enable GPIOB Clock
     __APB2ENR_AFIOEN_En(); // Enable Alterntif Clock
     
 
