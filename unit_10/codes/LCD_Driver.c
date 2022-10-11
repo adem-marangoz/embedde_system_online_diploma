@@ -135,14 +135,20 @@ unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
     Check_BF(lcd_instance);
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
+    uint8_t i;
+    for(i = 0; i < GPIO_PIN_NUMBER; i++)
+    {
+        if ((1 << i) & lcd_instance->Data_Pin)
+            break;   
+    }
     #ifdef LCD_8_Bit
-        temp &= 0xFFFFFF00;
-        temp |= (uint32_t)ch;
+        temp &= ~(lcd_instance->Data_Pin);
+        temp |= (uint32_t)ch << i;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     #endif
 
     #ifdef LCD_4_Bit
-        temp &= 0xFFFFFFF0;
+        temp &= ~(lcd_instance->Data_Pin);
         temp |= (uint32_t)ch;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
@@ -246,8 +252,14 @@ void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
     #ifdef LCD_8_Bit
         Check_BF(lcd_instance);
         
-        temp &= 0xFFFFFF00;
-        temp |= (uint32_t)command;
+        temp &= ~(lcd_instance->Data_Pin);
+        uint8_t i;
+        for(i = 0; i < GPIO_PIN_NUMBER; i++)
+        {
+            if ((1 << i) & lcd_instance->Data_Pin)
+                break;   
+        }
+        temp |= (uint32_t)command << i;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     
     #endif
