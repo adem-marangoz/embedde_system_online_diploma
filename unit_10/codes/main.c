@@ -52,8 +52,9 @@ uint16_t Rx_Buff[10] = {0};
 int main(void)
 {
     config(); // config RCC and GPIO
-
+    uint8_t array[] = "Adem";
     Write_Character(&Lcd_config, 'D');
+    Write_String(&Lcd_config,array);
     while (1)
     {
         
@@ -87,6 +88,7 @@ void config(void)
 	Lcd_config.RS_Pin = GPIO_PIN_2;
     // Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
     Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    // Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
     LCD_init(&Lcd_config);
     //==========================================================================
 

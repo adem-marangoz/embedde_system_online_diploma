@@ -30,7 +30,7 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    _delay_ms(22);
+    _delay_ms(1);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -135,26 +135,30 @@ unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
     Check_BF(lcd_instance);
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
-    uint8_t i;
+    uint8_t i, temp_ch;
     for(i = 0; i < GPIO_PIN_NUMBER; i++)
     {
         if ((1 << i) & lcd_instance->Data_Pin)
             break;   
     }
+    temp &= ~(lcd_instance->Data_Pin);
+    
     #ifdef LCD_8_Bit
-        temp &= ~(lcd_instance->Data_Pin);
         temp |= (uint32_t)ch << i;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     #endif
 
     #ifdef LCD_4_Bit
-        temp &= ~(lcd_instance->Data_Pin);
-        temp |= (uint32_t)ch;
+        temp_ch = ch & 0xF0;
+        temp |= (uint32_t)(temp_ch << i);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);
-        temp &= 0xFFFFFFF0;
-        temp |= ((uint32_t)ch << 4);
+        // secode byte (LSB nibble)
+        temp &= ~(lcd_instance->Data_Pin);
+        temp_ch = ch << 4;
+        temp_ch &= (uint8_t)0xF0;
+        temp |= (uint32_t)(temp_ch << i);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Kick_Enable_pin(lcd_instance);
     #endif
@@ -249,30 +253,33 @@ void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lc
 void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
 {
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
-    #ifdef LCD_8_Bit
-        Check_BF(lcd_instance);
-        
-        temp &= ~(lcd_instance->Data_Pin);
-        uint8_t i;
-        for(i = 0; i < GPIO_PIN_NUMBER; i++)
-        {
-            if ((1 << i) & lcd_instance->Data_Pin)
-                break;   
-        }
+    Check_BF(lcd_instance);
+    temp &= ~(lcd_instance->Data_Pin);
+    uint8_t i, temp_command;
+    for(i = 0; i < GPIO_PIN_NUMBER; i++)
+    {
+        if ((1 << i) & lcd_instance->Data_Pin)
+            break;   
+    }
+
+    #ifdef LCD_8_Bit       
         temp |= (uint32_t)command << i;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     
     #endif
     
     #ifdef LCD_4_Bit
-        temp &= 0xFFFFFFF0;
-        temp |= (uint32_t)command;
+        temp_command = command & 0xF0;
+        temp |= (uint32_t)(temp_command << i);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);  
         Kick_Enable_pin(lcd_instance);
-        temp &= 0xFFFFFFF0;
-        temp |= ((uint32_t)command << 4);
+        // secode byte (LSB nibble)
+        temp &= ~(lcd_instance->Data_Pin);
+        temp_command = command << 4;
+        temp_command &= (uint8_t)0xF0;
+        temp |= (uint32_t)(temp_command << i);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
 
     #endif
