@@ -16,6 +16,7 @@
 
 #include "Stm32f10xx_GPIO.h"
 
+#define Input_Output_Pins_Num           4
 // Main struct config port and pins for key pad
 typedef struct 
 {

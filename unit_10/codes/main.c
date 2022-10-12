@@ -86,10 +86,14 @@ void config(void)
 	Lcd_config.Enable_Pin = GPIO_PIN_0;
 	Lcd_config.R_W_Pin = GPIO_PIN_1;
 	Lcd_config.RS_Pin = GPIO_PIN_2;
+    #ifdef LCD_8_Bit
     Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
     // Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
-    // Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    #endif
+    #ifdef LCD_4_Bit
+    Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
     // Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    #endif
     LCD_init(&Lcd_config);
     //==========================================================================
 
