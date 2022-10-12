@@ -115,6 +115,7 @@ typedef struct
     uint16_t Enable_Pin;
     uint16_t RS_Pin;
     uint32_t Data_Pin;
+    uint8_t count_of_first_pin;
 }LCD_16_2;
 
 

@@ -30,7 +30,7 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    _delay_ms(1);
+    _delay_ms(50);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -60,14 +60,49 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
 // Config Data Pins
     gpio_confg.Pin = lcd_instance->Data_Pin;
     Init_GPIO(lcd_instance->Data_Port,&gpio_confg);
+
+
+    // uint8_t counter = 0;
+    // for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
+    // {
+    //     if ((1 << counter) & lcd_instance->Data_Pin)
+    //         break;   
+    // }
+    // lcd_instance->count_of_first_pin = counter;
+    
     _delay_ms(50);
 
-    Write_Command(lcd_instance,CMD_LCD_Clear);
-    Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N|CMD_LCD_OP_F);   // Function Set
-    Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
-    Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
-    Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_B|CMD_LCD_OP_C|CMD_LCD_OP_D);  // Display Is Active
-    
+    // Write_Command(lcd_instance,CMD_LCD_Clear);
+    // Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N|CMD_LCD_OP_F);   // Function Set
+    // Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
+    // Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
+    // Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_B|CMD_LCD_OP_C|CMD_LCD_OP_D);  // Display Is Active
+
+    // ---------------- 4 bit ----------------------------
+    // clean_Lcd(lcd_instance); // LCD_CLEAR_SCREEN
+    // Write_Command(lcd_instance,0x02); // sned for 4 bit initialization of LCD 
+    // Write_Command(lcd_instance,0x28); // LCD_FUNCTION_4BIT_2LINES
+    // Write_Command(lcd_instance,0x0C); // display on cursor off
+    // Write_Command(lcd_instance,0x06); // increment cursor (shift cursor to right)
+    // Write_Command(lcd_instance,0x01); // CMD_LCD_Clear
+
+    // Write_Command(lcd_instance,0x01); // clean LCD
+    // Write_Command(lcd_instance,0x02); // sned for 4 bit initialization of LCD
+    // Write_Command(lcd_instance,0x28); // LCD_FUNCTION_4BIT_2LINES
+    // Write_Command(lcd_instance,0x0C); // LCD_ENTRY_MODE
+    // Write_Command(lcd_instance,0x06); // LCD_BEGIN_AT_FIRST_ROW
+    // Write_Command(lcd_instance,0x01); // LCD_DISP_ON_CURSOR_BLINK
+   
+
+
+    // ---------------- 8 bit ----------------------------
+    // Write_Command(lcd_instance,0x01); // LCD_CLEAR_SCREEN
+    Write_Command(lcd_instance,0x02); // sned for 4 bit initialization of LCD 
+    Write_Command(lcd_instance,0x38); // 2 line 8_bit or 4_bit
+    Write_Command(lcd_instance,0x06); // entry mode
+    Write_Command(lcd_instance,0x80); // LCD_BEGIN_AT_FIRST_ROW
+    Write_Command(lcd_instance,0x0F); // LCD_DISP_ON_CURSOR_BLINK
+
     _delay_ms(70);
 
     /*------------------- Init LCD -------------------*/
@@ -133,34 +168,37 @@ unsigned char Read_Cursor_Add(const LCD_16_2 *lcd_instance)
 unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
 {
     Check_BF(lcd_instance);
-    Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
+    
+    // Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
-    uint8_t i, temp_ch;
-    for(i = 0; i < GPIO_PIN_NUMBER; i++)
+    uint8_t counter = 0, temp_ch = 0;
+    for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
     {
-        if ((1 << i) & lcd_instance->Data_Pin)
+        if ((1 << counter) & lcd_instance->Data_Pin)
             break;   
     }
     temp &= ~(lcd_instance->Data_Pin);
     
     #ifdef LCD_8_Bit
-        temp |= (uint32_t)ch << i;
+        temp |= (uint32_t)ch << counter;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     #endif
 
     #ifdef LCD_4_Bit
-        temp_ch = ch & 0xF0;
-        temp |= (uint32_t)(temp_ch << i);
+        temp_ch = ch >> 4;
+        temp |= (uint32_t)(temp_ch << counter);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);
+        
         // secode byte (LSB nibble)
+        temp = lcd_instance->Data_Port->GPIO_ODR;
         temp &= ~(lcd_instance->Data_Pin);
-        temp_ch = ch << 4;
-        temp_ch &= (uint8_t)0xF0;
-        temp |= (uint32_t)(temp_ch << i);
+        temp_ch = ch & (uint8_t)0x0F;
+        // temp_ch &= (uint8_t)0xF0;
+        temp |= (uint32_t)(temp_ch << counter);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
-        Kick_Enable_pin(lcd_instance);
+        // Kick_Enable_pin(lcd_instance);
     #endif
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);
@@ -252,34 +290,36 @@ void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lc
  */
 void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
 {
-    uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
     Check_BF(lcd_instance);
+    uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
     temp &= ~(lcd_instance->Data_Pin);
-    uint8_t i, temp_command;
-    for(i = 0; i < GPIO_PIN_NUMBER; i++)
+    uint8_t counter = 0, temp_command = 0;
+    for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
     {
-        if ((1 << i) & lcd_instance->Data_Pin)
+        if ((1 << counter) & lcd_instance->Data_Pin)
             break;   
     }
 
     #ifdef LCD_8_Bit       
-        temp |= (uint32_t)command << i;
+        temp |= (uint32_t)command << counter;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     
     #endif
     
     #ifdef LCD_4_Bit
-        temp_command = command & 0xF0;
-        temp |= (uint32_t)(temp_command << i);
+        temp_command = command >> 4;
+        temp |= (uint32_t)(temp_command << counter);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);  
         Kick_Enable_pin(lcd_instance);
+        
         // secode byte (LSB nibble)
+        temp = lcd_instance->Data_Port->GPIO_ODR;
         temp &= ~(lcd_instance->Data_Pin);
-        temp_command = command << 4;
-        temp_command &= (uint8_t)0xF0;
-        temp |= (uint32_t)(temp_command << i);
+        temp_command = command & (uint8_t)0x0F;
+        // temp_command &= (uint8_t)0xF0;
+        temp |= (uint32_t)(temp_command << counter);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
 
     #endif

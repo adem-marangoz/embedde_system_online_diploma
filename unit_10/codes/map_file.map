@@ -36,11 +36,11 @@ Linker script and memory map
                 0x0000000008000664                Shift_L_Cursor
                 0x000000000800067c                Read_Cursor_Add
                 0x0000000008000690                Write_Character
-                0x000000000800073a                Write_Character_with_coordinator
-                0x00000000080007a6                Write_String
-                0x00000000080007d6                Write_String_with_coordinator
-                0x000000000800081e                Jump_to_coordinator
-                0x0000000008000874                Write_Command
+                0x0000000008000732                Write_Character_with_coordinator
+                0x000000000800079e                Write_String
+                0x00000000080007ce                Write_String_with_coordinator
+                0x0000000008000816                Jump_to_coordinator
+                0x000000000800086c                Write_Command
                 0x000000000800090c                write_with_move
                 0x0000000008000a18                clean_Lcd
  .text          0x0000000008000a30       0xa8 main.o
@@ -236,7 +236,7 @@ Linker script and memory map
 .igot.plt       0x0000000020000040        0x0 load address 0x000000000800370b
  .igot.plt      0x0000000020000040        0x0 EEPROM.o
 
-.bss            0x0000000020000040      0xa38 load address 0x000000000800370b
+.bss            0x0000000020000040      0xa3c load address 0x000000000800370b
                 0x0000000020000040                _S_bss = .
  *(.bss)
  .bss           0x0000000020000040        0x0 Buzzer.o
@@ -244,40 +244,40 @@ Linker script and memory map
  .bss           0x0000000020000040       0x20 Key_pad_Driver.o
  .bss           0x0000000020000060        0xd LCD_Driver.o
  *fill*         0x000000002000006d        0x3 
- .bss           0x0000000020000070      0x1c8 main.o
+ .bss           0x0000000020000070      0x1cc main.o
                 0x0000000020000070                Lcd_config
-                0x000000002000008c                key_pad_config
-                0x000000002000009c                seven_config
-                0x00000000200000a8                uart1_config
-                0x00000000200000e0                spi1_config
-                0x000000002000010c                spi2_config
-                0x0000000020000138                spi3_config
-                0x0000000020000164                i2c1_config
-                0x00000000200001c4                i2c2_config
-                0x0000000020000224                Rx_Buff
- .bss           0x0000000020000238       0x28 Seven_Segment.o
-                0x0000000020000238                numbers
- .bss           0x0000000020000260        0x0 startup.o
- .bss           0x0000000020000260        0x2 Stm32f10x_SPI.o
- .bss           0x0000000020000262        0x0 Stm32f10x_UART.o
- .bss           0x0000000020000262        0x0 Stm32f10xx_EXTI.o
- .bss           0x0000000020000262        0x0 Stm32f10xx_GPIO.o
- .bss           0x0000000020000262        0x0 Stm32f10xx_I2C.o
- *fill*         0x0000000020000262        0x2 
- .bss           0x0000000020000264        0x4 Stm32f10xx_RCC.o
+                0x0000000020000090                key_pad_config
+                0x00000000200000a0                seven_config
+                0x00000000200000ac                uart1_config
+                0x00000000200000e4                spi1_config
+                0x0000000020000110                spi2_config
+                0x000000002000013c                spi3_config
+                0x0000000020000168                i2c1_config
+                0x00000000200001c8                i2c2_config
+                0x0000000020000228                Rx_Buff
+ .bss           0x000000002000023c       0x28 Seven_Segment.o
+                0x000000002000023c                numbers
+ .bss           0x0000000020000264        0x0 startup.o
+ .bss           0x0000000020000264        0x2 Stm32f10x_SPI.o
+ .bss           0x0000000020000266        0x0 Stm32f10x_UART.o
+ .bss           0x0000000020000266        0x0 Stm32f10xx_EXTI.o
+ .bss           0x0000000020000266        0x0 Stm32f10xx_GPIO.o
+ .bss           0x0000000020000266        0x0 Stm32f10xx_I2C.o
+ *fill*         0x0000000020000266        0x2 
+ .bss           0x0000000020000268        0x4 Stm32f10xx_RCC.o
  *(.bss.*)
-                0x0000000020000268                . = ALIGN (0x4)
-                0x0000000020000268                _E_bss = .
-                0x0000000020000268                . = ALIGN (0x4)
-                0x0000000020000650                . = (. + 0x3e8)
- *fill*         0x0000000020000268      0x3e8 
-                0x0000000020000650                _heap_End = .
-                0x0000000020000650                . = ALIGN (0x4)
-                0x0000000020000a38                . = (. + 0x3e8)
- *fill*         0x0000000020000650      0x3e8 
-                0x0000000020000a38                _stack_top = .
- COMMON         0x0000000020000a38       0x40 Stm32f10xx_EXTI.o
-                0x0000000020000a38                GP_EXTI_CallBack
+                0x000000002000026c                . = ALIGN (0x4)
+                0x000000002000026c                _E_bss = .
+                0x000000002000026c                . = ALIGN (0x4)
+                0x0000000020000654                . = (. + 0x3e8)
+ *fill*         0x000000002000026c      0x3e8 
+                0x0000000020000654                _heap_End = .
+                0x0000000020000654                . = ALIGN (0x4)
+                0x0000000020000a3c                . = (. + 0x3e8)
+ *fill*         0x0000000020000654      0x3e8 
+                0x0000000020000a3c                _stack_top = .
+ COMMON         0x0000000020000a3c       0x40 Stm32f10xx_EXTI.o
+                0x0000000020000a3c                GP_EXTI_CallBack
 LOAD Buzzer.o
 LOAD EEPROM.o
 LOAD Key_pad_Driver.o
@@ -294,46 +294,46 @@ LOAD Stm32f10xx_RCC.o
 OUTPUT(learn_embedded.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000     0x3b6f
+.debug_line     0x0000000000000000     0x3b7e
  .debug_line    0x0000000000000000        0x0 Buzzer.o
  .debug_line    0x0000000000000000      0x26c EEPROM.o
  .debug_line    0x000000000000026c      0x38c Key_pad_Driver.o
- .debug_line    0x00000000000005f8      0x418 LCD_Driver.o
- .debug_line    0x0000000000000a10      0x375 main.o
- .debug_line    0x0000000000000d85      0x263 Seven_Segment.o
- .debug_line    0x0000000000000fe8      0x240 startup.o
- .debug_line    0x0000000000001228      0x8c1 Stm32f10x_SPI.o
- .debug_line    0x0000000000001ae9      0x82e Stm32f10x_UART.o
- .debug_line    0x0000000000002317      0x46e Stm32f10xx_EXTI.o
- .debug_line    0x0000000000002785      0x433 Stm32f10xx_GPIO.o
- .debug_line    0x0000000000002bb8      0xceb Stm32f10xx_I2C.o
- .debug_line    0x00000000000038a3      0x2cc Stm32f10xx_RCC.o
+ .debug_line    0x00000000000005f8      0x427 LCD_Driver.o
+ .debug_line    0x0000000000000a1f      0x375 main.o
+ .debug_line    0x0000000000000d94      0x263 Seven_Segment.o
+ .debug_line    0x0000000000000ff7      0x240 startup.o
+ .debug_line    0x0000000000001237      0x8c1 Stm32f10x_SPI.o
+ .debug_line    0x0000000000001af8      0x82e Stm32f10x_UART.o
+ .debug_line    0x0000000000002326      0x46e Stm32f10xx_EXTI.o
+ .debug_line    0x0000000000002794      0x433 Stm32f10xx_GPIO.o
+ .debug_line    0x0000000000002bc7      0xceb Stm32f10xx_I2C.o
+ .debug_line    0x00000000000038b2      0x2cc Stm32f10xx_RCC.o
 
-.debug_str      0x0000000000000000     0x1dfe
+.debug_str      0x0000000000000000     0x1e11
  .debug_str     0x0000000000000000       0xbd Buzzer.o
  .debug_str     0x00000000000000bd      0x33d EEPROM.o
                                         0x455 (size before relaxing)
- .debug_str     0x00000000000003fa      0x17d Key_pad_Driver.o
-                                        0x303 (size before relaxing)
- .debug_str     0x0000000000000577      0x1a0 LCD_Driver.o
-                                        0x3ee (size before relaxing)
- .debug_str     0x0000000000000717      0x742 main.o
-                                        0xc11 (size before relaxing)
- .debug_str     0x0000000000000e59       0x56 Seven_Segment.o
+ .debug_str     0x00000000000003fa      0x190 Key_pad_Driver.o
+                                        0x316 (size before relaxing)
+ .debug_str     0x000000000000058a      0x1a0 LCD_Driver.o
+                                        0x401 (size before relaxing)
+ .debug_str     0x000000000000072a      0x742 main.o
+                                        0xc24 (size before relaxing)
+ .debug_str     0x0000000000000e6c       0x56 Seven_Segment.o
                                         0x281 (size before relaxing)
- .debug_str     0x0000000000000eaf       0x7f startup.o
+ .debug_str     0x0000000000000ec2       0x7f startup.o
                                         0x1cb (size before relaxing)
- .debug_str     0x0000000000000f2e      0x4ad Stm32f10x_SPI.o
+ .debug_str     0x0000000000000f41      0x4ad Stm32f10x_SPI.o
                                         0xd1b (size before relaxing)
- .debug_str     0x00000000000013db      0x1b6 Stm32f10x_UART.o
+ .debug_str     0x00000000000013ee      0x1b6 Stm32f10x_UART.o
                                         0xec2 (size before relaxing)
- .debug_str     0x0000000000001591      0x28b Stm32f10xx_EXTI.o
+ .debug_str     0x00000000000015a4      0x28b Stm32f10xx_EXTI.o
                                         0x80c (size before relaxing)
- .debug_str     0x000000000000181c       0xff Stm32f10xx_GPIO.o
+ .debug_str     0x000000000000182f       0xff Stm32f10xx_GPIO.o
                                         0x3b2 (size before relaxing)
- .debug_str     0x000000000000191b      0x44a Stm32f10xx_I2C.o
+ .debug_str     0x000000000000192e      0x44a Stm32f10xx_I2C.o
                                        0x1107 (size before relaxing)
- .debug_str     0x0000000000001d65       0x99 Stm32f10xx_RCC.o
+ .debug_str     0x0000000000001d78       0x99 Stm32f10xx_RCC.o
                                         0x2a8 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
@@ -381,33 +381,33 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000000000000222       0x2d Stm32f10xx_RCC.o
 
-.debug_info     0x0000000000000000     0x8092
+.debug_info     0x0000000000000000     0x80d1
  .debug_info    0x0000000000000000      0x4db EEPROM.o
- .debug_info    0x00000000000004db      0x409 Key_pad_Driver.o
- .debug_info    0x00000000000008e4      0x6e1 LCD_Driver.o
- .debug_info    0x0000000000000fc5     0x1418 main.o
- .debug_info    0x00000000000023dd      0x2d2 Seven_Segment.o
- .debug_info    0x00000000000026af      0x1a1 startup.o
- .debug_info    0x0000000000002850     0x151c Stm32f10x_SPI.o
- .debug_info    0x0000000000003d6c     0x171c Stm32f10x_UART.o
- .debug_info    0x0000000000005488      0x869 Stm32f10xx_EXTI.o
- .debug_info    0x0000000000005cf1      0x60c Stm32f10xx_GPIO.o
- .debug_info    0x00000000000062fd     0x1a92 Stm32f10xx_I2C.o
- .debug_info    0x0000000000007d8f      0x303 Stm32f10xx_RCC.o
+ .debug_info    0x00000000000004db      0x418 Key_pad_Driver.o
+ .debug_info    0x00000000000008f3      0x702 LCD_Driver.o
+ .debug_info    0x0000000000000ff5     0x1427 main.o
+ .debug_info    0x000000000000241c      0x2d2 Seven_Segment.o
+ .debug_info    0x00000000000026ee      0x1a1 startup.o
+ .debug_info    0x000000000000288f     0x151c Stm32f10x_SPI.o
+ .debug_info    0x0000000000003dab     0x171c Stm32f10x_UART.o
+ .debug_info    0x00000000000054c7      0x869 Stm32f10xx_EXTI.o
+ .debug_info    0x0000000000005d30      0x60c Stm32f10xx_GPIO.o
+ .debug_info    0x000000000000633c     0x1a92 Stm32f10xx_I2C.o
+ .debug_info    0x0000000000007dce      0x303 Stm32f10xx_RCC.o
 
-.debug_abbrev   0x0000000000000000     0x1702
+.debug_abbrev   0x0000000000000000     0x16e4
  .debug_abbrev  0x0000000000000000      0x17c EEPROM.o
  .debug_abbrev  0x000000000000017c      0x143 Key_pad_Driver.o
- .debug_abbrev  0x00000000000002bf      0x1ec LCD_Driver.o
- .debug_abbrev  0x00000000000004ab      0x1ea main.o
- .debug_abbrev  0x0000000000000695      0x11a Seven_Segment.o
- .debug_abbrev  0x00000000000007af       0xe4 startup.o
- .debug_abbrev  0x0000000000000893      0x34c Stm32f10x_SPI.o
- .debug_abbrev  0x0000000000000bdf      0x373 Stm32f10x_UART.o
- .debug_abbrev  0x0000000000000f52      0x1c5 Stm32f10xx_EXTI.o
- .debug_abbrev  0x0000000000001117      0x175 Stm32f10xx_GPIO.o
- .debug_abbrev  0x000000000000128c      0x378 Stm32f10xx_I2C.o
- .debug_abbrev  0x0000000000001604       0xfe Stm32f10xx_RCC.o
+ .debug_abbrev  0x00000000000002bf      0x1ce LCD_Driver.o
+ .debug_abbrev  0x000000000000048d      0x1ea main.o
+ .debug_abbrev  0x0000000000000677      0x11a Seven_Segment.o
+ .debug_abbrev  0x0000000000000791       0xe4 startup.o
+ .debug_abbrev  0x0000000000000875      0x34c Stm32f10x_SPI.o
+ .debug_abbrev  0x0000000000000bc1      0x373 Stm32f10x_UART.o
+ .debug_abbrev  0x0000000000000f34      0x1c5 Stm32f10xx_EXTI.o
+ .debug_abbrev  0x00000000000010f9      0x175 Stm32f10xx_GPIO.o
+ .debug_abbrev  0x000000000000126e      0x378 Stm32f10xx_I2C.o
+ .debug_abbrev  0x00000000000015e6       0xfe Stm32f10xx_RCC.o
 
 .debug_loc      0x0000000000000000     0x2816
  .debug_loc     0x0000000000000000       0xce EEPROM.o
