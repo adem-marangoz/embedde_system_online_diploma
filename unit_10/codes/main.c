@@ -57,7 +57,8 @@ int main(void)
     Write_String(&Lcd_config,array);
     while (1)
     {
-        
+        // Check_Prass_Button(&key_pad_config);
+        Set_Key_Drain_Pins(&key_pad_config);
     }
     
     return 1;
@@ -99,11 +100,11 @@ void config(void)
 
 
     //_________________________ Config KeyPad_Driver ___________________________
-    // key_pad_config.input.Port = GPIOA;
-    // key_pad_config.input.Pins = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
-    // key_pad_config.output.Port = GPIOA;
-    // key_pad_config.output.Pins = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
-    // Key_pad_init(&key_pad_config);
+    key_pad_config.Soruce.Port = GPIOA;
+    key_pad_config.Soruce.Pins = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
+    key_pad_config.Drain.Port = GPIOA;
+    key_pad_config.Drain.Pins = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
+    Key_pad_init(&key_pad_config, Key_Int_En);
     //==========================================================================
 
 

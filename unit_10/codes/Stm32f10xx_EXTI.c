@@ -9,7 +9,17 @@
  * 
  */
 
+// ----------------------------- Include Files ---------------------------------
 #include "Stm32f10xx_EXTI.h"
+//==============================================================================
+
+//----------------------------- External Objects -------------------------------
+const uint16_t EXTI_Streem[16][16] = {
+  {EXTI0, EXTI1, EXTI2, EXTI3, EXTI4, EXTI5, EXTI6, EXTI7, EXTI8, EXTI9, EXTI10, EXTI11, EXTI12, EXTI13, EXTI14, EXTI15},
+  {EXTI0_IRQn, EXTI1_IRQn, EXTI2_IRQn, EXTI3_IRQn, EXTI4_IRQn, EXTI9_5_IRQn, EXTI9_5_IRQn ,EXTI9_5_IRQn ,EXTI9_5_IRQn ,EXTI9_5_IRQn ,EXTI15_10_IRQn ,EXTI15_10_IRQn ,EXTI15_10_IRQn, EXTI15_10_IRQn, EXTI15_10_IRQn, EXTI15_10_IRQn}
+};
+//==============================================================================
+
 
 void (*GP_EXTI_CallBack[16])(void);
 extern void EXTI15_10_Handler(void);
@@ -129,6 +139,7 @@ void NVIC_Disable_IRQ(IRQn_Type IRQn)
 void EXTI0_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI0);
+  GP_EXTI_CallBack[EXTI0]();
 }
 
 /**
@@ -137,6 +148,7 @@ void EXTI0_Handler(void)
 void EXTI1_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI1);
+  GP_EXTI_CallBack[EXTI1]();
 }
 
 /**
@@ -145,6 +157,7 @@ void EXTI1_Handler(void)
 void EXTI2_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI2);
+  GP_EXTI_CallBack[EXTI2]();
 }
 
 /**
@@ -153,6 +166,7 @@ void EXTI2_Handler(void)
 void EXTI3_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI3);
+  GP_EXTI_CallBack[EXTI3]();
 }
 
 /**
@@ -161,6 +175,7 @@ void EXTI3_Handler(void)
 void EXTI4_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI4);
+  GP_EXTI_CallBack[EXTI4]();
 }
 
 /**

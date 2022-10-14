@@ -129,6 +129,7 @@ void NVIC_Disable_IRQ(IRQn_Type IRQn)
 void EXTI0_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI0);
+  GP_EXTI_CallBack[EXTI0]();
 }
 
 /**
@@ -137,6 +138,7 @@ void EXTI0_Handler(void)
 void EXTI1_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI1);
+  GP_EXTI_CallBack[EXTI1]();
 }
 
 /**
@@ -145,6 +147,7 @@ void EXTI1_Handler(void)
 void EXTI2_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI2);
+  GP_EXTI_CallBack[EXTI2]();
 }
 
 /**
@@ -153,6 +156,7 @@ void EXTI2_Handler(void)
 void EXTI3_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI3);
+  GP_EXTI_CallBack[EXTI3]();
 }
 
 /**
@@ -161,6 +165,7 @@ void EXTI3_Handler(void)
 void EXTI4_Handler(void)
 {
   NVIC_EXTI_Clear_Handler(1 << EXTI4);
+  GP_EXTI_CallBack[EXTI4]();
 }
 
 /**

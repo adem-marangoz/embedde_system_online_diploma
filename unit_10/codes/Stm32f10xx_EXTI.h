@@ -139,6 +139,7 @@ typedef struct
 }St_EXTI_config;
 
 
+
 //@ref define EXTI_Pins_Config
 #define EXTI0PA0              (St_EXTI_Pins){GPIO_PIN_0 , GPIOA , EXTI0 , EXTI0_IRQn}
 #define EXTI0PA1              (St_EXTI_Pins){GPIO_PIN_1 , GPIOA , EXTI1 , EXTI1_IRQn}
