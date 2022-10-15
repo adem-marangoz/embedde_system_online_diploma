@@ -19,7 +19,6 @@
 
 //------------------------------- Local Objects --------------------------------
 uint8_t Check_Keypad_Pins(uint16_t Pins, uint8_t max_error, uint32_t *Put_to_array);
-void Key_Pad_CallBack(void);
 
 static uint8_t Drain_Set_Counter = 0;
 
@@ -61,7 +60,7 @@ extern const uint16_t EXTI_Streem[16][16];
  * @retval : 0 Fail
  *           1 succesful 
  */
-uint8_t Key_pad_init(St_Key_pad *key_pad, enum Key_intrrupt Int_state)
+uint8_t Key_pad_init(St_Key_pad *key_pad)
 {
     uint8_t temp = 0;
 
@@ -71,48 +70,23 @@ uint8_t Key_pad_init(St_Key_pad *key_pad, enum Key_intrrupt Int_state)
     temp = Check_Keypad_Pins(key_pad->Soruce.Pins, KeyPad_Source, pad_Soruce_pin);
     if(temp == 0) return 0;
 
+    // Config Drain Pins
+    GPIO_InitTypeDef gpio_key_config = {0};
+    gpio_key_config.Mode = GPIO_MODE_INPUT;
+    gpio_key_config.Pull = GPIO_PULLUP;
+    gpio_key_config.Pin = key_pad->Soruce.Pins;
+    Init_GPIO(key_pad->Soruce.Port,&gpio_key_config);
 
     // Config Soruce Pins
-    GPIO_InitTypeDef gpio_key_out = {0};
-    gpio_key_out.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio_key_out.Speed = GPIO_SPEED_FREQ_10MHZ;
-    gpio_key_out.Pin = key_pad->Drain.Pins;
-    Init_GPIO(key_pad->Drain.Port,&gpio_key_out);
+    gpio_key_config.Mode = GPIO_MODE_OUTPUT_PP;
+    gpio_key_config.Speed = GPIO_SPEED_FREQ_10MHZ;
+    gpio_key_config.Pin = key_pad->Drain.Pins;
+    Init_GPIO(key_pad->Drain.Port,&gpio_key_config);
 
     // Init The Drain Pins to 0
     Reset_pin(key_pad->Drain.Port,key_pad->Drain.Pins);
 
-    if(Int_state == Key_Int_Dis)
-    {
-        // Config Drain Pins
-        GPIO_InitTypeDef gpio_key_input = {0};
-        gpio_key_input.Mode = GPIO_MODE_INPUT;
-        gpio_key_input.Pull = GPIO_PULLUP;
-        gpio_key_input.Pin = key_pad->Soruce.Pins;
-        Init_GPIO(key_pad->Soruce.Port,&gpio_key_input);
-        
-    }else
-    {
-        // Init The Exti config
-        St_EXTI_config exti_config1 = {0};
-        exti_config1.EXTI_State = EXTI_Enable;
-        exti_config1.EXTI_Trigger = FALLING_EDGE_Trigger;
-        exti_config1.P_IRQ_CallBack = Key_Pad_CallBack;
-        
-        // Check Soruce Pins to Config
-        for(temp = 0; temp <= GPIO_PIN_NUMBER; temp++)
-        {
-            if(key_pad->Soruce.Pins & 1 << temp)
-            {
-                // Config The Line of Interrupt and PORT and Handle function in vector table
-                exti_config1.EXTI_Pin.GPIO_port = key_pad->Soruce.Port;
-                exti_config1.EXTI_Pin.pin = 1 << temp;
-                exti_config1.EXTI_Pin.Line = EXTI_Streem[0][temp];
-                exti_config1.EXTI_Pin.IRQn_number = EXTI_Streem[1][temp];
-                Init_EXTI(&exti_config1);
-            }
-        }
-    }
+
     return 1;
 }
 
@@ -159,8 +133,7 @@ void Set_Key_Drain_Pins(St_Key_pad const *key_pad)
         Drain_Set_Counter = 0xFF;
     Drain_Set_Counter++;
 
-    Set_pin(key_pad->Drain.Port,pad_Drain_pin[Drain_Set_Counter]);
-    
+    Set_pin(key_pad->Drain.Port,pad_Drain_pin[Drain_Set_Counter]);   
 }
 
 
@@ -212,20 +185,4 @@ uint8_t Check_Prass_Button(St_Key_pad const *key_pad)
     Reaction_Of_Prass(temp, Drain_Set_Counter);
 
     return 1;
-}
-
-/**
- * @brief CallBack of Soruce Pins
- */
-void Key_Pad_CallBack(void)
-{
-    uint8_t temp = 0;
-    for(temp  = 0 ; temp < KeyPad_Source; temp++)
-    {
-        if(Read_pin(GPIOB,pad_Soruce_pin[temp]) == GPIO_PIN_SET)
-        {
-            Reaction_Of_Prass(temp, Drain_Set_Counter);
-            break;
-        }
-    }
 }

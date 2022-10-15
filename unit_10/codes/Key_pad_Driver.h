@@ -26,11 +26,6 @@ typedef struct
     uint32_t Pins;
 }St_key_In_Out;
 
-enum Key_intrrupt
-{
-    Key_Int_Dis = 0,
-    Key_Int_En
-};
 
 // Struct input and output keypad 
 typedef struct 
@@ -40,7 +35,7 @@ typedef struct
 }St_Key_pad;
 
 
-uint8_t Key_pad_init(St_Key_pad *key_pad, enum Key_intrrupt Int_state);
+uint8_t Key_pad_init(St_Key_pad *key_pad);
 uint8_t Check_Prass_Button(St_Key_pad const *key_pad);
 void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index);
 uint8_t Check_Key_Soruce_Pins(St_Key_pad const *key_pad);
