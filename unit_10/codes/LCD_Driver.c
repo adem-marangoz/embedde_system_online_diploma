@@ -30,7 +30,7 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    _delay_ms(50);
+    _delay_ms(1);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -45,7 +45,7 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     GPIO_InitTypeDef gpio_confg;
     gpio_confg.Mode = GPIO_MODE_OUTPUT_PP;
     gpio_confg.Pin = lcd_instance->R_W_Pin;
-    gpio_confg.Speed = GPIO_SPEED_FREQ_10MHZ;
+    gpio_confg.Speed = GPIO_SPEED_FREQ_2MHZ;
     Init_GPIO(lcd_instance->R_W_Port,&gpio_confg);
     gpio_confg.Pin = lcd_instance->RS_Pin;
     Init_GPIO(lcd_instance->RS_Port,&gpio_confg);
@@ -72,16 +72,35 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     
     _delay_ms(50);
 
-    Write_Command(lcd_instance,CMD_LCD_Clear);                                                  // Clean LCD
+    // Write_Command(lcd_instance,CMD_LCD_Clear);                                                  // Clean LCD
     #ifdef LCD_8_Bit
     Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N);                // Function Set
     #endif
     #ifdef LCD_4_Bit
+    Write_Command(lcd_instance,0x30);
+    _delay_ms(5);
+    Write_Command(lcd_instance,0x30);
+    _delay_ms(1);
+    Write_Command(lcd_instance,0x30);
+    _delay_ms(10);
+    Write_Command(lcd_instance,0x20);
+    _delay_ms(10);
     Write_Command(lcd_instance,0x28);
+    _delay_ms(1);
+    Write_Command(lcd_instance,0x08);
+    _delay_ms(1);
+    Write_Command(lcd_instance,0x01);
+    _delay_ms(1);
+    _delay_ms(1);
+    Write_Command(lcd_instance,0x06);
+    _delay_ms(1);
+    Write_Command(lcd_instance,0x0C);
+    _delay_ms(1);
+    // Write_Command(lcd_instance,0x28);
     #endif
-    Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
-    Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
-    Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
+    // Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
+    // Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
+    // Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
 
     _delay_ms(70);
 
@@ -151,7 +170,7 @@ unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
 {
     uint8_t counter = 0, temp_ch = 0;
     
-    Check_BF(lcd_instance);
+    // Check_BF(lcd_instance);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
     for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
     {
@@ -270,7 +289,7 @@ void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lc
  */
 void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
 {
-    Check_BF(lcd_instance);
+    // Check_BF(lcd_instance);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
     temp &= ~(lcd_instance->Data_Pin);
     uint8_t counter = 0, temp_command = 0;
