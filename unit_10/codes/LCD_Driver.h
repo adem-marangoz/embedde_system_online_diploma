@@ -46,20 +46,15 @@
  * AC   :   Address counter used for both DDRAM and CGRAM addresses
  * BF   :   Busy Flag
  * RS   :   Register Selects (RS = 0 instruction register / RS = 1 Data register)
- */                                                            // RS,     R/W,    DB7,    DB6,    DB5,    DB4,    DB3,    DB2,    DB1,    DB0
+ */  
+//----------------------------- Genaric Defination -----------------------------
+
+                                                               // RS,     R/W,    DB7,    DB6,    DB5,    DB4,    DB3,    DB2,    DB1,    DB0
 #define CMD_LCD_Clear                               0b00000001 // 0,      0,      0,      0,      0,      0,      0,      0,      0,      1    Execution time 1.64ms
 #define CMD_LCD_Re_Home                             0b00000010 // 0,      0,      0,      0,      0,      0,      0,      0,      1,      x    Execution time 1.64ms
 #define CMD_LCD_Entry_Mode_Set                      0b00000100 // 0,      0,      0,      0,      0,      0,      0,      1,      I/D,    S    Execution time 40us
 #define CMD_LCD_Display_On_Off                      0b00001000 // 0,      0,      0,      0,      0,      0,      1,      D,      C,      B    Execution time 40us
 #define CMD_LCD_Cursor_Display_Shift                0b00010000 // 0,      0,      0,      0,      0,      1,      S/C,    R/L,    x,      x    Execution time 40us
-#ifdef  LCD_8_Bit
-   #define CMD_LCD_Function_Set                        0b00110000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
-
-#endif
-#ifdef LCD_4_Bit
-   #define CMD_LCD_Function_Set                        0b00100000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
-
-#endif
 #define CMD_LCD_Set_CGRam_Add                       0b01000000 // 0,      0,      0,      1,      CGRAM Add                                    Execution time 40us
 #define CMD_LCD_Set_DDRam_Add                       0b10000000 // 0,      0,      1,      DDRAM Add                                            Execution time 40us
 #define CMD_LCD_Read_Busy_flag_and_Add_Counter      0b01000000 // 0,      1,      BF,     DDRAM Add                                            Execution time 0us
@@ -67,11 +62,24 @@
 #define CMD_LCD_Read_From_CGRAM_or_DDRAM            0b11000000 // 1,      1,      RD Data                                                      Execution time 40us
 #define CMD_LCD_Begin_AT_First_Raw                  0b10000000
 #define CMD_LCD_Begin_AT_Seconde_Raw                0b11000000
+
+// ------------------------------- 8 Bit Operation -----------------------------
+#ifdef LCD_8_Bit
+#define CMD_LCD_Function_Set                        0b00110000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
+#define DATA_shift                                  0x00 
+#define CMD_LCD_OP_DL                               0x01 << 4
+#endif
+// ------------------------------- 4 Bit Operation -----------------------------
+#ifdef LCD_4_Bit
+#define CMD_LCD_Function_Set                        0b00100000 // 0,      0,      0,      0,      1,      DL,     N,      F,      x,      x    Execution time 40us
+#define DATA_shift                                  0x04
+#define CMD_LCD_OP_DL                               0x00 << 4
+#endif
+
 //------------------------------------------------ Command Options -----------------------------------------------
 #define CMD_LCD_OP_I_D                              0x01 << 1
 #define CMD_LCD_OP_S_C                              0x01 << 3
 #define CMD_LCD_OP_R_L                              0x01 << 2
-#define CMD_LCD_OP_DL                               0x01 << 4
 #define CMD_LCD_OP_N                                0x01 << 3
 #define CMD_LCD_OP_F                                0x01 << 2
 #define CMD_LCD_OP_S                                0x01 << 0
@@ -79,10 +87,9 @@
 #define CMD_LCD_OP_C                                0x01 << 1
 #define CMD_LCD_OP_B                                0x01 << 0
 #ifdef  LCD_8_Bit
-   #define DATA_shift                                0x00 
 #endif
 #ifdef LCD_4_Bit
-   #define DATA_shift                                0x04
+   
     
 #endif
 
@@ -115,6 +122,7 @@ typedef struct
     uint16_t Enable_Pin;
     uint16_t RS_Pin;
     uint32_t Data_Pin;
+    uint8_t count_of_first_pin;
 }LCD_16_2;
 
 

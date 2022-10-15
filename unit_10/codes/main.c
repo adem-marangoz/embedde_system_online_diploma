@@ -52,11 +52,12 @@ uint16_t Rx_Buff[10] = {0};
 int main(void)
 {
     config(); // config RCC and GPIO
-
+    uint8_t array[] = "Adem";
     Write_Character(&Lcd_config, 'D');
+    Write_String(&Lcd_config,array);
     while (1)
     {
-        
+        Check_Prass_Button(&key_pad_config);
     }
     
     return 1;
@@ -85,17 +86,24 @@ void config(void)
 	Lcd_config.Enable_Pin = GPIO_PIN_0;
 	Lcd_config.R_W_Pin = GPIO_PIN_1;
 	Lcd_config.RS_Pin = GPIO_PIN_2;
+    #ifdef LCD_8_Bit
     Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    // Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    #endif
+    #ifdef LCD_4_Bit
+    Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    // Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    #endif
     LCD_init(&Lcd_config);
     //==========================================================================
 
 
     //_________________________ Config KeyPad_Driver ___________________________
-    // key_pad_config.input.Port = GPIOA;
-    // key_pad_config.input.Pins = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
-    // key_pad_config.output.Port = GPIOA;
-    // key_pad_config.output.Pins = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
-    // Key_pad_init(&key_pad_config);
+    key_pad_config.Soruce.Port = GPIOA;
+    key_pad_config.Soruce.Pins = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
+    key_pad_config.Drain.Port = GPIOA;
+    key_pad_config.Drain.Pins = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
+    Key_pad_init(&key_pad_config);
     //==========================================================================
 
 
