@@ -79,6 +79,36 @@
 
 #define I2C2_Base_Add                   (Periperhal_Base_Add + 0x00005800U)
 
+#define TIM11_Base_Add                  (Periperhal_Base_Add + 0x00015400U)
+
+#define TIM10_Base_Add                  (Periperhal_Base_Add + 0x00015000U)
+
+#define TIM9_Base_Add                   (Periperhal_Base_Add + 0x00014C00U)
+
+#define TIM8_Base_Add                   (Periperhal_Base_Add + 0x00013400U)
+
+#define TIM1_Base_Add                   (Periperhal_Base_Add + 0x00012C00U)
+
+#define TIM2_Base_Add                   (Periperhal_Base_Add + 0x00000000U)
+
+#define TIM3_Base_Add                   (Periperhal_Base_Add + 0x00000400U)
+
+#define TIM4_Base_Add                   (Periperhal_Base_Add + 0x00000800U)
+
+#define TIM5_Base_Add                   (Periperhal_Base_Add + 0x00000C00U)
+
+#define TIM6_Base_Add                   (Periperhal_Base_Add + 0x00001000U)
+
+#define TIM7_Base_Add                   (Periperhal_Base_Add + 0x00001400U)
+
+#define TIM12_Base_Add                  (Periperhal_Base_Add + 0x00001800U)
+
+#define TIM13_Base_Add                  (Periperhal_Base_Add + 0x00001C00U)
+
+#define TIM14_Base_Add                  (Periperhal_Base_Add + 0x00002000U)
+
+
+
 //_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 //---------------------------- Peripheral Registers ----------------------
 //_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
