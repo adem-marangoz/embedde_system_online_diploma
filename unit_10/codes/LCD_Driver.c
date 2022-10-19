@@ -1,7 +1,7 @@
 /**
  * @file LCD_Driver.c
  * @author adem alnajjar (adem.alnajjar95@gmail.com)
- * @brief 
+ * @brief LCD Driver
  * @version 0.1
  * @date 2022-10-10
  * 
