@@ -24,11 +24,7 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-<<<<<<< HEAD
-    _delay_ms(1);
-=======
-    delay_us(50);
->>>>>>> Timers_Drivers
+    delay_us(1);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -68,7 +64,7 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     // }
     // lcd_instance->count_of_first_pin = counter;
     
-    delay_us(50);
+    delay_us(500);
 
     // Write_Command(lcd_instance,CMD_LCD_Clear);                                                  // Clean LCD
     #ifdef LCD_8_Bit
@@ -76,31 +72,31 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     #endif
     #ifdef LCD_4_Bit
     Write_Command(lcd_instance,0x30);
-    _delay_ms(5);
+    delay_us(5);
     Write_Command(lcd_instance,0x30);
-    _delay_ms(1);
+    delay_us(1);
     Write_Command(lcd_instance,0x30);
-    _delay_ms(10);
+    delay_us(10);
     Write_Command(lcd_instance,0x20);
-    _delay_ms(10);
+    delay_us(10);
     Write_Command(lcd_instance,0x28);
-    _delay_ms(1);
+    delay_us(1);
     Write_Command(lcd_instance,0x08);
-    _delay_ms(1);
+    delay_us(1);
     Write_Command(lcd_instance,0x01);
-    _delay_ms(1);
-    _delay_ms(1);
+    delay_us(1);
+    delay_us(1);
     Write_Command(lcd_instance,0x06);
-    _delay_ms(1);
+    delay_us(1);
     Write_Command(lcd_instance,0x0C);
-    _delay_ms(1);
+    delay_us(1);
     // Write_Command(lcd_instance,0x28);
     #endif
     // Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
     // Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
     // Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
 
-    delay_us(70);
+    delay_us(700);
 
     /*------------------- Init LCD -------------------*/
 

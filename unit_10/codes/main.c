@@ -59,7 +59,7 @@ int main(void)
     while (1)
     {
         Check_Prass_Button(&key_pad_config);
-        delay_us(1);
+        // delay_us(1);
         
     }
     
