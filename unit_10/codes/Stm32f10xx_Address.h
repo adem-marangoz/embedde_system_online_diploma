@@ -79,6 +79,36 @@
 
 #define I2C2_Base_Add                   (Periperhal_Base_Add + 0x00005800U)
 
+#define TIM1_Base_Add                   (Periperhal_Base_Add + 0x00012C00U)
+
+#define TIM2_Base_Add                   (Periperhal_Base_Add + 0x00000000U)
+
+#define TIM3_Base_Add                   (Periperhal_Base_Add + 0x00000400U)
+
+#define TIM4_Base_Add                   (Periperhal_Base_Add + 0x00000800U)
+
+#define TIM5_Base_Add                   (Periperhal_Base_Add + 0x00000C00U)
+
+#define TIM6_Base_Add                   (Periperhal_Base_Add + 0x00001000U)
+
+#define TIM7_Base_Add                   (Periperhal_Base_Add + 0x00001400U)
+
+#define TIM8_Base_Add                   (Periperhal_Base_Add + 0x00013400U)
+
+#define TIM9_Base_Add                   (Periperhal_Base_Add + 0x00014C00U)
+
+#define TIM10_Base_Add                  (Periperhal_Base_Add + 0x00015000U)
+
+#define TIM11_Base_Add                  (Periperhal_Base_Add + 0x00015400U)
+
+#define TIM12_Base_Add                  (Periperhal_Base_Add + 0x00001800U)
+
+#define TIM13_Base_Add                  (Periperhal_Base_Add + 0x00001C00U)
+
+#define TIM14_Base_Add                  (Periperhal_Base_Add + 0x00002000U)
+
+#define Systick_Base_Add                (Cortex_M3_Int_Perip_Base + 0x0000E010U)
+
 //_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
 //---------------------------- Peripheral Registers ----------------------
 //_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
@@ -200,6 +230,49 @@ typedef struct
 }St_I2C_Typedef;
 
 
+/**
+ * @brief Peripheral Advanced TIM1-TIM8 Registers 
+ * @ref TIM1_TIM8_Peripheral_define
+ */
+typedef struct 
+{
+     __IO uint32_t TIM_CR1;
+     __IO uint32_t TIM_CR2;
+     __IO uint32_t TIM_SMCR;
+     __IO uint32_t TIM_DIER;
+     __IO uint32_t TIM_SR;
+     __IO uint32_t TIM_EGR;
+     __IO uint32_t TIM_CCMR1;
+     __IO uint32_t TIM_CCMR2;
+     __IO uint32_t TIM_CCER;
+     __IO uint32_t TIM_CNT;
+     __IO uint32_t TIM_PSC;
+     __IO uint32_t TIM_ARR;
+     __IO uint32_t TIM_RCR;
+     __IO uint32_t TIM_CCR1;
+     __IO uint32_t TIM_CCR2;
+     __IO uint32_t TIM_CCR3;
+     __IO uint32_t TIM_CCR4;
+     __IO uint32_t TIM_BDTR;
+     __IO uint32_t TIM_DCR;
+     __IO uint32_t TIM_DMAR;
+}St_Timers_Typedef;
+
+
+/**
+ * @brief Cortex M3 Systick Registers 
+ * @ref SysTick_define
+ */
+typedef struct 
+{
+     __IO uint32_t STK_CTRL;
+     __IO uint32_t STK_LOAD;
+     __IO uint32_t STK_VAL;
+     __IO uint32_t STK_CALIB;
+}St_SysTick_Typedef;
+
+
+
 
 
 //_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*
@@ -232,4 +305,12 @@ typedef struct
 
 #define I2C1                ((St_I2C_Typedef *) I2C1_Base_Add)
 #define I2C2                ((St_I2C_Typedef *) I2C2_Base_Add)
+
+#define TIM1                ((St_Timers_Typedef *) TIM1_Base_Add)
+#define TIM2                ((St_Timers_Typedef *) TIM2_Base_Add)
+#define TIM3                ((St_Timers_Typedef *) TIM3_Base_Add)
+#define TIM4                ((St_Timers_Typedef *) TIM4_Base_Add)
+
+#define SysTick             ((St_SysTick_Typedef *) Systick_Base_Add)
+
 #endif

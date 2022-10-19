@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "lcd_driver.h": "c",
+        "stm32f10xx_rcc.h": "c"
+    }
+}

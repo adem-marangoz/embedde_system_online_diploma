@@ -15,6 +15,7 @@
 #include "Stm32f10xx_EXTI.h"
 #include "Stm32f10x_SPI.h"
 #include <stdio.h>
+#include "Stm32_f10xx_Systick.h"
 
 //_____________________ Generica Function & Data Structure _____________________
 
@@ -308,7 +309,7 @@ uint8_t Send_String_Uart(St_UART_Typedef *Inst, uint16_t *msg, enum Polling_mech
     {
         Send_Char_Uart(Inst,msg,PollingEn);
         msg++;
-        _delay_ms(10);
+        delay_us(100);
     }
     
 }
