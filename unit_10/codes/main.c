@@ -17,6 +17,8 @@
 #include "Stm32f10x_SPI.h"
 #include "Stm32f10xx_I2C.h"
 #include "EEPROM.h"
+#include "Stm32f10xx_Timers.h"
+#include "Stm32_f10xx_Systick.h"
 
 //==============================================================================
 
@@ -42,13 +44,12 @@ extern void _delay_ms(uint32_t time);
     St_SPI_API spi3_config = {0};
     St_I2C_API i2c1_config = {0};
     St_I2C_API i2c2_config = {0};
+    
     //==========================================================================
 
 uint16_t Rx_Buff[10] = {0};
-// uint16_t test = 0x61;
 
 //==============================================================================
-
 int main(void)
 {
     config(); // config RCC and GPIO
@@ -58,6 +59,8 @@ int main(void)
     while (1)
     {
         Check_Prass_Button(&key_pad_config);
+        delay_us(1);
+        
     }
     
     return 1;
@@ -91,8 +94,8 @@ void config(void)
     // Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
     #endif
     #ifdef LCD_4_Bit
-    Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-    // Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    // Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
     #endif
     LCD_init(&Lcd_config);
     //==========================================================================
@@ -172,6 +175,37 @@ void config(void)
     //     gpio_config.Speed = GPIO_SPEED_INPUT_Mode;
     //     gpio_config.Mode = GPIO_MODE_AF_INPUT;
     // #endif
+    //==========================================================================
+
+
+    // ___________________________ Config Timer ________________________________
+    // tim1_config.Instance = TIM1;
+    // tim1_config.Prescaler = 0;
+    // tim1_config.CounterMode = TIM_COUNTERMODE_UP;
+    // tim1_config.Period = 0xFFFF;
+    // tim1_config.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    // tim1_config.RepetitionCounter = 0;
+    // tim1_config.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+    // Init_Timer(&tim1_config);
+    //==========================================================================
+
+
+    //___________________________ Config Pin_Out _______________________________
+    // GPIO_InitTypeDef gpio_pin_out = {0};
+    // gpio_pin_out.Mode = GPIO_MODE_OUTPUT_PP;
+    // gpio_pin_out.Speed = GPIO_SPEED_FREQ_10MHZ;
+    // gpio_pin_out.Pin = GPIO_PIN_14;
+    // Init_GPIO(GPIOA,&gpio_pin_out);
+    //==========================================================================
+
+
+    //____________________________ Systick Config ______________________________
+    Systick_API.Clock_Source = Processor_Clock_AHB;
+    Systick_API.Current_Value = 0;
+    Systick_API.Enable_Interrupt = Disable_Systick_Req;
+    Systick_API.Reload_Value = Microsecond_Prescale;
+    Init_Systick();
+    
     //==========================================================================
 }
 

@@ -11,15 +11,9 @@
 
 #include "LCD_Driver.h"
 #include <stddef.h>
+#include "Stm32_f10xx_Systick.h"
 
 
-void _delay_ms(uint32_t time);
-
-void _delay_ms(uint32_t time) {
-	uint32_t i, j;
-	for (i = 0; i < time; i++)
-		for (j = 0; j < 255; j++);
-}
 
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 
@@ -30,7 +24,7 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
 void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    _delay_ms(50);
+    delay_us(50);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -70,7 +64,7 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     // }
     // lcd_instance->count_of_first_pin = counter;
     
-    _delay_ms(50);
+    delay_us(50);
 
     Write_Command(lcd_instance,CMD_LCD_Clear);                                                  // Clean LCD
     #ifdef LCD_8_Bit
@@ -83,7 +77,7 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
     Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
     Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
 
-    _delay_ms(70);
+    delay_us(70);
 
     /*------------------- Init LCD -------------------*/
 
@@ -347,7 +341,7 @@ void write_with_move(const LCD_16_2 *lcd_instance,char *base,En_Lcd_Raw Raw,unsi
         for(int i = 0; i < 16; i++)
         {
             Write_Command(lcd_instance,CMD_LCD_Cursor_Display_Shift|CMD_LCD_OP_S_C);
-            _delay_ms(70);
+            delay_us(70);
         }
         Write_Command(lcd_instance,CMD_LCD_Clear);
         LCD_init(lcd_instance);
