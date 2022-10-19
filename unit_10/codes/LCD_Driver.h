@@ -24,7 +24,7 @@
 
 #include "Stm32f10xx_GPIO.h"
 
-#define LCD_8_Bit
+#define LCD_4_Bit
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /** 
  * @ ----------------------------------------- LCD Command Abbreviations -----------------------------------------
@@ -47,6 +47,28 @@
  * BF   :   Busy Flag
  * RS   :   Register Selects (RS = 0 instruction register / RS = 1 Data register)
  */  
+
+
+/*
+0x01 : clean LCD
+0x02 : return to home
+0x04 : Set Entry Mode
+0x05 : Set Entry Mode,  Disable automatic shift
+0x06 : Set Entry Mode, Decrement cursor
+0x07 : Set Entry Mode , Disable automatic shift , Decrement cursor
+0x08 : Display on/off
+0x09 : Display on/off, curosr blink on
+0x0A : Display on/off, cursor on
+0x0B : Display on/off, cursor blink on , cursor on
+0x0C : Display on/off, Display on
+0x0D : Display on/off, cursor blink on, Display on
+0x0E : Display on/off, cursor on, Display on
+0x0F : Display on/off , cursor blink on, cursor on, Display on
+0x10 : Cursor Display shift
+0x14 : Cursor Display shift , Shift to right
+0x18 : Cursor Display shift,   Curosr shift 
+0x1C : Cursor Display shift , shift to right, cursor shift
+*/
 //----------------------------- Genaric Defination -----------------------------
 
                                                                // RS,     R/W,    DB7,    DB6,    DB5,    DB4,    DB3,    DB2,    DB1,    DB0
@@ -62,6 +84,8 @@
 #define CMD_LCD_Read_From_CGRAM_or_DDRAM            0b11000000 // 1,      1,      RD Data                                                      Execution time 40us
 #define CMD_LCD_Begin_AT_First_Raw                  0b10000000
 #define CMD_LCD_Begin_AT_Seconde_Raw                0b11000000
+#define CMD_LCD_Begin_AT_Third_Raw                  0b10010000
+#define CMD_LCD_Begin_AT_Fourth_Raw                 0b11010000
 
 // ------------------------------- 8 Bit Operation -----------------------------
 #ifdef LCD_8_Bit
@@ -102,7 +126,9 @@
 typedef enum
 {
     First_R = 0,
-    Seconde_R
+    Seconde_R,
+    Third_R,
+    Fourth_R
 }En_Lcd_Raw;
 
 /**
@@ -129,19 +155,19 @@ typedef struct
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //--------------------------------------------------- Function API -----------------------------------------------
-unsigned char LCD_init(LCD_16_2 const *lcd_instance);
-void Check_BF(const LCD_16_2 *lcd_instance);
-void Shift_R_Cursor(const LCD_16_2 *lcd_instance);
-void Shift_L_Cursor(const LCD_16_2 *lcd_instance);
-unsigned char Read_Cursor_Add(const LCD_16_2 *lcd_instance);
-unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch);
-unsigned char Write_Character_with_coordinator(const LCD_16_2 *lcd_instance,unsigned char ch,unsigned char column,En_Lcd_Raw Raw);
-unsigned char Write_String(const LCD_16_2 *lcd_instance,unsigned char *ch);
-unsigned char Write_String_with_coordinator(const LCD_16_2 *lcd_instance,unsigned char *ch,unsigned char column,En_Lcd_Raw Raw);
-void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lcd_Raw Raw);
-void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command);
-void write_with_move(const LCD_16_2 *lcd_instance,char *base,En_Lcd_Raw Raw,unsigned char buffersize);
-void write_first_raw_with_rot(const LCD_16_2 *lcd_instance,char *base,unsigned char buffersize);
+unsigned char LCD_init(LCD_16_2  *lcd_instance);
+void Check_BF( LCD_16_2 *lcd_instance);
+void Shift_R_Cursor( LCD_16_2 *lcd_instance);
+void Shift_L_Cursor( LCD_16_2 *lcd_instance);
+unsigned char Read_Cursor_Add( LCD_16_2 *lcd_instance);
+unsigned char Write_Character( LCD_16_2 *lcd_instance,unsigned char ch);
+unsigned char Write_Character_with_coordinator( LCD_16_2 *lcd_instance,unsigned char ch,unsigned char column,En_Lcd_Raw Raw);
+unsigned char Write_String( LCD_16_2 *lcd_instance,unsigned char *ch);
+unsigned char Write_String_with_coordinator( LCD_16_2 *lcd_instance,unsigned char *ch,unsigned char column,En_Lcd_Raw Raw);
+void Jump_to_coordinator( LCD_16_2 *lcd_instance,unsigned char column,En_Lcd_Raw Raw);
+void Write_Command( LCD_16_2 *lcd_instance,unsigned char command);
+void write_with_move( LCD_16_2 *lcd_instance,char *base,En_Lcd_Raw Raw,unsigned char buffersize);
+void write_first_raw_with_rot( LCD_16_2 *lcd_instance,char *base,unsigned char buffersize);
 void clean_Lcd(LCD_16_2 *lcd_instance);
 
 

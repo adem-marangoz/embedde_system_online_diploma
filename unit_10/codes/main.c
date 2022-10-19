@@ -53,9 +53,10 @@ uint16_t Rx_Buff[10] = {0};
 int main(void)
 {
     config(); // config RCC and GPIO
-    uint8_t array[] = "Adem";
-    Write_Character(&Lcd_config, 'D');
+    uint8_t array[] = "Adem ";
+    Write_Character(&Lcd_config, 'M');
     Write_String(&Lcd_config,array);
+    Jump_to_coordinator(&Lcd_config, 0, Third_R);
     while (1)
     {
         Check_Prass_Button(&key_pad_config);
@@ -80,6 +81,15 @@ void config(void)
     // EEPORM_Init(); 
     //==========================================================================
 
+    //____________________________ Systick Config ______________________________
+    Systick_API.Clock_Source = Processor_Clock_AHB;
+    Systick_API.Current_Value = 0;
+    Systick_API.Enable_Interrupt = Disable_Systick_Req;
+    Systick_API.Reload_Value = Microsecond_Prescale;
+    Init_Systick();
+    
+    //==========================================================================
+
 
     //_________________________ Config LCD_Driver ______________________________
     Lcd_config.Data_Port = GPIOB;
@@ -95,7 +105,7 @@ void config(void)
     #endif
     #ifdef LCD_4_Bit
     // Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-    Lcd_config.Data_Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    Lcd_config.Data_Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
     #endif
     LCD_init(&Lcd_config);
     //==========================================================================
@@ -198,15 +208,6 @@ void config(void)
     // Init_GPIO(GPIOA,&gpio_pin_out);
     //==========================================================================
 
-
-    //____________________________ Systick Config ______________________________
-    Systick_API.Clock_Source = Processor_Clock_AHB;
-    Systick_API.Current_Value = 0;
-    Systick_API.Enable_Interrupt = Disable_Systick_Req;
-    Systick_API.Reload_Value = Microsecond_Prescale;
-    Init_Systick();
-    
-    //==========================================================================
 }
 
 // void Exti15_CallBack(void)

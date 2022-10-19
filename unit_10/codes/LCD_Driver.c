@@ -9,22 +9,28 @@
  * 
  */
 
+
+//--------------------------------- Include Files ------------------------------
 #include "LCD_Driver.h"
 #include <stddef.h>
 #include "Stm32_f10xx_Systick.h"
+//==============================================================================
+
+//-------------------------------- Local Objects -------------------------------
+static uint8_t Lines_command[4] = {CMD_LCD_Begin_AT_First_Raw, CMD_LCD_Begin_AT_Seconde_Raw, CMD_LCD_Begin_AT_Third_Raw, CMD_LCD_Begin_AT_Fourth_Raw};
+//==============================================================================
 
 
-
-void Kick_Enable_pin(const LCD_16_2 *lcd_instance);
+void Kick_Enable_pin( LCD_16_2 *lcd_instance);
 
 /**
  * @brief This private function activates and reflect the data sent to the LCD
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  */
-void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
+void Kick_Enable_pin( LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    delay_us(1);
+    // delay_us(100);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -33,68 +39,59 @@ void Kick_Enable_pin(const LCD_16_2 *lcd_instance)
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  * @return unsigned char 
  */
-unsigned char LCD_init(LCD_16_2 const *lcd_instance)
+unsigned char LCD_init(LCD_16_2  *lcd_instance)
 {
-// Config Enable , RS and RW Pins
-    GPIO_InitTypeDef gpio_confg;
-    gpio_confg.Mode = GPIO_MODE_OUTPUT_PP;
-    gpio_confg.Pin = lcd_instance->R_W_Pin;
-    gpio_confg.Speed = GPIO_SPEED_FREQ_2MHZ;
-    Init_GPIO(lcd_instance->R_W_Port,&gpio_confg);
-    gpio_confg.Pin = lcd_instance->RS_Pin;
-    Init_GPIO(lcd_instance->RS_Port,&gpio_confg);
-    gpio_confg.Pin = lcd_instance->Enable_Pin;
-    Init_GPIO(lcd_instance->Enable_Port,&gpio_confg);
+    // Config Pins and initialize
+    {
+        // Config Enable , RS and RW Pins
+        GPIO_InitTypeDef gpio_confg;
+        gpio_confg.Mode = GPIO_MODE_OUTPUT_PP;
+        gpio_confg.Pin = lcd_instance->R_W_Pin;
+        gpio_confg.Speed = GPIO_SPEED_FREQ_2MHZ;
+        Init_GPIO(lcd_instance->R_W_Port,&gpio_confg);
+        gpio_confg.Pin = lcd_instance->RS_Pin;
+        Init_GPIO(lcd_instance->RS_Port,&gpio_confg);
+        gpio_confg.Pin = lcd_instance->Enable_Pin;
+        Init_GPIO(lcd_instance->Enable_Port,&gpio_confg);
 
-// Init Enable, RS and RW Pins
-    Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin); // instruction register
-    Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin); // Write data
-    Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin); // Enable read/write
+    // Init Enable, RS and RW Pins
+        Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin); // instruction register
+        Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin); // Write data
+        Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin); // Enable read/write
 
-// Config Data Pins
-    gpio_confg.Pin = lcd_instance->Data_Pin;
-    Init_GPIO(lcd_instance->Data_Port,&gpio_confg);
+    // Config Data Pins
+        gpio_confg.Pin = lcd_instance->Data_Pin;
+        Init_GPIO(lcd_instance->Data_Port,&gpio_confg);
+
+    }
 
 
-    // uint8_t counter = 0;
-    // for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
-    // {
-    //     if ((1 << counter) & lcd_instance->Data_Pin)
-    //         break;   
-    // }
-    // lcd_instance->count_of_first_pin = counter;
+    uint8_t counter = 0;
+    for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
+    {
+        if ((1 << counter) & lcd_instance->Data_Pin)
+            break;   
+    }
+    lcd_instance->count_of_first_pin = counter;
     
     delay_us(500);
 
-    // Write_Command(lcd_instance,CMD_LCD_Clear);                                                  // Clean LCD
-    #ifdef LCD_8_Bit
-    Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N);                // Function Set
-    #endif
-    #ifdef LCD_4_Bit
-    Write_Command(lcd_instance,0x30);
-    delay_us(5);
-    Write_Command(lcd_instance,0x30);
-    delay_us(1);
-    Write_Command(lcd_instance,0x30);
-    delay_us(10);
-    Write_Command(lcd_instance,0x20);
-    delay_us(10);
-    Write_Command(lcd_instance,0x28);
-    delay_us(1);
-    Write_Command(lcd_instance,0x08);
-    delay_us(1);
-    Write_Command(lcd_instance,0x01);
-    delay_us(1);
-    delay_us(1);
-    Write_Command(lcd_instance,0x06);
-    delay_us(1);
-    Write_Command(lcd_instance,0x0C);
-    delay_us(1);
-    // Write_Command(lcd_instance,0x28);
-    #endif
-    // Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
-    // Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
-    // Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
+    // initialize LCD
+    {
+
+        #ifdef LCD_8_Bit
+        Write_Command(lcd_instance,CMD_LCD_Function_Set|CMD_LCD_OP_DL|CMD_LCD_OP_N);                // Function Set
+        #endif
+
+        #ifdef LCD_4_Bit
+        Write_Command(lcd_instance,0x02);
+        Write_Command(lcd_instance,0x28);
+        #endif
+
+        Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
+        Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
+        Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
+    }                                              // Clean LCD
 
     delay_us(700);
 
@@ -107,7 +104,7 @@ unsigned char LCD_init(LCD_16_2 const *lcd_instance)
  * @brief This function is used to check the seventh pin in case it is busy
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  */
-void Check_BF(const LCD_16_2 *lcd_instance)
+void Check_BF( LCD_16_2 *lcd_instance)
 {
 // Convert Pins form O -> I
     GPIO_InitTypeDef gpio_config ={0};
@@ -134,7 +131,7 @@ void Check_BF(const LCD_16_2 *lcd_instance)
  * @brief This function is used to move the cursor towards the right
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  */
-void Shift_R_Cursor(const LCD_16_2 *lcd_instance)
+void Shift_R_Cursor( LCD_16_2 *lcd_instance)
 {
     Write_Command(lcd_instance,CMD_LCD_Cursor_Display_Shift|CMD_LCD_OP_R_L);
 }
@@ -143,13 +140,13 @@ void Shift_R_Cursor(const LCD_16_2 *lcd_instance)
  * @brief This function is used to move the cursor towards the left
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  */
-void Shift_L_Cursor(const LCD_16_2 *lcd_instance)
+void Shift_L_Cursor( LCD_16_2 *lcd_instance)
 {
     Write_Command(lcd_instance,CMD_LCD_Cursor_Display_Shift);
 }
 
 
-unsigned char Read_Cursor_Add(const LCD_16_2 *lcd_instance)
+unsigned char Read_Cursor_Add( LCD_16_2 *lcd_instance)
 {
 
 }
@@ -160,39 +157,30 @@ unsigned char Read_Cursor_Add(const LCD_16_2 *lcd_instance)
  * @param[in] ch Character value to be printed 
  * @return unsigned char 
  */
-unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
+unsigned char Write_Character( LCD_16_2 *lcd_instance,unsigned char ch)
 {
-    uint8_t counter = 0, temp_ch = 0;
-    
+    uint8_t temp_ch = 0;
     // Check_BF(lcd_instance);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
-    for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
-    {
-        if ((1 << counter) & lcd_instance->Data_Pin)
-            break;   
-    }
     temp &= ~(lcd_instance->Data_Pin);
-    
     #ifdef LCD_8_Bit
-        temp |= (uint32_t)ch << counter;
+        temp |= (uint32_t)ch << lcd_instance->count_of_first_pin;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     #endif
-
     #ifdef LCD_4_Bit
         temp_ch = ch >> 4;
-        temp |= (uint32_t)(temp_ch << counter);
+        temp |= (uint32_t)(temp_ch << lcd_instance->count_of_first_pin);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);
-        
+        Kick_Enable_pin(lcd_instance);
         // secode byte (LSB nibble)
         temp = lcd_instance->Data_Port->GPIO_ODR;
         temp &= ~(lcd_instance->Data_Pin);
         temp_ch = ch & (uint8_t)0x0F;
-        temp |= (uint32_t)(temp_ch << counter);
+        temp |= (uint32_t)(temp_ch << lcd_instance->count_of_first_pin);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     #endif
-
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);
     Kick_Enable_pin(lcd_instance);
@@ -206,7 +194,7 @@ unsigned char Write_Character(const LCD_16_2 *lcd_instance,unsigned char ch)
  * @param[in] Raw: @ref Raw_LCD, It is used to specify the raw in which the character will be printed
  * @return unsigned char 
  */
-unsigned char Write_Character_with_coordinator(const LCD_16_2 *lcd_instance,unsigned char ch,unsigned char column,En_Lcd_Raw Raw)
+unsigned char Write_Character_with_coordinator( LCD_16_2 *lcd_instance,unsigned char ch,unsigned char column,En_Lcd_Raw Raw)
 {
     Jump_to_coordinator(lcd_instance,column,Raw);
     Check_BF(lcd_instance);
@@ -224,7 +212,7 @@ unsigned char Write_Character_with_coordinator(const LCD_16_2 *lcd_instance,unsi
  * @param ch Indicator for the first character to be printed
  * @return unsigned char 
  */
-unsigned char Write_String(const LCD_16_2 *lcd_instance,unsigned char *ch)
+unsigned char Write_String( LCD_16_2 *lcd_instance,unsigned char *ch)
 {
     while((*ch) > 0)
     {
@@ -242,7 +230,7 @@ unsigned char Write_String(const LCD_16_2 *lcd_instance,unsigned char *ch)
  * @param[in] Raw: @ref Raw_LCD, It is used to specify the raw in which the characters will be printed
  * @return unsigned char 
  */
-unsigned char Write_String_with_coordinator(const LCD_16_2 *lcd_instance,unsigned char *ch,unsigned char column,En_Lcd_Raw Raw)
+unsigned char Write_String_with_coordinator( LCD_16_2 *lcd_instance,unsigned char *ch,unsigned char column,En_Lcd_Raw Raw)
 {
     Jump_to_coordinator(lcd_instance,column,Raw);
     while((*ch) > 0)
@@ -259,21 +247,16 @@ unsigned char Write_String_with_coordinator(const LCD_16_2 *lcd_instance,unsigne
  * @param column :Column number to jump to
  * @param Raw :Row number to jump to
  */
-void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lcd_Raw Raw)
+void Jump_to_coordinator( LCD_16_2 *lcd_instance,unsigned char column,En_Lcd_Raw Raw)
 {
-    switch (Raw)
+    if(column < 16)
     {
-    case First_R:
-        if(column < 16)
-            Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw + column);
-        break;
-    case Seconde_R:
-        if(column < 16)
-            Write_Command(lcd_instance,CMD_LCD_Begin_AT_Seconde_Raw + column);
-        break;
-    default:
-        break;
+        Write_Command(lcd_instance,Lines_command[Raw] + column);
+    }else
+    {
+        return ;
     }
+    
 }
 
 /**
@@ -281,27 +264,22 @@ void Jump_to_coordinator(const LCD_16_2 *lcd_instance,unsigned char column,En_Lc
  * @param[in] lcd_instance The lcd_instance data structure containing the port and pins to be configured
  * @param command command value
  */
-void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
+void Write_Command( LCD_16_2 *lcd_instance,unsigned char command)
 {
     // Check_BF(lcd_instance);
     uint32_t temp = lcd_instance->Data_Port->GPIO_ODR;
     temp &= ~(lcd_instance->Data_Pin);
-    uint8_t counter = 0, temp_command = 0;
-    for(counter = 0; counter < GPIO_PIN_NUMBER; counter++)
-    {
-        if ((1 << counter) & lcd_instance->Data_Pin)
-            break;   
-    }
+    uint8_t temp_command = 0;
 
     #ifdef LCD_8_Bit       
-        temp |= (uint32_t)command << counter;
+        temp |= (uint32_t)command << lcd_instance->count_of_first_pin;
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
     
     #endif
     
     #ifdef LCD_4_Bit
         temp_command = command >> 4;
-        temp |= (uint32_t)(temp_command << counter);
+        temp |= (uint32_t)(temp_command << lcd_instance->count_of_first_pin);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
         Reset_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
         Reset_pin(lcd_instance->R_W_Port,lcd_instance->R_W_Pin);  
@@ -312,7 +290,7 @@ void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
         temp &= ~(lcd_instance->Data_Pin);
         temp_command = command & (uint8_t)0x0F;
         // temp_command &= (uint8_t)0xF0;
-        temp |= (uint32_t)(temp_command << counter);
+        temp |= (uint32_t)(temp_command << lcd_instance->count_of_first_pin);
         Set_GPIO_Value(lcd_instance->Data_Port,temp);
 
     #endif
@@ -331,7 +309,7 @@ void Write_Command(const LCD_16_2 *lcd_instance,unsigned char command)
  * @NOTE : Can only be used for one row
  *       : When this function is used, it is forbidden to use other printing functions
  */
-void write_with_move(const LCD_16_2 *lcd_instance,char *base,En_Lcd_Raw Raw,unsigned char buffersize)
+void write_with_move( LCD_16_2 *lcd_instance,char *base,En_Lcd_Raw Raw,unsigned char buffersize)
 {
     static char *base_temp = NULL;
     static char *till_temp = NULL;
