@@ -38,13 +38,13 @@
      <ITEM name="VSplitter1Pos">238</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="128" flags="00008023" y="189" h="250" pid="0" iid="2">
+   <POPUP w="450" x="154" flags="00008023" y="262" h="250" pid="0" iid="2">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="901" flags="00000023" y="220" h="250" pid="0" iid="4">
+   <POPUP w="450" x="847" flags="00000023" y="460" h="250" pid="0" iid="4">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>

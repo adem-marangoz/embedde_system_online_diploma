@@ -503,7 +503,7 @@ uint16_t * SPI_Tx_Rx_Char(St_SPI_API *SPIx , uint16_t *Rx_buffer, uint16_t *Tx_b
         while(!(SPIx->SPI_Inst->SPI_SR & (1 << RXNE)));
     
     // Receive The Data form SPI Data Register
-    *Tx_buffer = SPIx->SPI_Inst->SPI_DR;
+    *Rx_buffer = SPIx->SPI_Inst->SPI_DR;
 
     return Tx_buffer;
 }

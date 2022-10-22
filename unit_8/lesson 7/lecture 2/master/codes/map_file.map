@@ -322,27 +322,27 @@ LOAD linker stubs
  .debug_line    0x00000000000025fe      0x41e Stm32f10xx_GPIO.o
  .debug_line    0x0000000000002a1c      0x2cc Stm32f10xx_RCC.o
 
-.debug_str      0x0000000000000000     0x176b
- .debug_str     0x0000000000000000      0x2a9 Key_pad_Driver.o
-                                        0x30b (size before relaxing)
- .debug_str     0x00000000000002a9      0x193 LCD_Driver.o
-                                        0x3cf (size before relaxing)
- .debug_str     0x000000000000043c      0x76a main.o
-                                        0xa5b (size before relaxing)
- .debug_str     0x0000000000000ba6       0x77 Seven_Segment.o
-                                        0x293 (size before relaxing)
- .debug_str     0x0000000000000c1d       0x7f startup.o
-                                        0x1d3 (size before relaxing)
- .debug_str     0x0000000000000c9c      0x4ad Stm32f10x_SPI.o
-                                        0xd23 (size before relaxing)
- .debug_str     0x0000000000001149      0x210 Stm32f10x_UART.o
+.debug_str      0x0000000000000000     0x1712
+ .debug_str     0x0000000000000000      0x2ba Key_pad_Driver.o
+                                        0x31c (size before relaxing)
+ .debug_str     0x00000000000002ba      0x193 LCD_Driver.o
+                                        0x3e0 (size before relaxing)
+ .debug_str     0x000000000000044d      0x76a main.o
+                                        0xa6c (size before relaxing)
+ .debug_str     0x0000000000000bb7       0x77 Seven_Segment.o
+                                        0x2a4 (size before relaxing)
+ .debug_str     0x0000000000000c2e       0x7f startup.o
+                                        0x1e4 (size before relaxing)
+ .debug_str     0x0000000000000cad      0x4ad Stm32f10x_SPI.o
+                                        0xd34 (size before relaxing)
+ .debug_str     0x000000000000115a      0x1a6 Stm32f10x_UART.o
                                         0xedb (size before relaxing)
- .debug_str     0x0000000000001359      0x28b Stm32f10xx_EXTI.o
-                                        0x814 (size before relaxing)
- .debug_str     0x00000000000015e4       0xee Stm32f10xx_GPIO.o
-                                        0x3a3 (size before relaxing)
- .debug_str     0x00000000000016d2       0x99 Stm32f10xx_RCC.o
-                                        0x2b0 (size before relaxing)
+ .debug_str     0x0000000000001300      0x28b Stm32f10xx_EXTI.o
+                                        0x825 (size before relaxing)
+ .debug_str     0x000000000000158b       0xee Stm32f10xx_GPIO.o
+                                        0x3b4 (size before relaxing)
+ .debug_str     0x0000000000001679       0x99 Stm32f10xx_RCC.o
+                                        0x2c1 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
  .comment       0x0000000000000000       0x53 Key_pad_Driver.o

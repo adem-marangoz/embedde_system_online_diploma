@@ -144,6 +144,7 @@ void config(void)
         gpio_config.Mode = GPIO_MODE_OUTPUT_PP ;
         Init_GPIO(GPIOA,&gpio_config);
         Set_pin(GPIOA, GPIO_PIN_4);
+        // Reset_pin(GPIOA, GPIO_PIN_4);
     #else
         gpio_config.Speed = GPIO_SPEED_INPUT_Mode;
         gpio_config.Mode = GPIO_MODE_AF_INPUT;
