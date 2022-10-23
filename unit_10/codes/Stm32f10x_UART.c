@@ -439,9 +439,9 @@ __weak void Rx_CallBack_UART(St_Uart_API *UARTx)
 {
     Receive_Char_Uart(UART1, Rx_Buff,Disable);
     Send_Char_Uart(UART1, Rx_Buff,Enable);
-    Reset_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
-    SPI_Tx_Rx_Char(&SPIx,Rx_Buff1,Rx_Buff,SPI_Pol_Enable);
-    Set_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
+    // Reset_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
+    // SPI_Tx_Rx_Char(&SPIx,Rx_Buff1,Rx_Buff,SPI_Pol_Enable);
+    // Set_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
     UNUSED(UARTx);
 }
 

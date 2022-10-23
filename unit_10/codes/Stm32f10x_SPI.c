@@ -19,6 +19,7 @@
 extern St_SPI_API spi1_config;
 extern St_SPI_API spi2_config;
 extern St_SPI_API spi3_config;
+extern uint16_t Rx_Buff[10];
 //==============================================================================
 
 //______________________________ Local Function ________________________________
@@ -181,7 +182,7 @@ uint16_t SPI_Send_Char(St_SPI_API *SPIx,uint16_t *Tx_buffer ,enum En_SPI_polling
     SPIx->SPI_Inst->SPI_DR = *Tx_buffer;
     
 
-    return *Tx_buffer;
+    return 0;
 }
 
 
@@ -247,7 +248,7 @@ uint16_t * SPI_Receive_String(St_SPI_API *SPIx , uint16_t *Rx_buffer, uint8_t le
     static uint8_t counter = 0;
     while(counter != len)
     {
-        SPI_Send_Char(SPIx,Rx_buffer,polling);
+        SPI_Receive_Char(SPIx,Rx_buffer,polling);
         Rx_buffer++;
         counter++;
     }

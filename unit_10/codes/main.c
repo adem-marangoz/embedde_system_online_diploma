@@ -55,15 +55,24 @@ uint16_t Rx_Buff1[10] = {0};
 int main(void)
 {
     config(); // config RCC and GPIO
-    // uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
-    // Send_String_Uart(UART1, Tx_Buff,Enable);
-    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0001,'a');
-
+    uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
+    Send_String_Uart(UART1, Tx_Buff,Enable);
+    // Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
+    // delay_us(1000);
+    // uint8_t temp = 'a';
+    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0001,temp);
+    // delay_us(1000);
+    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0002,temp);
+    // delay_us(1000);
+    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0003,temp);
+    // delay_us(1000);
+    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0006,temp);
+    // test(&EEPORM_25xx_config);
     uint16_t counter_add = 0;
     while (1)
     {
-        
+        // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0007,'e');
+        // delay_us(1000);
     }
     
     return 1;
@@ -133,15 +142,15 @@ void config(void)
 
 
     // _________________________ Config UART_Driver ____________________________
-    // uart1_config.baudrate = (uint32_t)115200;
-    // uart1_config.Hw_Flow_CTRL = CTS_RTS_None;
-    // uart1_config.Mode = Enable_RX_Tx;
-    // uart1_config.Parity = Parity_None;
-    // uart1_config.Stop_bit = Stop_1_bit;
-    // uart1_config.Word_Len = Payload_8_bit;
-    // uart1_config.UARTx = UART1;
-    // uart1_config.interrupt = En_RX_Inter ;
-    // Init_Uart(&uart1_config);
+    uart1_config.baudrate = (uint32_t)115200;
+    uart1_config.Hw_Flow_CTRL = CTS_RTS_None;
+    uart1_config.Mode = Enable_RX_Tx;
+    uart1_config.Parity = Parity_None;
+    uart1_config.Stop_bit = Stop_1_bit;
+    uart1_config.Word_Len = Payload_8_bit;
+    uart1_config.UARTx = UART1;
+    uart1_config.interrupt = En_RX_Inter ;
+    Init_Uart(&uart1_config);
     //==========================================================================
 
 
