@@ -1,7 +1,7 @@
 /**
  * @file EEPROM_25xx256.c
  * @author adem alnajjar (adem.alnajjar95@gmail.com)
- * @brief 
+ * @brief 25xx2567 eeprom
  * @version 0.1
  * @date 2022-10-21
  * 
