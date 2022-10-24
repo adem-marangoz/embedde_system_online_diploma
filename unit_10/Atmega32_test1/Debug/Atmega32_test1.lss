@@ -730,7 +730,7 @@ uint8_t Init_PIR(St_PIR_Sensor_Typedef *Instance)
  4c6:	50 c0       	rjmp	.+160    	; 0x568 <Init_PIR+0xd0>
     {
         config_i_o.mode = Any_Ch_Ex_Int;
- 4c8:	83 e8       	ldi	r24, 0x83	; 131
+ 4c8:	81 e8       	ldi	r24, 0x81	; 129
  4ca:	8a 83       	std	Y+2, r24	; 0x02
         if((Instance->Input_Pin == PIN_2) && (Instance->Input_Port == PORT_D))
  4cc:	8c 81       	ldd	r24, Y+4	; 0x04
