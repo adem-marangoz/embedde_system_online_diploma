@@ -37,19 +37,26 @@ unsigned char Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t)
 
 			if((GPIO_config_t->mode & EXTI_Mask) == EXTI_Mask)
 			{
-				if ((io_current == PIN_0) || (io_current == PIN_1))
+				if (GPIO == PORT_D)
 				{
 					temp = MCUCR;
-					temp &= (~((GPIO_config_t->mode & EXTI_Mask) << pos*0x02));
-					temp |= ((GPIO_config_t->mode & EXTI_Mask) << pos*0x02);
+					if(io_current == PIN_2)
+					{
+						temp &= 0xFC;
+						temp |= GPIO_config_t->mode & 0x03; 
+					}else if (io_current == PIN_3)
+					{
+						temp &= 0xF3;
+						temp |= (GPIO_config_t->mode << 2) & 0x0C;
+					}
 					MCUCR = temp;
 				}
 
-				if(io_current == PIN_2)
+				if((io_current == PIN_2) && GPIO == PORT_B)
 				{
 					temp = MCUCSR;
-					temp &= (~((GPIO_config_t->mode & EXTI_2_Mask) << 0x05));
-					temp |= ((GPIO_config_t->mode & EXTI_2_Mask) << 0x05);
+					temp &= (~((GPIO_config_t->mode & EXTI_2_Mask) << 0x06));
+					temp |= ((GPIO_config_t->mode & EXTI_2_Mask) << 0x06);
 					MCUCSR = temp;
 				}
 			}

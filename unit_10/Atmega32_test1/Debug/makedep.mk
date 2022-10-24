@@ -16,6 +16,8 @@ lib\Src\LCD_16_2.c
 
 lib\Src\Max7221_driver.c
 
+lib\Src\PIR_Sensor_Driver.c
+
 lib\Src\SPI_driver.c
 
 lib\Src\Time0.c

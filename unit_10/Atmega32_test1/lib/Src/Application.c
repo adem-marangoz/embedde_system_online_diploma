@@ -25,6 +25,7 @@
 #include "Time0.h"
 #include "ADC.h"
 #include <stdlib.h>
+#include "PIR_Sensor_Driver.h"
 
 
 /**
@@ -49,6 +50,7 @@ volatile St_Key_pad key_pad = {0};
 St_SPI_API spi_confige = {0};
 St_I2C_API i2c_confige = {0};
 St_ADC_API adc1_config = {0};
+St_PIR_Sensor_Typedef Pir_config = {0};
 //==============================================================================
 
 //_____________________________ Local Variables ________________________________
@@ -62,57 +64,63 @@ uint8_t R_msg[16] = {0};
 
 void init(void)
 {
-// Config LCD
-	Lcd_config.Data_Port = PORT_B;
-	Lcd_config.Enable_Port = PORT_D;
-	Lcd_config.RS_Port = PORT_D;
-	Lcd_config.R_W_Port = PORT_D;
-	Lcd_config.Enable_Pin = PIN_0;
-	Lcd_config.R_W_Pin = PIN_1;
-	Lcd_config.RS_Pin = PIN_2;
-	LCD_init(&Lcd_config);
+//------------------------------ Config LCD ------------------------------------
+	// Lcd_config.Data_Port = PORT_B;
+	// Lcd_config.Enable_Port = PORT_D;
+	// Lcd_config.RS_Port = PORT_D;
+	// Lcd_config.R_W_Port = PORT_D;
+	// Lcd_config.Enable_Pin = PIN_0;
+	// Lcd_config.R_W_Pin = PIN_1;
+	// Lcd_config.RS_Pin = PIN_2;
+	// LCD_init(&Lcd_config);
+//==============================================================================
 
 
-// Config ADC
-	adc1_config.Channel = CH_7;
-	adc1_config.Freq = ADC_SCALER_64;
-	adc1_config.Vref = VREF_AVCC;	
-	ADC_Init(&adc1_config);
+//------------------------------ Config ADC ------------------------------------
+	// adc1_config.Channel = CH_7;
+	// adc1_config.Freq = ADC_SCALER_64;
+	// adc1_config.Vref = VREF_AVCC;	
+	// ADC_Init(&adc1_config);
+//==============================================================================
+
+
+// ---------------------------- Normal Output ----------------------------------
+	GPIO_config config_i_o = {0};
+	config_i_o.pin = PIN_0;
+	config_i_o.mode = OUTPUT;
+	Init_GPIO(PORT_A,&config_i_o);
+// =============================================================================
+
+// ---------------------------- PIR Sensor -------------------------------------
+	Pir_config.Input_Port = PORT_B;
+	Pir_config.Input_Pin = PIN_2;
+	Pir_config.method = interrupt;
+	Init_PIR(&Pir_config);
+
+//==============================================================================
 
 }
 
-uint16_t Adc_value = 0;
-uint8_t general[17];
-uint16_t voltage;
-uint8_t Pre ;
-uint8_t charge ;
 void program(void)
 { 	
-	// Read input voltage and calculate as voltage and Percentage 
-	Adc_value = ADC_Read(&adc1_config);
-	voltage = ADC_Read_Volt(&adc1_config, Adc_value);
-	Pre = voltage/50;
-
-	
-	snprintf(general, 17,"%d %dmV %d%%",Adc_value, voltage, Pre);
-	general[16] = '#';
-
-	Jump_to_coordinator(&Lcd_config,0,First_R);
-	Write_String_Stop_with_Character(&Lcd_config, general, '#');
-
-	for(int i = 0; i < 16; i++){general[i] = 0;}
-	charge = Pre/6;
-	Jump_to_coordinator(&Lcd_config,0,Seconde_R);
-	for(int i = 0 ; i < 16; i++)
-	{
-		if(i < charge)
-		{
-			Write_Character(&Lcd_config, 0xFF);
-		}else
-		{
-			Write_Character(&Lcd_config, 0);
-		}
-	}
 
 }
 
+
+
+ISR(INT0_vect)
+{
+    Toggle_pin(PORT_A,PIN_0);
+}
+
+
+ISR(INT1_vect)
+{
+    Toggle_pin(PORT_A,PIN_0);
+}
+
+
+ISR(INT2_vect)
+{
+    Write_Pin(PORT_A,PIN_0, High);
+}

@@ -160,6 +160,9 @@
     <Compile Include="lib\Inc\Max7221_driver.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\Inc\PIR_Sensor_Driver.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\Inc\SPI_driver.h">
       <SubType>compile</SubType>
     </Compile>
@@ -191,6 +194,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Src\Max7221_driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\Src\PIR_Sensor_Driver.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Src\SPI_driver.c">

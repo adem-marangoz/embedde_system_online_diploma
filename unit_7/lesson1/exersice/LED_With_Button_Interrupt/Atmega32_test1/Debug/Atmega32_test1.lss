@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000114  00000000  00000000  00001a88  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004f6  00000000  00000000  00001b9c  2**0
+ 10 .debug_str    00000486  00000000  00000000  00001b9c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000422  00000000  00000000  00002092  2**0
+ 11 .debug_loc    00000422  00000000  00000000  00002022  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000078  00000000  00000000  000024b4  2**0
+ 12 .debug_ranges 00000078  00000000  00000000  00002444  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -221,8 +221,16 @@ ISR(INT2_vect)
  144:	18 95       	reti
 
 00000146 <Init_GPIO>:
+
+#include "EXTI.h"
+#include "GPIO.h"
+
+uint8_t Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t)
+{
  146:	dc 01       	movw	r26, r24
  148:	fb 01       	movw	r30, r22
+  
+    if(!(Check_PORT(GPIO))){return 0;}
  14a:	89 33       	cpi	r24, 0x39	; 57
  14c:	91 05       	cpc	r25, r1
  14e:	09 f4       	brne	.+2      	; 0x152 <Init_GPIO+0xc>
@@ -240,6 +248,12 @@ ISR(INT2_vect)
  166:	58 c0       	rjmp	.+176    	; 0x218 <Init_GPIO+0xd2>
  168:	90 e0       	ldi	r25, 0x00	; 0
  16a:	51 c0       	rjmp	.+162    	; 0x20e <Init_GPIO+0xc8>
+	uint8_t io_position = 0;
+	uint8_t io_current = 0;
+	uint8_t temp = 0;
+	for(uint8_t pos = 0 ; pos < GPIO_Number ; pos++)
+	{
+		io_position = 0x01 << pos;
  16c:	69 2f       	mov	r22, r25
  16e:	70 e0       	ldi	r23, 0x00	; 0
  170:	21 e0       	ldi	r18, 0x01	; 1
@@ -250,16 +264,23 @@ ISR(INT2_vect)
  17a:	33 1f       	adc	r19, r19
  17c:	0a 94       	dec	r0
  17e:	e2 f7       	brpl	.-8      	; 0x178 <Init_GPIO+0x32>
+		io_current = io_position & GPIO_config_t->pin;
  180:	30 81       	ld	r19, Z
  182:	32 23       	and	r19, r18
+		if(io_position == io_current)
  184:	32 13       	cpse	r19, r18
  186:	3c c0       	rjmp	.+120    	; 0x200 <Init_GPIO+0xba>
+		{
+			if(GPIO_config_t->mode == OUTPUT)
  188:	41 81       	ldd	r20, Z+1	; 0x01
  18a:	41 30       	cpi	r20, 0x01	; 1
  18c:	89 f4       	brne	.+34     	; 0x1b0 <Init_GPIO+0x6a>
+			{
+				temp = GPIO->DDRx;
  18e:	11 96       	adiw	r26, 0x01	; 1
  190:	8c 91       	ld	r24, X
  192:	11 97       	sbiw	r26, 0x01	; 1
+				temp &= (~(GPIO_config_t->mode << pos));
  194:	50 e0       	ldi	r21, 0x00	; 0
  196:	09 2e       	mov	r0, r25
  198:	02 c0       	rjmp	.+4      	; 0x19e <Init_GPIO+0x58>
@@ -270,18 +291,28 @@ ISR(INT2_vect)
  1a2:	24 2f       	mov	r18, r20
  1a4:	20 95       	com	r18
  1a6:	82 23       	and	r24, r18
+				temp |= (GPIO_config_t->mode << pos);
  1a8:	48 2b       	or	r20, r24
+				GPIO->DDRx = temp;
  1aa:	11 96       	adiw	r26, 0x01	; 1
  1ac:	4c 93       	st	X, r20
  1ae:	11 97       	sbiw	r26, 0x01	; 1
+			}
+
+			if((GPIO_config_t->mode & EXTI_Mask) == EXTI_Mask)
  1b0:	41 81       	ldd	r20, Z+1	; 0x01
  1b2:	44 23       	and	r20, r20
  1b4:	2c f5       	brge	.+74     	; 0x200 <Init_GPIO+0xba>
+			{
+				if ((io_current == PIN_0) || (io_current == PIN_1))
  1b6:	8f ef       	ldi	r24, 0xFF	; 255
  1b8:	83 0f       	add	r24, r19
  1ba:	82 30       	cpi	r24, 0x02	; 2
  1bc:	78 f4       	brcc	.+30     	; 0x1dc <Init_GPIO+0x96>
+				{
+					temp = MCUCR;
  1be:	85 b7       	in	r24, 0x35	; 53
+					temp &= (~((GPIO_config_t->mode & EXTI_Mask) << pos*0x02));
  1c0:	40 78       	andi	r20, 0x80	; 128
  1c2:	50 e0       	ldi	r21, 0x00	; 0
  1c4:	66 0f       	add	r22, r22
@@ -294,11 +325,19 @@ ISR(INT2_vect)
  1d2:	24 2f       	mov	r18, r20
  1d4:	20 95       	com	r18
  1d6:	82 23       	and	r24, r18
+					temp |= ((GPIO_config_t->mode & EXTI_Mask) << pos*0x02);
  1d8:	48 2b       	or	r20, r24
+					MCUCR = temp;
  1da:	45 bf       	out	0x35, r20	; 53
+				}
+
+				if(io_current == PIN_2)
  1dc:	34 30       	cpi	r19, 0x04	; 4
  1de:	81 f4       	brne	.+32     	; 0x200 <Init_GPIO+0xba>
+				{
+					temp = MCUCSR;
  1e0:	34 b7       	in	r19, 0x34	; 52
+					temp &= (~((GPIO_config_t->mode & EXTI_2_Mask) << 0x05));
  1e2:	81 81       	ldd	r24, Z+1	; 0x01
  1e4:	82 78       	andi	r24, 0x82	; 130
  1e6:	28 2f       	mov	r18, r24
@@ -308,12 +347,20 @@ ISR(INT2_vect)
  1ee:	20 95       	com	r18
  1f0:	42 2f       	mov	r20, r18
  1f2:	43 23       	and	r20, r19
+					temp |= ((GPIO_config_t->mode & EXTI_2_Mask) << 0x05);
  1f4:	50 e2       	ldi	r21, 0x20	; 32
  1f6:	85 9f       	mul	r24, r21
  1f8:	90 01       	movw	r18, r0
  1fa:	11 24       	eor	r1, r1
  1fc:	24 2b       	or	r18, r20
+					MCUCSR = temp;
  1fe:	24 bf       	out	0x34, r18	; 52
+    if(!(Check_PORT(GPIO))){return 0;}
+
+	uint8_t io_position = 0;
+	uint8_t io_current = 0;
+	uint8_t temp = 0;
+	for(uint8_t pos = 0 ; pos < GPIO_Number ; pos++)
  200:	9f 5f       	subi	r25, 0xFF	; 255
  202:	05 c0       	rjmp	.+10     	; 0x20e <Init_GPIO+0xc8>
  204:	90 e0       	ldi	r25, 0x00	; 0
@@ -324,12 +371,35 @@ ISR(INT2_vect)
  20e:	98 30       	cpi	r25, 0x08	; 8
  210:	08 f4       	brcc	.+2      	; 0x214 <Init_GPIO+0xce>
  212:	ac cf       	rjmp	.-168    	; 0x16c <Init_GPIO+0x26>
+					MCUCSR = temp;
+				}
+			}
+		}
+	}
+    return 1;
  214:	81 e0       	ldi	r24, 0x01	; 1
  216:	08 95       	ret
+#include "GPIO.h"
+
+uint8_t Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t)
+{
+  
+    if(!(Check_PORT(GPIO))){return 0;}
  218:	80 e0       	ldi	r24, 0x00	; 0
+				}
+			}
+		}
+	}
+    return 1;
+}
  21a:	08 95       	ret
 
 0000021c <Write_Pin>:
+
+
+uint8_t Write_Pin(St_GPIO *GPIO, uint8_t Pin,St_Pin_State state)
+{
+    if(!(Check_PORT(GPIO))){return 0;}
  21c:	89 33       	cpi	r24, 0x39	; 57
  21e:	91 05       	cpc	r25, r1
  220:	49 f0       	breq	.+18     	; 0x234 <Write_Pin+0x18>
@@ -342,22 +412,47 @@ ISR(INT2_vect)
  22e:	80 33       	cpi	r24, 0x30	; 48
  230:	91 05       	cpc	r25, r1
  232:	79 f4       	brne	.+30     	; 0x252 <Write_Pin+0x36>
+
+	if(state == High){GPIO->PORTx |= Pin;}
  234:	41 30       	cpi	r20, 0x01	; 1
  236:	31 f4       	brne	.+12     	; 0x244 <Write_Pin+0x28>
  238:	fc 01       	movw	r30, r24
  23a:	22 81       	ldd	r18, Z+2	; 0x02
  23c:	62 2b       	or	r22, r18
  23e:	62 83       	std	Z+2, r22	; 0x02
+	else {GPIO->PORTx &= ~(Pin);}
+
+	return 1;
  240:	81 e0       	ldi	r24, 0x01	; 1
  242:	08 95       	ret
+uint8_t Write_Pin(St_GPIO *GPIO, uint8_t Pin,St_Pin_State state)
+{
+    if(!(Check_PORT(GPIO))){return 0;}
+
+	if(state == High){GPIO->PORTx |= Pin;}
+	else {GPIO->PORTx &= ~(Pin);}
  244:	60 95       	com	r22
  246:	fc 01       	movw	r30, r24
  248:	22 81       	ldd	r18, Z+2	; 0x02
  24a:	62 23       	and	r22, r18
  24c:	62 83       	std	Z+2, r22	; 0x02
+
+	return 1;
  24e:	81 e0       	ldi	r24, 0x01	; 1
  250:	08 95       	ret
+}
+
+
+uint8_t Write_Pin(St_GPIO *GPIO, uint8_t Pin,St_Pin_State state)
+{
+    if(!(Check_PORT(GPIO))){return 0;}
  252:	80 e0       	ldi	r24, 0x00	; 0
+
+	if(state == High){GPIO->PORTx |= Pin;}
+	else {GPIO->PORTx &= ~(Pin);}
+
+	return 1;
+}
  254:	08 95       	ret
 
 00000256 <main>:

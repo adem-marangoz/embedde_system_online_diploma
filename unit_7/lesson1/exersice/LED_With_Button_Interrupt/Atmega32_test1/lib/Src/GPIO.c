@@ -10,8 +10,9 @@
  * 
  */
 
-#include "GPIO.h"
+
 #include "EXTI.h"
+#include "GPIO.h"
 
 uint8_t Init_GPIO(St_GPIO *GPIO,GPIO_config *GPIO_config_t)
 {
