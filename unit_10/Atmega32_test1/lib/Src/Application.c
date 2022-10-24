@@ -92,7 +92,7 @@ void init(void)
 // =============================================================================
 
 // ---------------------------- PIR Sensor -------------------------------------
-	Pir_config.Input_Port = PORT_B;
+	Pir_config.Input_Port = PORT_D;
 	Pir_config.Input_Pin = PIN_2;
 	Pir_config.method = interrupt;
 	Init_PIR(&Pir_config);
@@ -122,5 +122,5 @@ ISR(INT1_vect)
 
 ISR(INT2_vect)
 {
-    Write_Pin(PORT_A,PIN_0, High);
+    Toggle_pin(PORT_A,PIN_0);
 }
