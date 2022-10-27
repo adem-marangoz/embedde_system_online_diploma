@@ -57,17 +57,16 @@ int main(void)
     config(); // config RCC and GPIO
     uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
     Send_String_Uart(UART1, Tx_Buff,Enable);
-    // Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    // delay_us(1000);
-    // uint8_t temp = 'a';
-    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0001,temp);
-    // delay_us(1000);
-    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0002,temp);
-    // delay_us(1000);
-    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0003,temp);
-    // delay_us(1000);
-    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0006,temp);
-    // test(&EEPORM_25xx_config);
+    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
+    delay_us(1000);
+    uint8_t temp = 'a';
+    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0001,temp);
+    delay_us(1000);
+    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0002,temp);
+    delay_us(1000);
+    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0003,temp);
+    delay_us(1000);
+    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0006,temp);
     uint16_t counter_add = 0;
     while (1)
     {

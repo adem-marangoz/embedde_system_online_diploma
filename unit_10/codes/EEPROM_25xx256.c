@@ -48,7 +48,7 @@ void Init_EEPROM_25x(St_EEPROM_25xx256_Typedef *EEPROM_inst)
     SPIx.Frame_format = MSB_Trans;
     SPIx.Data_Legnth_format = Data_8_bit;
     SPIx.CLK_Phase_Polarity = Setup_Fall_Sample_Ris;
-    SPIx.Rx_Tx_interrupt = SPI_interrupt_Dis;
+    SPIx.Rx_Tx_interrupt = Tx_Interrupt_En;
     Init_SPI(&SPIx);
 
     // Config NSS Pin
@@ -60,6 +60,7 @@ void Init_EEPROM_25x(St_EEPROM_25xx256_Typedef *EEPROM_inst)
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
+    
 
 }
 
@@ -90,7 +91,8 @@ uint8_t Status_EEPROM(St_EEPROM_25xx256_Typedef *EEPROM_inst)
     SPI_Tx_Rx_Char(&SPIx, &status, &data, SPI_Pol_Enable);
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
-    return status;
+    
+    return (uint8_t)status;
 }
 
 
@@ -102,7 +104,7 @@ uint8_t Status_EEPROM(St_EEPROM_25xx256_Typedef *EEPROM_inst)
  */
 uint8_t Busy_EEPROM(St_EEPROM_25xx256_Typedef *EEPROM_inst)
 {
-    uint8_t busy = Status_EEPROM();
+    uint8_t busy = Status_EEPROM(EEPROM_inst);
     return (busy & WIP);
 }
 
@@ -130,12 +132,14 @@ uint8_t Write_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t 
     uint16_t Add_temp[2];
     Add_temp[0] = Add >> 8;
     Add_temp[1] = Add & 0x00FF;
-    SPI_Send_String(&SPIx , Add_temp, 2, SPI_Pol_Enable);
+    // SPI_Send_String(&SPIx , Add_temp, 2, SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(&SPIx,Rx_Buff,&Add_temp[0],SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(&SPIx,Rx_Buff,&Add_temp[1],SPI_Pol_Enable);
 
     // Send 1 byte data
-    data &= 0x00FF;
-    // SPI_Tx_Rx_Char(&SPIx,Rx_Buff,&data1,SPI_Pol_Enable);
-    SPI_Send_Char(&SPIx, &data, SPI_Pol_Enable);
+    uint16_t data1 = data & 0x00FF;
+    SPI_Tx_Rx_Char(&SPIx,Rx_Buff,&data1,SPI_Pol_Enable);
+    // SPI_Send_Char(&SPIx, &data, SPI_Pol_Enable);
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
@@ -172,6 +176,7 @@ uint8_t Write_Bytes_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
+    
 
     return 1;
 }
@@ -194,6 +199,7 @@ uint8_t Read_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t A
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
+    
 
     return 1;
 }
@@ -210,7 +216,8 @@ void Enable_Write_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst)
     
     // Send Address
     uint16_t data_temp = En_Write_CMD;
-    SPI_Send_Char(&SPIx,(uint16_t *)&data_temp,SPI_Pol_Enable);
+    // SPI_Send_Char(&SPIx,(uint16_t *)&data_temp,SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(&SPIx,Rx_Buff ,(uint16_t *)&data_temp,SPI_Pol_Enable);
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);

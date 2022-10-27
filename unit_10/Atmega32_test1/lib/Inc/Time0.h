@@ -112,8 +112,12 @@ typedef enum
 {
     Normal_Com_Mode = 0,
     Toggle_OC0 = 16,
-    Clear_OC0,
-    Set_OC0
+    Clear_OC0 = 32,
+    Set_OC0 = 48,
+    OC0 disconnected = 0,
+    Reserved = 16,
+    Clean_OC0_up_Set_down = 32,
+    Set_OC0_up_Clean_down = 48,
 }En_Compare_Match_Mode;
 
 typedef enum
@@ -133,8 +137,8 @@ typedef enum
     Timer_Disable_Int = 0,
     Enable_OUT_Compare_Match_INT,
     Enable_Over_INT,
-    Enable_Com_Over,
-}En_Intrrupt_Mode;
+    Enable_Com_Over_INT
+}En_Intrrupt_Mode; 
 
 //_________________________________ TIMER0_API__________________________________
 typedef struct 
@@ -144,6 +148,7 @@ typedef struct
     En_Intrrupt_Mode Interrupt;
     En_Compare_Match_Mode Com_Mode;
     uint8_t Compare_Time; 
+    uint8_t init_counter_value;
 }St_Timer0_API;
 
 //==============================================================================

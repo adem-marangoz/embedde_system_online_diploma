@@ -31,6 +31,9 @@ uint8_t Timer0_Init(St_Timer0_API *Timerx)
     // Enable/Disable Interrupt
     TIMSK |= Timerx->Interrupt;
 
+    // Init counter value
+    TCNT0 = Timerx->init_counter_value;
+    
     // Config Timer0
     TCCR0 |= (Timerx->Mode) | (Timerx->Com_Mode) | (Timerx->CLK_Mode);
     
@@ -95,11 +98,11 @@ uint8_t Timer0_Get_Counter_Val(St_Timer0_API *Timerx, uint8_t *Count_val)
     return 1;
 }
 
-volatile uint8_t counter = 0;
+
+
 ISR(TIMER0_COMP_vect)
 {
     counter++;
-    Write_Port_Register(PORT_A,counter);
 }
 
 
