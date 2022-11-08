@@ -114,7 +114,7 @@ typedef enum
     Toggle_OC0 = 16,
     Clear_OC0 = 32,
     Set_OC0 = 48,
-    OC0 disconnected = 0,
+    OC0_disconnected = 0,
     Reserved = 16,
     Clean_OC0_up_Set_down = 32,
     Set_OC0_up_Clean_down = 48,

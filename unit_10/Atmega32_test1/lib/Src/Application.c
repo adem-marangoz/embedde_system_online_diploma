@@ -26,6 +26,8 @@
 #include "ADC.h"
 #include <stdlib.h>
 #include "PIR_Sensor_Driver.h"
+#include "Timer1.h"
+#include "Servo_sg90.h"
 
 
 /**
@@ -86,24 +88,34 @@ void init(void)
 
 // ---------------------------- Normal Output ----------------------------------
 	GPIO_config config_i_o = {0};
-	config_i_o.pin = PIN_0;
+	config_i_o.pin = PIN_5;
 	config_i_o.mode = OUTPUT;
-	Init_GPIO(PORT_A,&config_i_o);
+	Init_GPIO(PORT_D,&config_i_o);
 // =============================================================================
 
 // ---------------------------- PIR Sensor -------------------------------------
-	Pir_config.Input_Port = PORT_D;
-	Pir_config.Input_Pin = PIN_2;
-	Pir_config.method = interrupt;
-	Init_PIR(&Pir_config);
+	// Pir_config.Input_Port = PORT_D;
+	// Pir_config.Input_Pin = PIN_2;
+	// Pir_config.method = interrupt;
+	// Init_PIR(&Pir_config);
 
 //==============================================================================
 
-}
+//------------------------------- Servo motor ----------------------------------
+	config_servo_timer();
+//==============================================================================
 
+}
+uint16_t counter = 0;
 void program(void)
 { 	
-
+	Set_angle(999);
+	_delay_ms(1000);
+	Set_angle(1499);
+	_delay_ms(1000);
+	Set_angle(1999);
+	_delay_ms(1000);
+	
 }
 
 

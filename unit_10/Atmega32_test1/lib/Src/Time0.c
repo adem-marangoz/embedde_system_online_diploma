@@ -102,7 +102,7 @@ uint8_t Timer0_Get_Counter_Val(St_Timer0_API *Timerx, uint8_t *Count_val)
 
 ISR(TIMER0_COMP_vect)
 {
-    counter++;
+    
 }
 
 

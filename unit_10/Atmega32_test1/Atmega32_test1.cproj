@@ -163,10 +163,16 @@
     <Compile Include="lib\Inc\PIR_Sensor_Driver.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\Inc\Servo_sg90.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\Inc\SPI_driver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Inc\Time0.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\Inc\Timer1.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Inc\UART_driver.h">
@@ -199,10 +205,16 @@
     <Compile Include="lib\Src\PIR_Sensor_Driver.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\Src\Servo_sg90.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\Src\SPI_driver.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Src\Time0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\Src\Timer1.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Src\UART_driver.c">

@@ -18,9 +18,13 @@ lib\Src\Max7221_driver.c
 
 lib\Src\PIR_Sensor_Driver.c
 
+lib\Src\Servo_sg90.c
+
 lib\Src\SPI_driver.c
 
 lib\Src\Time0.c
+
+lib\Src\Timer1.c
 
 lib\Src\UART_driver.c
 
