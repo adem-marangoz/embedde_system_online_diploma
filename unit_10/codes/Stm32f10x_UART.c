@@ -313,7 +313,7 @@ uint8_t Send_String_Uart(St_UART_Typedef *Inst, uint16_t *msg, enum Polling_mech
     {
         Send_Char_Uart(Inst,msg,PollingEn);
         msg++;
-        delay_us(100);
+        delay_us(10);
     }
     
 }
@@ -439,9 +439,9 @@ __weak void Rx_CallBack_UART(St_Uart_API *UARTx)
 {
     Receive_Char_Uart(UART1, Rx_Buff,Disable);
     Send_Char_Uart(UART1, Rx_Buff,Enable);
-    Reset_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
-    SPI_Tx_Rx_Char(&SPIx,Rx_Buff1,Rx_Buff,SPI_Pol_Enable);
-    Set_pin(EEPORM_25xx_config.GPIOx, EEPORM_25xx_config.NSS_Pin);
+    Reset_pin(GPIOA, GPIO_PIN_4);
+    SPI_Tx_Rx_Char(&spi1_config,Rx_Buff,Rx_Buff,SPI_Pol_Enable);
+    Set_pin(GPIOA, GPIO_PIN_4);
     UNUSED(UARTx);
 }
 

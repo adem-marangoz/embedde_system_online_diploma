@@ -57,22 +57,13 @@ int main(void)
     config(); // config RCC and GPIO
     uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
     Send_String_Uart(UART1, Tx_Buff,Enable);
-    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    delay_us(1000);
-    uint8_t temp = 'a';
-    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0001,temp);
-    delay_us(1000);
-    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0002,temp);
-    delay_us(1000);
-    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0003,temp);
-    delay_us(1000);
-    Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0006,temp);
-    uint16_t counter_add = 0;
+
     while (1)
     {
-        // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config,0x0007,'e');
-        // delay_us(1000);
-    }
+        // Send_String_Uart(UART1, Tx_Buff,Enable);
+        // _delay_ms(100);
+    }    
+    return 0;
     
     return 1;
 }
@@ -148,7 +139,7 @@ void config(void)
     uart1_config.Stop_bit = Stop_1_bit;
     uart1_config.Word_Len = Payload_8_bit;
     uart1_config.UARTx = UART1;
-    uart1_config.interrupt = En_RX_Inter ;
+    uart1_config.interrupt = En_RX_Inter;
     Init_Uart(&uart1_config);
     //==========================================================================
 
@@ -164,37 +155,37 @@ void config(void)
 
 
     //__________________________ Config SPI_Driver _____________________________
-    // spi1_config.SPI_Inst = SPI1 ;
-    // spi1_config.SPI_Mode = Full_Duplex;
-    // spi1_config.BaudRate = FPCLK_div_8;
-    // #if (SPI_Maseter_En == 1)
-    //     spi1_config.Master_Select = SPI_Master;
-    // #else
-    //     spi1_config.Master_Select = SPI_Slave;
-    // #endif
-    // //spi1_config.Half_duplex_Mode = ;
-    // spi1_config.NSS_Hardware_Mode = NSS_Hardware_Output_Dis_MultiMaster_En;
-    // spi1_config.Slave_Select_Software = Software_Mang_Enable;
-    // spi1_config.Frame_format = MSB_Trans;
-    // spi1_config.Data_Legnth_format = Data_8_bit;
-    // spi1_config.CLK_Phase_Polarity = Setup_Fall_Sample_Ris;
-    // spi1_config.Rx_Tx_interrupt = SPI_interrupt_Dis;
-    // Init_SPI(&spi1_config);
+    spi1_config.SPI_Inst = SPI1 ;
+    spi1_config.SPI_Mode = Full_Duplex;
+    spi1_config.BaudRate = FPCLK_div_8;
+    #if (SPI_Maseter_En == 1)
+        spi1_config.Master_Select = SPI_Master;
+    #else
+        spi1_config.Master_Select = SPI_Slave;
+    #endif
+    //spi1_config.Half_duplex_Mode = ;
+    spi1_config.NSS_Hardware_Mode = NSS_Hardware_Output_Dis_MultiMaster_En;
+    spi1_config.Slave_Select_Software = Software_Mang_Enable;
+    spi1_config.Frame_format = MSB_Trans;
+    spi1_config.Data_Legnth_format = Data_8_bit;
+    spi1_config.CLK_Phase_Polarity = Setup_Fall_Sample_Ris;
+    spi1_config.Rx_Tx_interrupt = SPI_interrupt_Dis;
+    Init_SPI(&spi1_config);
     //==========================================================================
 
 
     // _________________ Config NSS PIN As a Normal Pin ________________________
-    // GPIO_InitTypeDef gpio_config = {0};
-    // gpio_config.Pin = GPIO_PIN_4;
-    // #if (SPI_Maseter_En == 1)
-    //     gpio_config.Speed = GPIO_SPEED_FREQ_10MHZ;
-    //     gpio_config.Mode = GPIO_MODE_OUTPUT_PP ;
-    //     Init_GPIO(GPIOA,&gpio_config);
-    //     Set_pin(GPIOA, GPIO_PIN_4);
-    // #else
-    //     gpio_config.Speed = GPIO_SPEED_INPUT_Mode;
-    //     gpio_config.Mode = GPIO_MODE_AF_INPUT;
-    // #endif
+    GPIO_InitTypeDef gpio_config = {0};
+    gpio_config.Pin = GPIO_PIN_4;
+    #if (SPI_Maseter_En == 1)
+        gpio_config.Speed = GPIO_SPEED_FREQ_10MHZ;
+        gpio_config.Mode = GPIO_MODE_OUTPUT_PP ;
+        Init_GPIO(GPIOA,&gpio_config);
+        Set_pin(GPIOA, GPIO_PIN_4);
+    #else
+        gpio_config.Speed = GPIO_SPEED_INPUT_Mode;
+        gpio_config.Mode = GPIO_MODE_AF_INPUT;
+    #endif
     //==========================================================================
 
 
@@ -220,10 +211,10 @@ void config(void)
 
 
     //__________________________ Config EEPORM 25xx ____________________________
-    EEPORM_25xx_config.SPI_Instance = SPI1;
-    EEPORM_25xx_config.GPIOx = GPIOA;
-    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
-    Init_EEPROM_25x(&EEPORM_25xx_config);
+    // EEPORM_25xx_config.SPI_Instance = SPI1;
+    // EEPORM_25xx_config.GPIOx = GPIOA;
+    // EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
+    // Init_EEPROM_25x(&EEPORM_25xx_config);
     //==========================================================================
 
 }

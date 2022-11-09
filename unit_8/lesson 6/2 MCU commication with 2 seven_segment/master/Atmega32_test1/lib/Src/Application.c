@@ -73,10 +73,10 @@ void init(void)
 	SPI_Init(&spi_confige);
 
 // Confige The 7 Segment
-	GPIO_config seven_seg_confige = {0};
-	seven_seg_confige.mode = OUTPUT;
-	seven_seg_confige.pin = PIN_0 | PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 ;
-	Init_GPIO(PORT_D, &seven_seg_confige);
+	// GPIO_config seven_seg_confige = {0};
+	// seven_seg_confige.mode = OUTPUT;
+	// seven_seg_confige.pin = PIN_0 | PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 ;
+	// Init_GPIO(PORT_D, &seven_seg_confige);
 
 // Confige The UART
 	// UART_Config.BuadRate = 9600;

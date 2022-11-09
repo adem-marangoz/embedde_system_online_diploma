@@ -67,16 +67,16 @@ void init(void)
 // Confige The SPI
 	spi_confige.Data_Modes = Sample_Ris_Setup_Fall;
 	spi_confige.Data_Order = Data_Order_MSB;
-	spi_confige.En_interrupt = Dis_SPI_Interrupt;
+	spi_confige.En_interrupt = EN_SPI_Interrupt;
 	spi_confige.Slave_Master = SPI_Slave;
 	spi_confige.SPI_Freq = F_OSC_16;
 	SPI_Init(&spi_confige);
 
 // Confige The 7 Segment
-	GPIO_config seven_seg_confige = {0};
-	seven_seg_confige.mode = OUTPUT;
-	seven_seg_confige.pin = PIN_0 | PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 ;
-	Init_GPIO(PORT_D, &seven_seg_confige);
+	// GPIO_config seven_seg_confige = {0};
+	// seven_seg_confige.mode = OUTPUT;
+	// seven_seg_confige.pin = PIN_0 | PIN_1 | PIN_2 | PIN_3 | PIN_4 | PIN_5 | PIN_6 ;
+	// Init_GPIO(PORT_D, &seven_seg_confige);
 
 // Confige The UART
 	// UART_Config.BuadRate = 9600;

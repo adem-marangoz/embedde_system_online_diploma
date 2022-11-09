@@ -122,3 +122,10 @@ uint8_t SPI_MasterTransmit_ADD_Data(St_SPI_API *SPIx ,uint8_t Add, uint8_t data)
     Write_Pin(DDR_SPI,DD_SS,High);
     return SPDR; 
 }
+
+
+
+ISR(SPI)
+{
+    
+}

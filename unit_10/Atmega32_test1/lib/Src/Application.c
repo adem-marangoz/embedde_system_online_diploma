@@ -87,34 +87,45 @@ void init(void)
 
 
 // ---------------------------- Normal Output ----------------------------------
-	GPIO_config config_i_o = {0};
-	config_i_o.pin = PIN_5;
-	config_i_o.mode = OUTPUT;
-	Init_GPIO(PORT_D,&config_i_o);
+	// GPIO_config config_i_o = {0};
+	// config_i_o.pin = PIN_5;
+	// config_i_o.mode = OUTPUT;
+	// Init_GPIO(PORT_D,&config_i_o);
 // =============================================================================
 
 // ---------------------------- PIR Sensor -------------------------------------
 	// Pir_config.Input_Port = PORT_D;
 	// Pir_config.Input_Pin = PIN_2;
 	// Pir_config.method = interrupt;
-	// Init_PIR(&Pir_config);
+	Init_PIR(&Pir_config);
 
 //==============================================================================
 
 //------------------------------- Servo motor ----------------------------------
-	config_servo_timer();
+	// config_servo_timer();
+//==============================================================================
+
+//--------------------------------- SPI Config ---------------------------------
+spi_confige.Data_Modes = Sample_Ris_Setup_Fall;
+spi_confige.Data_Order = Data_Order_MSB;
+spi_confige.En_interrupt = Dis_SPI_Interrupt;
+spi_confige.Slave_Master = SPI_Master;
+spi_confige.SPI_Freq = F_OSC_16;
+SPI_Init(&spi_confige);
+//==============================================================================
+
+
+//------------------------------ EXti pin config -------------------------------
+GPIO_config config_i_o = {0};
+config_i_o.pin = PIN_2;
+config_i_o.mode = Falling_Ed_Ex_Int;
+Init_GPIO(PORT_D,&config_i_o);
 //==============================================================================
 
 }
 uint16_t counter = 0;
 void program(void)
 { 	
-	Set_angle(999);
-	_delay_ms(1000);
-	Set_angle(1499);
-	_delay_ms(1000);
-	Set_angle(1999);
-	_delay_ms(1000);
 	
 }
 
@@ -122,7 +133,13 @@ void program(void)
 
 ISR(INT0_vect)
 {
-    Toggle_pin(PORT_A,PIN_0);
+    volatile static uint8_t counter = 0;
+	if(counter < 10)
+	{
+		SPI_MasterTransmit_Char(&spi_confige ,numbers[counter]);
+		counter ++;
+		if(counter == 10){counter = 0;}
+	}
 }
 
 
