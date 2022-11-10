@@ -10,17 +10,35 @@
  */
 
 
+//------------------------------- Inculde Files --------------------------------
 #include "SPI_driver.h"
 #include <avr/io.h>
 #include <util/delay.h>
 #include "GPIO.h"
+#include "LCD_16_2.h"
+#include "avr/interrupt.h"
+//==============================================================================
 
 
+//------------------------------ External Objects ------------------------------
+extern St_SPI_API spi_confige;
+extern volatile LCD_16_2 Lcd_config;
+//==============================================================================
+
+
+//------------------------------- Local Objects --------------------------------
+
+//==============================================================================
+
+
+//------------------------------ Generaic Objects ------------------------------
 #define DDR_SPI         PORT_B
 #define DD_SCK          PIN_7
 #define DD_MISO         PIN_6
 #define DD_MOSI         PIN_5
 #define DD_SS           PIN_4
+//==============================================================================
+
 
 /**
  * @brief      : This function is used to initialize the SPI Peripheral
@@ -122,3 +140,4 @@ uint8_t SPI_MasterTransmit_ADD_Data(St_SPI_API *SPIx ,uint8_t Add, uint8_t data)
     Write_Pin(DDR_SPI,DD_SS,High);
     return SPDR; 
 }
+

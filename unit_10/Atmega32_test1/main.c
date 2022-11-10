@@ -8,6 +8,8 @@
 #include <avr/io.h>
 #include <avr/delay.h>
 #include "UART_driver.h"
+#define F_CPU 8000000UL
+
 
 extern void program(void);
 extern void init(void);

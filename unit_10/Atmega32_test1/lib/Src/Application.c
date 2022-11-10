@@ -53,6 +53,7 @@ St_SPI_API spi_confige = {0};
 St_I2C_API i2c_confige = {0};
 St_ADC_API adc1_config = {0};
 St_PIR_Sensor_Typedef Pir_config = {0};
+#define F_CPU 8000000UL
 //==============================================================================
 
 //_____________________________ Local Variables ________________________________
@@ -67,14 +68,14 @@ uint8_t R_msg[16] = {0};
 void init(void)
 {
 //------------------------------ Config LCD ------------------------------------
-	// Lcd_config.Data_Port = PORT_B;
-	// Lcd_config.Enable_Port = PORT_D;
-	// Lcd_config.RS_Port = PORT_D;
-	// Lcd_config.R_W_Port = PORT_D;
-	// Lcd_config.Enable_Pin = PIN_0;
-	// Lcd_config.R_W_Pin = PIN_1;
-	// Lcd_config.RS_Pin = PIN_2;
-	// LCD_init(&Lcd_config);
+	Lcd_config.Data_Port = PORT_A;
+	Lcd_config.Enable_Port = PORT_C;
+	Lcd_config.RS_Port = PORT_C;
+	Lcd_config.R_W_Port = PORT_C;
+	Lcd_config.Enable_Pin = PIN_0;
+	Lcd_config.R_W_Pin = PIN_1;
+	Lcd_config.RS_Pin = PIN_2;
+	LCD_init(&Lcd_config);
 //==============================================================================
 
 
@@ -97,7 +98,7 @@ void init(void)
 	// Pir_config.Input_Port = PORT_D;
 	// Pir_config.Input_Pin = PIN_2;
 	// Pir_config.method = interrupt;
-	Init_PIR(&Pir_config);
+	// Init_PIR(&Pir_config);
 
 //==============================================================================
 
@@ -106,40 +107,45 @@ void init(void)
 //==============================================================================
 
 //--------------------------------- SPI Config ---------------------------------
-spi_confige.Data_Modes = Sample_Ris_Setup_Fall;
-spi_confige.Data_Order = Data_Order_MSB;
-spi_confige.En_interrupt = Dis_SPI_Interrupt;
-spi_confige.Slave_Master = SPI_Master;
-spi_confige.SPI_Freq = F_OSC_16;
-SPI_Init(&spi_confige);
+	spi_confige.Data_Modes = Sample_Ris_Setup_Fall;
+	spi_confige.Data_Order = Data_Order_MSB;
+	spi_confige.En_interrupt = EN_SPI_Interrupt;
+	spi_confige.Slave_Master = SPI_Slave;
+	spi_confige.SPI_Freq = F_OSC_4;
+	SPI_Init(&spi_confige);
 //==============================================================================
 
 
 //------------------------------ EXti pin config -------------------------------
-GPIO_config config_i_o = {0};
-config_i_o.pin = PIN_2;
-config_i_o.mode = Falling_Ed_Ex_Int;
-Init_GPIO(PORT_D,&config_i_o);
+// GPIO_config config_i_o = {0};
+// config_i_o.pin = PIN_2;
+// config_i_o.mode = Falling_Ed_Ex_Int;
+// Init_GPIO(PORT_D,&config_i_o);
 //==============================================================================
-
+	sei();
+	// Write_Character(&Lcd_config,'w');
 }
 uint16_t counter = 0;
+uint8_t temp ;
 void program(void)
 { 	
-	
+	// volatile static uint8_t counter = 0;
+	// if(counter < 10)
+	// {
+		
+    // 	temp = SPI_SlaveReceive_Char(&spi_confige, 0);
+    // 	Write_Character(&Lcd_config, temp);
+	// 	counter ++;
+	// 	if(counter == 10){counter = 0;}
+	// }
+	// _delay_ms(200);
 }
 
 
 
 ISR(INT0_vect)
 {
-    volatile static uint8_t counter = 0;
-	if(counter < 10)
-	{
-		SPI_MasterTransmit_Char(&spi_confige ,numbers[counter]);
-		counter ++;
-		if(counter == 10){counter = 0;}
-	}
+    
 }
 
 
@@ -152,4 +158,12 @@ ISR(INT1_vect)
 ISR(INT2_vect)
 {
     Toggle_pin(PORT_A,PIN_0);
+}
+
+ISR(SPI_STC_vect)
+{
+    uint8_t temp ;
+    temp = SPI_SlaveReceive_Char(&spi_confige, 0);
+    Write_Character(&Lcd_config, temp);
+
 }

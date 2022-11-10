@@ -157,7 +157,7 @@ void config(void)
     //__________________________ Config SPI_Driver _____________________________
     spi1_config.SPI_Inst = SPI1 ;
     spi1_config.SPI_Mode = Full_Duplex;
-    spi1_config.BaudRate = FPCLK_div_8;
+    spi1_config.BaudRate = FPCLK_div_4;
     #if (SPI_Maseter_En == 1)
         spi1_config.Master_Select = SPI_Master;
     #else
@@ -168,7 +168,7 @@ void config(void)
     spi1_config.Slave_Select_Software = Software_Mang_Enable;
     spi1_config.Frame_format = MSB_Trans;
     spi1_config.Data_Legnth_format = Data_8_bit;
-    spi1_config.CLK_Phase_Polarity = Setup_Fall_Sample_Ris;
+    spi1_config.CLK_Phase_Polarity = Sample_Ris_Setup_Fall;
     spi1_config.Rx_Tx_interrupt = SPI_interrupt_Dis;
     Init_SPI(&spi1_config);
     //==========================================================================
@@ -178,7 +178,7 @@ void config(void)
     GPIO_InitTypeDef gpio_config = {0};
     gpio_config.Pin = GPIO_PIN_4;
     #if (SPI_Maseter_En == 1)
-        gpio_config.Speed = GPIO_SPEED_FREQ_10MHZ;
+        gpio_config.Speed = GPIO_SPEED_FREQ_2MHZ;
         gpio_config.Mode = GPIO_MODE_OUTPUT_PP ;
         Init_GPIO(GPIOA,&gpio_config);
         Set_pin(GPIOA, GPIO_PIN_4);
