@@ -37,7 +37,7 @@
 // =============================================================================
 typedef struct 
 {
-    St_SPI_Typedef *SPI_Instance;
+    St_SPI_API *EEPROM_SPI;
     St_GPIO_Typedef *GPIOx;
     uint16_t NSS_Pin;
 }St_EEPROM_25xx256_Typedef;

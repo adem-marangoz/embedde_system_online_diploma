@@ -4,6 +4,7 @@
         "stm32f10xx_rcc.h": "c",
         "eeprom.h": "c",
         "stm32f10xx_i2c.h": "c",
-        "eeprom_25xx256.h": "c"
+        "eeprom_25xx256.h": "c",
+        "stm32_f10xx_systick.h": "c"
     }
 }

@@ -33,7 +33,6 @@ extern St_Uart_API uart3_config;
 extern uint16_t Rx_Buff[10];
 extern uint16_t Rx_Buff1[10];
 extern St_EEPROM_25xx256_Typedef EEPORM_25xx_config;
-extern St_SPI_API SPIx;
 //==============================================================================
 
 

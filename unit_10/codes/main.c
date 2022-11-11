@@ -56,7 +56,14 @@ int main(void)
 {
     config(); // config RCC and GPIO
     uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
-    Send_String_Uart(UART1, Tx_Buff,Enable);
+    uint16_t test[] = {'D' , 'D', 'D', 'D', ' ', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'};
+    // Send_String_Uart(UART1, Tx_Buff,Enable);
+    
+    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
+    // delay_us(10000);
+    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 0xFF);
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13,test);
+
 
     while (1)
     {
@@ -212,8 +219,15 @@ void config(void)
 
     //__________________________ Config EEPORM 25xx ____________________________
     // EEPORM_25xx_config.SPI_Instance = SPI1;
-    // EEPORM_25xx_config.GPIOx = GPIOA;
-    // EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
+    // EEPORM_25xx_config.EEPROM_SPI->SPI_Inst = ;
+    // EEPORM_25xx_config.EEPROM_SPI->SPI_Mode = ;
+    // EEPORM_25xx_config.EEPROM_SPI->BaudRate = ;
+    // EEPORM_25xx_config.EEPROM_SPI->Master_Select = ;
+    // EEPORM_25xx_config.EEPROM_SPI->NSS_Hardware_Mode = ;
+    // EEPORM_25xx_config.EEPROM_SPI->Slave_Select_Software = ;
+    EEPORM_25xx_config.EEPROM_SPI = &spi1_config;
+    EEPORM_25xx_config.GPIOx = GPIOA;
+    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
     // Init_EEPROM_25x(&EEPORM_25xx_config);
     //==========================================================================
 

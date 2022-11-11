@@ -224,12 +224,12 @@ uint16_t * SPI_Send_String(St_SPI_API *SPIx , uint16_t *Tx_buffer ,uint8_t len, 
     static uint8_t counter = 0;
     while(counter != len)
     {
-        SPI_Send_Char(SPIx,Tx_buffer,polling);
+        SPI_Tx_Rx_Char(SPIx, Rx_Buff, Tx_buffer, polling);
         Tx_buffer++;
         counter++;
     }
     counter = 0;
-    while (! ( SPIx->SPI_Inst->SPI_SR & (1 << BSY)));
+    // while (! ( SPIx->SPI_Inst->SPI_SR & (1 << BSY)));
     
     return Tx_buffer;
 }
