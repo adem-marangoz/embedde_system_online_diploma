@@ -30,8 +30,7 @@ extern void _delay_ms(uint32_t time);
 extern St_Uart_API uart1_config;
 extern St_Uart_API uart2_config;
 extern St_Uart_API uart3_config;
-extern uint16_t Rx_Buff[10];
-extern uint16_t Rx_Buff1[10];
+// extern uint16_t Rx_Buff[10];
 extern St_EEPROM_25xx256_Typedef EEPORM_25xx_config;
 //==============================================================================
 
@@ -436,11 +435,11 @@ __weak void Tx_Comp_CallBack_UART(St_Uart_API *UARTx)
  */
 __weak void Rx_CallBack_UART(St_Uart_API *UARTx)
 {
-    Receive_Char_Uart(UART1, Rx_Buff,Disable);
-    Send_Char_Uart(UART1, Rx_Buff,Enable);
-    Reset_pin(GPIOA, GPIO_PIN_4);
-    SPI_Tx_Rx_Char(&spi1_config,Rx_Buff,Rx_Buff,SPI_Pol_Enable);
-    Set_pin(GPIOA, GPIO_PIN_4);
+    // Receive_Char_Uart(UART1, Rx_Buff,Disable);
+    // Send_Char_Uart(UART1, Rx_Buff,Enable);
+    // Reset_pin(GPIOA, GPIO_PIN_4);
+    // SPI_Tx_Rx_Char(&spi1_config,Rx_Buff,Rx_Buff, 1,SPI_Pol_Enable);
+    // Set_pin(GPIOA, GPIO_PIN_4);
     UNUSED(UARTx);
 }
 

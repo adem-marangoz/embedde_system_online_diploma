@@ -48,21 +48,22 @@ extern void _delay_ms(uint32_t time);
     St_EEPROM_25xx256_Typedef EEPORM_25xx_config = {0};
     //==========================================================================
 
-uint16_t Rx_Buff[10] = {0};
-uint16_t Rx_Buff1[10] = {0};
+uint16_t Rx_Buff[14] = {0};
 
 //==============================================================================
 int main(void)
 {
     config(); // config RCC and GPIO
-    uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T','\r','\t'};
-    uint16_t test[] = {'D' , 'D', 'D', 'D', ' ', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'};
+    uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T'};
+    uint16_t test[] = {'A' , 'D', 'E', 'D', ' ', 'M', 'A', 'R', 'A', 'N', 'G', 'O', 'Z'};
     // Send_String_Uart(UART1, Tx_Buff,Enable);
-    
     Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    // delay_us(10000);
+    delay_us(10000);
     // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 0xFF);
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13,test);
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Tx_Buff);
+    delay_us(10000);
+    Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Rx_Buff);
+    Send_String_Uart(UART1, Rx_Buff,Enable);
 
 
     while (1)
@@ -70,8 +71,7 @@ int main(void)
         // Send_String_Uart(UART1, Tx_Buff,Enable);
         // _delay_ms(100);
     }    
-    return 0;
-    
+
     return 1;
 }
 

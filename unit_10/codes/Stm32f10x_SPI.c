@@ -19,7 +19,6 @@
 extern St_SPI_API spi1_config;
 extern St_SPI_API spi2_config;
 extern St_SPI_API spi3_config;
-extern uint16_t Rx_Buff[10];
 //==============================================================================
 
 //______________________________ Local Function ________________________________
@@ -219,12 +218,12 @@ uint16_t SPI_Receive_Char(St_SPI_API *SPIx, uint16_t *Rx_buffer,enum En_SPI_poll
  * @param polling  : Is Used to check Flag control by interrupt or polling
  * @return uint16_t* : The send Tx buffer address
  */
-uint16_t * SPI_Send_String(St_SPI_API *SPIx , uint16_t *Tx_buffer ,uint8_t len, enum En_SPI_polling polling)
+uint16_t * SPI_Send_String(St_SPI_API *SPIx , uint16_t *Tx_buffer, uint16_t *Rx_buffer ,uint8_t len, enum En_SPI_polling polling)
 {
     static uint8_t counter = 0;
     while(counter != len)
     {
-        SPI_Tx_Rx_Char(SPIx, Rx_Buff, Tx_buffer, polling);
+        SPI_Tx_Rx_Char(SPIx, Rx_buffer, Tx_buffer, 1,polling);
         Tx_buffer++;
         counter++;
     }
@@ -490,21 +489,27 @@ void SPI2_Handler(void)
  * @param polling  : Is Used to check Flag control by interrupt or polling
  * @return uint16_t* : The Receive Rx buffer address
  */
-uint16_t * SPI_Tx_Rx_Char(St_SPI_API *SPIx , uint16_t *Rx_buffer, uint16_t *Tx_buffer, enum En_SPI_polling polling)
+uint16_t * SPI_Tx_Rx_Char(St_SPI_API *SPIx , uint16_t *Rx_buffer, uint16_t *Tx_buffer, uint8_t len_Rx,enum En_SPI_polling polling)
 {
     // check if polling if enable & Wait until to set TXE 
     if(polling == SPI_Pol_Enable)
         while(!(SPIx->SPI_Inst->SPI_SR & (1 << TXE)));
 
     // Write The Data to SPI Data register
-    SPIx->SPI_Inst->SPI_DR = *Tx_buffer;
 
-        // check if polling if enable & Wait until to set TXE 
-    if(polling == SPI_Pol_Enable)
-        while(!(SPIx->SPI_Inst->SPI_SR & (1 << RXNE)));
-    
-    // Receive The Data form SPI Data Register
-    *Rx_buffer = SPIx->SPI_Inst->SPI_DR;
+    // check if polling if enable & Wait until to set TXE
+    uint16_t *base_Rx_buffer = Rx_buffer;
+    while(len_Rx)
+    {
+        SPIx->SPI_Inst->SPI_DR = *Tx_buffer;
+        if(polling == SPI_Pol_Enable)
+            while(!(SPIx->SPI_Inst->SPI_SR & (1 << RXNE)));
+        
+        // Receive The Data form SPI Data Register
+        *Rx_buffer = SPIx->SPI_Inst->SPI_DR;
+        Rx_buffer++;
+        len_Rx--;
+    }
 
-    return Tx_buffer;
+    return base_Rx_buffer;
 }

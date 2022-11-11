@@ -48,8 +48,7 @@ void Init_EEPROM_25x(St_EEPROM_25xx256_Typedef *EEPROM_inst);
 void Enable_Write_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst);
 uint8_t Write_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t Add, uint16_t data);
 uint8_t Write_Bytes_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t Add, uint8_t len, uint16_t *data);
-uint8_t Read_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t Add);
-
+uint16_t Read_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t Add, uint8_t len, uint16_t *Rx_buffer);
 // =============================================================================
 
 #endif
