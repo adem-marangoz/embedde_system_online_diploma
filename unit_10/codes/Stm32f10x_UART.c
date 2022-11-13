@@ -342,22 +342,22 @@ void USART1_Handler(void)
 
 void USART2_Handler(void)
 {
-    // if((UART2->UART_CR3 & UART_CR3_EIE) == UART_CR3_EIE)
-    //     uart2_config.P_Error_CallBack(&uart2_config);
-    // else if((UART2->UART_CR1 & UART_CR1_PEIE) == UART_CR1_PEIE)
-    //     uart2_config.P_Parity_CallBack(&uart2_config);
-    // else if((UART2->UART_CR1 & UART_CR1_TXEIE) == UART_CR1_TXEIE)
-    //     uart2_config.P_Tx_CallBack(&uart2_config);
-    // else if((UART2->UART_CR1 & UART_CR1_TCIE) == UART_CR1_TCIE)
-    //     uart2_config.P_Tx_Com_CallBack(&uart2_config);
-    // else if((UART2->UART_CR1 & UART_CR1_RXNEIE) == UART_CR1_RXNEIE)
-    //     uart2_config.P_Rx_CallBack(&uart2_config);
-    // else if((UART2->UART_CR1 & UART_CR1_IDLEIE) == UART_CR1_IDLEIE)
-    //     uart2_config.P_IDLE_CallBack(&uart2_config);
-    // else if((UART2->UART_CR2 & UART_CR2_LBDIE) == UART_CR2_LBDIE)
-    //     uart2_config.P_Lin_BK_CallBack(&uart2_config);
-    // else if((UART2->UART_CR3 & UART_CR3_CTSIE) == UART_CR3_CTSIE)
-    //     uart2_config.P_FlowCTR_CallBack(&uart2_config);
+    if((UART2->UART_CR3 & UART_CR3_EIE) == UART_CR3_EIE)
+        uart2_config.P_Error_CallBack(&uart2_config);
+    else if((UART2->UART_CR1 & UART_CR1_PEIE) == UART_CR1_PEIE)
+        uart2_config.P_Parity_CallBack(&uart2_config);
+    else if((UART2->UART_CR1 & UART_CR1_TXEIE) == UART_CR1_TXEIE)
+        uart2_config.P_Tx_CallBack(&uart2_config);
+    else if((UART2->UART_CR1 & UART_CR1_TCIE) == UART_CR1_TCIE)
+        uart2_config.P_Tx_Com_CallBack(&uart2_config);
+    else if((UART2->UART_CR1 & UART_CR1_RXNEIE) == UART_CR1_RXNEIE)
+        uart2_config.P_Rx_CallBack(&uart2_config);
+    else if((UART2->UART_CR1 & UART_CR1_IDLEIE) == UART_CR1_IDLEIE)
+        uart2_config.P_IDLE_CallBack(&uart2_config);
+    else if((UART2->UART_CR2 & UART_CR2_LBDIE) == UART_CR2_LBDIE)
+        uart2_config.P_Lin_BK_CallBack(&uart2_config);
+    else if((UART2->UART_CR3 & UART_CR3_CTSIE) == UART_CR3_CTSIE)
+        uart2_config.P_FlowCTR_CallBack(&uart2_config);
 
 }
 
@@ -435,11 +435,12 @@ __weak void Tx_Comp_CallBack_UART(St_Uart_API *UARTx)
  */
 __weak void Rx_CallBack_UART(St_Uart_API *UARTx)
 {
-    // Receive_Char_Uart(UART1, Rx_Buff,Disable);
-    // Send_Char_Uart(UART1, Rx_Buff,Enable);
-    // Reset_pin(GPIOA, GPIO_PIN_4);
-    // SPI_Tx_Rx_Char(&spi1_config,Rx_Buff,Rx_Buff, 1,SPI_Pol_Enable);
-    // Set_pin(GPIOA, GPIO_PIN_4);
+    uint16_t *Rx_Buff = NULL;
+    Receive_Char_Uart(UART1, Rx_Buff,Disable);
+    Send_Char_Uart(UART1, Rx_Buff,Enable);
+    Reset_pin(GPIOA, GPIO_PIN_4);
+    SPI_Tx_Rx_Char(&spi1_config,Rx_Buff,Rx_Buff, 1,SPI_Pol_Enable);
+    Set_pin(GPIOA, GPIO_PIN_4);
     UNUSED(UARTx);
 }
 

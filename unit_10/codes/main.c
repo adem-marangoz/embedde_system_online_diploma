@@ -36,34 +36,40 @@ void Exti15_CallBack(void);
 extern void _delay_ms(uint32_t time);
 
     //______________________ Data Structre of Drives ___________________________
+    
+    GPIO_InitTypeDef LEDS = {0};
     LCD_16_2 Lcd_config={0};
     St_Key_pad key_pad_config = {0};
     St_7_segment seven_config = {0};
     St_Uart_API uart1_config = {0};
+    St_Uart_API uart2_config = {0};
     St_SPI_API spi1_config = {0};
     St_SPI_API spi2_config = {0};
     St_SPI_API spi3_config = {0};
     St_I2C_API i2c1_config = {0};
     St_I2C_API i2c2_config = {0};
+    GPIO_InitTypeDef NSS_EEPROM = {0};
+    GPIO_InitTypeDef NSS_ATmega1 = {0};
+    GPIO_InitTypeDef NSS_ATmega2 = {0};
     St_EEPROM_25xx256_Typedef EEPORM_25xx_config = {0};
     //==========================================================================
 
-uint16_t Rx_Buff[14] = {0};
+// uint16_t Rx_Buff[14] = {0};
 
 //==============================================================================
 int main(void)
 {
     config(); // config RCC and GPIO
-    uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T'};
-    uint16_t test[] = {'A' , 'D', 'E', 'D', ' ', 'M', 'A', 'R', 'A', 'N', 'G', 'O', 'Z'};
-    // Send_String_Uart(UART1, Tx_Buff,Enable);
-    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    delay_us(10000);
-    // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 0xFF);
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Tx_Buff);
-    delay_us(10000);
-    Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Rx_Buff);
-    Send_String_Uart(UART1, Rx_Buff,Enable);
+    // uint16_t Tx_Buff[] = {'Y','O','U',' ','C', 'A','N',' ','D','O',' ','I','T'};
+    // uint16_t test[] = {'A' , 'D', 'E', 'D', ' ', 'M', 'A', 'R', 'A', 'N', 'G', 'O', 'Z'};
+    // // Send_String_Uart(UART1, Tx_Buff,Enable);
+    // Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
+    // delay_us(10000);
+    // // Write_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 0xFF);
+    // Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Tx_Buff);
+    // delay_us(10000);
+    // Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, 0x0002, 13, Rx_Buff);
+    // Send_String_Uart(UART1, Rx_Buff,Enable);
 
 
     while (1)
@@ -84,61 +90,56 @@ void config(void)
     __APB2ENR_AFIOEN_En(); // Enable Alterntif Clock
     
 
-
-    //___________________________ Config EEPROM ________________________________
-    // EEPORM_Init(); 
-    //==========================================================================
-
     //____________________________ Systick Config ______________________________
-    // Systick_API.Clock_Source = Processor_Clock_AHB;
-    // Systick_API.Current_Value = 0;
-    // Systick_API.Enable_Interrupt = Disable_Systick_Req;
-    // Systick_API.Reload_Value = Microsecond_Prescale;
-    // Init_Systick();
+    Systick_API.Clock_Source = Processor_Clock_AHB;
+    Systick_API.Current_Value = 0;
+    Systick_API.Enable_Interrupt = Disable_Systick_Req;
+    Systick_API.Reload_Value = Microsecond_Prescale;
+    Init_Systick();
     
     //==========================================================================
 
 
     //_________________________ Config LCD_Driver ______________________________
-    // Lcd_config.Data_Port = GPIOB;
-	// Lcd_config.Enable_Port = GPIOA;
-	// Lcd_config.RS_Port = GPIOA;
-	// Lcd_config.R_W_Port = GPIOA;
-	// Lcd_config.Enable_Pin = GPIO_PIN_0;
-	// Lcd_config.R_W_Pin = GPIO_PIN_1;
-	// Lcd_config.RS_Pin = GPIO_PIN_2;
-    // #ifdef LCD_8_Bit
-    // Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-    // // Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
-    // #endif
-    // #ifdef LCD_4_Bit
-    // // Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-    // Lcd_config.Data_Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
-    // #endif
-    // LCD_init(&Lcd_config);
+    Lcd_config.Data_Port = GPIOA;
+	Lcd_config.Enable_Port = GPIOB;
+	Lcd_config.RS_Port = GPIOB;
+	Lcd_config.R_W_Port = GPIOB;
+	Lcd_config.Enable_Pin = GPIO_PIN_0;
+	Lcd_config.R_W_Pin = GPIO_PIN_1;
+	Lcd_config.RS_Pin = GPIO_PIN_3;
+    #ifdef LCD_8_Bit
+    Lcd_config.Data_Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    // Lcd_config.Data_Pin = GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10;
+    #endif
+    #ifdef LCD_4_Bit
+    // Lcd_config.Data_Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    Lcd_config.Data_Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
+    #endif
+    LCD_init(&Lcd_config);
     //==========================================================================
 
 
     //_________________________ Config KeyPad_Driver ___________________________
-    // key_pad_config.Soruce.Port = GPIOA;
-    // key_pad_config.Soruce.Pins = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6;
-    // key_pad_config.Drain.Port = GPIOA;
-    // key_pad_config.Drain.Pins = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14;
-    // Key_pad_init(&key_pad_config);
+    key_pad_config.Soruce.Port = GPIOB;
+    key_pad_config.Soruce.Pins = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;
+    key_pad_config.Drain.Port = GPIOA;
+    key_pad_config.Drain.Pins = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4;
+    Key_pad_init(&key_pad_config);
     //==========================================================================
 
 
     //_________________________ Config 7_Segment_Driver ________________________
-    // seven_config.Port = GPIOB;
-    // seven_config.Pin_D[0] = GPIO_PIN_0;
-    // seven_config.Pin_D[1] = GPIO_PIN_4;
-    // seven_config.Pin_D[2] = GPIO_PIN_7;
-    // seven_config.Pin_D[3] = GPIO_PIN_5;
-    // init_seven_segment(&seven_config);
+    seven_config.Port = GPIOA;
+    seven_config.Pin_D[0] = GPIO_PIN_0;
+    seven_config.Pin_D[1] = GPIO_PIN_1;
+    seven_config.Pin_D[2] = GPIO_PIN_11;
+    seven_config.Pin_D[3] = GPIO_PIN_12;
+    init_seven_segment(&seven_config);
     //==========================================================================
 
 
-    // _________________________ Config UART_Driver ____________________________
+    // _________________________ Config UART1_Driver ___________________________
     uart1_config.baudrate = (uint32_t)115200;
     uart1_config.Hw_Flow_CTRL = CTS_RTS_None;
     uart1_config.Mode = Enable_RX_Tx;
@@ -149,17 +150,18 @@ void config(void)
     uart1_config.interrupt = En_RX_Inter;
     Init_Uart(&uart1_config);
     //==========================================================================
-
-
-    //________________________ Config EXTI Pin Driver __________________________
-    // St_EXTI_config exti_config1 = {0};
-    // exti_config1.EXTI_State = EXTI_Enable;
-    // exti_config1.EXTI_Trigger = FALLING_EDGE_Trigger;
-    // exti_config1.P_IRQ_CallBack = Exti15_CallBack;
-    // exti_config1.EXTI_Pin = EXTI0PA15;
-    // Init_EXTI(&exti_config1);
+    
+    // _________________________ Config UART2_Driver ___________________________
+    uart2_config.baudrate = (uint32_t)115200;
+    uart2_config.Hw_Flow_CTRL = CTS_RTS_None;
+    uart2_config.Mode = Enable_RX_Tx;
+    uart2_config.Parity = Parity_None;
+    uart2_config.Stop_bit = Stop_1_bit;
+    uart2_config.Word_Len = Payload_8_bit;
+    uart2_config.UARTx = UART2;
+    uart2_config.interrupt = En_RX_Inter;
+    Init_Uart(&uart2_config);
     //==========================================================================
-
 
     //__________________________ Config SPI_Driver _____________________________
     spi1_config.SPI_Inst = SPI1 ;
@@ -180,21 +182,51 @@ void config(void)
     Init_SPI(&spi1_config);
     //==========================================================================
 
-
     // _________________ Config NSS PIN As a Normal Pin ________________________
-    GPIO_InitTypeDef gpio_config = {0};
-    gpio_config.Pin = GPIO_PIN_4;
+    NSS_EEPROM.Pin = GPIO_PIN_8;
     #if (SPI_Maseter_En == 1)
-        gpio_config.Speed = GPIO_SPEED_FREQ_2MHZ;
-        gpio_config.Mode = GPIO_MODE_OUTPUT_PP ;
-        Init_GPIO(GPIOA,&gpio_config);
-        Set_pin(GPIOA, GPIO_PIN_4);
+        NSS_EEPROM.Speed = GPIO_SPEED_FREQ_2MHZ;
+        NSS_EEPROM.Mode = GPIO_MODE_OUTPUT_PP ;
+        Init_GPIO(GPIOB,&NSS_EEPROM);
+        Set_pin(GPIOB, NSS_EEPROM.Pin);
     #else
-        gpio_config.Speed = GPIO_SPEED_INPUT_Mode;
-        gpio_config.Mode = GPIO_MODE_AF_INPUT;
+        NSS_EEPROM.Speed = GPIO_SPEED_INPUT_Mode;
+        NSS_EEPROM.Mode = GPIO_MODE_AF_INPUT;
     #endif
     //==========================================================================
+    
+    //_____________________________ NSS Atmega32_1 _____________________________
+    NSS_ATmega1.Pin = GPIO_PIN_9;
+    NSS_ATmega1.Speed = GPIO_SPEED_FREQ_2MHZ;
+    NSS_ATmega1.Mode = GPIO_MODE_OUTPUT_PP ;
+    Init_GPIO(GPIOB,&NSS_ATmega1);
+    Set_pin(GPIOB, NSS_ATmega1.Pin);
+    //==========================================================================
 
+    //_____________________________ NSS Atmega32_2 _____________________________
+    NSS_ATmega2.Pin = GPIO_PIN_10;
+    NSS_ATmega2.Speed = GPIO_SPEED_FREQ_2MHZ;
+    NSS_ATmega2.Mode = GPIO_MODE_OUTPUT_PP ;
+    Init_GPIO(GPIOB,&NSS_ATmega2);
+    Set_pin(GPIOB, NSS_ATmega2.Pin);
+    //==========================================================================
+
+    //______________________________ LEDS Configs ______________________________
+    LEDS.Pin = GPIO_PIN_8 | GPIO_PIN_11;
+    LEDS.Speed = GPIO_SPEED_FREQ_2MHZ;
+    LEDS.Mode = GPIO_MODE_OUTPUT_PP ;
+    Init_GPIO(GPIOA,&LEDS);
+    //==========================================================================
+
+    //__________________________ Config EEPORM 25xx ____________________________
+    EEPORM_25xx_config.EEPROM_SPI = &spi1_config;
+    EEPORM_25xx_config.GPIOx = GPIOA;
+    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
+    //==========================================================================
+
+    //___________________________ Config EEPROM ________________________________
+    // EEPORM_Init(); 
+    //==========================================================================
 
     // ___________________________ Config Timer ________________________________
     // tim1_config.Instance = TIM1;
@@ -216,19 +248,13 @@ void config(void)
     // Init_GPIO(GPIOA,&gpio_pin_out);
     //==========================================================================
 
-
-    //__________________________ Config EEPORM 25xx ____________________________
-    // EEPORM_25xx_config.SPI_Instance = SPI1;
-    // EEPORM_25xx_config.EEPROM_SPI->SPI_Inst = ;
-    // EEPORM_25xx_config.EEPROM_SPI->SPI_Mode = ;
-    // EEPORM_25xx_config.EEPROM_SPI->BaudRate = ;
-    // EEPORM_25xx_config.EEPROM_SPI->Master_Select = ;
-    // EEPORM_25xx_config.EEPROM_SPI->NSS_Hardware_Mode = ;
-    // EEPORM_25xx_config.EEPROM_SPI->Slave_Select_Software = ;
-    EEPORM_25xx_config.EEPROM_SPI = &spi1_config;
-    EEPORM_25xx_config.GPIOx = GPIOA;
-    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
-    // Init_EEPROM_25x(&EEPORM_25xx_config);
+    //________________________ Config EXTI Pin Driver __________________________
+    // St_EXTI_config exti_config1 = {0};
+    // exti_config1.EXTI_State = EXTI_Enable;
+    // exti_config1.EXTI_Trigger = FALLING_EDGE_Trigger;
+    // exti_config1.P_IRQ_CallBack = Exti15_CallBack;
+    // exti_config1.EXTI_Pin = EXTI0PA15;
+    // Init_EXTI(&exti_config1);
     //==========================================================================
 
 }
