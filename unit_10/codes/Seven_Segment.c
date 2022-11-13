@@ -39,9 +39,9 @@ void init_seven_segment(St_7_segment const *seven_segment)
  * @param[in] seven_segment The seven_segment data structure containing the port and pins to be configured
  * @param index The number to be printed
  */
-void Display_seven_segment(St_7_segment *seven_segment, uint8_t index)
+uint8_t Display_seven_segment(St_7_segment *seven_segment, uint8_t index)
 {
-
+    if(index > 16){return 0;}
     uint8_t temp = 0;
     for (uint8_t i = 0; i < 4; i++)
     {
@@ -52,5 +52,5 @@ void Display_seven_segment(St_7_segment *seven_segment, uint8_t index)
             temp = GPIO_PIN_RESET;
         Change_State_Pin(seven_segment->Port, seven_segment->Pin_D[i], temp);
     }
-
+    return 1;
 }

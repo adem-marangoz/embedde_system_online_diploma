@@ -24,7 +24,7 @@ typedef struct
 }St_7_segment;
 
 void init_seven_segment(St_7_segment const *seven_segment);
-void Display_seven_segment(St_7_segment *seven_segment, uint8_t index);
+uint8_t Display_seven_segment(St_7_segment *seven_segment, uint8_t index);
 
 
 #endif

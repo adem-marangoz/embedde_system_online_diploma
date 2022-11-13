@@ -35,8 +35,8 @@
 
 
 //---------------------------- 7Segment PORT & PINS ----------------------------
-    #define SEGMENT_PORT        GPIOA
-    #define SEGMENT_PINS        GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_11 | GPIO_PIN_12
+    #define SEGMENT_PORT        GPIOB
+    #define SEGMENT_PINS        GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14
 //==============================================================================
 
 
