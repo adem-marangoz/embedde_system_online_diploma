@@ -12,26 +12,26 @@
 
 //------------------------------- INCLUDE FILES --------------------------------
 #include "Application.h"
-
+// #include "defines.h"
 //==============================================================================
 
 
 //----------------------------- EXTERNAL OBJECTES ------------------------------
-GPIO_InitTypeDef LEDS;
-LCD_16_2 Lcd_config;
-St_Key_pad key_pad_config;
-St_7_segment seven_config;
-St_Uart_API uart1_config;
-St_Uart_API uart2_config;
-St_SPI_API spi1_config;
-St_SPI_API spi2_config;
-St_SPI_API spi3_config;
-St_I2C_API i2c1_config;
-St_I2C_API i2c2_config;
-GPIO_InitTypeDef NSS_EEPROM;
-GPIO_InitTypeDef NSS_ATmega1;
-GPIO_InitTypeDef NSS_ATmega2;
-St_EEPROM_25xx256_Typedef EEPORM_25xx_config;
+GPIO_InitTypeDef LEDS = {0};
+LCD_16_2 Lcd_config = {0};
+St_Key_pad key_pad_config = {0};
+St_7_segment seven_config = {0};
+St_Uart_API uart1_config = {0};
+St_Uart_API uart2_config = {0};
+St_SPI_API spi1_config = {0};
+St_SPI_API spi2_config = {0};
+St_SPI_API spi3_config = {0};
+St_I2C_API i2c1_config = {0};
+St_I2C_API i2c2_config = {0};
+GPIO_InitTypeDef NSS_EEPROM = {0};
+GPIO_InitTypeDef NSS_ATmega1 = {0};
+GPIO_InitTypeDef NSS_ATmega2 = {0};
+St_EEPROM_25xx256_Typedef EEPORM_25xx_config = {0};
 //==============================================================================
 
 
@@ -231,7 +231,10 @@ void Init_Component(void)
     Write_String_with_coordinator(&Lcd_config, temp1,  0 ,Seconde_R);
     Write_String_with_coordinator(&Lcd_config, temp1,  0 ,Third_R);
     Write_String_with_coordinator(&Lcd_config, temp1,  0 ,Fourth_R);
-    
+    Reset_pin(GPIOA, GPIO_PIN_8);
+    Set_pin(GPIOA, GPIO_PIN_11);
+    // Change_State_Pin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
+
     
 
 }

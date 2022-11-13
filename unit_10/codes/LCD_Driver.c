@@ -237,6 +237,7 @@ unsigned char Write_String_with_coordinator( LCD_16_2 *lcd_instance,unsigned cha
     {
         Write_Character(lcd_instance,*ch);
         ch++;
+        delay_us(1);
     }
 }
 
