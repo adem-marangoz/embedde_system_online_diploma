@@ -30,7 +30,7 @@ void Kick_Enable_pin( LCD_16_2 *lcd_instance);
 void Kick_Enable_pin( LCD_16_2 *lcd_instance)
 {
     Set_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
-    // delay_us(100);
+    delay_us(20);
     Reset_pin(lcd_instance->Enable_Port,lcd_instance->Enable_Pin);
 }
 
@@ -47,7 +47,7 @@ unsigned char LCD_init(LCD_16_2  *lcd_instance)
         GPIO_InitTypeDef gpio_confg;
         gpio_confg.Mode = GPIO_MODE_OUTPUT_PP;
         gpio_confg.Pin = lcd_instance->R_W_Pin;
-        gpio_confg.Speed = GPIO_SPEED_FREQ_2MHZ;
+        gpio_confg.Speed = GPIO_SPEED_FREQ_10MHZ;
         Init_GPIO(lcd_instance->R_W_Port,&gpio_confg);
         gpio_confg.Pin = lcd_instance->RS_Pin;
         Init_GPIO(lcd_instance->RS_Port,&gpio_confg);
@@ -74,7 +74,7 @@ unsigned char LCD_init(LCD_16_2  *lcd_instance)
     }
     lcd_instance->count_of_first_pin = counter;
     
-    delay_us(500);
+    delay_us(5000);
 
     // initialize LCD
     {
@@ -89,7 +89,9 @@ unsigned char LCD_init(LCD_16_2  *lcd_instance)
         #endif
 
         Write_Command(lcd_instance,CMD_LCD_Entry_Mode_Set|CMD_LCD_OP_I_D);                          // Entry Mode
+        delay_us(500);
         Write_Command(lcd_instance,CMD_LCD_Begin_AT_First_Raw);                                     // Begin At First Raw
+        delay_us(500);
         Write_Command(lcd_instance,CMD_LCD_Display_On_Off|CMD_LCD_OP_D);                            // Display Is Active
     }                                              // Clean LCD
 
@@ -197,7 +199,7 @@ unsigned char Write_Character( LCD_16_2 *lcd_instance,unsigned char ch)
 unsigned char Write_Character_with_coordinator( LCD_16_2 *lcd_instance,unsigned char ch,unsigned char column,En_Lcd_Raw Raw)
 {
     Jump_to_coordinator(lcd_instance,column,Raw);
-    Check_BF(lcd_instance);
+    // Check_BF(lcd_instance);
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
     //Write_Port_Register(lcd_instance->Data_Port,ch);
     Set_pin(lcd_instance->RS_Port,lcd_instance->RS_Pin);
@@ -237,7 +239,7 @@ unsigned char Write_String_with_coordinator( LCD_16_2 *lcd_instance,unsigned cha
     {
         Write_Character(lcd_instance,*ch);
         ch++;
-        delay_us(1);
+        delay_us(10);
     }
 }
 

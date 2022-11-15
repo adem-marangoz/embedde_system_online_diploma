@@ -127,13 +127,13 @@ uint8_t Write_Bytes_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t
     uint16_t * Rx_Buff = NULL;
     // Send Write commnad
     Add_temp = Write_CMD;
-    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_Buff,&Add_temp, 1,SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI, Rx_Buff, &Add_temp, 1,SPI_Pol_Enable);
 
     // Send Address
     Add_temp = Add >> 8;
-    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_Buff,&Add_temp, 1,SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI, Rx_Buff, &Add_temp, 1,SPI_Pol_Enable);
     Add_temp = Add & 0x00FF;
-    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_Buff,&Add_temp, 1,SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI, Rx_Buff, &Add_temp, 1,SPI_Pol_Enable);
 
     SPI_Send_String(EEPROM_inst->EEPROM_SPI, data, Rx_Buff, len, SPI_Pol_Enable);
 

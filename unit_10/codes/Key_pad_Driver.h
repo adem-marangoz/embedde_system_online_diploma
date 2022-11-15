@@ -37,7 +37,6 @@ typedef struct
 
 uint8_t Key_pad_init(St_Key_pad *key_pad);
 uint8_t Check_Prass_Button(St_Key_pad const *key_pad);
-void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index);
 uint8_t Check_Key_Soruce_Pins(St_Key_pad const *key_pad);
 void Set_Key_Drain_Pins(St_Key_pad const *key_pad);
 

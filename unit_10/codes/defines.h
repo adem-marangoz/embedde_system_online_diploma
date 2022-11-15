@@ -103,11 +103,11 @@
     #define SPI1_NSS1_PORT      GPIOB
     #define SPI1_NSS1_PIN       GPIO_PIN_8
     //---------------------------------- NSS2 ----------------------------------
-    #define SPI1_NSS1_PORT      GPIOB
-    #define SPI1_NSS1_PIN       GPIO_PIN_9
+    #define SPI1_NSS2_PORT      GPIOB
+    #define SPI1_NSS2_PIN       GPIO_PIN_9
     //---------------------------------- NSS3 ----------------------------------
-    #define SPI1_NSS1_PORT      GPIOB
-    #define SPI1_NSS1_PIN       GPIO_PIN_10
+    #define SPI1_NSS3_PORT      GPIOB
+    #define SPI1_NSS3_PIN       GPIO_PIN_10
 
 //==============================================================================
 

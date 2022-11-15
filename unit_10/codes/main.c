@@ -6,6 +6,7 @@
 //_________________________________ Include Files ______________________________
 #include "Application.h"
 #include "Stm32f10xx_Common.h"
+#include "Key_pad_Driver.h"
 //==============================================================================
 
 
@@ -19,6 +20,7 @@
 void config_Drives_and_Perpherals(void);
 void Init_Component(void);
 extern void _delay_ms(uint32_t time);
+extern St_Key_pad key_pad_config;
 
     //______________________ Data Structre of Drives ___________________________
 
@@ -47,6 +49,7 @@ int main(void)
     {
         // Send_String_Uart(UART1, Tx_Buff,Enable);
         // _delay_ms(100);
+        Check_Prass_Button(&key_pad_config);
     }    
 
     return 1;

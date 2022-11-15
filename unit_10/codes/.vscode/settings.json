@@ -8,6 +8,7 @@
         "stm32_f10xx_systick.h": "c",
         "stm32f10xx_common.h": "c",
         "application.h": "c",
-        "defines.h": "c"
+        "defines.h": "c",
+        "stm32f10xx_exti.h": "c"
     }
 }

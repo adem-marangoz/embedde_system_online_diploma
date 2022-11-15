@@ -96,8 +96,8 @@ uint8_t Init_Uart(St_Uart_API *Inst)
 
     // Enable Uart Clock
     if(Inst->UARTx == UART1){__APB2ENR_USART1EN_En();}
-    else if (Inst->UARTx == UART2){__APB1ENR_USART3EN_EN();}
-    else if (Inst->UARTx == UART3){__APB1ENR_USART2EN_EN();}
+    else if (Inst->UARTx == UART2){__APB1ENR_USART2EN_EN();}
+    else if (Inst->UARTx == UART3){__APB1ENR_USART3EN_EN();}
 
     // Set Uart BuadRate
     Set_BaudRate(Inst);

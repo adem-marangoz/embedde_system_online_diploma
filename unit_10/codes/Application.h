@@ -46,6 +46,8 @@ typedef enum
 void config_Drives_and_Perpherals(void);
 void Init_Component(void);
 uint8_t Inc_Dec_seven_segment(St_7_segment *seven_segment,Inc_Dec_seg Index);
+void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index);
+
 //==============================================================================
 
 

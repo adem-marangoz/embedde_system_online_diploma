@@ -13,7 +13,7 @@
 #include "Key_pad_Driver.h"
 #include "Stm32f10xx_EXTI.h"
 #include "LCD_Driver.h"
-#include <stddef.h>
+#include "Application.h"
 
 //==============================================================================
 
@@ -37,7 +37,7 @@ St_GPIO_Typedef *GPIOx = NULL;
 //                                                                               {'1','2','3',0x2D},
 //                                                                               {' ','0','=','+'}};
 
-static uint8_t KeyPad_Keys[KeyPad_Source][KeyPad_Drain] = { {'1', '2', '3'},
+const uint8_t KeyPad_Keys[KeyPad_Source][KeyPad_Drain] = { {'1', '2', '3'},
                                                             {'4', '5', '6'},
                                                             {'7', '8', '9'},
                                                             {'*', '0', '#'}};
@@ -122,7 +122,7 @@ uint8_t Check_Keypad_Pins(uint16_t Pins, uint8_t max_error, uint32_t *Put_to_arr
 void Set_Key_Drain_Pins(St_Key_pad const *key_pad)
 {
     // Reset All Drain Pins
-    uint8_t temp = 0;
+    uint8_t temp;
     for(temp = 0 ; temp < KeyPad_Drain; temp++)
     {
         Reset_pin(key_pad->Drain.Port,pad_Drain_pin[temp]);
@@ -157,15 +157,7 @@ uint8_t Check_Key_Soruce_Pins(St_Key_pad const *key_pad)
 }
 
 
-/**
- * @brief is used to reaction of set an Soruce pin
- * @param Soruce_pin_index : Seted Soruce pin index
- * @param Drain_pin_index Seted Drain pin index
- */
-void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index)
-{
-    Write_Character(&Lcd_config, KeyPad_Keys[Soruce_pin_index][Drain_pin_index]);
-}
+
 
 
 /**
