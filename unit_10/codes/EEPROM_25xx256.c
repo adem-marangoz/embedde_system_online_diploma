@@ -13,6 +13,8 @@
 // ----------------------------- Include Files ---------------------------------
 #include "EEPROM_25xx256.h"
 #include <stdio.h>
+#include "Stm32_f10xx_Systick.h"
+
 // =============================================================================
 
 //------------------------------ Extern Objects --------------------------------
@@ -119,7 +121,9 @@ uint8_t Write_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t 
  */
 uint8_t Write_Bytes_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t Add, uint8_t len, uint16_t *data)
 {
-
+//----------------------------- Enable Write -----------------------------------
+    Enable_Write_EEPROM_25xx(EEPROM_inst);
+    delay_us(2000);
 //-------------------------- Write to EEPROM ----------------------------------- 
     // Reset NSS
     Reset_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
@@ -140,6 +144,7 @@ uint8_t Write_Bytes_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
     
+    delay_us(2000);
 
     return 1;
 }

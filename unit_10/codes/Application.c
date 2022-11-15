@@ -215,8 +215,8 @@ void config_Drives_and_Perpherals(void)
 
     //__________________________ Config EEPORM 25xx ____________________________
     EEPORM_25xx_config.EEPROM_SPI = &spi1_config;
-    EEPORM_25xx_config.GPIOx = GPIOA;
-    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_4;
+    EEPORM_25xx_config.GPIOx = GPIOB;
+    EEPORM_25xx_config.NSS_Pin = GPIO_PIN_8;
     //==========================================================================
 
     //___________________________ Config EEPROM ________________________________
@@ -259,6 +259,8 @@ void Init_Component(void)
 {
     // Init 7 Segment to Display 9 character 
     // Display_seven_segment(&seven_config, Max_Grag);
+    
+    // Init LCD 
     delay_us(100000);
     Write_String_with_coordinator(&Lcd_config, &Main_Display[0][0],  0 ,First_R);
     delay_us(200);
@@ -267,16 +269,15 @@ void Init_Component(void)
     Write_String_with_coordinator(&Lcd_config, &Main_Display[2][0],  0 ,Third_R);
     delay_us(200);
     Write_String_with_coordinator(&Lcd_config, &Main_Display[3][0],  0 ,Fourth_R);
+    
+    // Init Leds
     Set_pin(GREAN_LED_PORT, GREAN_LED_PIN);
     Set_pin(RED_LED_PORT, RED_LED_PIN);
-    Enable_Write_EEPROM_25xx(&EEPORM_25xx_config);
-    delay_us(2000);
+    
+    // Init EEPORM
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0010, 4,First_ID);
-    delay_us(2000);
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0014, 4,Second_ID);
-    delay_us(2000);
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0018, 4,Third_ID);
-    delay_us(2000);
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x001C, 4,Fourth_ID);
 
 
