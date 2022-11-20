@@ -1,6 +1,6 @@
 #Mazen Talaat U3 L3 14-Nov-2021
 CC=arm-none-eabi-
-CFLAGS=-mcpu=cortex-m3 -mthumb -gdwarf-2
+CFLAGS=-mcpu=cortex-m3 -mthumb -gdwarf-2 
 INCS=-I. -I/lesson4
 LIBS=
 SRC = $(wildcard *.c)

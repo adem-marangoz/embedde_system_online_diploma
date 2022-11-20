@@ -14,6 +14,7 @@
 #include "Stm32f10xx_EXTI.h"
 #include "LCD_Driver.h"
 #include "Application.h"
+#include "Stm32_f10xx_Systick.h"
 
 //==============================================================================
 
@@ -174,7 +175,9 @@ uint8_t Check_Prass_Button(St_Key_pad const *key_pad)
     if(temp == 0xFF){return 0;}
     while(Read_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]) == GPIO_PIN_SET);
     Reset_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]);
+    Reset_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]);
     Reaction_Of_Prass(temp, Drain_Set_Counter);
+    delay_us(200);
 
     return 1;
 }

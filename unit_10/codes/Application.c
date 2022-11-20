@@ -12,8 +12,9 @@
 
 //------------------------------- INCLUDE FILES --------------------------------
 #include "Application.h"
-#include "defines.h"
+#include "defines.h"	
 #include <string.h>
+#include <stdio.h>
 //==============================================================================
 
 
@@ -39,31 +40,58 @@ extern const uint8_t KeyPad_Keys[KeyPad_Source][KeyPad_Drain];
 
 //------------------------------ GLOBAL OBJECTES -------------------------------
 #define SPI_Maseter_En              1
-uint8_t Max_Grag = 9;
-uint8_t Main_Display[9][17] = { "    Welcome!  \n",
-                                "  Put The Card\n",
-                                "  There is an \n",
-                                "empty position\n",
-                                "  There is no \n",
-                                "   Try again  \n",
-                                "   Admin Mode \n",
-                                "1 - Add ID    \n",
-                                "2 - Remove ID \n"
-                                };
 
-uint8_t test1[] = "    Welcome!  \n";
-uint8_t test2[] = "  Put The Card\n";
-uint8_t test3[] = "  There is an \n";
-uint8_t test4[] = "empty position\n";
+//----------------- 7Segment Objects -----------------
+uint8_t Max_Grag = 9;
+
+//----------------- LCD Objects ----------------- 
+uint8_t _Display_Welcom[] = "    Welcome!  \0";
+uint8_t _Display_Put_Card[] = "  Put The Card\0";
+uint8_t _Display_There_is_an[] = "  There is an \0";
+uint8_t _Display_There_is_no[] = "   There is no  \0";
+uint8_t _Display_Empty_Garage[] = "  Empty garage  \0";
+uint8_t _Display_Sorry[] = "      Sorry     \0";
+uint8_t _Display_Try_again[] = "    Try again   \0";
+uint8_t _Display_Opened_Gate[] = " Gate Will Open \0";
+uint8_t _Display_Closed_Gate[] = "  Closed Gate   \0";
+uint8_t _Display_Correct_ID[] =  "   Correct ID   \0";
+uint8_t _Display_Not_Correct_ID[] =  " Not Correct ID \0";
+
+//----------------- UART1 Objects -----------------
+uint16_t _Dispay_Exit_admin_mode[] = {'E','x','i','t',' ','a','d','m','i','n',' ','m','o','d','e','\r','\t','\0'};
+uint16_t _Display_Welcome_Admin[] = {' ',' ',' ',' ',' ','W','e','l','c','o','m','e',' ','A','d','m','i','n',' ',' ',' ',' ',' ','\r','\t','\0'};
+uint16_t _Display_1_Add_ID[] = {'1','-',' ','A','d','d',' ','I','D','\r','\t','\0'};
+uint16_t _Display_2_Remove_ID[] = {'2','-',' ','R','e','m','o','v','e',' ','I','D','\r','\t','\0'};
+uint16_t _Display_Hash_Exit[] = {'#','-',' ','E','x','i','t',' ','A','d','m','i','n',' ','M','o','d','e','\r','\t','\0'};
+uint16_t _Display_Enter_ID[] = {'E','n','t','e','r','i','n','g',' ','I','D',' ',':',' '};
+uint16_t _Display_Enter[] = {'\r','\t','\0'};
+uint16_t _Display_Worng_Entry[] = {'W','r','o','n','g',' ','e','n','t','r','y',',',' ','t','r','y',' ','a','g','a','i','n','\r','\t','\0'};
+uint16_t _Display_ID_Added[] = {'I','D',' ','A','d','d','e','d','\r','\t','\0'};
+uint16_t _Dispay_ID_Removed[] = {'I','D',' ','h','a','s',' ','b','e','e','n',' ','r','e','m','o','v','e','d','\r','\t','\0'};
+uint16_t _Display_Try_Enter_Again[] = {'Y','o','u',' ','c','a','n',' ','e','n','t','e','r',' ','a','g','a','i','n','\r','\t','\0'};
+uint16_t _Display_Enter_Admin_ID[] = {'P','l','e','a','s','e',' ','e','n','t','e','r',' ','A','d','m','i','n',' ','I','D','\r','\t','\0'};
+volatile uint16_t Input_ID[8] = {0};
+volatile uint8_t Input_ID_counter = 0;
+volatile uint16_t Output_ID[8] = {0};
+volatile uint8_t Output_ID_counter = 0;
+uint8_t correct_character[] = "1234567890";
+
+
+//----------------- SPI Objects -----------------
+uint16_t ID_data[4] = {0};
+uint16_t Reset_Data[4] = {0xFF, 0xFF, 0xFF, 0xFF};
 uint16_t First_ID[] = {'1', '2', '1', '1'};
 uint16_t Second_ID[] = {'0', '2', '1', '0'};
 uint16_t Third_ID[] = {'2', '2', '1', '0'};
 uint16_t Fourth_ID[] = {'1', '1', '1', '0'};
+
+//----------------- Keypad Objects -----------------
 uint8_t Key_Buffer[8] = {0};
 uint8_t Key_Buffer_counter = 0;
 uint8_t Admin_Pass[3] = {'1', '2', '3'};
 uint8_t Admin_mode = 0;
 uint8_t Admin_state = 0;
+uint16_t uart1_buffer[254] = {0};
 //==============================================================================
 
 
@@ -258,65 +286,145 @@ void config_Drives_and_Perpherals(void)
 void Init_Component(void)
 {
     // Init 7 Segment to Display 9 character 
-    // Display_seven_segment(&seven_config, Max_Grag);
+    Display_seven_segment(&seven_config, Max_Grag);
     
     // Init LCD 
-    delay_us(100000);
-    Write_String_with_coordinator(&Lcd_config, &Main_Display[0][0],  0 ,First_R);
+    Write_String_with_coordinator(&Lcd_config, _Display_Welcom,  0 ,First_R);
     delay_us(200);
-    Write_String_with_coordinator(&Lcd_config, &Main_Display[1][0],  0 ,Seconde_R);
+    Write_String_with_coordinator(&Lcd_config, _Display_Put_Card,  0 ,Seconde_R);
     delay_us(200);
-    Write_String_with_coordinator(&Lcd_config, &Main_Display[2][0],  0 ,Third_R);
+    Write_String_with_coordinator(&Lcd_config, _Display_There_is_an, 0 ,Third_R);
     delay_us(200);
-    Write_String_with_coordinator(&Lcd_config, &Main_Display[3][0],  0 ,Fourth_R);
+    Write_String_with_coordinator(&Lcd_config, _Display_Empty_Garage,  0 ,Fourth_R);
     
     // Init Leds
-    Set_pin(GREAN_LED_PORT, GREAN_LED_PIN);
-    Set_pin(RED_LED_PORT, RED_LED_PIN);
+    Run_Led(Red);
     
-    // Init EEPORM
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0010, 4,First_ID);
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0014, 4,Second_ID);
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0018, 4,Third_ID);
-    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x001C, 4,Fourth_ID);
-
+    // Add Some IDs in EEPROM
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0010, 4, First_ID);
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0014, 4, Second_ID);
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0018, 4, Third_ID);
+    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x001C, 4, Fourth_ID);
+    
 
 }
 
 
 
-uint8_t Inc_Dec_seven_segment(St_7_segment *seven_segment,Inc_Dec_seg Index)
-{
-    uint8_t retval = 1;
-    switch (Index)
-    {
-        case Inc:
-            Display_seven_segment(&seven_config, ++Max_Grag);
-            break;
-        case Dec:
-            Display_seven_segment(&seven_config, --Max_Grag);
-            break;
-        default:
-            retval = 0;
-            break;
-    }
-}
+
 
 
 
 void Rx_Uart1(St_Uart_API *UARTx)
 {
+    static uint16_t Input_ID1[8] = {0};
+    static uint8_t Input_ID_counter1 = 0;
     uint16_t *Rx_Buff = NULL;
     Receive_Char_Uart(UARTx->UARTx, Rx_Buff,Disable);
-    Send_Char_Uart(UARTx->UARTx, Rx_Buff,Enable);
+    Input_ID1[Input_ID_counter1] = *Rx_Buff;
+    Input_ID_counter1++;
+    if(Input_ID_counter1 == 8)
+    {
+        Send_String_Uart(UARTx->UARTx, _Display_Enter, Enable);
+        if(Max_Grag == 0)
+        {
+            Write_String_with_coordinator(&Lcd_config, _Display_Sorry,  0 ,Seconde_R);
+            delay_us(200);
+            Write_String_with_coordinator(&Lcd_config, _Display_Sorry,  0 ,Seconde_R);
+            delay_us(200);
+            Write_String_with_coordinator(&Lcd_config, _Display_There_is_no,  0 ,Third_R);
+            delay_us(200);
+            Write_String_with_coordinator(&Lcd_config, _Display_Empty_Garage,  0 ,Fourth_R);
+        }else
+        {
+            uint16_t add = Convert_Buffer16_to_Variable(Input_ID1, 3);
+            uint16_t temp_id[4] = {0};
+            Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, add, 4, temp_id);
+            if(comapre_two_string((uint8_t*)&Input_ID1[4], (uint8_t*)temp_id, 8))
+            {
+                Inc_Dec_seven_segment(&seven_config, Dec);
+                Run_Led(Green);
+                Write_String_with_coordinator(&Lcd_config, _Display_Correct_ID,  0 ,Seconde_R);
+                delay_us(200);
+                Write_String_with_coordinator(&Lcd_config, _Display_Opened_Gate,  0 ,Third_R);
+                
+            }else
+            {
+                Write_String_with_coordinator(&Lcd_config, _Display_Not_Correct_ID,  0 ,Seconde_R);
+                delay_us(200);
+                Write_String_with_coordinator(&Lcd_config, _Display_There_is_no,  0 ,Third_R);
+                delay_us(200);
+                Write_String_with_coordinator(&Lcd_config, _Display_Empty_Garage,  0 ,Fourth_R);
+            }
+        }
+        Input_ID_counter1 = 0;
+    }
+
+    // if(Max_Grag == 0)
+    // {
+    //     // delay_us(100000);
+    //     // Write_String_with_coordinator(&Lcd_config, _Display_Welcom,  0 ,First_R);
+    //     // delay_us(200);
+    //     // Write_String_with_coordinator(&Lcd_config, _Display_Sorry,  0 ,Seconde_R);
+    //     // delay_us(200);
+    //     // Write_String_with_coordinator(&Lcd_config, _Display_There_is_no,  0 ,Third_R);
+    //     // delay_us(200);
+    //     // Write_String_with_coordinator(&Lcd_config, _Display_Empty_Garage,  0 ,Fourth_R);
+    //     // Run_Led(Red);
+
+    // }else
+    // {
+    //     Input_ID[Input_ID_counter] = *Rx_Buff;
+    //     Input_ID_counter++;
+    //     if(Input_ID_counter == 8)
+    //     {
+    //         Send_String_Uart(UARTx->UARTx, _Display_Enter, Enable);
+    //         uint16_t add = Convert_Buffer16_to_Variable(Input_ID, 3);
+    //         uint16_t temp_id[4] = {0};
+    //         Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, add, 4, temp_id);
+    //         if(comapre_two_string((uint8_t*)&Input_ID[4], (uint8_t*)temp_id, 8))
+    //         {
+    //             Inc_Dec_seven_segment(&seven_config, Dec);
+    //             Run_Led(Green);
+    //             Write_String_with_coordinator(&Lcd_config, _Display_Correct_ID,  0 ,Seconde_R);
+    //             Write_String_with_coordinator(&Lcd_config, _Display_Opened_Gate,  0 ,Third_R);
+                
+    //         }else
+    //         {
+    //             Write_String_with_coordinator(&Lcd_config, _Display_Not_Correct_ID,  0 ,Seconde_R);
+    //         }
+    //         Input_ID_counter = 0;
+    //         // Clear_Buffer((uint8_t*)Input_ID, 0 ,8);
+    //     }
+    // }
+
 }
 
 
 void Rx_Uart2(St_Uart_API *UARTx)
 {
-    uint16_t *Rx_Buff = NULL;
-    Receive_Char_Uart(UARTx->UARTx, Rx_Buff,Disable);
-    Send_Char_Uart(UARTx->UARTx, Rx_Buff,Enable);
+    static uint16_t Output_ID1[8] = {0};
+    static uint8_t Output_ID_counter1 = 0;
+    uint16_t *Rx_Buff1 = NULL;
+    Receive_Char_Uart(UARTx->UARTx, Rx_Buff1,Disable);
+    Output_ID1[Output_ID_counter1] = *Rx_Buff1;
+    Output_ID_counter1++;
+    if(Output_ID_counter1 == 8)
+    {
+        Send_String_Uart(UARTx->UARTx, _Display_Enter, Enable);
+        uint16_t add = Convert_Buffer16_to_Variable(Output_ID1, 3);
+        uint16_t temp_id[4] = {0};
+        Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, add, 4, temp_id);
+        if(comapre_two_string((uint8_t*)&Output_ID1[4], (uint8_t*)temp_id, 8))
+        {
+            Inc_Dec_seven_segment(&seven_config, Inc);
+        }else
+        {
+
+        }
+        Output_ID_counter1 = 0;
+    }
+    
 }
 
 
@@ -327,27 +435,31 @@ void Rx_Uart2(St_Uart_API *UARTx)
  */
 void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index)
 {
-    if((KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '*') || (KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '#')) 
+    
+    if(KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '*') 
     { 
-        uint8_t counter;
-        for(counter = 0 ; counter < sizeof(Key_Buffer); counter++)
-        {
-            Key_Buffer[counter] = '0';
-        }
+        // Clear Keypad Buffer
+        Clear_Buffer(Key_Buffer, 0, sizeof(Key_Buffer));
         Key_Buffer_counter = 0;
-        Set_pin(GREAN_LED_PORT, GREAN_LED_PIN);
-        Reset_pin(RED_LED_PORT, RED_LED_PIN);
-        if(Admin_mode == 1)
+        if(Admin_mode != 0)
         {
-            Write_String_with_coordinator(&Lcd_config, &Main_Display[1][0],  0 ,Seconde_R);
-            delay_us(200);
-            Write_String_with_coordinator(&Lcd_config, &Main_Display[2][0],  0 ,Third_R);
-            delay_us(200);
-            Write_String_with_coordinator(&Lcd_config, &Main_Display[3][0],  0 ,Fourth_R);
-            Admin_mode = 0;
+            Send_String_Uart(uart1_config.UARTx, _Display_Try_Enter_Again, Enable);
+        }else
+        {
+            Send_String_Uart(uart1_config.UARTx, _Display_Enter_Admin_ID, Enable);
+            Send_String_Uart(uart1_config.UARTx, _Display_Enter_Admin_ID, Enable);
         }
-    }
-    else
+        
+    }else if(KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '#')
+    {
+        Clear_Buffer(Key_Buffer, 0, sizeof(Key_Buffer));
+        Key_Buffer_counter = 0;
+        if(Admin_mode != 0)
+        {
+            Send_String_Uart(uart1_config.UARTx, _Dispay_Exit_admin_mode, Enable);
+        }
+        Admin_mode = 0;
+    }else
     {
         if(Admin_mode == 0)
         {
@@ -357,60 +469,207 @@ void Reaction_Of_Prass(uint32_t Soruce_pin_index, uint32_t Drain_pin_index)
             {
                 if((Key_Buffer[0] == Admin_Pass[0]) && (Key_Buffer[1] == Admin_Pass[1]) && (Key_Buffer[2] == Admin_Pass[2]))
                 {
-                    Write_String_with_coordinator(&Lcd_config, &Main_Display[6][0], 0, Seconde_R);
-                    Reset_pin(GREAN_LED_PORT, GREAN_LED_PIN);
-                    Set_pin(RED_LED_PORT, RED_LED_PIN);
+                    Send_String_Uart(uart1_config.UARTx, _Display_Welcome_Admin, Enable);
+                    Send_String_Uart(uart1_config.UARTx, _Display_1_Add_ID, Enable);
+                    Send_String_Uart(uart1_config.UARTx, _Display_2_Remove_ID, Enable);
+                    Send_String_Uart(uart1_config.UARTx, _Display_Hash_Exit, Enable);
                     Admin_mode = 1;
-                    delay_us(50000);
-                    Write_String_with_coordinator(&Lcd_config, &Main_Display[7][0], 0, Third_R);
-                    delay_us(200);
-                    Write_String_with_coordinator(&Lcd_config, &Main_Display[8][0], 0, Fourth_R);
 
                 }else
                 {
-                    Write_String_with_coordinator(&Lcd_config, &Main_Display[5][0], 0, Seconde_R);
-                    Set_pin(GREAN_LED_PORT, GREAN_LED_PIN);
-                    Reset_pin(RED_LED_PORT, RED_LED_PIN);
+                    Send_String_Uart(uart1_config.UARTx, _Display_Worng_Entry, Enable);
                 }
                 Key_Buffer_counter = 0;
             }
 
         }else
-        {
-            
+        {      
             if(Admin_state == 0)
             {
                 if(KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '1')
                 {
+                    Send_String_Uart(uart1_config.UARTx, _Display_Enter_ID, Enable);
                     Admin_state = 1;
+                    return ;
                 }else if(KeyPad_Keys[Soruce_pin_index][Drain_pin_index] == '2')
                 {
+                    Send_String_Uart(uart1_config.UARTx, _Display_Enter_ID, Enable);
                     Admin_state = 2;
+                    return ;
+                }else
+                {
+                    Send_String_Uart(uart1_config.UARTx, _Display_Worng_Entry, Enable);
+                    return ;
                 }
             }
-            if(Admin_state == 1)
+            
+            Send_Char_Uart(uart1_config.UARTx , (uint16_t*)&KeyPad_Keys[Soruce_pin_index][Drain_pin_index],Enable);
+            Key_Buffer[Key_Buffer_counter] = KeyPad_Keys[Soruce_pin_index][Drain_pin_index];
+            Key_Buffer_counter++;
+            if(Key_Buffer_counter == 8)
             {
-                Reset_pin(RED_LED_PORT, RED_LED_PIN);
-                Key_Buffer[Key_Buffer_counter] = KeyPad_Keys[Soruce_pin_index][Drain_pin_index];
-                Key_Buffer_counter++;
-                if(Key_Buffer_counter == 8)
+                Send_String_Uart(uart1_config.UARTx, _Display_Enter, Enable);
+                uint16_t add = Convert_Buffer8_to_Variable(Key_Buffer, 3);
+                Convert_uint8_t_to_uint16_t(ID_data, Key_Buffer, 0, 4, 4);
+                if(Admin_state == 1)
                 {
-                    // Add ID by SPI to 25LC256
-                    Admin_state = 0;
-                }
-            }else if(Admin_state == 2)
-            {
-                Key_Buffer[Key_Buffer_counter] = KeyPad_Keys[Soruce_pin_index][Drain_pin_index];
-                Key_Buffer_counter++;
-                if(Key_Buffer_counter == 8)
+                    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, add, 4,ID_data);
+                    Send_String_Uart(uart1_config.UARTx, _Display_ID_Added, Enable);
+                }else if(Admin_state == 2)
                 {
-                    // Remove ID by SPI to 25LC256
-                    Admin_state = 0;
+                    Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, add, 4,Reset_Data);
+                    Send_String_Uart(uart1_config.UARTx, _Dispay_ID_Removed, Enable);
+                }else
+                {
+                    Send_String_Uart(uart1_config.UARTx, _Display_Worng_Entry, Enable);
+                    return ;
                 }
+                Admin_state = 0;
+                Key_Buffer_counter = 0;
             }
         }
         
     }
+}
+
+void Run_Led(En_Led_state state)
+{
+    if(state == Green)
+    {
+        Reset_pin(GREAN_LED_PORT, GREAN_LED_PIN);
+        Set_pin(RED_LED_PORT, RED_LED_PIN);
+    }else
+    {
+        Set_pin(GREAN_LED_PORT, GREAN_LED_PIN);
+        Reset_pin(RED_LED_PORT, RED_LED_PIN);
+    }
+}
+
+void Clear_Buffer(uint8_t *buff, uint8_t st_index, uint8_t end_index)
+{
+    for(uint8_t counter = st_index; counter < end_index; counter++)
+    {
+        *(buff + counter) = '\0';
+    }
+}
+
+void Convert_uint8_t_to_uint16_t(uint16_t *_16_buff, uint8_t *_8_buff, uint8_t st_16_index, uint8_t st_8_index, uint8_t len)
+{
+    uint8_t counter = len;
+    while(len)
+    {
+        *(_16_buff + st_16_index +(counter - len)) = *(_8_buff + st_8_index +(counter - len));
+        len--;
+    }
+}
+
+/**
+ * @brief This function is used to convert a character from to a hex number
+ * @param Buff Start charcters Address
+ * @param len The number of characters to convert to hex
+ * @note @param[len] One less number than the number of the character to be converted
+ * @example uint8_t example[] = {'1','2','3','4'};
+ * Convert_Buffer8_to_Variable(example, 3); // len = 3
+ * @example uint8_t example[] = {'1','2','3','4','5','6'};
+ * Convert_Buffer8_to_Variable(&example[3], 2); // len = 2
+ * @example uint8_t example[] = "123456";
+ * Convert_Buffer8_to_Variable(example, sizeof(example) - 2); 
+ * @example uint8_t example[] = "123456";
+ * Convert_Buffer8_to_Variable(&example[2], 4); 
+ * @return uint64_t Hex value
+ */
+uint64_t Convert_Buffer8_to_Variable(uint8_t *Buff, uint8_t len)
+{
+    uint64_t temp = 0;
+    while(len)
+    {
+        temp += *(Buff) - 0x30;
+        temp = temp << 4;
+        Buff++;
+        len--;
+    }
+    temp += *(Buff) - 0x30;
+
+    return temp;
+}
+
+
+uint64_t Convert_Buffer16_to_Variable(uint16_t *Buff, uint8_t len)
+{
+	uint64_t temp = 0;
+	while(len)
+	{
+		temp += (*(Buff) - 0x30);
+		temp = temp << 4;
+		Buff++;
+		len--;
+	}
+	temp += *(Buff) - 0x30;
+
+	return temp;
+}
+
+uint8_t search_char(uint8_t *buff1, uint8_t *buff2, uint8_t buff1_len, uint8_t buff2_len, data_type type)
+{
+	uint8_t retval = 0;
+	uint8_t const_buff2_len = buff2_len;
+	uint8_t *const_buff2 = buff2;
+	while(buff1_len)
+	{
+
+		while(buff2_len)
+		{
+
+			if(*buff1 == *buff2)
+			{
+				retval++;
+				break;
+			}
+            buff2 = buff2 + 1 + type;
+			buff2_len--;
+		}
+		buff2 = const_buff2;
+		buff1 = buff1 + 1;
+		buff2_len = const_buff2_len;
+		buff1_len--;
+	}
+	return retval;
+}
+
+uint8_t Inc_Dec_seven_segment(St_7_segment *seven_segment,Inc_Dec_seg Index)
+{
+    uint8_t retval = 1;
+    switch (Index)
+    {
+        case Inc:
+            if(Max_Grag > 8){break;}
+            Display_seven_segment(&seven_config, ++Max_Grag);
+            break;
+        case Dec:
+            if(Max_Grag < 1){break;}
+            Display_seven_segment(&seven_config, --Max_Grag);
+            break;
+        default:
+            retval = 0;
+            break;
+    }
+}
+
+uint8_t comapre_two_string(uint8_t *buff1, uint8_t *buff2, uint8_t len)
+{
+    uint8_t retval = 1;
+    while(len)
+    {
+        if(*buff1 != *buff2)
+        {
+            retval = 0;
+            break;
+        }
+        buff1 += 1;
+        buff2 += 1;
+        len--;
+    }
+    return retval;
 }
 //==============================================================================
 

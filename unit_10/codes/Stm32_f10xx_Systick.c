@@ -23,7 +23,10 @@ St_Systick_API Systick_API = {0};
 
 void Init_Systick(void)
 {
+    // Config clock source and interrupt
     SysTick->STK_CTRL = Systick_API.Enable_Interrupt | Systick_API.Clock_Source;
+    
+    //
     if((Systick_API.Reload_Value == Microsecond_Prescale) || (Systick_API.Reload_Value == Milisecond_Prescale))
     {
         SysTick->STK_LOAD = Get_HCLK_Freq()/Systick_API.Reload_Value;

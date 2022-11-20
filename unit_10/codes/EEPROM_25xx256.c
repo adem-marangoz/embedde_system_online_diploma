@@ -171,7 +171,7 @@ uint16_t Read_Byte_EEPROM_25xx(St_EEPROM_25xx256_Typedef *EEPROM_inst, uint16_t 
     Add_temp = Add >> 8;
     SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_buffer,&Add_temp, 1,SPI_Pol_Enable);
     Add_temp = Add & 0x00FF;
-    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_buffer,&Add_temp, 13,SPI_Pol_Enable);
+    SPI_Tx_Rx_Char(EEPROM_inst->EEPROM_SPI,Rx_buffer,&Add_temp, len,SPI_Pol_Enable);
 
     // Set NSS
     Set_pin(EEPROM_inst->GPIOx, EEPROM_inst->NSS_Pin);
