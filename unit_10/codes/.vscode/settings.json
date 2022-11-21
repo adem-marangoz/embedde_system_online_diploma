@@ -9,6 +9,8 @@
         "stm32f10xx_common.h": "c",
         "application.h": "c",
         "defines.h": "c",
-        "stm32f10xx_exti.h": "c"
+        "stm32f10xx_exti.h": "c",
+        "stm32f10xx_gpio.h": "c",
+        "send_atmega32.h": "c"
     }
 }

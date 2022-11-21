@@ -15,6 +15,7 @@
 #include "defines.h"	
 #include <string.h>
 #include <stdio.h>
+#include "Send_Atmega32.h"
 //==============================================================================
 
 
@@ -306,7 +307,7 @@ void Init_Component(void)
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x0018, 4, Third_ID);
     Write_Bytes_EEPROM_25xx(&EEPORM_25xx_config, 0x001C, 4, Fourth_ID);
     
-
+    // Send_to_controller(&spi1_config, Vehicle_entry_controller, Open_entry_gate1);
 }
 
 
@@ -359,45 +360,6 @@ void Rx_Uart1(St_Uart_API *UARTx)
         }
         Input_ID_counter1 = 0;
     }
-
-    // if(Max_Grag == 0)
-    // {
-    //     // delay_us(100000);
-    //     // Write_String_with_coordinator(&Lcd_config, _Display_Welcom,  0 ,First_R);
-    //     // delay_us(200);
-    //     // Write_String_with_coordinator(&Lcd_config, _Display_Sorry,  0 ,Seconde_R);
-    //     // delay_us(200);
-    //     // Write_String_with_coordinator(&Lcd_config, _Display_There_is_no,  0 ,Third_R);
-    //     // delay_us(200);
-    //     // Write_String_with_coordinator(&Lcd_config, _Display_Empty_Garage,  0 ,Fourth_R);
-    //     // Run_Led(Red);
-
-    // }else
-    // {
-    //     Input_ID[Input_ID_counter] = *Rx_Buff;
-    //     Input_ID_counter++;
-    //     if(Input_ID_counter == 8)
-    //     {
-    //         Send_String_Uart(UARTx->UARTx, _Display_Enter, Enable);
-    //         uint16_t add = Convert_Buffer16_to_Variable(Input_ID, 3);
-    //         uint16_t temp_id[4] = {0};
-    //         Read_Byte_EEPROM_25xx(&EEPORM_25xx_config, add, 4, temp_id);
-    //         if(comapre_two_string((uint8_t*)&Input_ID[4], (uint8_t*)temp_id, 8))
-    //         {
-    //             Inc_Dec_seven_segment(&seven_config, Dec);
-    //             Run_Led(Green);
-    //             Write_String_with_coordinator(&Lcd_config, _Display_Correct_ID,  0 ,Seconde_R);
-    //             Write_String_with_coordinator(&Lcd_config, _Display_Opened_Gate,  0 ,Third_R);
-                
-    //         }else
-    //         {
-    //             Write_String_with_coordinator(&Lcd_config, _Display_Not_Correct_ID,  0 ,Seconde_R);
-    //         }
-    //         Input_ID_counter = 0;
-    //         // Clear_Buffer((uint8_t*)Input_ID, 0 ,8);
-    //     }
-    // }
-
 }
 
 
