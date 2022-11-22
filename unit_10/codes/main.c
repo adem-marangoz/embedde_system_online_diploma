@@ -17,10 +17,7 @@
 
 
 //_____________________ Generica Function & Data Structure _____________________
-void config_Drives_and_Perpherals(void);
-void Init_Component(void);
-extern void _delay_ms(uint32_t time);
-extern St_Key_pad key_pad_config;
+
 
     //______________________ Data Structre of Drives ___________________________
 
@@ -37,7 +34,8 @@ int main(void)
 
     while (1)
     {
-        Check_Prass_Button(&key_pad_config);
+        Infinite_loop();
+
     }    
 
     return 1;
