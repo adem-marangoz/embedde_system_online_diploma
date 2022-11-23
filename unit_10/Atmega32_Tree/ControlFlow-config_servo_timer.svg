@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<svg width="651" height="460" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,456 4,4 647,4 647,456 4,456" stroke="#fffffe00" fill="none"/>
+ <polygon points="647,76 4,76 4,312 647,312 647,76" stroke="#90c4e4" fill="none"/>
+ <text x="13" y="91" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.clk_soruce = Clk_divid_8</text>
+ <text x="13" y="110" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.init_tick_count = 0</text>
+ <text x="13" y="129" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.Input_capture_edge = Input_Capture_falling_edge</text>
+ <text x="13" y="148" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.Input_capture_reg = 19999</text>
+ <text x="13" y="167" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.Input_nosise = Disable_cancel_input_noise</text>
+ <text x="13" y="186" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.output_compare_A1 = 0</text>
+ <text x="13" y="205" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.output_compare_B1 = 0</text>
+ <text x="13" y="224" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.output_compare_mode = Fast_PWM_Clear_on_compare_set_at_bottom</text>
+ <text x="13" y="243" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.output_pin = OC1A_pin</text>
+ <text x="13" y="262" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.timer1_interrput = 0</text>
+ <text x="13" y="281" fill="#000000" font-family="Arial" font-size="12">Timer1_Typedef.wave_generation_mode = Fast_pwm_ICR1</text>
+ <text x="13" y="300" fill="#000000" font-family="Arial" font-size="12">Init_Timer1()</text>
+ <polygon points="360,348 292,348 292,384 360,384 360,348" stroke="#90c4e4" fill="none"/>
+ <text x="300" y="367" fill="#000000" font-family="Arial" font-size="12">return 1</text>
+ <polyline points="326,312 326,316 326,319 326,322 326,326 326,329 326,332 326,335 326,337 326,340 326,343" stroke="#4e8cb9" fill="none"/>
+ <polygon points="327,343 326,348 324,343 327,343" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="353,4 299,4 299,40 353,40 353,4" stroke="#90c4e4" fill="none"/>
+ <text x="311" y="23" fill="#000000" font-family="Arial" font-size="12">start</text>
+ <polyline points="326,40 326,42 326,45 326,48 326,51 326,54 326,57 326,61 326,64 326,67 326,71" stroke="#4e8cb9" fill="none"/>
+ <polygon points="327,71 326,76 324,71 327,71" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="353,420 299,420 299,456 353,456 353,420" stroke="#90c4e4" fill="none"/>
+ <text x="313" y="439" fill="#000000" font-family="Arial" font-size="12">end</text>
+ <polyline points="326,384 326,387 326,390 326,393 326,396 326,400 326,403 326,406 326,409 326,412 326,415" stroke="#4e8cb9" fill="none"/>
+ <polygon points="327,415 326,420 324,415 327,415" stroke="#4e8cb9" fill="#4e8cb9"/>
+</svg>
