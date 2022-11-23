@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<svg width="634" height="1699" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,1695 4,4 630,4 630,1695 4,1695" stroke="#fffffe00" fill="none"/>
+ <polygon points="630,76 4,76 4,1623 630,1623 630,76" stroke="#90c4e4" fill="none"/>
+ <text x="12" y="91" fill="#000000" font-family="Arial" font-size="12">__APB2ENR_IOPAEN_En</text>
+ <text x="12" y="110" fill="#000000" font-family="Arial" font-size="12">__APB2ENR_IOPBEN_En</text>
+ <text x="12" y="129" fill="#000000" font-family="Arial" font-size="12">__APB2ENR_AFIOEN_En</text>
+ <text x="12" y="148" fill="#000000" font-family="Arial" font-size="12">Systick_API.Clock_Source = Processor_Clock_AHB</text>
+ <text x="12" y="167" fill="#000000" font-family="Arial" font-size="12">Systick_API.Current_Value = 0</text>
+ <text x="12" y="186" fill="#000000" font-family="Arial" font-size="12">Systick_API.Enable_Interrupt = Disable_Systick_Req</text>
+ <text x="12" y="205" fill="#000000" font-family="Arial" font-size="12">Systick_API.Reload_Value = Microsecond_Prescale</text>
+ <text x="12" y="224" fill="#000000" font-family="Arial" font-size="12">Init_Systick()</text>
+ <text x="12" y="243" fill="#000000" font-family="Arial" font-size="12">Lcd_config.Data_Port = GPIOA</text>
+ <text x="12" y="262" fill="#000000" font-family="Arial" font-size="12">Lcd_config.Enable_Port = GPIOB</text>
+ <text x="12" y="281" fill="#000000" font-family="Arial" font-size="12">Lcd_config.RS_Port = GPIOB</text>
+ <text x="12" y="300" fill="#000000" font-family="Arial" font-size="12">Lcd_config.R_W_Port = GPIOB</text>
+ <text x="12" y="319" fill="#000000" font-family="Arial" font-size="12">Lcd_config.Enable_Pin = GPIO_PIN_0</text>
+ <text x="12" y="338" fill="#000000" font-family="Arial" font-size="12">Lcd_config.R_W_Pin = GPIO_PIN_1</text>
+ <text x="12" y="357" fill="#000000" font-family="Arial" font-size="12">Lcd_config.RS_Pin = GPIO_PIN_3</text>
+ <text x="12" y="376" fill="#000000" font-family="Arial" font-size="12">Lcd_config.Data_Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15</text>
+ <text x="12" y="395" fill="#000000" font-family="Arial" font-size="12">LCD_init(&amp;Lcd_config)</text>
+ <text x="12" y="414" fill="#000000" font-family="Arial" font-size="12">key_pad_config.Soruce.Port = GPIOB</text>
+ <text x="12" y="433" fill="#000000" font-family="Arial" font-size="12">key_pad_config.Soruce.Pins = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7</text>
+ <text x="12" y="452" fill="#000000" font-family="Arial" font-size="12">key_pad_config.Drain.Port = GPIOA</text>
+ <text x="12" y="471" fill="#000000" font-family="Arial" font-size="12">key_pad_config.Drain.Pins = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4</text>
+ <text x="12" y="490" fill="#000000" font-family="Arial" font-size="12">Key_pad_init(&amp;key_pad_config)</text>
+ <text x="12" y="509" fill="#000000" font-family="Arial" font-size="12">seven_config.Port = GPIOB</text>
+ <text x="12" y="528" fill="#000000" font-family="Arial" font-size="12">seven_config.Pin_D[0] = GPIO_PIN_11</text>
+ <text x="12" y="547" fill="#000000" font-family="Arial" font-size="12">seven_config.Pin_D[1] = GPIO_PIN_12</text>
+ <text x="12" y="566" fill="#000000" font-family="Arial" font-size="12">seven_config.Pin_D[2] = GPIO_PIN_13</text>
+ <text x="12" y="585" fill="#000000" font-family="Arial" font-size="12">seven_config.Pin_D[3] = GPIO_PIN_14</text>
+ <text x="12" y="604" fill="#000000" font-family="Arial" font-size="12">init_seven_segment(&amp;seven_config)</text>
+ <text x="12" y="623" fill="#000000" font-family="Arial" font-size="12">uart1_config.baudrate = (uint32_t)115200</text>
+ <text x="12" y="642" fill="#000000" font-family="Arial" font-size="12">uart1_config.Hw_Flow_CTRL = CTS_RTS_None</text>
+ <text x="12" y="661" fill="#000000" font-family="Arial" font-size="12">uart1_config.Mode = Enable_RX_Tx</text>
+ <text x="12" y="680" fill="#000000" font-family="Arial" font-size="12">uart1_config.Parity = Parity_None</text>
+ <text x="12" y="699" fill="#000000" font-family="Arial" font-size="12">uart1_config.Stop_bit = Stop_1_bit</text>
+ <text x="12" y="718" fill="#000000" font-family="Arial" font-size="12">uart1_config.Word_Len = Payload_8_bit</text>
+ <text x="12" y="737" fill="#000000" font-family="Arial" font-size="12">uart1_config.UARTx = UART1</text>
+ <text x="12" y="756" fill="#000000" font-family="Arial" font-size="12">uart1_config.interrupt = En_RX_Inter</text>
+ <text x="12" y="775" fill="#000000" font-family="Arial" font-size="12">uart1_config.P_Rx_CallBack = Rx_Uart1</text>
+ <text x="12" y="794" fill="#000000" font-family="Arial" font-size="12">Init_Uart(&amp;uart1_config)</text>
+ <text x="12" y="813" fill="#000000" font-family="Arial" font-size="12">uart2_config.baudrate = (uint32_t)115200</text>
+ <text x="12" y="832" fill="#000000" font-family="Arial" font-size="12">uart2_config.Hw_Flow_CTRL = CTS_RTS_None</text>
+ <text x="12" y="851" fill="#000000" font-family="Arial" font-size="12">uart2_config.Mode = Enable_RX_Tx</text>
+ <text x="12" y="870" fill="#000000" font-family="Arial" font-size="12">uart2_config.Parity = Parity_None</text>
+ <text x="12" y="889" fill="#000000" font-family="Arial" font-size="12">uart2_config.Stop_bit = Stop_1_bit</text>
+ <text x="12" y="908" fill="#000000" font-family="Arial" font-size="12">uart2_config.Word_Len = Payload_8_bit</text>
+ <text x="12" y="927" fill="#000000" font-family="Arial" font-size="12">uart2_config.UARTx = UART2</text>
+ <text x="12" y="946" fill="#000000" font-family="Arial" font-size="12">uart2_config.interrupt = En_RX_Inter</text>
+ <text x="12" y="965" fill="#000000" font-family="Arial" font-size="12">uart2_config.P_Rx_CallBack = Rx_Uart2</text>
+ <text x="12" y="984" fill="#000000" font-family="Arial" font-size="12">Init_Uart(&amp;uart2_config)</text>
+ <text x="12" y="1003" fill="#000000" font-family="Arial" font-size="12">spi1_config.SPI_Inst = SPI1</text>
+ <text x="12" y="1022" fill="#000000" font-family="Arial" font-size="12">spi1_config.SPI_Mode = Full_Duplex</text>
+ <text x="12" y="1041" fill="#000000" font-family="Arial" font-size="12">spi1_config.BaudRate = FPCLK_div_4</text>
+ <text x="12" y="1060" fill="#000000" font-family="Arial" font-size="12">spi1_config.Master_Select = SPI_Master</text>
+ <text x="12" y="1079" fill="#000000" font-family="Arial" font-size="12">spi1_config.NSS_Hardware_Mode = NSS_Hardware_Output_Dis_MultiMaster_En</text>
+ <text x="12" y="1098" fill="#000000" font-family="Arial" font-size="12">spi1_config.Slave_Select_Software = Software_Mang_Enable</text>
+ <text x="12" y="1117" fill="#000000" font-family="Arial" font-size="12">spi1_config.Frame_format = MSB_Trans</text>
+ <text x="12" y="1136" fill="#000000" font-family="Arial" font-size="12">spi1_config.Data_Legnth_format = Data_8_bit</text>
+ <text x="12" y="1155" fill="#000000" font-family="Arial" font-size="12">spi1_config.CLK_Phase_Polarity = Sample_Ris_Setup_Fall</text>
+ <text x="12" y="1174" fill="#000000" font-family="Arial" font-size="12">spi1_config.Rx_Tx_interrupt = SPI_interrupt_Dis</text>
+ <text x="12" y="1193" fill="#000000" font-family="Arial" font-size="12">Init_SPI(&amp;spi1_config)</text>
+ <text x="12" y="1212" fill="#000000" font-family="Arial" font-size="12">NSS_EEPROM.Pin = GPIO_PIN_8</text>
+ <text x="12" y="1231" fill="#000000" font-family="Arial" font-size="12">NSS_EEPROM.Speed = GPIO_SPEED_FREQ_2MHZ</text>
+ <text x="12" y="1250" fill="#000000" font-family="Arial" font-size="12">NSS_EEPROM.Mode = GPIO_MODE_OUTPUT_PP</text>
+ <text x="12" y="1269" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(GPIOB,&amp;NSS_EEPROM)</text>
+ <text x="12" y="1288" fill="#000000" font-family="Arial" font-size="12">Set_pin(GPIOB, NSS_EEPROM.Pin)</text>
+ <text x="12" y="1307" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega1.Pin = GPIO_PIN_9</text>
+ <text x="12" y="1326" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega1.Speed = GPIO_SPEED_FREQ_2MHZ</text>
+ <text x="12" y="1345" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega1.Mode = GPIO_MODE_OUTPUT_PP</text>
+ <text x="12" y="1364" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(GPIOB,&amp;NSS_ATmega1)</text>
+ <text x="12" y="1383" fill="#000000" font-family="Arial" font-size="12">Set_pin(GPIOB, NSS_ATmega1.Pin)</text>
+ <text x="12" y="1402" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega2.Pin = GPIO_PIN_10</text>
+ <text x="12" y="1421" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega2.Speed = GPIO_SPEED_FREQ_2MHZ</text>
+ <text x="12" y="1440" fill="#000000" font-family="Arial" font-size="12">NSS_ATmega2.Mode = GPIO_MODE_OUTPUT_PP</text>
+ <text x="12" y="1459" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(GPIOB,&amp;NSS_ATmega2)</text>
+ <text x="12" y="1478" fill="#000000" font-family="Arial" font-size="12">Set_pin(GPIOB, NSS_ATmega2.Pin)</text>
+ <text x="12" y="1497" fill="#000000" font-family="Arial" font-size="12">LEDS.Pin = GPIO_PIN_8 | GPIO_PIN_11</text>
+ <text x="12" y="1516" fill="#000000" font-family="Arial" font-size="12">LEDS.Speed = GPIO_SPEED_FREQ_2MHZ</text>
+ <text x="12" y="1535" fill="#000000" font-family="Arial" font-size="12">LEDS.Mode = GPIO_MODE_OUTPUT_PP</text>
+ <text x="12" y="1554" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(GPIOA,&amp;LEDS)</text>
+ <text x="12" y="1573" fill="#000000" font-family="Arial" font-size="12">EEPORM_25xx_config.EEPROM_SPI = &amp;spi1_config</text>
+ <text x="12" y="1592" fill="#000000" font-family="Arial" font-size="12">EEPORM_25xx_config.GPIOx = GPIOB</text>
+ <text x="12" y="1611" fill="#000000" font-family="Arial" font-size="12">EEPORM_25xx_config.NSS_Pin = GPIO_PIN_8</text>
+ <polygon points="344,1659 290,1659 290,1695 344,1695 344,1659" stroke="#90c4e4" fill="none"/>
+ <text x="304" y="1678" fill="#000000" font-family="Arial" font-size="12">end</text>
+ <polyline points="317,1623 317,1627 317,1630 317,1633 317,1637 317,1640 317,1643 317,1646 317,1648 317,1651 317,1654" stroke="#4e8cb9" fill="none"/>
+ <polygon points="319,1654 317,1659 315,1654 319,1654" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="344,4 290,4 290,40 344,40 344,4" stroke="#90c4e4" fill="none"/>
+ <text x="302" y="23" fill="#000000" font-family="Arial" font-size="12">start</text>
+ <polyline points="317,40 317,42 317,45 317,48 317,51 317,54 317,57 317,60 317,64 317,67 317,71" stroke="#4e8cb9" fill="none"/>
+ <polygon points="319,71 317,76 315,71 319,71" stroke="#4e8cb9" fill="#4e8cb9"/>
+</svg>

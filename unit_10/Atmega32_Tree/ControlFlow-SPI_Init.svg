@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<svg width="738" height="531" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,527 4,4 734,4 734,527 4,527" stroke="#fffffe00" fill="none"/>
+ <polygon points="482,77 255,77 255,113 482,113 482,77" stroke="#90c4e4" fill="none"/>
+ <text x="263" y="96" fill="#000000" font-family="Arial" font-size="12">GPIO_config gpio_config = {0}</text>
+ <polygon points="368,150 210,177 368,204 526,177 368,150" stroke="#90c4e4" fill="none"/>
+ <text x="297" y="178" fill="#000000" font-family="Arial" font-size="12">SPIx-&gt;Slave_Master</text>
+ <polyline points="368,113 368,116 368,119 368,122 368,125 368,129 368,132 368,135 368,138 368,142 368,145" stroke="#4e8cb9" fill="none"/>
+ <polygon points="370,145 368,150 366,145 370,145" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="395,4 341,4 341,40 395,40 395,4" stroke="#90c4e4" fill="none"/>
+ <text x="353" y="23" fill="#000000" font-family="Arial" font-size="12">start</text>
+ <polyline points="368,40 368,43 368,46 368,49 368,53 368,56 368,59 368,63 368,66 368,69 368,72" stroke="#4e8cb9" fill="none"/>
+ <polygon points="370,72 368,77 366,72 370,72" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="360,259 4,259 4,381 360,381 360,259" stroke="#90c4e4" fill="none"/>
+ <text x="12" y="274" fill="#000000" font-family="Arial" font-size="12">gpio_config.mode = OUTPUT</text>
+ <text x="12" y="293" fill="#000000" font-family="Arial" font-size="12">gpio_config.pin = DD_SCK | DD_MOSI | DD_SS</text>
+ <text x="12" y="312" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(DDR_SPI, &amp;gpio_config)</text>
+ <text x="12" y="331" fill="#000000" font-family="Arial" font-size="12">gpio_config.mode = INPUT</text>
+ <text x="12" y="350" fill="#000000" font-family="Arial" font-size="12">gpio_config.pin = DD_MISO</text>
+ <text x="12" y="369" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(DDR_SPI, &amp;gpio_config)</text>
+ <polyline points="340,199 334,204 327,209 320,214 313,219 305,225 298,231 290,237 282,243 274,250 266,256" stroke="#4e8cb9" fill="none"/>
+ <text x="308" y="233" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="266,257 261,259 264,254 266,257" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="734,259 378,259 378,381 734,381 734,259" stroke="#90c4e4" fill="none"/>
+ <text x="386" y="274" fill="#000000" font-family="Arial" font-size="12">gpio_config.mode = INPUT</text>
+ <text x="386" y="293" fill="#000000" font-family="Arial" font-size="12">gpio_config.pin = DD_SCK | DD_MOSI | DD_SS</text>
+ <text x="386" y="312" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(DDR_SPI, &amp;gpio_config)</text>
+ <text x="386" y="331" fill="#000000" font-family="Arial" font-size="12">gpio_config.mode = OUTPUT</text>
+ <text x="386" y="350" fill="#000000" font-family="Arial" font-size="12">gpio_config.pin = DD_MISO</text>
+ <text x="386" y="369" fill="#000000" font-family="Arial" font-size="12">Init_GPIO(DDR_SPI, &amp;gpio_config)</text>
+ <polyline points="397,199 403,204 410,209 417,214 424,219 432,225 440,231 448,237 456,243 464,250 472,256" stroke="#cd0000" fill="none"/>
+ <text x="451" y="233" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="473,255 476,259 471,257 473,255" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="402,418 334,418 334,454 402,454 402,418" stroke="#90c4e4" fill="none"/>
+ <text x="342" y="437" fill="#000000" font-family="Arial" font-size="12">return 1</text>
+ <polyline points="280,381 286,385 292,388 298,392 304,396 310,399 315,403 321,406 326,409 331,412 336,415" stroke="#4e8cb9" fill="none"/>
+ <polygon points="337,414 340,418 335,417 337,414" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="457,381 451,385 445,388 439,392 433,396 428,399 422,403 416,406 411,409 406,412 401,415" stroke="#4e8cb9" fill="none"/>
+ <polygon points="402,417 396,418 400,414 402,417" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="395,491 341,491 341,527 395,527 395,491" stroke="#90c4e4" fill="none"/>
+ <text x="355" y="510" fill="#000000" font-family="Arial" font-size="12">end</text>
+ <polyline points="368,454 368,457 368,460 368,463 368,467 368,470 368,473 368,477 368,480 368,483 368,486" stroke="#4e8cb9" fill="none"/>
+ <polygon points="370,486 368,491 366,486 370,486" stroke="#4e8cb9" fill="#4e8cb9"/>
+</svg>

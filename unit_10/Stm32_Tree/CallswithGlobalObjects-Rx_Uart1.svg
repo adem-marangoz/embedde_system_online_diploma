@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<svg width="1083" height="1251" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,1247 4,3 1080,3 1080,1247 4,1247" stroke="#fffffe00" fill="none"/>
+ <polygon points="85,606 4,606 4,642 85,642 85,606" stroke="#0000ff" fill="none"/>
+ <text x="13" y="625" fill="#000000" font-family="Arial" font-size="12">Rx_Uart1</text>
+ <polygon points="402,58 248,58 248,94 402,94 402,58" stroke="#0000ff" fill="none"/>
+ <text x="256" y="77" fill="#000000" font-family="Arial" font-size="12">Receive_Char_Uart</text>
+ <polyline points="46,605 46,576 47,536 49,488 52,434 56,378 61,322 69,269 78,221 89,181 103,152 113,139 123,128 136,118 149,110 163,102 178,96 193,91 208,87 223,83 238,81" stroke="#696969" fill="none"/>
+ <polygon points="237,77 248,79 239,84 237,77" stroke="#696969" fill="#696969"/>
+ <polygon points="395,112 254,112 254,148 395,148 395,112" stroke="#0000ff" fill="none"/>
+ <text x="263" y="131" fill="#000000" font-family="Arial" font-size="12">Send_String_Uart</text>
+ <polyline points="45,606 45,578 46,540 48,495 51,446 55,394 60,342 67,293 77,249 89,213 103,187 114,175 126,165 139,156 153,149 168,143 183,138 198,135 214,132 229,129 244,128" stroke="#696969" fill="none"/>
+ <polygon points="244,124 254,127 245,131 244,124" stroke="#696969" fill="#696969"/>
+ <polygon points="438,166 211,166 211,202 438,202 438,166" stroke="#0000ff" fill="none"/>
+ <text x="220" y="185" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator</text>
+ <polyline points="45,606 45,579 46,543 47,501 50,454 53,406 59,358 66,312 76,273 88,240 103,218 111,211 120,204 129,198 138,193 148,189 158,185 169,182 179,179 190,177 201,176" stroke="#696969" fill="none"/>
+ <polygon points="201,173 211,175 202,180 201,173" stroke="#696969" fill="#696969"/>
+ <polygon points="438,336 211,336 211,372 438,372 438,336" stroke="#0000ff" fill="none"/>
+ <text x="220" y="355" fill="#000000" font-family="Arial" font-size="12">Convert_Buffer16_to_Variable</text>
+ <polyline points="46,606 47,593 48,576 50,558 53,538 57,518 62,496 70,475 79,455 90,436 103,418 111,410 119,402 128,395 138,389 148,384 158,379 169,374 179,370 190,367 201,364" stroke="#696969" fill="none"/>
+ <polygon points="201,360 211,361 202,367 201,360" stroke="#696969" fill="#696969"/>
+ <polygon points="778,288 565,288 565,324 778,324 778,288" stroke="#0000ff" fill="none"/>
+ <text x="573" y="307" fill="#000000" font-family="Arial" font-size="12">Read_Byte_EEPROM_25xx</text>
+ <polyline points="47,605 49,585 52,561 55,532 59,501 65,469 70,438 77,408 85,382 94,360 103,344 125,326 156,312 196,301 242,294 293,289 346,287 401,287 455,288 507,291 554,294" stroke="#696969" fill="none"/>
+ <polygon points="555,291 565,295 554,298 555,291" stroke="#696969" fill="#696969"/>
+ <polygon points="404,390 246,390 246,426 404,426 404,390" stroke="#0000ff" fill="none"/>
+ <text x="254" y="409" fill="#000000" font-family="Arial" font-size="12">comapre_two_string</text>
+ <polyline points="46,605 47,593 48,579 50,563 53,546 57,528 63,511 70,493 79,477 90,461 103,448 114,439 126,431 139,425 152,419 166,415 180,411 194,408 208,406 222,404 235,403" stroke="#696969" fill="none"/>
+ <polygon points="236,400 246,403 236,407 236,400" stroke="#696969" fill="#696969"/>
+ <polygon points="421,498 229,498 229,534 421,534 421,498" stroke="#0000ff" fill="none"/>
+ <text x="237" y="517" fill="#000000" font-family="Arial" font-size="12">Inc_Dec_seven_segment</text>
+ <polyline points="56,606 59,601 63,596 67,590 71,585 75,580 80,574 85,569 91,564 97,560 103,556 114,550 125,545 136,540 148,536 160,532 171,529 183,526 195,524 207,522 219,520" stroke="#696969" fill="none"/>
+ <polygon points="218,516 229,519 219,523 218,516" stroke="#696969" fill="#696969"/>
+ <polygon points="711,215 632,215 632,251 711,251 711,215" stroke="#0000ff" fill="none"/>
+ <text x="640" y="234" fill="#000000" font-family="Arial" font-size="12">Run_Led</text>
+ <polyline points="47,605 48,584 50,556 53,524 57,490 62,454 68,418 75,385 83,355 92,331 103,313 130,291 170,274 221,260 278,250 340,242 404,237 467,234 526,232 579,232 622,232" stroke="#696969" fill="none"/>
+ <polygon points="622,228 632,232 622,235 622,228" stroke="#696969" fill="#696969"/>
+ <polygon points="745,374 598,374 598,410 745,410 745,374" stroke="#0000ff" fill="none"/>
+ <text x="606" y="393" fill="#000000" font-family="Arial" font-size="12">Send_to_controller</text>
+ <polyline points="45,605 46,590 47,573 49,552 51,529 56,505 61,480 69,454 78,429 89,405 103,383 111,373 118,364 124,357 131,351 139,346 146,342 155,338 164,334 175,331 187,327 233,316 281,311 329,310 377,313 425,319 470,327 513,337 552,348 587,360 617,370" stroke="#696969" fill="none"/>
+ <polygon points="618,367 626,374 616,373 618,367" stroke="#696969" fill="#696969"/>
+ <ellipse cx="671" cy="475" rx="63" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="635" y="476" fill="#000000" font-family="Arial" font-size="12">Max_Grag</text>
+ <polyline points="53,606 56,599 59,592 63,584 68,576 72,568 78,560 83,552 89,544 96,537 103,530 112,522 120,516 127,511 134,506 142,503 149,500 157,497 166,494 176,492 187,489 231,479 276,471 322,465 368,462 413,460 457,460 498,460 537,462 571,464 602,467" stroke="#0000ff" fill="none"/>
+ <text x="311" y="452" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="603,463 612,468 602,470 603,463" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="671" cy="609" rx="76" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="625" y="610" fill="#000000" font-family="Arial" font-size="12">seven_config</text>
+ <polyline points="85,607 87,606 89,606 90,605 92,605 94,604 96,604 98,603 99,603 101,602 103,602 113,600 122,599 130,598 138,597 145,597 152,597 160,597 168,597 177,597 187,597 221,596 251,595 278,594 302,594 325,594 348,594 372,594 399,595 429,596 463,597 475,597 488,598 501,598 514,599 527,599 539,600 552,601 564,601 576,602 588,603" stroke="#0000ff" fill="none"/>
+ <text x="292" y="587" fill="#000000" font-family="Arial" font-size="12">Addr Use</text>
+ <polygon points="588,599 598,603 588,606 588,599" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="624" rx="65" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="287" y="625" fill="#000000" font-family="Arial" font-size="12">LCD_state</text>
+ <polyline points="85,624 99,624 114,624 130,624 146,624 164,624 181,624 199,624 217,624 234,624 250,624" stroke="#006400" fill="none"/>
+ <text x="124" y="616" fill="#000000" font-family="Arial" font-size="12">Set</text>
+ <polygon points="250,620 260,624 250,627 250,620" stroke="#006400" fill="#006400"/>
+ <ellipse cx="325" cy="679" rx="50" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="298" y="680" fill="#000000" font-family="Arial" font-size="12">Timeout</text>
+ <polyline points="85,640 87,641 89,641 90,642 92,642 94,643 96,644 98,644 99,645 101,645 103,646 119,650 136,654 154,657 171,660 188,663 205,666 221,668 237,670 252,672 266,673" stroke="#006400" fill="none"/>
+ <text x="124" y="638" fill="#000000" font-family="Arial" font-size="12">Set</text>
+ <polygon points="266,670 276,674 266,677 266,670" stroke="#006400" fill="#006400"/>
+ <ellipse cx="325" cy="734" rx="87" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="272" y="735" fill="#000000" font-family="Arial" font-size="12">_Display_Enter</text>
+ <polyline points="59,642 62,646 66,650 70,655 74,659 78,663 83,668 88,672 93,676 98,680 103,683 115,690 128,696 141,701 154,706 167,710 181,714 195,718 208,721 221,723 234,725" stroke="#0000ff" fill="none"/>
+ <text x="122" y="675" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="234,722 244,727 233,729 234,722" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="789" rx="66" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="287" y="790" fill="#000000" font-family="Arial" font-size="12">Lcd_config</text>
+ <polyline points="51,642 53,650 56,658 60,667 64,677 69,687 75,696 81,706 88,715 95,724 103,732 116,742 130,750 144,758 159,764 174,770 190,774 205,778 220,781 235,784 249,786" stroke="#0000ff" fill="none"/>
+ <text x="103" y="724" fill="#000000" font-family="Arial" font-size="12">Addr Use</text>
+ <polygon points="250,782 259,787 249,789 250,782" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="844" rx="87" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="272" y="845" fill="#000000" font-family="Arial" font-size="12">_Display_Sorry</text>
+ <polyline points="47,642 48,653 50,666 52,681 56,697 60,713 66,730 73,746 81,762 91,777 103,790 113,799 125,807 136,814 149,820 162,826 175,830 188,834 202,837 215,839 228,841" stroke="#0000ff" fill="none"/>
+ <text x="122" y="782" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="228,838 238,843 228,845 228,838" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="899" rx="122" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="247" y="900" fill="#000000" font-family="Arial" font-size="12">_Display_There_is_no</text>
+ <polyline points="48,642 50,659 53,679 57,702 61,727 67,753 72,778 79,801 86,821 94,838 103,850 110,857 118,863 127,869 136,874 145,878 154,882 164,886 174,889 184,892 194,894" stroke="#0000ff" fill="none"/>
+ <text x="122" y="842" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="194,891 203,896 193,898 194,891" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="954" rx="136" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="237" y="955" fill="#000000" font-family="Arial" font-size="12">_Display_Empty_Garage</text>
+ <polyline points="47,642 48,662 50,688 53,718 57,750 62,783 68,815 75,845 83,872 92,894 103,909 109,915 116,920 123,925 131,930 139,934 146,938 155,941 163,944 171,947 180,949" stroke="#0000ff" fill="none"/>
+ <text x="122" y="901" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="181,946 190,951 179,953 181,946" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="1009" rx="125" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="245" y="1010" fill="#000000" font-family="Arial" font-size="12">EEPORM_25xx_config</text>
+ <polyline points="46,642 47,665 48,696 50,732 54,771 58,811 64,851 71,889 80,922 90,949 103,968 110,975 118,981 126,986 135,991 144,995 153,999 162,1003 172,1006 181,1008 191,1010" stroke="#0000ff" fill="none"/>
+ <text x="103" y="960" fill="#000000" font-family="Arial" font-size="12">Addr Use</text>
+ <polygon points="192,1006 201,1012 191,1013 192,1006" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="1064" rx="115" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="252" y="1065" fill="#000000" font-family="Arial" font-size="12">_Display_Correct_ID</text>
+ <polyline points="45,642 45,668 46,704 47,746 50,792 54,840 59,887 67,932 76,971 88,1004 103,1026 111,1034 121,1041 130,1047 141,1052 151,1057 162,1060 174,1064 185,1066 197,1068 208,1070" stroke="#0000ff" fill="none"/>
+ <text x="122" y="1018" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="209,1066 219,1071 208,1073 209,1066" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="1119" rx="131" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="241" y="1120" fill="#000000" font-family="Arial" font-size="12">_Display_Opened_Gate</text>
+ <polyline points="47,642 49,673 51,716 55,767 60,823 65,881 71,937 78,989 86,1033 94,1066 103,1084 111,1091 119,1097 127,1103 136,1108 146,1112 155,1116 165,1119 176,1121 186,1123 196,1125" stroke="#0000ff" fill="none"/>
+ <text x="122" y="1076" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="197,1122 206,1126 196,1129 197,1122" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="1174" rx="69" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="285" y="1175" fill="#000000" font-family="Arial" font-size="12">spi1_config</text>
+ <polyline points="46,642 48,676 50,724 53,781 58,845 63,910 69,974 76,1033 84,1083 93,1120 103,1141 115,1152 129,1161 143,1168 159,1173 175,1178 191,1181 207,1183 224,1184 240,1184 255,1183" stroke="#0000ff" fill="none"/>
+ <text x="103" y="1133" fill="#000000" font-family="Arial" font-size="12">Addr Use</text>
+ <polygon points="255,1180 265,1183 255,1187 255,1180" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="325" cy="1229" rx="138" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="236" y="1230" fill="#000000" font-family="Arial" font-size="12">_Display_Not_Correct_ID</text>
+ <polyline points="46,642 47,679 49,732 52,795 56,866 61,940 67,1011 74,1077 82,1133 92,1175 103,1198 111,1206 120,1212 129,1218 139,1223 149,1228 160,1231 171,1234 182,1236 193,1238 204,1239" stroke="#0000ff" fill="none"/>
+ <text x="122" y="1190" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="205,1235 214,1240 204,1242 205,1235" stroke="#0000ff" fill="#0000ff"/>
+ <polygon points="738,28 604,28 604,64 738,64 738,28" stroke="#0000ff" fill="none"/>
+ <text x="612" y="47" fill="#000000" font-family="Arial" font-size="12">Send_Char_Uart</text>
+ <polyline points="395,117 402,116 408,114 415,113 422,112 429,110 436,109 443,107 450,106 456,104 463,103 476,100 487,96 497,93 506,91 514,88 522,85 531,83 541,80 552,76 565,73 568,72 571,71 573,70 576,69 579,69 582,68 585,67 588,66 591,66 594,65" stroke="#696969" fill="none"/>
+ <polygon points="593,61 604,62 595,68 593,61" stroke="#696969" fill="#696969"/>
+ <polygon points="753,82 589,82 589,118 753,118 753,82" stroke="#0000ff" fill="none"/>
+ <text x="597" y="101" fill="#000000" font-family="Arial" font-size="12">Jump_to_coordinator</text>
+ <polyline points="422,166 426,165 430,164 435,163 439,162 443,162 447,161 451,160 455,159 459,158 463,157 477,154 491,150 505,146 520,143 534,139 548,135 561,131 575,127 588,124 600,120" stroke="#696969" fill="none"/>
+ <polygon points="599,117 609,118 601,124 599,117" stroke="#696969" fill="#696969"/>
+ <polygon points="737,161 606,161 606,197 737,197 737,161" stroke="#0000ff" fill="none"/>
+ <text x="614" y="180" fill="#000000" font-family="Arial" font-size="12">Write_Character</text>
+ <polyline points="439,182 455,182 470,181 487,181 503,181 519,181 535,180 551,180 566,180 581,180 595,180" stroke="#696969" fill="none"/>
+ <polygon points="595,176 606,180 596,183 595,176" stroke="#696969" fill="#696969"/>
+ <polygon points="1050,58 915,58 915,94 1050,94 1050,58" stroke="#0000ff" fill="none"/>
+ <text x="923" y="77" fill="#000000" font-family="Arial" font-size="12">Write_Command</text>
+ <polyline points="753,93 767,92 782,91 798,90 814,89 829,88 845,86 861,85 876,84 891,83 905,82" stroke="#696969" fill="none"/>
+ <polygon points="905,78 915,81 905,85 905,78" stroke="#696969" fill="#696969"/>
+ <ellipse cx="982" cy="22" rx="93" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="924" y="23" fill="#000000" font-family="Arial" font-size="12">Lines_command</text>
+ <polyline points="744,82 760,78 776,74 794,69 811,65 829,60 847,56 865,51 882,47 898,43 914,39" stroke="#0000ff" fill="none"/>
+ <text x="796" y="44" fill="#000000" font-family="Arial" font-size="12">Deref Use</text>
+ <polygon points="913,35 924,36 915,42 913,35" stroke="#0000ff" fill="#0000ff"/>
+ <polygon points="1050,166 915,166 915,202 1050,202 1050,166" stroke="#0000ff" fill="none"/>
+ <text x="923" y="185" fill="#000000" font-family="Arial" font-size="12">Set_GPIO_Value</text>
+ <polyline points="737,171 749,170 761,169 774,169 787,168 800,168 814,168 827,168 841,168 854,168 867,169 871,169 874,169 878,169 882,170 886,170 889,171 893,171 897,171 901,172 905,172" stroke="#696969" fill="none"/>
+ <polygon points="905,169 915,173 905,176 905,169" stroke="#696969" fill="#696969"/>
+ <polygon points="1017,226 947,226 947,262 1017,262 1017,226" stroke="#0000ff" fill="none"/>
+ <text x="955" y="245" fill="#000000" font-family="Arial" font-size="12">Set_pin</text>
+ <polyline points="737,173 749,173 762,173 775,174 788,175 801,176 815,179 828,181 841,185 854,189 867,194 870,195 872,197 873,198 875,200 876,202 877,204 879,205 880,207 882,209 885,211 890,214 895,216 900,219 905,221 911,224 916,226 921,228 927,230 932,231 937,233" stroke="#696969" fill="none"/>
+ <polygon points="939,230 947,236 937,236 939,230" stroke="#696969" fill="#696969"/>
+ <polygon points="1026,293 939,293 939,329 1026,329 1026,293" stroke="#0000ff" fill="none"/>
+ <text x="947" y="312" fill="#000000" font-family="Arial" font-size="12">Reset_pin</text>
+ <polyline points="737,192 741,193 745,194 750,196 754,197 758,198 762,200 766,201 770,203 774,204 778,206 790,211 800,216 808,221 816,226 823,231 830,236 838,241 846,247 856,253 867,260 869,261 871,262 873,263 874,264 876,265 877,266 879,267 880,268 883,270 885,271 889,273 894,275 898,277 902,279 907,281 911,283 916,285 920,287 925,289 929,291" stroke="#696969" fill="none"/>
+ <polygon points="930,287 938,294 928,294 930,287" stroke="#696969" fill="#696969"/>
+ <polygon points="1050,112 915,112 915,148 1050,148 1050,112" stroke="#0000ff" fill="none"/>
+ <text x="923" y="131" fill="#000000" font-family="Arial" font-size="12">Kick_Enable_pin</text>
+ <polyline points="737,165 743,164 749,163 755,162 761,161 767,160 772,159 778,158 784,157 790,156 796,155 807,153 818,151 829,150 840,148 851,146 862,145 873,143 883,142 894,140 904,139" stroke="#696969" fill="none"/>
+ <polygon points="904,135 915,138 905,142 904,135" stroke="#696969" fill="#696969"/>
+ <polyline points="726,288 732,286 739,284 746,282 753,280 760,278 767,276 775,274 782,272 789,271 796,269 811,266 825,263 840,260 855,258 870,256 885,254 899,252 912,250 925,249 937,248" stroke="#696969" fill="none"/>
+ <polygon points="937,244 947,247 938,251 937,244" stroke="#696969" fill="#696969"/>
+ <polyline points="778,315 780,315 782,315 783,315 785,315 787,315 789,315 791,315 792,316 794,316 796,316 805,316 812,316 819,316 825,316 831,316 837,316 843,316 850,316 858,316 867,316 873,316 879,315 885,315 892,315 898,315 904,314 910,314 916,314 922,313 928,313" stroke="#696969" fill="none"/>
+ <polygon points="929,310 939,313 929,317 929,310" stroke="#696969" fill="#696969"/>
+ <polygon points="1050,359 914,359 914,395 1050,395 1050,359" stroke="#0000ff" fill="none"/>
+ <text x="922" y="378" fill="#000000" font-family="Arial" font-size="12">SPI_Tx_Rx_Char</text>
+ <polyline points="751,324 765,327 781,330 796,334 812,337 828,341 844,345 860,348 875,352 891,356 905,359" stroke="#696969" fill="none"/>
+ <polygon points="905,356 914,361 904,362 905,356" stroke="#696969" fill="#696969"/>
+ <polygon points="765,531 578,531 578,567 765,567 765,531" stroke="#0000ff" fill="none"/>
+ <text x="586" y="550" fill="#000000" font-family="Arial" font-size="12">Display_seven_segment</text>
+ <polyline points="421,528 427,529 433,529 439,530 445,531 451,532 457,532 463,533 469,534 475,534 481,535 489,536 498,536 507,537 515,538 524,539 533,539 541,540 550,541 559,541 567,542" stroke="#696969" fill="none"/>
+ <polygon points="568,538 578,543 567,545 568,538" stroke="#696969" fill="#696969"/>
+ <polyline points="421,504 427,503 433,502 439,502 445,501 451,500 457,499 463,499 469,498 475,498 481,497 493,496 505,494 518,492 531,491 543,490 555,488 568,487 579,485 591,484 602,482" stroke="#0000ff" fill="none"/>
+ <text x="500" y="482" fill="#000000" font-family="Arial" font-size="12">Use</text>
+ <polygon points="602,479 612,481 603,486 602,479" stroke="#0000ff" fill="#0000ff"/>
+ <polyline points="421,525 433,525 445,525 458,525 470,525 483,525 496,524 509,524 522,522 535,521 547,519 555,517 563,515 572,513 580,511 589,508 597,505 605,502 613,500 621,497 628,494" stroke="#dc143c" fill="none"/>
+ <text x="491" y="511" fill="#000000" font-family="Arial" font-size="12">Modify</text>
+ <polygon points="626,491 637,490 629,497 626,491" stroke="#dc143c" fill="#dc143c"/>
+ <polyline points="421,532 425,533 429,535 434,536 438,537 442,539 447,540 451,542 455,544 459,546 463,548 465,549 467,551 469,552 470,554 472,555 473,557 474,558 476,560 478,561 481,563 492,568 503,572 514,577 525,581 537,584 549,588 560,591 571,593 582,596 593,598" stroke="#0000ff" fill="none"/>
+ <text x="481" y="555" fill="#000000" font-family="Arial" font-size="12">Addr Use</text>
+ <polygon points="594,595 603,600 593,602 594,595" stroke="#0000ff" fill="#0000ff"/>
+ <polygon points="1057,531 908,531 908,567 1057,567 1057,531" stroke="#0000ff" fill="none"/>
+ <text x="916" y="550" fill="#000000" font-family="Arial" font-size="12">Change_State_Pin</text>
+ <polyline points="765,549 778,549 791,549 805,549 818,549 832,549 846,549 859,549 872,549 885,549 898,549" stroke="#696969" fill="none"/>
+ <polygon points="898,545 908,549 898,552 898,545" stroke="#696969" fill="#696969"/>
+ <polyline points="711,234 730,235 751,235 773,236 798,237 823,238 848,239 872,240 896,241 917,241 937,242" stroke="#696969" fill="none"/>
+ <polygon points="937,239 947,242 937,246 937,239" stroke="#696969" fill="#696969"/>
+ <polyline points="711,242 729,247 749,252 771,257 794,263 817,269 841,275 865,281 888,287 909,292 929,297" stroke="#696969" fill="none"/>
+ <polygon points="930,294 939,300 928,301 930,294" stroke="#696969" fill="#696969"/>
+ <polyline points="706,374 719,367 734,359 750,350 768,341 787,331 806,322 825,312 845,302 865,293 885,284 890,282 895,279 901,277 906,274 912,272 917,270 922,268 928,265 933,263 938,261" stroke="#696969" fill="none"/>
+ <polygon points="937,258 947,257 939,264 937,258" stroke="#696969" fill="#696969"/>
+ <polyline points="741,374 759,369 777,364 797,359 817,354 837,349 857,343 876,338 895,333 913,328 929,324" stroke="#696969" fill="none"/>
+ <polygon points="928,321 939,322 930,328 928,321" stroke="#696969" fill="#696969"/>
+ <polyline points="745,393 756,393 768,393 780,393 792,393 805,393 817,393 830,393 842,392 855,392 867,391 871,391 874,390 878,390 882,390 886,389 889,389 893,389 897,388 900,388 904,387" stroke="#696969" fill="none"/>
+ <polygon points="904,384 914,386 905,391 904,384" stroke="#696969" fill="#696969"/>
+ <ellipse cx="982" cy="438" rx="98" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="921" y="439" fill="#000000" font-family="Arial" font-size="12">NSS_Ports_SPI1</text>
+ <polyline points="745,407 750,408 755,409 760,410 765,411 771,412 776,412 781,413 786,414 791,415 796,416 805,417 814,418 823,420 832,421 841,422 850,423 859,424 868,426 877,427 886,428" stroke="#0000ff" fill="none"/>
+ <text x="796" y="408" fill="#000000" font-family="Arial" font-size="12">Deref Use</text>
+ <polygon points="887,424 896,429 886,431 887,424" stroke="#0000ff" fill="#0000ff"/>
+ <ellipse cx="982" cy="493" rx="93" ry="18" stroke="#000000" fill="#fffffe00"/>
+ <text x="924" y="494" fill="#000000" font-family="Arial" font-size="12">NSS_Pins_SPI1</text>
+ <polyline points="707,410 715,414 723,418 731,421 740,425 749,429 758,433 768,437 777,441 787,445 796,448 807,452 818,455 829,458 840,461 851,465 862,467 873,470 884,473 895,476 905,478" stroke="#0000ff" fill="none"/>
+ <text x="796" y="440" fill="#000000" font-family="Arial" font-size="12">Deref Use</text>
+ <polygon points="906,474 915,480 905,481 906,474" stroke="#0000ff" fill="#0000ff"/>
+</svg>

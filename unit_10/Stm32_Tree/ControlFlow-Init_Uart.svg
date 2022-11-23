@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+<svg width="1222" height="4001" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,3997 4,4 1218,4 1218,3997 4,3997" stroke="#fffffe00" fill="none"/>
+ <polygon points="321,77 4,104 321,131 638,104 321,77" stroke="#90c4e4" fill="none"/>
+ <text x="171" y="105" fill="#000000" font-family="Arial" font-size="12">!(IS_UART_ALL_INSTANCE(Inst-&gt;UARTx))</text>
+ <polygon points="331,258 263,258 263,294 331,294 331,258" stroke="#90c4e4" fill="none"/>
+ <text x="271" y="277" fill="#000000" font-family="Arial" font-size="12">return 0</text>
+ <polyline points="317,131 316,142 314,153 313,166 311,179 309,192 307,206 305,219 303,231 302,243 300,253" stroke="#4e8cb9" fill="none"/>
+ <text x="315" y="160" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="302,253 299,258 298,253 302,253" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="428,186 401,213 428,240 455,213 428,186" stroke="#90c4e4" fill="none"/>
+ <text x="424" y="214" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="345,129 351,135 358,142 365,149 372,156 379,163 386,170 393,177 399,183 405,189 411,195" stroke="#cd0000" fill="none"/>
+ <text x="381" y="160" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="413,194 415,199 410,197 413,194" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="348,4 294,4 294,40 348,40 348,4" stroke="#90c4e4" fill="none"/>
+ <text x="306" y="23" fill="#000000" font-family="Arial" font-size="12">start</text>
+ <polyline points="321,40 321,43 321,46 321,49 321,52 321,56 321,59 321,62 321,65 321,69 321,72" stroke="#4e8cb9" fill="none"/>
+ <polygon points="323,72 321,77 319,72 323,72" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="261,3961 207,3961 207,3997 261,3997 261,3961" stroke="#90c4e4" fill="none"/>
+ <text x="221" y="3980" fill="#000000" font-family="Arial" font-size="12">end</text>
+ <polyline points="263,293 261,295 258,296 256,298 254,300 251,302 249,304 247,306 245,308 243,310 241,312 237,318 233,323 230,328 227,332 226,337 224,342 223,347 222,353 222,359 222,366 222,370 222,394 222,462 222,593 222,809 222,1131 222,1581 222,2179 222,2947 222,3907 222,3912 222,3917 223,3922 223,3928 224,3933 225,3938 225,3942 226,3947 227,3952 228,3956" stroke="#4e8cb9" fill="none"/>
+ <polygon points="230,3956 229,3961 227,3956 230,3956" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="606,312 251,312 251,348 606,348 606,312" stroke="#90c4e4" fill="none"/>
+ <text x="259" y="331" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Error_CallBack = Error_CallBack_UART</text>
+ <polyline points="428,240 428,246 428,253 428,260 428,267 428,274 428,281 428,288 428,295 428,301 428,307" stroke="#4e8cb9" fill="none"/>
+ <text x="428" y="277" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="430,307 428,312 426,307 430,307" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="593,385 566,412 593,439 620,412 593,385" stroke="#90c4e4" fill="none"/>
+ <text x="589" y="413" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="450,218 464,221 479,225 497,231 515,238 534,246 553,256 571,267 588,280 602,295 615,312 619,319 621,327 622,335 621,344 620,352 618,361 616,369 613,377 609,384 606,391" stroke="#cd0000" fill="none"/>
+ <text x="622" y="331" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="607,392 603,395 604,390 607,392" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="463,348 473,353 484,358 496,364 507,369 519,375 530,381 542,386 552,391 562,396 571,400" stroke="#4e8cb9" fill="none"/>
+ <polygon points="572,399 575,402 570,402 572,399" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="656,494 291,494 291,530 656,530 656,494" stroke="#90c4e4" fill="none"/>
+ <text x="299" y="513" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Parity_CallBack = Parity_CallBack_UART</text>
+ <polyline points="578,425 572,430 564,436 556,443 548,449 540,457 531,464 522,471 514,478 506,485 498,491" stroke="#4e8cb9" fill="none"/>
+ <text x="536" y="468" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="499,492 494,494 497,489 499,492" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="658,567 631,594 658,621 685,594 658,567" stroke="#90c4e4" fill="none"/>
+ <text x="654" y="595" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="608,424 614,429 620,434 626,440 633,446 639,453 645,460 651,468 657,477 661,485 665,494 667,501 669,509 670,517 670,524 670,532 670,540 669,547 668,555 666,561 665,568" stroke="#cd0000" fill="none"/>
+ <text x="671" y="513" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="667,568 664,573 664,568 667,568" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="513,530 525,535 537,540 550,546 563,552 576,558 589,563 602,569 614,574 625,579 635,583" stroke="#4e8cb9" fill="none"/>
+ <polygon points="636,582 640,585 634,585 636,582" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="706,676 389,676 389,712 706,712 706,676" stroke="#90c4e4" fill="none"/>
+ <text x="397" y="695" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Tx_CallBack = Tx_CallBack_UART</text>
+ <polyline points="644,607 638,612 631,618 624,625 616,632 609,639 601,646 593,653 585,660 577,666 570,672" stroke="#4e8cb9" fill="none"/>
+ <text x="605" y="650" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="571,674 567,676 569,671 571,674" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="653,749 626,776 653,803 680,776 653,749" stroke="#90c4e4" fill="none"/>
+ <text x="649" y="777" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="672,607 679,614 686,622 694,632 701,642 707,653 713,664 717,676 719,688 718,700 715,712 712,718 709,724 705,730 700,735 696,740 691,745 687,750 682,754 677,758 673,762" stroke="#cd0000" fill="none"/>
+ <text x="719" y="695" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="674,763 669,765 672,760 674,763" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="570,712 576,717 582,722 589,727 596,732 602,737 609,742 616,747 622,751 628,756 634,760" stroke="#4e8cb9" fill="none"/>
+ <polygon points="635,759 638,764 633,762 635,759" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="665,858 253,858 253,894 665,894 665,858" stroke="#90c4e4" fill="none"/>
+ <text x="261" y="877" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Tx_Com_CallBack = Tx_Comp_CallBack_UART</text>
+ <polyline points="635,786 625,791 613,797 599,804 585,812 570,819 555,827 539,835 525,842 510,849 497,856" stroke="#4e8cb9" fill="none"/>
+ <text x="561" y="832" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="498,857 493,858 496,854 498,857" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="634,931 607,958 634,985 661,958 634,931" stroke="#90c4e4" fill="none"/>
+ <text x="630" y="959" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="661,795 664,802 667,811 670,820 673,830 675,840 677,851 677,862 677,873 676,884 674,894 672,899 670,904 668,908 666,913 664,918 661,922 658,927 655,931 653,935 650,938" stroke="#cd0000" fill="none"/>
+ <text x="678" y="877" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="651,940 646,943 648,938 651,940" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="497,894 508,899 519,904 531,910 543,915 556,921 568,927 580,932 591,937 602,942 611,946" stroke="#4e8cb9" fill="none"/>
+ <polygon points="612,945 616,949 611,948 612,945" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="640,1040 319,1040 319,1076 640,1076 640,1040" stroke="#90c4e4" fill="none"/>
+ <text x="327" y="1059" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Rx_CallBack = Rx_CallBack_UART</text>
+ <polyline points="618,969 610,974 600,980 590,987 579,994 567,1002 555,1009 543,1017 532,1024 520,1031 510,1037" stroke="#4e8cb9" fill="none"/>
+ <text x="561" y="1014" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="511,1039 506,1040 509,1036 511,1039" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="585,1113 558,1140 585,1167 612,1140 585,1113" stroke="#90c4e4" fill="none"/>
+ <text x="581" y="1141" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="642,977 645,985 648,993 650,1003 652,1013 654,1023 655,1034 655,1045 655,1055 652,1066 649,1076 646,1082 643,1088 639,1094 634,1100 630,1105 625,1110 620,1114 615,1119 610,1122 605,1126" stroke="#cd0000" fill="none"/>
+ <text x="656" y="1059" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="606,1127 601,1129 604,1124 606,1127" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="502,1076 508,1081 514,1086 521,1091 528,1096 534,1101 541,1106 548,1111 554,1115 560,1120 566,1124" stroke="#4e8cb9" fill="none"/>
+ <polygon points="567,1123 570,1128 565,1126 567,1123" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="653,1222 298,1222 298,1258 653,1258 653,1222" stroke="#90c4e4" fill="none"/>
+ <text x="306" y="1241" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_IDLE_CallBack = IDLE_CallBack_UART</text>
+ <polyline points="571,1153 565,1158 559,1164 551,1171 544,1178 536,1185 528,1192 520,1199 512,1206 505,1212 498,1218" stroke="#4e8cb9" fill="none"/>
+ <text x="533" y="1196" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="499,1220 494,1222 497,1217 499,1220" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="629,1295 602,1322 629,1349 656,1322 629,1295" stroke="#90c4e4" fill="none"/>
+ <text x="625" y="1323" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="601,1152 607,1156 613,1161 620,1167 627,1173 634,1180 641,1188 647,1196 653,1204 658,1213 662,1222 665,1230 666,1239 665,1247 664,1256 662,1265 659,1273 656,1281 652,1289 648,1296 644,1302" stroke="#cd0000" fill="none"/>
+ <text x="666" y="1241" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="645,1303 641,1306 642,1301 645,1303" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="508,1258 517,1263 527,1268 538,1274 548,1279 559,1285 570,1290 580,1296 590,1301 599,1306 607,1310" stroke="#4e8cb9" fill="none"/>
+ <polygon points="608,1308 612,1312 607,1311 608,1308" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="642,1404 253,1404 253,1440 642,1440 642,1404" stroke="#90c4e4" fill="none"/>
+ <text x="261" y="1423" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_Lin_BK_CallBack = Lin_BK_CallBack_UART</text>
+ <polyline points="612,1332 602,1337 591,1343 579,1350 565,1357 551,1365 537,1372 523,1380 509,1387 495,1394 483,1401" stroke="#4e8cb9" fill="none"/>
+ <text x="543" y="1378" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="484,1403 479,1404 482,1400 484,1403" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="570,1477 543,1504 570,1531 597,1504 570,1477" stroke="#90c4e4" fill="none"/>
+ <text x="566" y="1505" fill="#000000" font-family="Arial" font-size="12">if</text>
+ <polyline points="638,1340 642,1347 645,1356 649,1366 652,1376 655,1386 657,1397 658,1408 657,1419 655,1430 651,1440 647,1447 642,1454 637,1460 631,1466 625,1471 618,1477 612,1481 605,1486 599,1489 593,1493" stroke="#cd0000" fill="none"/>
+ <text x="658" y="1423" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="593,1494 588,1495 592,1491 593,1494" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="473,1440 480,1445 488,1450 496,1455 504,1460 512,1465 520,1471 528,1476 536,1481 543,1486 550,1490" stroke="#4e8cb9" fill="none"/>
+ <polygon points="551,1489 554,1493 549,1491 551,1489" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="664,1586 265,1586 265,1622 664,1622 664,1586" stroke="#90c4e4" fill="none"/>
+ <text x="273" y="1605" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;P_FlowCTR_CallBack = FlowCt_CallBack_UART</text>
+ <polyline points="556,1518 550,1523 544,1529 537,1535 530,1542 522,1549 515,1556 507,1563 500,1570 493,1576 486,1582" stroke="#4e8cb9" fill="none"/>
+ <text x="520" y="1560" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="487,1584 482,1586 485,1581 487,1584" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="582,1659 418,1659 418,1695 582,1695 582,1659" stroke="#90c4e4" fill="none"/>
+ <text x="426" y="1678" fill="#000000" font-family="Arial" font-size="12">_Config_GPIO_f(Inst)</text>
+ <polyline points="588,1513 600,1520 614,1528 629,1537 643,1547 656,1559 668,1571 676,1583 680,1596 679,1609 673,1622 667,1630 660,1637 652,1643 644,1649 635,1654 626,1658 617,1662 607,1665 598,1668 588,1670" stroke="#cd0000" fill="none"/>
+ <text x="681" y="1605" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="588,1672 582,1671 587,1668 588,1672" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="473,1622 475,1625 476,1628 478,1631 479,1635 481,1638 483,1641 484,1645 486,1648 487,1651 489,1654" stroke="#4e8cb9" fill="none"/>
+ <polygon points="491,1654 491,1659 488,1655 491,1654" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="500,1732 321,1759 500,1786 679,1759 500,1732" stroke="#90c4e4" fill="none"/>
+ <text x="419" y="1760" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART1</text>
+ <polyline points="500,1695 500,1698 500,1701 500,1704 500,1707 500,1711 500,1714 500,1717 500,1720 500,1724 500,1727" stroke="#4e8cb9" fill="none"/>
+ <polygon points="502,1727 500,1732 498,1727 502,1727" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="484,1913 254,1913 254,1949 484,1949 484,1913" stroke="#90c4e4" fill="none"/>
+ <text x="262" y="1932" fill="#000000" font-family="Arial" font-size="12">__APB2ENR_USART1EN_En</text>
+ <polyline points="459,1780 452,1784 444,1789 436,1794 429,1800 421,1806 413,1812 406,1819 400,1826 393,1833 388,1841 384,1847 381,1854 379,1861 376,1868 374,1875 373,1882 372,1889 370,1896 370,1902 369,1908" stroke="#4e8cb9" fill="none"/>
+ <text x="422" y="1815" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="371,1908 369,1913 368,1908 371,1908" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="576,1841 397,1868 576,1895 755,1868 576,1841" stroke="#90c4e4" fill="none"/>
+ <text x="495" y="1869" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART2</text>
+ <polyline points="517,1784 520,1789 524,1794 528,1800 532,1805 536,1811 540,1817 544,1823 548,1828 552,1834 556,1839" stroke="#cd0000" fill="none"/>
+ <text x="543" y="1815" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="558,1838 559,1843 555,1840 558,1838" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="681,2166 529,2166 529,2202 681,2202 681,2166" stroke="#90c4e4" fill="none"/>
+ <text x="537" y="2185" fill="#000000" font-family="Arial" font-size="12">Set_BaudRate(Inst)</text>
+ <polyline points="366,1949 365,1959 364,1970 363,1982 363,1995 363,2009 365,2023 367,2037 371,2050 377,2063 384,2075 395,2089 407,2101 420,2112 433,2122 448,2132 463,2140 478,2147 494,2154 509,2160 524,2165" stroke="#4e8cb9" fill="none"/>
+ <polygon points="525,2163 529,2166 524,2166 525,2163" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="621,2039 388,2039 388,2075 621,2075 621,2039" stroke="#90c4e4" fill="none"/>
+ <text x="396" y="2058" fill="#000000" font-family="Arial" font-size="12">__APB1ENR_USART2EN_EN</text>
+ <polyline points="562,1893 559,1899 555,1906 551,1913 547,1920 544,1928 540,1935 536,1943 533,1951 529,1959 526,1967 524,1974 521,1981 519,1988 517,1995 516,2002 514,2009 512,2016 511,2022 509,2028 508,2034" stroke="#4e8cb9" fill="none"/>
+ <text x="550" y="1932" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="510,2034 507,2039 506,2034 510,2034" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="714,1967 535,1994 714,2021 893,1994 714,1967" stroke="#90c4e4" fill="none"/>
+ <text x="633" y="1995" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART3</text>
+ <polyline points="601,1891 609,1898 617,1905 625,1913 634,1921 643,1929 652,1937 660,1945 669,1953 677,1960 685,1967" stroke="#cd0000" fill="none"/>
+ <text x="662" y="1932" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="687,1966 689,1971 684,1969 687,1966" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="605,2239 406,2266 605,2293 804,2266 605,2239" stroke="#90c4e4" fill="none"/>
+ <text x="514" y="2267" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;Mode == Enable_RX</text>
+ <polyline points="605,2202 605,2205 605,2208 605,2211 605,2214 605,2218 605,2221 605,2224 605,2227 605,2231 605,2234" stroke="#4e8cb9" fill="none"/>
+ <polygon points="607,2234 605,2239 603,2234 607,2234" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="518,2075 524,2082 530,2090 537,2099 545,2108 552,2118 560,2127 567,2137 575,2146 582,2154 588,2162" stroke="#4e8cb9" fill="none"/>
+ <polygon points="589,2161 591,2166 587,2163 589,2161" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="696,2018 692,2024 687,2031 682,2038 677,2045 671,2053 666,2061 661,2069 656,2077 651,2085 646,2093 642,2100 638,2107 635,2114 631,2121 628,2128 625,2135 622,2142 619,2149 616,2155 614,2161" stroke="#cd0000" fill="none"/>
+ <text x="647" y="2112" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="615,2162 612,2166 612,2161 615,2162" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="905,2093 672,2093 672,2129 905,2129 905,2093" stroke="#90c4e4" fill="none"/>
+ <text x="680" y="2112" fill="#000000" font-family="Arial" font-size="12">__APB1ENR_USART3EN_EN</text>
+ <polyline points="729,2019 733,2025 738,2032 742,2039 747,2047 752,2054 757,2061 761,2069 766,2076 770,2083 774,2089" stroke="#4e8cb9" fill="none"/>
+ <text x="764" y="2058" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="776,2088 777,2093 773,2090 776,2088" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="744,2129 736,2132 727,2136 718,2139 709,2143 699,2147 690,2150 681,2154 672,2157 663,2161 654,2164" stroke="#4e8cb9" fill="none"/>
+ <polygon points="654,2166 649,2166 653,2162 654,2166" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="728,2420 432,2420 432,2456 728,2456 728,2420" stroke="#90c4e4" fill="none"/>
+ <text x="440" y="2439" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= Inst-&gt;Mode</text>
+ <polyline points="601,2293 599,2304 598,2315 596,2328 594,2341 592,2354 590,2368 588,2381 586,2393 585,2405 583,2415" stroke="#4e8cb9" fill="none"/>
+ <text x="598" y="2322" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="585,2415 583,2420 582,2415 585,2415" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="801,2348 608,2375 801,2402 994,2375 801,2348" stroke="#90c4e4" fill="none"/>
+ <text x="713" y="2376" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;Mode == Enable_Tx</text>
+ <polyline points="643,2288 653,2294 664,2300 676,2306 688,2312 700,2319 712,2326 724,2332 736,2339 747,2345 758,2351" stroke="#cd0000" fill="none"/>
+ <text x="715" y="2322" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="759,2349 763,2353 758,2352 759,2349" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="941,2547 571,2547 571,2631 941,2631 941,2547" stroke="#90c4e4" fill="none"/>
+ <text x="579" y="2562" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= Inst-&gt;Parity</text>
+ <text x="579" y="2581" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR3 |= Inst-&gt;Hw_Flow_CTRL</text>
+ <text x="579" y="2600" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR2 |= Inst-&gt;Stop_bit</text>
+ <text x="579" y="2619" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= Inst-&gt;Word_Len</text>
+ <polyline points="581,2456 581,2461 582,2466 583,2472 584,2478 586,2483 587,2489 590,2495 592,2500 595,2505 599,2510 602,2514 606,2518 610,2521 614,2525 618,2529 622,2532 626,2535 630,2538 635,2541 639,2544" stroke="#4e8cb9" fill="none"/>
+ <polygon points="640,2543 643,2547 638,2546 640,2543" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="904,2474 608,2474 608,2510 904,2510 904,2474" stroke="#90c4e4" fill="none"/>
+ <text x="616" y="2493" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= Inst-&gt;Mode</text>
+ <polyline points="791,2401 789,2407 786,2414 783,2421 780,2428 778,2435 775,2443 772,2450 770,2457 767,2463 765,2469" stroke="#4e8cb9" fill="none"/>
+ <text x="782" y="2439" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="766,2470 763,2474 763,2469 766,2470" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="1218,2474 922,2474 922,2510 1218,2510 1218,2474" stroke="#90c4e4" fill="none"/>
+ <text x="930" y="2493" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= Inst-&gt;Mode</text>
+ <polyline points="847,2396 863,2403 880,2410 898,2418 917,2426 936,2434 956,2442 974,2450 992,2458 1009,2465 1025,2472" stroke="#cd0000" fill="none"/>
+ <text x="983" y="2439" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="1026,2470 1030,2474 1025,2474 1026,2470" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="756,2668 616,2695 756,2722 896,2695 756,2668" stroke="#90c4e4" fill="none"/>
+ <text x="694" y="2696" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;interrupt != 0</text>
+ <polyline points="756,2631 756,2634 756,2638 756,2641 756,2644 756,2647 756,2651 756,2654 756,2657 756,2660 756,2663" stroke="#4e8cb9" fill="none"/>
+ <polygon points="758,2663 756,2668 754,2663 758,2663" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="756,2510 756,2513 756,2516 756,2519 756,2522 756,2525 756,2528 756,2531 756,2535 756,2538 756,2542" stroke="#4e8cb9" fill="none"/>
+ <polygon points="758,2542 756,2547 754,2542 758,2542" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="1014,2510 1004,2513 993,2516 982,2520 970,2523 959,2527 946,2530 934,2534 922,2538 909,2541 897,2545" stroke="#4e8cb9" fill="none"/>
+ <polygon points="897,2547 892,2547 896,2544 897,2547" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="744,2777 565,2804 744,2831 923,2804 744,2777" stroke="#90c4e4" fill="none"/>
+ <text x="663" y="2805" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART1</text>
+ <polyline points="753,2722 752,2727 752,2731 751,2736 751,2741 750,2747 749,2752 749,2757 748,2762 748,2767 747,2772" stroke="#4e8cb9" fill="none"/>
+ <text x="750" y="2751" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="749,2772 747,2777 746,2772 749,2772" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="777,3815 444,3815 444,3851 777,3851 777,3815" stroke="#90c4e4" fill="none"/>
+ <text x="452" y="3834" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= UART_CR1_UE</text>
+ <polyline points="842,2705 874,2710 909,2715 944,2722 978,2730 1011,2739 1040,2749 1065,2761 1085,2773 1098,2788 1102,2803 1102,2804 1102,2810 1102,2828 1102,2863 1102,2920 1102,3005 1102,3123 1102,3281 1102,3484 1102,3737 1097,3756 1082,3772 1060,3786 1030,3797 995,3807 956,3815 914,3821 870,3825 825,3829 782,3831" stroke="#cd0000" fill="none"/>
+ <text x="1103" y="3294" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="782,3832 777,3831 781,3829 782,3832" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="639,2958 387,2958 387,2994 639,2994 639,2958" stroke="#90c4e4" fill="none"/>
+ <text x="395" y="2977" fill="#000000" font-family="Arial" font-size="12">NVIC_EnableIRQ(USART1_IRQn)</text>
+ <polyline points="677,2821 665,2825 653,2829 640,2834 627,2840 615,2846 602,2853 590,2860 578,2868 567,2877 556,2886 551,2892 545,2898 541,2905 536,2912 533,2919 529,2926 526,2933 523,2940 521,2947 519,2953" stroke="#4e8cb9" fill="none"/>
+ <text x="607" y="2860" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="521,2953 517,2958 517,2952 521,2953" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="744,2886 565,2913 744,2940 923,2913 744,2886" stroke="#90c4e4" fill="none"/>
+ <text x="663" y="2914" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART2</text>
+ <polyline points="744,2831 744,2836 744,2840 744,2845 744,2850 744,2856 744,2861 744,2866 744,2871 744,2876 744,2881" stroke="#cd0000" fill="none"/>
+ <text x="745" y="2860" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="746,2881 744,2886 742,2881 746,2881" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="590,3888 522,3888 522,3924 590,3924 590,3888" stroke="#90c4e4" fill="none"/>
+ <text x="530" y="3907" fill="#000000" font-family="Arial" font-size="12">return 1</text>
+ <polyline points="597,3851 595,3854 592,3857 590,3860 587,3864 585,3867 582,3871 579,3874 577,3877 574,3881 572,3884" stroke="#4e8cb9" fill="none"/>
+ <polygon points="573,3885 569,3888 571,3883 573,3885" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="662,3211 250,3238 662,3265 1074,3238 662,3211" stroke="#90c4e4" fill="none"/>
+ <text x="464" y="3239" fill="#000000" font-family="Arial" font-size="12">(Inst-&gt;interrupt &amp; En_CR3_Interrupt) == En_CR3_Interrupt</text>
+ <polyline points="511,2994 510,3003 509,3014 509,3026 509,3039 510,3053 511,3066 514,3080 517,3094 521,3107 527,3120 534,3131 541,3142 549,3153 558,3163 568,3172 578,3181 588,3189 598,3197 607,3204 617,3211" stroke="#4e8cb9" fill="none"/>
+ <polygon points="618,3209 621,3214 616,3212 618,3209" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="780,3084 528,3084 528,3120 780,3120 780,3084" stroke="#90c4e4" fill="none"/>
+ <text x="536" y="3103" fill="#000000" font-family="Arial" font-size="12">NVIC_EnableIRQ(USART2_IRQn)</text>
+ <polyline points="726,2937 722,2943 717,2950 712,2957 708,2964 703,2972 698,2980 693,2988 689,2996 685,3004 681,3012 678,3019 675,3026 673,3033 670,3040 668,3047 666,3054 664,3060 662,3067 660,3073 659,3079" stroke="#4e8cb9" fill="none"/>
+ <text x="711" y="2977" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="661,3079 658,3084 657,3078 661,3079" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="869,3012 690,3039 869,3066 1048,3039 869,3012" stroke="#90c4e4" fill="none"/>
+ <text x="788" y="3040" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx == UART3</text>
+ <polyline points="767,2937 774,2944 781,2951 788,2958 796,2966 804,2974 812,2982 820,2990 828,2997 835,3005 842,3012" stroke="#cd0000" fill="none"/>
+ <text x="822" y="2977" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="844,3011 846,3015 841,3013 844,3011" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="816,3320 337,3320 337,3366 816,3366 816,3320" stroke="#90c4e4" fill="none"/>
+ <text x="345" y="3335" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR3 |= (Inst-&gt;interrupt &amp; UART_CR3_EIE)</text>
+ <text x="345" y="3354" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR3 |= (Inst-&gt;interrupt &amp; UART_CR3_CTSIE)</text>
+ <polyline points="641,3264 637,3269 633,3274 628,3279 624,3284 620,3290 615,3295 611,3301 606,3306 602,3311 598,3316" stroke="#4e8cb9" fill="none"/>
+ <text x="624" y="3294" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="599,3317 594,3320 596,3315 599,3317" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="662,3403 250,3430 662,3457 1074,3430 662,3403" stroke="#90c4e4" fill="none"/>
+ <text x="464" y="3431" fill="#000000" font-family="Arial" font-size="12">(Inst-&gt;interrupt &amp; En_CR2_Interrupt) == En_CR2_Interrupt</text>
+ <polyline points="731,3261 749,3268 766,3276 783,3284 798,3294 812,3304 822,3315 830,3327 833,3339 832,3352 825,3366 821,3372 816,3377 812,3382 806,3386 801,3390 795,3394 789,3398 783,3402 777,3405 771,3408" stroke="#cd0000" fill="none"/>
+ <text x="834" y="3344" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="771,3409 766,3410 770,3406 771,3409" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="655,3120 655,3127 656,3135 656,3143 657,3152 658,3161 658,3170 659,3180 659,3189 660,3198 660,3206" stroke="#4e8cb9" fill="none"/>
+ <polygon points="662,3206 660,3211 658,3206 662,3206" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="845,3063 833,3075 818,3088 803,3103 787,3118 770,3135 753,3151 736,3167 720,3182 705,3196 692,3209" stroke="#cd0000" fill="none"/>
+ <text x="766" y="3157" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="693,3210 688,3213 690,3208 693,3210" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="1074,3138 822,3138 822,3174 1074,3174 1074,3138" stroke="#90c4e4" fill="none"/>
+ <text x="830" y="3157" fill="#000000" font-family="Arial" font-size="12">NVIC_EnableIRQ(USART3_IRQn)</text>
+ <polyline points="885,3064 889,3070 894,3077 899,3084 904,3092 909,3099 915,3106 920,3114 924,3121 929,3128 933,3134" stroke="#4e8cb9" fill="none"/>
+ <text x="922" y="3103" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="935,3133 936,3138 932,3135 935,3133" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="887,3174 874,3178 860,3182 846,3186 831,3190 816,3194 801,3198 786,3203 771,3207 756,3211 742,3215" stroke="#4e8cb9" fill="none"/>
+ <polygon points="743,3216 737,3216 742,3213 743,3216" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="599,3366 602,3369 605,3373 609,3376 612,3380 616,3384 619,3387 623,3391 626,3394 630,3398 633,3401" stroke="#4e8cb9" fill="none"/>
+ <polygon points="635,3400 637,3404 632,3402 635,3400" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="773,3512 294,3512 294,3548 773,3548 773,3512" stroke="#90c4e4" fill="none"/>
+ <text x="302" y="3531" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR2 |= (Inst-&gt;interrupt &amp; UART_CR2_LBDIE)</text>
+ <polyline points="630,3455 623,3460 617,3465 609,3471 602,3476 595,3482 587,3488 580,3493 573,3499 566,3504 560,3509" stroke="#4e8cb9" fill="none"/>
+ <text x="601" y="3486" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="561,3510 556,3512 559,3507 561,3510" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="662,3585 250,3612 662,3639 1074,3612 662,3585" stroke="#90c4e4" fill="none"/>
+ <text x="464" y="3613" fill="#000000" font-family="Arial" font-size="12">(Inst-&gt;interrupt &amp; En_CR1_Interrupt) == En_CR1_Interrupt</text>
+ <polyline points="715,3454 728,3461 740,3468 752,3476 763,3485 773,3495 780,3505 786,3515 788,3526 787,3537 782,3548 779,3553 775,3558 771,3562 767,3566 763,3571 758,3574 753,3578 748,3581 742,3584 737,3587" stroke="#cd0000" fill="none"/>
+ <text x="789" y="3531" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="738,3589 733,3590 736,3586 738,3589" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="561,3548 566,3551 572,3555 577,3559 583,3562 589,3566 595,3570 601,3574 607,3578 613,3581 619,3585" stroke="#4e8cb9" fill="none"/>
+ <polygon points="620,3583 624,3587 618,3586 620,3583" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="570,3633 560,3637 550,3641 541,3646 531,3651 522,3657 514,3663 506,3670 498,3677 491,3685 485,3694 480,3703 475,3712 472,3720 470,3728 470,3736 470,3744 472,3752 475,3760 479,3769 485,3778 488,3783 492,3787 495,3791 500,3795 504,3799 508,3802 513,3805 518,3808 523,3811 528,3813" stroke="#cd0000" fill="none"/>
+ <text x="486" y="3737" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="529,3811 533,3815 528,3815 529,3811" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="1002,3694 511,3694 511,3778 1002,3778 1002,3694" stroke="#90c4e4" fill="none"/>
+ <text x="519" y="3709" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= (Inst-&gt;interrupt &amp; UART_CR1_PEIE)</text>
+ <text x="519" y="3728" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= (Inst-&gt;interrupt &amp; UART_CR1_TXEIE)</text>
+ <text x="519" y="3747" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= (Inst-&gt;interrupt &amp; UART_CR1_TCIE)</text>
+ <text x="519" y="3766" fill="#000000" font-family="Arial" font-size="12">Inst-&gt;UARTx-&gt;UART_CR1 |= (Inst-&gt;interrupt &amp; UART_CR1_RXNEIE)</text>
+ <polyline points="681,3638 685,3643 688,3647 692,3652 696,3658 700,3663 704,3668 708,3673 713,3679 717,3684 721,3689" stroke="#4e8cb9" fill="none"/>
+ <text x="709" y="3668" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="723,3689 724,3694 720,3691 723,3689" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="693,3778 688,3782 682,3785 677,3789 671,3792 666,3796 661,3799 655,3803 650,3806 646,3809 641,3812" stroke="#4e8cb9" fill="none"/>
+ <polygon points="641,3814 636,3815 639,3811 641,3814" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="522,3915 501,3919 477,3924 450,3930 422,3936 393,3943 364,3949 336,3955 310,3961 286,3966 266,3971" stroke="#4e8cb9" fill="none"/>
+ <polygon points="267,3973 261,3972 266,3969 267,3973" stroke="#4e8cb9" fill="#4e8cb9"/>
+</svg>

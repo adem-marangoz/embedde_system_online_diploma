@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<svg width="1370" height="1150" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <polygon points="4,1146 4,4 1366,4 1366,1146 4,1146" stroke="#fffffe00" fill="none"/>
+ <polygon points="1364,77 968,77 968,199 1364,199 1364,77" stroke="#90c4e4" fill="none"/>
+ <text x="976" y="92" fill="#000000" font-family="Arial" font-size="12">static uint16_t Input_ID1[8] = {0}</text>
+ <text x="976" y="111" fill="#000000" font-family="Arial" font-size="12">static uint8_t Input_ID_counter1 = 0</text>
+ <text x="976" y="130" fill="#000000" font-family="Arial" font-size="12">uint16_t *Rx_Buff</text>
+ <text x="976" y="149" fill="#000000" font-family="Arial" font-size="12">Receive_Char_Uart(UARTx-&gt;UARTx, Rx_Buff,Disable)</text>
+ <text x="976" y="168" fill="#000000" font-family="Arial" font-size="12">Input_ID1[Input_ID_counter1] = *Rx_Buff</text>
+ <text x="976" y="187" fill="#000000" font-family="Arial" font-size="12">Input_ID_counter1++</text>
+ <polygon points="1166,236 990,263 1166,290 1342,263 1166,236" stroke="#90c4e4" fill="none"/>
+ <text x="1086" y="264" fill="#000000" font-family="Arial" font-size="12">Input_ID_counter1 == 8</text>
+ <polyline points="1166,199 1166,202 1166,206 1166,209 1166,212 1166,215 1166,219 1166,222 1166,225 1166,228 1166,231" stroke="#4e8cb9" fill="none"/>
+ <polygon points="1168,231 1166,236 1164,231 1168,231" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="1193,4 1139,4 1139,40 1193,40 1193,4" stroke="#90c4e4" fill="none"/>
+ <text x="1151" y="23" fill="#000000" font-family="Arial" font-size="12">start</text>
+ <polyline points="1166,40 1166,43 1166,46 1166,49 1166,52 1166,55 1166,58 1166,61 1166,65 1166,68 1166,72" stroke="#4e8cb9" fill="none"/>
+ <polygon points="1168,72 1166,77 1164,72 1168,72" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="1200,345 766,345 766,381 1200,381 1200,345" stroke="#90c4e4" fill="none"/>
+ <text x="774" y="364" fill="#000000" font-family="Arial" font-size="12">Send_String_Uart(UARTx-&gt;UARTx, _Display_Enter, Enable)</text>
+ <polyline points="1128,284 1118,289 1107,295 1096,301 1085,307 1074,314 1062,320 1051,326 1040,332 1029,338 1019,343" stroke="#4e8cb9" fill="none"/>
+ <text x="1080" y="319" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="1020,344 1015,345 1018,341 1020,344" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="1207,1110 1153,1110 1153,1146 1207,1146 1207,1110" stroke="#90c4e4" fill="none"/>
+ <text x="1167" y="1129" fill="#000000" font-family="Arial" font-size="12">end</text>
+ <polyline points="1252,277 1266,281 1280,286 1294,292 1306,298 1318,306 1328,315 1337,325 1343,336 1348,348 1349,362 1349,363 1349,368 1349,381 1349,406 1349,449 1349,512 1349,600 1349,717 1349,868 1349,1056 1346,1072 1339,1086 1329,1097 1315,1106 1299,1113 1281,1119 1263,1122 1245,1125 1228,1126 1212,1127" stroke="#cd0000" fill="none"/>
+ <text x="1350" y="663" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="1212,1129 1207,1127 1212,1125 1212,1129" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="736,418 612,445 736,472 860,445 736,418" stroke="#90c4e4" fill="none"/>
+ <text x="682" y="446" fill="#000000" font-family="Arial" font-size="12">Max_Grag == 0</text>
+ <polyline points="930,381 917,385 904,390 889,394 875,399 860,404 845,409 830,414 816,418 802,423 789,427" stroke="#4e8cb9" fill="none"/>
+ <polygon points="790,428 784,428 789,425 790,428" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="602,610 4,610 4,713 602,713 602,610" stroke="#90c4e4" fill="none"/>
+ <text x="12" y="625" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Sorry, 0 ,Seconde_R)</text>
+ <text x="12" y="644" fill="#000000" font-family="Arial" font-size="12">delay_us(200)</text>
+ <text x="12" y="663" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_There_is_no, 0 ,Third_R)</text>
+ <text x="12" y="682" fill="#000000" font-family="Arial" font-size="12">delay_us(200)</text>
+ <text x="12" y="701" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Empty_Garage, 0 ,Fourth_R)</text>
+ <polyline points="673,458 656,462 637,467 617,472 597,478 576,485 554,492 533,500 512,508 491,517 471,527 459,534 447,541 435,548 424,556 412,564 401,573 390,581 380,589 370,598 360,606" stroke="#4e8cb9" fill="none"/>
+ <text x="556" y="501" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="361,608 356,610 359,605 361,608" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="992,527 480,527 480,592 992,592 992,527" stroke="#90c4e4" fill="none"/>
+ <text x="488" y="542" fill="#000000" font-family="Arial" font-size="12">uint16_t add = Convert_Buffer16_to_Variable(Input_ID1, 3)</text>
+ <text x="488" y="561" fill="#000000" font-family="Arial" font-size="12">uint16_t temp_id[4] = {0}</text>
+ <text x="488" y="580" fill="#000000" font-family="Arial" font-size="12">Read_Byte_EEPROM_25xx(&amp;EEPORM_25xx_config, add, 4, temp_id)</text>
+ <polyline points="736,472 736,477 736,481 736,486 736,491 736,496 736,501 736,507 736,512 736,517 736,522" stroke="#cd0000" fill="none"/>
+ <text x="737" y="501" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="738,522 736,527 734,522 738,522" stroke="#cd0000" fill="#cd0000"/>
+ <polygon points="635,1037 468,1037 468,1073 635,1073 635,1037" stroke="#90c4e4" fill="none"/>
+ <text x="476" y="1056" fill="#000000" font-family="Arial" font-size="12">Input_ID_counter1 = 0</text>
+ <polyline points="208,713 194,722 180,733 166,743 153,755 140,768 127,781 115,794 104,809 94,824 86,840 77,859 70,876 64,893 60,909 57,924 57,939 60,954 65,969 74,984 86,1000 99,1008 122,1015 154,1022 192,1028 235,1033 282,1037 329,1041 376,1045 421,1048 462,1050" stroke="#4e8cb9" fill="none"/>
+ <polygon points="462,1048 467,1050 462,1052 462,1048" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="736,731 269,758 736,785 1203,758 736,731" stroke="#90c4e4" fill="none"/>
+ <text x="511" y="759" fill="#000000" font-family="Arial" font-size="12">comapre_two_string((uint8_t*)&amp;Input_ID1[4], (uint8_t*)temp_id, 8)</text>
+ <polyline points="736,592 736,604 736,617 736,630 736,644 736,659 736,674 736,688 736,701 736,714 736,726" stroke="#4e8cb9" fill="none"/>
+ <polygon points="738,726 736,731 734,726 738,726" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="635,1065 681,1070 733,1076 790,1083 849,1089 908,1096 967,1103 1022,1109 1072,1115 1114,1119 1148,1123" stroke="#4e8cb9" fill="none"/>
+ <polygon points="1148,1122 1153,1124 1148,1125 1148,1122" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="683,840 96,840 96,1000 683,1000 683,840" stroke="#90c4e4" fill="none"/>
+ <text x="104" y="855" fill="#000000" font-family="Arial" font-size="12">Inc_Dec_seven_segment(&amp;seven_config, Dec)</text>
+ <text x="104" y="874" fill="#000000" font-family="Arial" font-size="12">Run_Led(Green)</text>
+ <text x="104" y="893" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Correct_ID, 0 ,Seconde_R)</text>
+ <text x="104" y="912" fill="#000000" font-family="Arial" font-size="12">delay_us(200)</text>
+ <text x="104" y="931" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Opened_Gate, 0 ,Third_R)</text>
+ <text x="104" y="950" fill="#000000" font-family="Arial" font-size="12">Send_to_controller(&amp;spi1_config, Vehicle_entry_controller, Open_entry_gate1)</text>
+ <text x="104" y="969" fill="#000000" font-family="Arial" font-size="12">LCD_state = Correct_ID_Open_Gate_Timeout</text>
+ <text x="104" y="988" fill="#000000" font-family="Arial" font-size="12">Timeout = 3000</text>
+ <polyline points="686,782 676,787 665,792 654,797 642,802 630,808 617,814 604,819 591,826 578,832 565,838" stroke="#4e8cb9" fill="none"/>
+ <text x="634" y="814" fill="#000000" font-family="Arial" font-size="12">yes</text>
+ <polygon points="566,839 561,840 564,836 566,839" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polygon points="1321,849 701,849 701,990 1321,990 1321,849" stroke="#90c4e4" fill="none"/>
+ <text x="709" y="864" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Not_Correct_ID, 0 ,Seconde_R)</text>
+ <text x="709" y="883" fill="#000000" font-family="Arial" font-size="12">delay_us(200)</text>
+ <text x="709" y="902" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_There_is_no, 0 ,Third_R)</text>
+ <text x="709" y="921" fill="#000000" font-family="Arial" font-size="12">delay_us(200)</text>
+ <text x="709" y="940" fill="#000000" font-family="Arial" font-size="12">Write_String_with_coordinator(&amp;Lcd_config, _Display_Empty_Garage, 0 ,Fourth_R)</text>
+ <text x="709" y="959" fill="#000000" font-family="Arial" font-size="12">LCD_state = Correct_ID_Open_Gate_Timeout</text>
+ <text x="709" y="978" fill="#000000" font-family="Arial" font-size="12">Timeout = 3000</text>
+ <polyline points="777,783 786,788 796,794 806,800 817,806 828,813 839,819 851,826 863,833 875,840 887,847" stroke="#cd0000" fill="none"/>
+ <text x="842" y="814" fill="#000000" font-family="Arial" font-size="12">no</text>
+ <polygon points="888,845 891,849 886,848 888,845" stroke="#cd0000" fill="#cd0000"/>
+ <polyline points="486,1000 490,1004 495,1008 499,1011 503,1015 508,1018 511,1021 515,1025 519,1028 523,1031 526,1034" stroke="#4e8cb9" fill="none"/>
+ <polygon points="527,1032 530,1037 525,1035 527,1032" stroke="#4e8cb9" fill="#4e8cb9"/>
+ <polyline points="771,991 754,996 736,1001 719,1005 703,1010 687,1015 671,1019 656,1024 641,1028 628,1032 615,1035" stroke="#4e8cb9" fill="none"/>
+ <polygon points="615,1037 610,1037 614,1034 615,1037" stroke="#4e8cb9" fill="#4e8cb9"/>
+</svg>
