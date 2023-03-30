@@ -177,7 +177,7 @@ uint8_t Check_Prass_Button(St_Key_pad const *key_pad)
     while(Read_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]) == GPIO_PIN_SET);
     Reset_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]);
     Reset_pin(key_pad->Soruce.Port,pad_Soruce_pin[temp]);
-    Reaction_Of_Prass(temp, Drain_Set_Counter);
+    // Reaction_Of_Prass(temp, Drain_Set_Counter);
 
     return 1;
 }

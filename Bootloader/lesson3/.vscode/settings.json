@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "stm32f10xx_address.h": "c",
+        "stm32f10xx_common.h": "c"
+    }
+}

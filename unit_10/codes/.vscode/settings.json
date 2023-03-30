@@ -11,6 +11,8 @@
         "defines.h": "c",
         "stm32f10xx_exti.h": "c",
         "stm32f10xx_gpio.h": "c",
-        "send_atmega32.h": "c"
+        "send_atmega32.h": "c",
+        "bitfield_i2c.h": "c",
+        "stdio.h": "c"
     }
 }
