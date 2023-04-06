@@ -5,7 +5,7 @@
 
 MEMORY
 {
-    FLASH(RX) : ORIGIN = 0x08000000 , l = 12K
+    FLASH(RX) : ORIGIN = 0x08000000 , l = 30K
     SRAM(RWX) : ORIGIN = 0x20000000 , l = 10K
 }
 

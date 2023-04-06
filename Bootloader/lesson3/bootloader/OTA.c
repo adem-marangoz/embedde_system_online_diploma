@@ -33,6 +33,7 @@ static uint32_t ota_fw_received_size;
 
 static uint16_t etx_receive_chunk( uint8_t *buf, uint16_t max_len );
 static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len );
+static void etx_ota_send_resp( uint8_t type );
 static uint8_t write_data_to_flash_app( uint8_t *data,
                                         uint16_t data_len, bool is_first_block );
 //==============================================================================
@@ -79,9 +80,43 @@ ETX_OTA_EX_ etx_ota_download_and_flash( void )
             ret = ETX_OTA_EX_ERR; // didn't received data. break.
         }
 
-    } while (0);
+        if( ret != ETX_OTA_EX_OK )
+        {
+            Send_Text_Uart(&uart1_config,"Sending NACK..\r\n", Enable);
+            etx_ota_send_resp( ETX_OTA_NACK );
+        }else
+        {
+            Send_Text_Uart(&uart1_config,"Sending ACK..\r\n", Enable);
+            etx_ota_send_resp( ETX_OTA_ACK );
+        }
+
+    } while (ota_state != ETX_OTA_STATE_IDLE);
     
+    return ret;
 }
+
+
+/**
+  * @brief Send the response.
+  * @param type ACK or NACK
+  * @retval none
+  */
+static void etx_ota_send_resp( uint8_t type )
+{
+  ETX_OTA_RESP_ rsp =
+  {
+    .sof         = ETX_OTA_SOF,
+    .packet_type = ETX_OTA_PACKET_TYPE_RESPONSE,
+    .data_len    = 1u,
+    .status      = type,
+    .crc         = 0u,                //TODO: Add CRC
+    .eof         = ETX_OTA_EOF
+  };
+
+  //send response
+  Send_Text_Uart(&uart1_config,"Last step...\r\n", Enable);
+}
+
 
 /**
   * @brief Process the received data from UART4.
@@ -155,12 +190,29 @@ static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len )
 
                 if( data->packet_type == ETX_OTA_PACKET_TYPE_DATA )
                 {
+                    write_data_to_flash_app(buf + 4, data_len, ( ota_fw_received_size == 0));
+                }
+                break;
+            }
 
+            case ETX_OTA_STATE_END:
+            {
+                ETX_OTA_COMMAND_ *cmd = (ETX_OTA_COMMAND_*)buf;
+                if( cmd->packet_type == ETX_OTA_PACKET_TYPE_CMD )
+                {
+                    if( cmd->cmd == ETX_OTA_CMD_END )
+                    {
+                        ota_state = ETX_OTA_STATE_IDLE;
+                        ret = ETX_OTA_EX_OK;
+                    }
                 }
                 break;
             }
             default:
+            {
+                ret = ETX_OTA_EX_ERR;
                 break;
+            }
         }
 
     } while (0);
@@ -176,8 +228,7 @@ static ETX_OTA_EX_ etx_process_data( uint8_t *buf, uint16_t len )
   * @is_first_block true - if this is first block, false - not first block
   * @retval HAL_StatusTypeDef
   */
-static uint8_t write_data_to_flash_app( uint8_t *data,
-                                        uint16_t data_len, bool is_first_block )
+static uint8_t write_data_to_flash_app( uint8_t *data, uint16_t data_len, bool is_first_block )
 {
     uint8_t ret = 0;
     ret = Flash_Unlock();
@@ -190,11 +241,22 @@ static uint8_t write_data_to_flash_app( uint8_t *data,
         
         if(is_first_block)
         {
-            Send_Text_Uart(&uart1_config,"Erasing the Flash memory ...\r\n", Enable);
-            Flash_Erase_Pages()// TODO : start Erase Address and how many page
+            uint32_t PageAddress = 0x0800000;
+            uint8_t NbPages = 0x12;
+
+            assert_param(IS_FLASH_PROGRAM_ADDRESS(PageAddress));
+            assert_param(IS_FLASH_NB_PAGES(PageAddress, NbPages));
             
+            Send_Text_Uart(&uart1_config,"Erasing the Flash memory ...\r\n", Enable);
+            /*Erase Page Flash*/
+            Flash_Erase_Pages(PageAddress, NbPages); 
+            
+            /*Program Flash*/
+            Flash_Program(ETX_APP_FLASH_ADDR + ota_fw_received_size, data_len, data + 4);
              
         }
+
+        ret = Flash_Lock();
 
     } while (false);
     

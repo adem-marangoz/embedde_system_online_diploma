@@ -164,6 +164,25 @@
 
 #define __Flash_Get_Flag(_Flag_)                 (FLASH->SR & (_Flag_))
 
+#define FLASH_SIZE_DATA_REGISTER                 0x1FFFF7E0U
+#define FLASH_BANK1_END                          0x0801FFFFUL /*!< FLASH END address of bank1 */
+
+#define IS_FLASH_PROGRAM_ADDRESS(ADDRESS)        (((ADDRESS) >= FLASH_BASE) && (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x80U) ? \
+                                                  ((ADDRESS) <= FLASH_BANK1_END) :  (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x40U) ? \
+                                                  ((ADDRESS) <= 0x0800FFFF) :  (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x20U) ? \
+                                                  ((ADDRESS) <= 0x08007FFF) :  ((ADDRESS) <= 0x08003FFFU)))))
+
+
+#define IS_FLASH_NB_PAGES(ADDRESS,NBPAGES)       (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x80U) ? ((ADDRESS)+((NBPAGES)*FLASH_PAGE_SIZE)-1 <= 0x0801FFFFU) : \
+                                                 (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x40U) ? ((ADDRESS)+((NBPAGES)*FLASH_PAGE_SIZE)-1 <= 0x0800FFFFU) : \
+                                                 (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x20U) ? ((ADDRESS)+((NBPAGES)*FLASH_PAGE_SIZE)-1 <= 0x08007FFFU) : \
+                                                 ((ADDRESS)+((NBPAGES)*FLASH_PAGE_SIZE)-1 <= 0x08003FFFU))))
+
+
+#define IS_FLASH_PROGRAM_ADDRESS(ADDRESS)        (((ADDRESS) >= FLASH_BASE) && (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x80U) ? \
+                                                  ((ADDRESS) <= FLASH_BANK1_END) :  (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x40U) ? \
+                                                  ((ADDRESS) <= 0x0800FFFF) :  (((*((uint16_t *)FLASH_SIZE_DATA_REGISTER)) == 0x20U) ? \
+                                                  ((ADDRESS) <= 0x08007FFF) :  ((ADDRESS) <= 0x08003FFFU)))))
 
 #define Flash_Page_Size                          0x400U
 #define FLASH_TIMEOUT_VALUE                      50000U /* 50 s */
@@ -172,7 +191,8 @@ uint8_t Flash_Unlock(void);
 uint8_t Flash_Lock(void);
 uint8_t Flash_Erase_Page(uint32_t PageAdd);
 uint8_t Flash_Erase_Pages(uint32_t PageAdd, uint8_t NPage);
-uint8_t Flash_Program_Byte(uint32_t Address, uint8_t Data);
+uint8_t Flash_Program_HalfWord(uint32_t Address, uint16_t Data);
+uint16_t Flash_Program(uint32_t PageAdd, uint8_t Data_len, uint8_t *Data);
 uint8_t Flash_Wait_Operation(uint32_t Timeout);
 //==============================================================================
 

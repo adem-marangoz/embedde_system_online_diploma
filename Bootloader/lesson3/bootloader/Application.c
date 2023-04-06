@@ -17,6 +17,7 @@
 #include "Stm32f10xx_AFIO.h"
 #include <string.h>
 #include <stdio.h>
+#include "OTA.h"
 //==============================================================================
 
 
@@ -49,6 +50,7 @@ void config_Drives_and_Perpherals(void)
     __APB1ENR_PWREN_EN();               // Enable Power Control
     __APB2ENR_IOPAEN_En();              // Enable GPIOA Clock
     __APB2ENR_IOPCEN_En();              // Enable GPIOA Clock
+    __APB2ENR_AFIOEN_En();              // Enable Alterntif Clock
     
 
 
@@ -63,20 +65,20 @@ void config_Drives_and_Perpherals(void)
     uart1_config.interrupt = En_RX_Inter;
     uart1_config.P_Rx_CallBack = Rx_Uart1;
     Init_Uart(&uart1_config);
-
+    Send_Text_Uart(&uart1_config,"Starting Boot Mode\r\n", Enable);
     //==========================================================================
     
     // _________________________ Config UART2_Driver ___________________________
-    uart1_config.baudrate = (uint32_t)115200;
-    uart1_config.Hw_Flow_CTRL = CTS_RTS_None;
-    uart1_config.Mode = Enable_RX_Tx;
-    uart1_config.Parity = Parity_None;
-    uart1_config.Stop_bit = Stop_1_bit;
-    uart1_config.Word_Len = Payload_8_bit;
-    uart1_config.UARTx = UART2;
-    uart1_config.interrupt = En_RX_Inter;
-    uart1_config.P_Rx_CallBack = Rx_Uart2;
-    Init_Uart(&uart1_config);
+    // uart2_config.baudrate = (uint32_t)115200;
+    // uart2_config.Hw_Flow_CTRL = CTS_RTS_None;
+    // uart2_config.Mode = Enable_RX_Tx;
+    // uart2_config.Parity = Parity_None;
+    // uart2_config.Stop_bit = Stop_1_bit;
+    // uart2_config.Word_Len = Payload_8_bit;
+    // uart2_config.UARTx = UART2;
+    // uart2_config.interrupt = En_RX_Inter;
+    // uart2_config.P_Rx_CallBack = Rx_Uart2;
+    // Init_Uart(&uart2_config);
 
     //==========================================================================
 
@@ -102,6 +104,17 @@ void config_Drives_and_Perpherals(void)
     Systick_API.Reload_Value = 7999;
     Init_Systick();
     //==========================================================================
+    Send_Char_Uart(uart1_config.UARTx,BL_Version, Enable);
+    Send_Char_Uart(uart1_config.UARTx,&BL_Version[1], Enable);
+    Send_Char_Uart(uart1_config.UARTx,&BL_Version[2], Enable);
+    Toggle_pin(GPIOC,GPIO_PIN_13);
+    Delay_ms(1000);
+    Toggle_pin(GPIOC,GPIO_PIN_13);
+    Delay_ms(1000);
+    Toggle_pin(GPIOC,GPIO_PIN_13);
+    Delay_ms(1000);
+    Toggle_pin(GPIOC,GPIO_PIN_13);
+    Delay_ms(1000);
 }
 
 
@@ -156,6 +169,16 @@ void Infinite_loop()
     {
         Send_Text_Uart(&uart1_config,"starting Firmware Downaload\r\n", Enable);
 
+        if(etx_ota_download_and_flash() != ETX_OTA_EX_OK)
+        {
+            Send_Text_Uart(&uart1_config,"OTA Update : ERROR!!! HALT!!!", Enable);
+            while(1);
+            
+        }else
+        {
+            Send_Text_Uart(&uart1_config,"Firmware update is done!!! Rebooting...", Enable);
+
+        }
         
 
     }

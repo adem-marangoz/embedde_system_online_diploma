@@ -30,7 +30,7 @@ int main(void)
     config_Drives_and_Perpherals(); // config Drives and Peripherals    
     while (1)
     {
-        Infinite_loop();
+        // Infinite_loop();
     }    
 
     return 1;

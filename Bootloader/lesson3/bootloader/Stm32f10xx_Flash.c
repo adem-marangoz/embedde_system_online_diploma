@@ -90,13 +90,51 @@ uint8_t Flash_Erase_Pages(uint32_t PageAdd, uint8_t NPage)
         Flash_Wait_Operation((uint32_t)FLASH_TIMEOUT_VALUE);
         CLEAR_BIT(FLASH->CR, FLASH_CR_PER);
     }
+
+    return 0;
 }
 
-uint8_t Flash_Program_Byte(uint32_t Address, uint8_t Data)
+
+/**
+ * @brief 
+ * 
+ * @param Address 
+ * @param Data 
+ * @return uint8_t 
+ */
+uint8_t Flash_Program_HalfWord(uint32_t Address, uint16_t Data)
 {
+    Flash_Wait_Operation((uint32_t)FLASH_TIMEOUT_VALUE);
     
+    SET_BIT(FLASH->CR, FLASH_CR_PG);
+    *(__IO uint16_t*)Address = Data;
+
+    Flash_Wait_Operation((uint32_t)FLASH_TIMEOUT_VALUE);
+
+    CLEAR_BIT(FLASH->CR, FLASH_CR_PG);
+
+    return 0;
 }
 
+
+/**
+ * @brief 
+ * 
+ * @param PageAdd 
+ * @param NPage 
+ * @return uint8_t 
+ */
+uint16_t Flash_Program(uint32_t PageAdd, uint8_t Data_len, uint8_t *Data)
+{
+    uint8_t ret = 0;
+    uint16_t ota_fw_received_size = 0;
+    for(int i = 2; i < (Data_len + 2)/2; i = i + 2)
+    {
+        ret = Flash_Program_HalfWord(PageAdd + ota_fw_received_size, Data[2+i]);    
+        ota_fw_received_size += 2;
+    }
+    return 0;
+}
 
 /**
   * @brief  Wait for a FLASH operation to complete.
@@ -109,7 +147,7 @@ uint8_t Flash_Wait_Operation(uint32_t Timeout)
     /* Wait for the Flash operation to complate by polling on Busy Flag to be reset*/
     uint32_t start_tick = Get_Tick();
 
-    while (__HAL_FLASH_GET_FLAG(FLASH_SR_BSY))
+    while (__Flash_Get_Flag(FLASH_SR_BSY))
     {
         if(Timeout != Max_Delay)
         {
