@@ -15,179 +15,179 @@ SRAM             0x0000000020000000 0x0000000000002800 xrw
 Linker script and memory map
 
 
-.text           0x0000000008000000     0x2a35
+.text           0x0000000008000000     0x2a45
  *(.vectors*)
  .vectors       0x0000000008000000       0xec startup.o
                 0x0000000008000000                vectors
  *(.text*)
- .text          0x00000000080000ec      0x2dc Application.o
+ .text          0x00000000080000ec      0x2ec Application.o
                 0x00000000080000ec                config_Drives_and_Perpherals
                 0x00000000080002c4                Rx_Uart1
                 0x00000000080002e8                Rx_Uart2
                 0x000000000800030c                Infinite_loop
- .text          0x00000000080003c8        0x0 Buffer.o
- .text          0x00000000080003c8       0x12 main.o
-                0x00000000080003c8                main
- *fill*         0x00000000080003da        0x2 
- .text          0x00000000080003dc       0x8c startup.o
-                0x00000000080003dc                FLASH_Handler
-                0x00000000080003dc                SVCall_Handler
-                0x00000000080003dc                PendSv_Handler
-                0x00000000080003dc                DMA1_Channel7_Handler
-                0x00000000080003dc                NMI_Handler
-                0x00000000080003dc                DMA1_Channel6_Handler
-                0x00000000080003dc                CAN1_RX1_Handler
-                0x00000000080003dc                I2C1_EV_Handler
-                0x00000000080003dc                Bus_Fault_Handler
-                0x00000000080003dc                ADC1_2_Handler
-                0x00000000080003dc                WWDG_Handler
-                0x00000000080003dc                DMA1_Channel1_Handler
-                0x00000000080003dc                I2C1_ER_Handler
-                0x00000000080003dc                RTC_Handler
-                0x00000000080003dc                TIM1_CC_Handler
-                0x00000000080003dc                I2C2_ER_Handler
-                0x00000000080003dc                CAN1_SCE_Handler
-                0x00000000080003dc                TIM1_BRK_Handler
-                0x00000000080003dc                MM_Fault_Handler
-                0x00000000080003dc                TEMPER_Handler
-                0x00000000080003dc                TIM2_Handler
-                0x00000000080003dc                DMA1_Channel4_Handler
-                0x00000000080003dc                TIM3_Handler
-                0x00000000080003dc                Default_Handler
-                0x00000000080003dc                USBWakeUp_Handler
-                0x00000000080003dc                DMA1_Channel3_Handler
-                0x00000000080003dc                RTC_Alarm_Handler
-                0x00000000080003dc                TIM4_Handler
-                0x00000000080003dc                SPI2_Handler
-                0x00000000080003dc                DMA1_Channel2_Handler
-                0x00000000080003dc                Usage_Fault_Handler
-                0x00000000080003dc                TIM1_UP_Handler
-                0x00000000080003dc                DMA1_Channel5_Handler
-                0x00000000080003dc                SPI1_Handler
-                0x00000000080003dc                DebugMonitor_Handler
-                0x00000000080003dc                I2C2_EV_Handler
-                0x00000000080003dc                RCC_Handler
-                0x00000000080003dc                PVD_Handler
-                0x00000000080003dc                Hard_Fault_Handler
-                0x00000000080003dc                USB_LP_CAN1_RX0_Handler
-                0x00000000080003dc                USB_HP_CAN1_TX_Handler
-                0x00000000080003dc                TIM1_TRG_COM_Handler
-                0x00000000080003e8                Rest_Handler
- .text          0x0000000008000468      0x134 Stm32_f10xx_Systick.o
-                0x00000000080004a0                Init_Systick
-                0x0000000008000510                Delay_ms
-                0x0000000008000558                Get_Tick
-                0x000000000800056c                Inc_Tick
-                0x0000000008000590                SysTick_Handler
- .text          0x000000000800059c      0x288 Stm32f10x_DMA.o
-                0x000000000800059c                DMA_Init
-                0x0000000008000646                DMA_ReInit
-                0x00000000080006a6                DMA_Set_Number_of_Data
-                0x0000000008000720                DMA_Set_Peripheral_Add
-                0x0000000008000750                DMA_Set_Memory_Add
-                0x0000000008000780                DMA_Enable_Channel
-                0x00000000080007c8                DMA_Disable_Channel
-                0x0000000008000810                DMA_Soft_Trigger
- .text          0x0000000008000824      0xb68 Stm32f10x_UART.o
-                0x00000000080008e8                Set_BaudRate
-                0x00000000080009b0                Get_BaudRate
-                0x00000000080009c4                Init_Uart
-                0x0000000008000c9c                DeInit_Uart
-                0x0000000008000d18                _Config_GPIO_f
-                0x0000000008000dfc                Send_Char_Uart
-                0x0000000008000e50                Receive_Char_Uart
-                0x0000000008000ee4                Receive_Char_Uart8
-                0x0000000008000f70                Receive_String_Uart
-                0x000000000800103e                Receive_With_Timeout
-                0x0000000008001086                Send_Text_Uart
-                0x00000000080010fe                Send_String_Uart
-                0x0000000008001138                USART1_Handler
-                0x00000000080011fc                USART2_Handler
-                0x00000000080012c0                USART3_Handler
-                0x00000000080012cc                Parity_CallBack_UART
-                0x00000000080012de                Error_CallBack_UART
-                0x00000000080012f0                Tx_CallBack_UART
-                0x0000000008001302                Tx_Comp_CallBack_UART
-                0x0000000008001314                Rx_CallBack_UART
-                0x0000000008001354                IDLE_CallBack_UART
-                0x0000000008001366                Lin_BK_CallBack_UART
-                0x0000000008001378                FlowCt_CallBack_UART
- .text          0x000000000800138c       0xfc Stm32f10xx_Common.o
-                0x000000000800138c                add_unsigned_int_to_str
-                0x0000000008001440                clear_buffer
- .text          0x0000000008001488      0x4d4 Stm32f10xx_EXTI.o
-                0x00000000080014fc                NVIC_EXTI_Clear_Handler
-                0x0000000008001524                Init_EXTI
-                0x000000000800153a                Deinit_EXTI
-                0x00000000080015e4                Upadate_EXTI
-                0x00000000080015fa                Config_EXTI
-                0x0000000008001740                NVIC_Enable_IRQ
-                0x000000000800175c                NVIC_Disable_IRQ
-                0x0000000008001778                EXTI0_Handler
-                0x0000000008001790                EXTI1_Handler
-                0x00000000080017a8                EXTI2_Handler
-                0x00000000080017c0                EXTI3_Handler
-                0x00000000080017d8                EXTI4_Handler
-                0x00000000080017f0                EXTI9_5_Handler
-                0x0000000008001898                EXTI15_10_Handler
- .text          0x000000000800195c      0x220 Stm32f10xx_Flash.o
-                0x000000000800195c                Flash_Unlock
-                0x00000000080019a8                Flash_Lock
-                0x00000000080019c8                Flash_Erase_Page
-                0x0000000008001a00                Flash_Erase_Pages
-                0x0000000008001a64                Flash_Program_HalfWord
-                0x0000000008001a94                Flash_Program
-                0x0000000008001b1c                Flash_Wait_Operation
- .text          0x0000000008001b7c      0x488 Stm32f10xx_GPIO.o
-                0x0000000008001b7c                Init_GPIO
-                0x0000000008001dd0                Set_pin
-                0x0000000008001dec                Reset_pin
-                0x0000000008001e0c                Change_State_Pin
-                0x0000000008001e3e                Toggle_pin
-                0x0000000008001e60                Read_pin
-                0x0000000008001e88                Set_GPIO_Value
-                0x0000000008001ea2                Reset_GPIO
-                0x0000000008001ec0                Read_GPIO
-                0x0000000008001ed8                Lock_GPIO
-                0x0000000008001f32                Deinit_GPIO
- .text          0x0000000008002004      0x1a4 Stm32f10xx_RCC.o
-                0x0000000008002004                Get_Systick_Freq
-                0x00000000080020f0                Get_HCLK_Freq
-                0x000000000800211c                Get_APB1_Freq
-                0x0000000008002144                Get_APB2_Freq
-                0x000000000800216c                Set_HSE_CLK_Freq
- .text          0x00000000080021a8      0x448 update_Firmware.o
-                0x0000000008002278                update_firmware
-                0x0000000008002504                write_data_into_flash
+ .text          0x00000000080003d8        0x0 Buffer.o
+ .text          0x00000000080003d8       0x12 main.o
+                0x00000000080003d8                main
+ *fill*         0x00000000080003ea        0x2 
+ .text          0x00000000080003ec       0x8c startup.o
+                0x00000000080003ec                FLASH_Handler
+                0x00000000080003ec                SVCall_Handler
+                0x00000000080003ec                PendSv_Handler
+                0x00000000080003ec                DMA1_Channel7_Handler
+                0x00000000080003ec                NMI_Handler
+                0x00000000080003ec                DMA1_Channel6_Handler
+                0x00000000080003ec                CAN1_RX1_Handler
+                0x00000000080003ec                I2C1_EV_Handler
+                0x00000000080003ec                Bus_Fault_Handler
+                0x00000000080003ec                ADC1_2_Handler
+                0x00000000080003ec                WWDG_Handler
+                0x00000000080003ec                DMA1_Channel1_Handler
+                0x00000000080003ec                I2C1_ER_Handler
+                0x00000000080003ec                RTC_Handler
+                0x00000000080003ec                TIM1_CC_Handler
+                0x00000000080003ec                I2C2_ER_Handler
+                0x00000000080003ec                CAN1_SCE_Handler
+                0x00000000080003ec                TIM1_BRK_Handler
+                0x00000000080003ec                MM_Fault_Handler
+                0x00000000080003ec                TEMPER_Handler
+                0x00000000080003ec                TIM2_Handler
+                0x00000000080003ec                DMA1_Channel4_Handler
+                0x00000000080003ec                TIM3_Handler
+                0x00000000080003ec                Default_Handler
+                0x00000000080003ec                USBWakeUp_Handler
+                0x00000000080003ec                DMA1_Channel3_Handler
+                0x00000000080003ec                RTC_Alarm_Handler
+                0x00000000080003ec                TIM4_Handler
+                0x00000000080003ec                SPI2_Handler
+                0x00000000080003ec                DMA1_Channel2_Handler
+                0x00000000080003ec                Usage_Fault_Handler
+                0x00000000080003ec                TIM1_UP_Handler
+                0x00000000080003ec                DMA1_Channel5_Handler
+                0x00000000080003ec                SPI1_Handler
+                0x00000000080003ec                DebugMonitor_Handler
+                0x00000000080003ec                I2C2_EV_Handler
+                0x00000000080003ec                RCC_Handler
+                0x00000000080003ec                PVD_Handler
+                0x00000000080003ec                Hard_Fault_Handler
+                0x00000000080003ec                USB_LP_CAN1_RX0_Handler
+                0x00000000080003ec                USB_HP_CAN1_TX_Handler
+                0x00000000080003ec                TIM1_TRG_COM_Handler
+                0x00000000080003f8                Rest_Handler
+ .text          0x0000000008000478      0x134 Stm32_f10xx_Systick.o
+                0x00000000080004b0                Init_Systick
+                0x0000000008000520                Delay_ms
+                0x0000000008000568                Get_Tick
+                0x000000000800057c                Inc_Tick
+                0x00000000080005a0                SysTick_Handler
+ .text          0x00000000080005ac      0x288 Stm32f10x_DMA.o
+                0x00000000080005ac                DMA_Init
+                0x0000000008000656                DMA_ReInit
+                0x00000000080006b6                DMA_Set_Number_of_Data
+                0x0000000008000730                DMA_Set_Peripheral_Add
+                0x0000000008000760                DMA_Set_Memory_Add
+                0x0000000008000790                DMA_Enable_Channel
+                0x00000000080007d8                DMA_Disable_Channel
+                0x0000000008000820                DMA_Soft_Trigger
+ .text          0x0000000008000834      0xb68 Stm32f10x_UART.o
+                0x00000000080008f8                Set_BaudRate
+                0x00000000080009c0                Get_BaudRate
+                0x00000000080009d4                Init_Uart
+                0x0000000008000cac                DeInit_Uart
+                0x0000000008000d28                _Config_GPIO_f
+                0x0000000008000e0c                Send_Char_Uart
+                0x0000000008000e60                Receive_Char_Uart
+                0x0000000008000ef4                Receive_Char_Uart8
+                0x0000000008000f80                Receive_String_Uart
+                0x000000000800104e                Receive_With_Timeout
+                0x0000000008001096                Send_Text_Uart
+                0x000000000800110e                Send_String_Uart
+                0x0000000008001148                USART1_Handler
+                0x000000000800120c                USART2_Handler
+                0x00000000080012d0                USART3_Handler
+                0x00000000080012dc                Parity_CallBack_UART
+                0x00000000080012ee                Error_CallBack_UART
+                0x0000000008001300                Tx_CallBack_UART
+                0x0000000008001312                Tx_Comp_CallBack_UART
+                0x0000000008001324                Rx_CallBack_UART
+                0x0000000008001364                IDLE_CallBack_UART
+                0x0000000008001376                Lin_BK_CallBack_UART
+                0x0000000008001388                FlowCt_CallBack_UART
+ .text          0x000000000800139c       0xfc Stm32f10xx_Common.o
+                0x000000000800139c                add_unsigned_int_to_str
+                0x0000000008001450                clear_buffer
+ .text          0x0000000008001498      0x4d4 Stm32f10xx_EXTI.o
+                0x000000000800150c                NVIC_EXTI_Clear_Handler
+                0x0000000008001534                Init_EXTI
+                0x000000000800154a                Deinit_EXTI
+                0x00000000080015f4                Upadate_EXTI
+                0x000000000800160a                Config_EXTI
+                0x0000000008001750                NVIC_Enable_IRQ
+                0x000000000800176c                NVIC_Disable_IRQ
+                0x0000000008001788                EXTI0_Handler
+                0x00000000080017a0                EXTI1_Handler
+                0x00000000080017b8                EXTI2_Handler
+                0x00000000080017d0                EXTI3_Handler
+                0x00000000080017e8                EXTI4_Handler
+                0x0000000008001800                EXTI9_5_Handler
+                0x00000000080018a8                EXTI15_10_Handler
+ .text          0x000000000800196c      0x220 Stm32f10xx_Flash.o
+                0x000000000800196c                Flash_Unlock
+                0x00000000080019b8                Flash_Lock
+                0x00000000080019d8                Flash_Erase_Page
+                0x0000000008001a10                Flash_Erase_Pages
+                0x0000000008001a74                Flash_Program_HalfWord
+                0x0000000008001aa4                Flash_Program
+                0x0000000008001b2c                Flash_Wait_Operation
+ .text          0x0000000008001b8c      0x488 Stm32f10xx_GPIO.o
+                0x0000000008001b8c                Init_GPIO
+                0x0000000008001de0                Set_pin
+                0x0000000008001dfc                Reset_pin
+                0x0000000008001e1c                Change_State_Pin
+                0x0000000008001e4e                Toggle_pin
+                0x0000000008001e70                Read_pin
+                0x0000000008001e98                Set_GPIO_Value
+                0x0000000008001eb2                Reset_GPIO
+                0x0000000008001ed0                Read_GPIO
+                0x0000000008001ee8                Lock_GPIO
+                0x0000000008001f42                Deinit_GPIO
+ .text          0x0000000008002014      0x1a4 Stm32f10xx_RCC.o
+                0x0000000008002014                Get_Systick_Freq
+                0x0000000008002100                Get_HCLK_Freq
+                0x000000000800212c                Get_APB1_Freq
+                0x0000000008002154                Get_APB2_Freq
+                0x000000000800217c                Set_HSE_CLK_Freq
+ .text          0x00000000080021b8      0x448 update_Firmware.o
+                0x0000000008002288                update_firmware
+                0x0000000008002514                write_data_into_flash
  *(.rodata)
- .rodata        0x00000000080025f0       0xca Application.o
- *fill*         0x00000000080026ba        0x2 
- .rodata        0x00000000080026bc      0x200 Stm32f10xx_EXTI.o
-                0x00000000080026bc                EXTI_Streem
- .rodata        0x00000000080028bc       0x43 Stm32f10xx_RCC.o
- *fill*         0x00000000080028ff        0x1 
- .rodata        0x0000000008002900      0x135 update_Firmware.o
-                0x0000000008002a35                _E_text = .
+ .rodata        0x0000000008002600       0xca Application.o
+ *fill*         0x00000000080026ca        0x2 
+ .rodata        0x00000000080026cc      0x200 Stm32f10xx_EXTI.o
+                0x00000000080026cc                EXTI_Streem
+ .rodata        0x00000000080028cc       0x43 Stm32f10xx_RCC.o
+ *fill*         0x000000000800290f        0x1 
+ .rodata        0x0000000008002910      0x135 update_Firmware.o
+                0x0000000008002a45                _E_text = .
 
-.glue_7         0x0000000008002a38        0x0
- .glue_7        0x0000000008002a38        0x0 linker stubs
+.glue_7         0x0000000008002a48        0x0
+ .glue_7        0x0000000008002a48        0x0 linker stubs
 
-.glue_7t        0x0000000008002a38        0x0
- .glue_7t       0x0000000008002a38        0x0 linker stubs
+.glue_7t        0x0000000008002a48        0x0
+ .glue_7t       0x0000000008002a48        0x0 linker stubs
 
-.vfp11_veneer   0x0000000008002a38        0x0
- .vfp11_veneer  0x0000000008002a38        0x0 linker stubs
+.vfp11_veneer   0x0000000008002a48        0x0
+ .vfp11_veneer  0x0000000008002a48        0x0 linker stubs
 
-.v4_bx          0x0000000008002a38        0x0
- .v4_bx         0x0000000008002a38        0x0 linker stubs
+.v4_bx          0x0000000008002a48        0x0
+ .v4_bx         0x0000000008002a48        0x0 linker stubs
 
-.iplt           0x0000000008002a38        0x0
- .iplt          0x0000000008002a38        0x0 Application.o
+.iplt           0x0000000008002a48        0x0
+ .iplt          0x0000000008002a48        0x0 Application.o
 
-.rel.dyn        0x0000000008002a38        0x0
- .rel.iplt      0x0000000008002a38        0x0 Application.o
+.rel.dyn        0x0000000008002a48        0x0
+ .rel.iplt      0x0000000008002a48        0x0 Application.o
 
-.data           0x0000000020000000        0x7 load address 0x0000000008002a35
+.data           0x0000000020000000        0x7 load address 0x0000000008002a45
                 0x0000000020000000                _S_DATA = .
  *(.data)
  .data          0x0000000020000000        0x6 Application.o
@@ -208,10 +208,10 @@ Linker script and memory map
  *(.data.*)
                 0x0000000020000007                _E_DATA = .
 
-.igot.plt       0x0000000020000008        0x0 load address 0x0000000008002a3c
+.igot.plt       0x0000000020000008        0x0 load address 0x0000000008002a4c
  .igot.plt      0x0000000020000008        0x0 Application.o
 
-.bss            0x0000000020000008      0x8c4 load address 0x0000000008002a3c
+.bss            0x0000000020000008      0x8c4 load address 0x0000000008002a4c
                 0x0000000020000008                _S_bss = .
  *(.bss)
  .bss           0x0000000020000008       0x98 Application.o
@@ -265,33 +265,33 @@ LOAD update_Firmware.o
 OUTPUT(learn_embedded.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x0000000000000000     0x5ce6
- .debug_info    0x0000000000000000      0xed8 Application.o
- .debug_info    0x0000000000000ed8      0x999 main.o
- .debug_info    0x0000000000001871      0x18b startup.o
- .debug_info    0x00000000000019fc      0x4d0 Stm32_f10xx_Systick.o
- .debug_info    0x0000000000001ecc      0xc3d Stm32f10x_DMA.o
- .debug_info    0x0000000000002b09     0x1566 Stm32f10x_UART.o
- .debug_info    0x000000000000406f      0x1ad Stm32f10xx_Common.o
- .debug_info    0x000000000000421c      0x7fd Stm32f10xx_EXTI.o
- .debug_info    0x0000000000004a19      0x4de Stm32f10xx_Flash.o
- .debug_info    0x0000000000004ef7      0x59d Stm32f10xx_GPIO.o
- .debug_info    0x0000000000005494      0x2d6 Stm32f10xx_RCC.o
- .debug_info    0x000000000000576a      0x57c update_Firmware.o
+.debug_info     0x0000000000000000     0x5d19
+ .debug_info    0x0000000000000000      0xf0b Application.o
+ .debug_info    0x0000000000000f0b      0x999 main.o
+ .debug_info    0x00000000000018a4      0x18b startup.o
+ .debug_info    0x0000000000001a2f      0x4d0 Stm32_f10xx_Systick.o
+ .debug_info    0x0000000000001eff      0xc3d Stm32f10x_DMA.o
+ .debug_info    0x0000000000002b3c     0x1566 Stm32f10x_UART.o
+ .debug_info    0x00000000000040a2      0x1ad Stm32f10xx_Common.o
+ .debug_info    0x000000000000424f      0x7fd Stm32f10xx_EXTI.o
+ .debug_info    0x0000000000004a4c      0x4de Stm32f10xx_Flash.o
+ .debug_info    0x0000000000004f2a      0x59d Stm32f10xx_GPIO.o
+ .debug_info    0x00000000000054c7      0x2d6 Stm32f10xx_RCC.o
+ .debug_info    0x000000000000579d      0x57c update_Firmware.o
 
-.debug_abbrev   0x0000000000000000     0x154f
- .debug_abbrev  0x0000000000000000      0x291 Application.o
- .debug_abbrev  0x0000000000000291      0x1d1 main.o
- .debug_abbrev  0x0000000000000462       0xe4 startup.o
- .debug_abbrev  0x0000000000000546      0x1d7 Stm32_f10xx_Systick.o
- .debug_abbrev  0x000000000000071d      0x216 Stm32f10x_DMA.o
- .debug_abbrev  0x0000000000000933      0x3d1 Stm32f10x_UART.o
- .debug_abbrev  0x0000000000000d04       0xd9 Stm32f10xx_Common.o
- .debug_abbrev  0x0000000000000ddd      0x1dd Stm32f10xx_EXTI.o
- .debug_abbrev  0x0000000000000fba      0x1a9 Stm32f10xx_Flash.o
- .debug_abbrev  0x0000000000001163      0x175 Stm32f10xx_GPIO.o
- .debug_abbrev  0x00000000000012d8       0xfe Stm32f10xx_RCC.o
- .debug_abbrev  0x00000000000013d6      0x179 update_Firmware.o
+.debug_abbrev   0x0000000000000000     0x156f
+ .debug_abbrev  0x0000000000000000      0x2b1 Application.o
+ .debug_abbrev  0x00000000000002b1      0x1d1 main.o
+ .debug_abbrev  0x0000000000000482       0xe4 startup.o
+ .debug_abbrev  0x0000000000000566      0x1d7 Stm32_f10xx_Systick.o
+ .debug_abbrev  0x000000000000073d      0x216 Stm32f10x_DMA.o
+ .debug_abbrev  0x0000000000000953      0x3d1 Stm32f10x_UART.o
+ .debug_abbrev  0x0000000000000d24       0xd9 Stm32f10xx_Common.o
+ .debug_abbrev  0x0000000000000dfd      0x1dd Stm32f10xx_EXTI.o
+ .debug_abbrev  0x0000000000000fda      0x1a9 Stm32f10xx_Flash.o
+ .debug_abbrev  0x0000000000001183      0x175 Stm32f10xx_GPIO.o
+ .debug_abbrev  0x00000000000012f8       0xfe Stm32f10xx_RCC.o
+ .debug_abbrev  0x00000000000013f6      0x179 update_Firmware.o
 
 .debug_aranges  0x0000000000000000      0x180
  .debug_aranges
@@ -319,47 +319,47 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000160       0x20 update_Firmware.o
 
-.debug_line     0x0000000000000000     0x2ecb
- .debug_line    0x0000000000000000      0x3bd Application.o
- .debug_line    0x00000000000003bd        0x0 Buffer.o
- .debug_line    0x00000000000003bd      0x2d0 main.o
- .debug_line    0x000000000000068d      0x240 startup.o
- .debug_line    0x00000000000008cd      0x2ce Stm32_f10xx_Systick.o
- .debug_line    0x0000000000000b9b      0x445 Stm32f10x_DMA.o
- .debug_line    0x0000000000000fe0      0xa34 Stm32f10x_UART.o
- .debug_line    0x0000000000001a14      0x25b Stm32f10xx_Common.o
- .debug_line    0x0000000000001c6f      0x48c Stm32f10xx_EXTI.o
- .debug_line    0x00000000000020fb      0x34a Stm32f10xx_Flash.o
- .debug_line    0x0000000000002445      0x433 Stm32f10xx_GPIO.o
- .debug_line    0x0000000000002878      0x2cc Stm32f10xx_RCC.o
- .debug_line    0x0000000000002b44      0x387 update_Firmware.o
+.debug_line     0x0000000000000000     0x2ef0
+ .debug_line    0x0000000000000000      0x3e2 Application.o
+ .debug_line    0x00000000000003e2        0x0 Buffer.o
+ .debug_line    0x00000000000003e2      0x2d0 main.o
+ .debug_line    0x00000000000006b2      0x240 startup.o
+ .debug_line    0x00000000000008f2      0x2ce Stm32_f10xx_Systick.o
+ .debug_line    0x0000000000000bc0      0x445 Stm32f10x_DMA.o
+ .debug_line    0x0000000000001005      0xa34 Stm32f10x_UART.o
+ .debug_line    0x0000000000001a39      0x25b Stm32f10xx_Common.o
+ .debug_line    0x0000000000001c94      0x48c Stm32f10xx_EXTI.o
+ .debug_line    0x0000000000002120      0x34a Stm32f10xx_Flash.o
+ .debug_line    0x000000000000246a      0x433 Stm32f10xx_GPIO.o
+ .debug_line    0x000000000000289d      0x2cc Stm32f10xx_RCC.o
+ .debug_line    0x0000000000002b69      0x387 update_Firmware.o
 
-.debug_str      0x0000000000000000     0x1731
- .debug_str     0x0000000000000000      0x849 Application.o
-                                        0x8f0 (size before relaxing)
- .debug_str     0x0000000000000849        0x9 Buffer.o
+.debug_str      0x0000000000000000     0x174a
+ .debug_str     0x0000000000000000      0x862 Application.o
+                                        0x909 (size before relaxing)
+ .debug_str     0x0000000000000862        0x9 Buffer.o
                                          0xca (size before relaxing)
- .debug_str     0x0000000000000852        0xc main.o
+ .debug_str     0x000000000000086b        0xc main.o
                                         0x5a6 (size before relaxing)
- .debug_str     0x000000000000085e       0x7f startup.o
+ .debug_str     0x0000000000000877       0x7f startup.o
                                         0x1d8 (size before relaxing)
- .debug_str     0x00000000000008dd      0x446 Stm32_f10xx_Systick.o
+ .debug_str     0x00000000000008f6      0x446 Stm32_f10xx_Systick.o
                                         0x60a (size before relaxing)
- .debug_str     0x0000000000000d23      0x1ae Stm32f10x_DMA.o
+ .debug_str     0x0000000000000d3c      0x1ae Stm32f10x_DMA.o
                                         0x70f (size before relaxing)
- .debug_str     0x0000000000000ed1      0x242 Stm32f10x_UART.o
+ .debug_str     0x0000000000000eea      0x242 Stm32f10x_UART.o
                                         0xe2b (size before relaxing)
- .debug_str     0x0000000000001113       0x48 Stm32f10xx_Common.o
+ .debug_str     0x000000000000112c       0x48 Stm32f10xx_Common.o
                                         0x1d6 (size before relaxing)
- .debug_str     0x000000000000115b      0x297 Stm32f10xx_EXTI.o
+ .debug_str     0x0000000000001174      0x297 Stm32f10xx_EXTI.o
                                         0x825 (size before relaxing)
- .debug_str     0x00000000000013f2       0xd9 Stm32f10xx_Flash.o
+ .debug_str     0x000000000000140b       0xd9 Stm32f10xx_Flash.o
                                         0x423 (size before relaxing)
- .debug_str     0x00000000000014cb       0xfa Stm32f10xx_GPIO.o
+ .debug_str     0x00000000000014e4       0xfa Stm32f10xx_GPIO.o
                                         0x3bf (size before relaxing)
- .debug_str     0x00000000000015c5       0x99 Stm32f10xx_RCC.o
+ .debug_str     0x00000000000015de       0x99 Stm32f10xx_RCC.o
                                         0x2b5 (size before relaxing)
- .debug_str     0x000000000000165e       0xd3 update_Firmware.o
+ .debug_str     0x0000000000001677       0xd3 update_Firmware.o
                                         0x484 (size before relaxing)
 
 .comment        0x0000000000000000       0x53

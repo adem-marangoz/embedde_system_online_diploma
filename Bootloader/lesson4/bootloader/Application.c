@@ -16,6 +16,7 @@
 #include "Stm32f10xx_Flash.h"
 #include "Stm32f10xx_AFIO.h"
 #include "update_Firmware.h"
+#include "Arm_CortexM4.h"
 #include <string.h>
 #include <stdio.h>
 //==============================================================================
@@ -33,10 +34,9 @@ void Rx_Uart2(St_Uart_API *UARTx);
 GPIO_InitTypeDef LEDS = {0};
 GPIO_InitTypeDef LEDS2 = {0};
 static void goto_app(void);
-
-// #define MAJOR       (uint8_t)1
-// #define MINOR       (uint8_t)2
 uint16_t BL_Version[3] = {'1','.', '2'};
+
+#define Application_Add     0x08004400
 //==============================================================================
 
 
@@ -167,14 +167,14 @@ void Infinite_loop()
 static void goto_app(void)
 {
     Send_Text_Uart(&uart1_config,"Finally Jump to application ...\r\n", Enable);
-    void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*)(0x08004400 + 4U)));
+    void (*app_reset_handler)(void) = (void*)(*((volatile uint32_t*)(Application_Add + 4U)));
 
     if(app_reset_handler == (void*)0xFFFFFFFF)
     {
         Send_Text_Uart(&uart1_config,"Invalid Application HALT...\r\n", Enable);
         while(1);
     }
-    // Toggle_pin(GPIOA, LEDS.Pin);
+    __set_MSP(*(volatile uint32_t*) Application_Add);
     app_reset_handler();
 
 }
