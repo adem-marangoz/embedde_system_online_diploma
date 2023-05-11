@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "lcd_driver.h": "c",
-        "stm32_f10xx_systick.h": "c",
-        "application.h": "c"
-    }
-}

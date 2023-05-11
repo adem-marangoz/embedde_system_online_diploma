@@ -1,0 +1,2 @@
+.\etx_ota_app.exe 5 .\learn_embedded.bin
+5 is port number
