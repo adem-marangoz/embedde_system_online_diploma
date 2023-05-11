@@ -19,7 +19,7 @@
 - [Unit 8: MCU Interfacing](unit_8) ![image](https://progress-bar.dev/100/)
 - [Unit 9: MCU Timers/ADC](unit_9) ![image](https://progress-bar.dev/100/)
 - [Unit 10: SW Testing/Validation](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/60/)
-- [Unit 11: Apply on Embedded Systems Jobs](https://github.com/adem-marangoz/embedded_system_online_diploma) ![image](https://progress-bar.dev/00/?title=Exams&color=bababa)
+- [Unit 11: Design Bootloader](https://github.com/adem-marangoz/embedded_system_online_diploma/tree/master/Bootloader/lesson4) ![image](https://progress-bar.dev/40/)
 
 ---
 
