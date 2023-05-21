@@ -114,7 +114,7 @@ void Init_PSP_Task(Scheduler_Typedef *Tref)
     Tref->Current_PSP--;
     *(Tref->Current_PSP) = 0xFFFFFFFD;
 
-    for(uint8_t i = 0; i < 13; i++)
+    for(uint8_t i = 0; i < 14; i++)
     {
         Tref->Current_PSP--;
         *(Tref->Current_PSP) = 0;
@@ -146,7 +146,7 @@ State_Typedef MYRTOS_init()
     __builtin_memcpy(Task_Idle.Taskname, "IdleTask", 8);
     Task_Idle.priority = 255;
     Task_Idle.f_TaskEntry = Idle_Task;
-    Task_Idle._S_Task_PSP = 300;
+    Task_Idle.Task_PSP_Size = 300;
 
     if(Create_Task(&Task_Idle) != Ok) { return Not_Ok;}
 

@@ -63,6 +63,9 @@ void Task_4(void)
 
 int main(void)
 {
+
+    config_Drives_and_Perpherals();
+    
     if(MYRTOS_init() != Ok) {while(1);}
 
     Task1.priority = 3;
