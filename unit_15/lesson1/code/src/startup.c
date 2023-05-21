@@ -9,11 +9,8 @@
 
 #include <stdint.h>
 #define STACK_Start_SP	0x20001000
-#include "Stm32f10xx_Address.h"
-#define USER_IVT_OFFSET			0
-#define FLASH_BASE            	0x08000000UL /*!< FLASH base address in the alias region */
-#define VECT_TAB_OFFSET       	0x00002400U
 extern unsigned int _stack_top;
+extern unsigned int _estack;
 extern unsigned int _S_DATA;
 extern unsigned int _E_DATA;
 extern unsigned int _S_bss;
@@ -81,7 +78,7 @@ void RTC_Alarm_Handler(void)__attribute((weak,alias("Default_Handler")));;
 void USBWakeUp_Handler(void)__attribute((weak,alias("Default_Handler")));;
 
 uint32_t vectors[] __attribute__((section(".vectors"))) = {
-			(uint32_t) &_stack_top,
+			(uint32_t) &_estack,
 			(uint32_t) &Rest_Handler,
 			(uint32_t) &NMI_Handler,
 			(uint32_t) &Hard_Fault_Handler,
@@ -161,8 +158,5 @@ void Rest_Handler(void)
 	{
 		*((unsigned char*)P_dst++)==(unsigned char)0 ;
 	}
-	#if (USER_IVT_OFFSET == 1)
-	SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
-	#endif
 	main();
 }

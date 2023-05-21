@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "stm32_f10xx_systick.h": "c",
-        "application.h": "c"
-    }
-}

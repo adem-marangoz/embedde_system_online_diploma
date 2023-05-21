@@ -67,7 +67,7 @@ typedef struct
 
 //---------------------------- Global Functions -----------------------------
 State_Typedef MYRTOS_init();
-State_Typedef MYRTOS_CreateTask(Scheduler_Typedef* Tref);
+State_Typedef Create_Task(Scheduler_Typedef* Tref);
 State_Typedef MYRTOS_ActivateTask (Scheduler_Typedef* Tref);
 State_Typedef MYRTOS_TerminateTask (Scheduler_Typedef* Tref);
 State_Typedef MYRTOS_STARTOS() ;

@@ -3,7 +3,7 @@
 CC := arm-none-eabi-gcc
 LD := arm-none-eabi-ld
 CPY := arm-none-eabi-objcopy
-CFLAGS := -mcpu=cortex-m3 -mthumb -g -O0 
+CFLAGS := -mcpu=cortex-m3 -mthumb -gdwarf-2 
 
 
 # SRC_DIR := ./source

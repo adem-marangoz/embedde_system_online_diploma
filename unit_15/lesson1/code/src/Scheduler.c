@@ -62,13 +62,13 @@ State_Typedef Create_MSP(void)
 {
     State_Typedef state = Ok; 
     /* Define the range of the MSP of the operation system */  
-    OS_Control._S_OS_MSP = &_stack_top;
-    OS_Control._E_OS_MSP = (OS_Control._S_OS_MSP - (uint32_t)MSP_Size);
+    OS_Control._S_OS_MSP = (uint32_t)&_estack;
+    OS_Control._E_OS_MSP = (OS_Control._S_OS_MSP - MSP_Size);
 
     /* Aligned 8 Bytes spaces between Main Task and PSP tasks */
     OS_Control.PSP_Locator = (OS_Control._E_OS_MSP - (uint32_t)8);
 
-    if(OS_Control.PSP_Locator < &_heap_End) {state = Not_Ok;} 
+    if(OS_Control.PSP_Locator < (uint32_t)&_heap_End) {state = Not_Ok;} 
     return state;
 }
 
@@ -89,7 +89,7 @@ State_Typedef Create_Task(Scheduler_Typedef *Tref)
     Tref->_E_Task_PSP = (Tref->_S_Task_PSP - Tref->Task_PSP_Size);
 
     OS_Control.PSP_Locator = (Tref->_E_Task_PSP - (uint32_t)8);  
-    if(OS_Control.PSP_Locator < &_heap_End) {return Not_Ok;}
+    if(OS_Control.PSP_Locator < (uint32_t)&_heap_End) {return Not_Ok;}
 
     Init_PSP_Task(Tref);
 
@@ -97,12 +97,14 @@ State_Typedef Create_Task(Scheduler_Typedef *Tref)
     OS_Control.NoOfActiveTasks++;
 
     Tref->Task_State = Suspend;
+
+    return state;
 }
 
 
 void Init_PSP_Task(Scheduler_Typedef *Tref)
 {
-    Tref->Current_PSP = Tref->_S_Task_PSP;
+    Tref->Current_PSP = (uint32_t*)Tref->_S_Task_PSP;
     Tref->Current_PSP--;
     *(Tref->Current_PSP) = 0x01000000;
     
@@ -147,6 +149,8 @@ State_Typedef MYRTOS_init()
     Task_Idle._S_Task_PSP = 300;
 
     if(Create_Task(&Task_Idle) != Ok) { return Not_Ok;}
+
+    return state;
 
 }
 

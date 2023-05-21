@@ -2,11 +2,13 @@
  * Adem Alnajjar
  *   
  */
+_estack = ORIGIN(SRAM) + LENGTH(SRAM); /* end of "RAM" Ram type memory */
+
 
 MEMORY
 {
-    FLASH(RX) : ORIGIN = 0x08000000 , l = 100K
-    SRAM(RWX) : ORIGIN = 0x20000000 , l = 20K
+    FLASH(RX) : ORIGIN = 0x08000000 , LENGTH = 128K
+    SRAM(RWX) : ORIGIN = 0x20000000 , LENGTH = 20K
 }
 
 SECTIONS
@@ -38,7 +40,7 @@ SECTIONS
         . = . +1000;
 		_heap_End = .;
         . = ALIGN(4);
-        . = . +5000;
+        . = . +1000;
         _stack_top = . ;
     }> SRAM
 }
