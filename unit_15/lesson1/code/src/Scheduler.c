@@ -53,7 +53,7 @@ struct
 
 
 FIFO_Buf_t Ready_Queue;
-Scheduler_Typedef* OS_Task_Table[100];
+Scheduler_Typedef* Ready_QUEUE_FIFO[100];
 Scheduler_Typedef Task_Idle;
 
 
@@ -140,7 +140,7 @@ State_Typedef MYRTOS_init()
     OS_Control.OS_State = OS_Suspend;           // Update OS State (OS_suspend)
     if(Create_MSP() != Ok) {return Not_Ok;}     // Specify the MSP for OS
 
-    if(FIFO_init(&Ready_Queue, OS_Task_Table, 100) != FIFO_no_Error) {return Not_Ok;}
+    if(FIFO_init(&Ready_Queue, Ready_QUEUE_FIFO, 100) != FIFO_no_Error) {return Not_Ok;}
 
     //Configure IDLE TASK
     __builtin_memcpy(Task_Idle.Taskname, "IdleTask", 8);

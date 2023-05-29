@@ -16,7 +16,7 @@ FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer *_array,unsigned ch
 		return FIFO_Null;
 	}
 	_P_QUEUE_RTOS->base=_array;
-	_P_QUEUE_RTOS->till=_array;
+	_P_QUEUE_RTOS->tail=_array;
 	_P_QUEUE_RTOS->head=_array;
 	_P_QUEUE_RTOS->length=length;
 	_P_QUEUE_RTOS->counter=0;
@@ -27,52 +27,62 @@ FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer *_array,unsigned ch
 
 FIFO_Status FIFO_push(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer value)
 {
-	if(!_P_QUEUE_RTOS)
-	{
+
+	/* _P_QUEUE_RTOS null*/
+
+	if (!_P_QUEUE_RTOS->base || !_P_QUEUE_RTOS->length)
 		return FIFO_Null;
-	}
+	/*_P_QUEUE_RTOS is full*/
 
-	*(_P_QUEUE_RTOS->head)=value;
+	/* _P_QUEUE_RTOS full */
+	if ((_P_QUEUE_RTOS->head == _P_QUEUE_RTOS->tail) && (_P_QUEUE_RTOS->counter == _P_QUEUE_RTOS->length))
+		return FIFO_full;
 
-	if(_P_QUEUE_RTOS->counter>_P_QUEUE_RTOS->length)
-	{
-		_P_QUEUE_RTOS->head=_P_QUEUE_RTOS->base;
-	}else
-		(_P_QUEUE_RTOS->head)++;
-	if(_P_QUEUE_RTOS->counter<_P_QUEUE_RTOS->length)
-		_P_QUEUE_RTOS->counter++;
-	return FIFO_no_Error;
+	*(_P_QUEUE_RTOS->tail) = value;
+	_P_QUEUE_RTOS->counter++;
+
+	/*for circular _P_QUEUE_RTOS again */
+
+	/* circular enqueue */
+	if (_P_QUEUE_RTOS->tail == (((unsigned int)_P_QUEUE_RTOS->base + (4*_P_QUEUE_RTOS->length )) - 4 ))
+		_P_QUEUE_RTOS->tail = _P_QUEUE_RTOS->base;
+	else
+		_P_QUEUE_RTOS->tail++;
 
 }
 
 FIFO_Status FIFO_pop(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *value)
 {
-	if(!_P_QUEUE_RTOS)
-	{
+		/* check _P_QUEUE_RTOS valid */
+	if (!_P_QUEUE_RTOS->base || !_P_QUEUE_RTOS->length)
 		return FIFO_Null;
-	}
-	if(_P_QUEUE_RTOS->counter)
-	{
-		*(value)=*(_P_QUEUE_RTOS->till);
-		if(_P_QUEUE_RTOS->till==_P_QUEUE_RTOS->base + _P_QUEUE_RTOS->length)
-			_P_QUEUE_RTOS->till=_P_QUEUE_RTOS->base;
-		else
-			_P_QUEUE_RTOS->till++;
-		_P_QUEUE_RTOS->counter--;
-		return FIFO_no_Error;
-	}
-	return FIFO_emypt;
 
+	/* _P_QUEUE_RTOS empty */
+	if (_P_QUEUE_RTOS->head == _P_QUEUE_RTOS->tail)
+		return FIFO_emypt;
+
+
+	*value = *(_P_QUEUE_RTOS->head);
+	_P_QUEUE_RTOS->counter--;
+
+	/* circular dequeue */
+	if (_P_QUEUE_RTOS->head == (((unsigned int)_P_QUEUE_RTOS->base + (4*_P_QUEUE_RTOS->length )) - 4 ))
+		_P_QUEUE_RTOS->head = _P_QUEUE_RTOS->base;
+	else
+		_P_QUEUE_RTOS->head++;
+
+	return FIFO_no_Error;
 
 }
 
 FIFO_Status FIFO_is_full(FIFO_Buf_t *_P_QUEUE_RTOS)
 {
-	if(_P_QUEUE_RTOS->counter>_P_QUEUE_RTOS->length-1)
-	{
+	if(!_P_QUEUE_RTOS->head || !_P_QUEUE_RTOS->base || !_P_QUEUE_RTOS->tail)
+		return FIFO_Null;
+	if(_P_QUEUE_RTOS->counter == _P_QUEUE_RTOS->length)
 		return FIFO_full;
-	}
-	return FIFO_not_full;
+
+	return FIFO_no_Error;
 }
 
 FIFO_Status FIFO_is_empty(FIFO_Buf_t *_P_QUEUE_RTOS)
