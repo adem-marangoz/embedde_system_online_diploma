@@ -24,7 +24,7 @@
  * @return FIFO_Status 	: FIFO_no_Error
  * 						: FIFO_Null
  */
-FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer *_array,unsigned char length)
+FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer *_array, unsigned int length)
 {
 	if(!_P_QUEUE_RTOS || !_array)
 	{
@@ -58,11 +58,12 @@ FIFO_Status FIFO_push(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer value)
 	/*_P_QUEUE_RTOS is full*/
 
 	/* _P_QUEUE_RTOS full */
-	if ((unsigned int)(_P_QUEUE_RTOS->head == _P_QUEUE_RTOS->tail) && (_P_QUEUE_RTOS->counter == _P_QUEUE_RTOS->length))
+	if ((_P_QUEUE_RTOS->head == _P_QUEUE_RTOS->tail) && (_P_QUEUE_RTOS->counter == _P_QUEUE_RTOS->length))
 		return FIFO_full;
 
 	*(_P_QUEUE_RTOS->tail) = value;
 	_P_QUEUE_RTOS->counter++;
+	_P_QUEUE_RTOS->Task_counter = _P_QUEUE_RTOS->counter + 1;
 
 	/*for circular _P_QUEUE_RTOS again */
 
@@ -90,11 +91,15 @@ FIFO_Status FIFO_pop(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *value)
 
 	/* _P_QUEUE_RTOS empty */
 	if (_P_QUEUE_RTOS->head == _P_QUEUE_RTOS->tail)
+	{
+		_P_QUEUE_RTOS->head = _P_QUEUE_RTOS->base;
+		_P_QUEUE_RTOS->tail = _P_QUEUE_RTOS->base;
 		return FIFO_emypt;
-
+	}
 
 	*value = *(_P_QUEUE_RTOS->head);
 	_P_QUEUE_RTOS->counter--;
+	_P_QUEUE_RTOS->Task_counter = _P_QUEUE_RTOS->counter - 1;
 
 	/* circular dequeue */
 	if ((unsigned int)(_P_QUEUE_RTOS->head) == (((unsigned int)_P_QUEUE_RTOS->base + (4*_P_QUEUE_RTOS->length )) - 4 ))
@@ -149,6 +154,16 @@ void FIFO_print(FIFO_Buf_t *_P_QUEUE_RTOS)
 	for(int i=0;i<_P_QUEUE_RTOS->length;i++)
 	{
 	}
+}
+
+
+FIFO_Status FIFO_Clear(FIFO_Buf_t *_P_QUEUE_RTOS)
+{
+	for(uint32_t i = 0; i < _P_QUEUE_RTOS->length; i++)
+	{
+		*(_P_QUEUE_RTOS->base + i) = NULL;
+	}
+	return FIFO_emypt;
 }
 
 //==============================================================================

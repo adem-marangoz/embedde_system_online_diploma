@@ -26,8 +26,9 @@ typedef struct
 	Task_Pointer* base;
 	Task_Pointer* tail;
 	Task_Pointer* head;
-	unsigned char counter;
-	unsigned char length;
+	unsigned int counter;
+	unsigned int length;
+	unsigned int Task_counter;
 }FIFO_Buf_t;
 
 /**
@@ -46,9 +47,10 @@ typedef enum
 
 
 //------------------------------ Global Functions ------------------------------
-FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *_array, unsigned char length);
+FIFO_Status FIFO_init(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *_array, unsigned int length);
 FIFO_Status FIFO_push(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer value);
 FIFO_Status FIFO_pop(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *value);
+FIFO_Status FIFO_Clear(FIFO_Buf_t *_P_QUEUE_RTOS);
 FIFO_Status FIFO_is_full(FIFO_Buf_t *_P_QUEUE_RTOS);
 FIFO_Status FIFO_is_empty(FIFO_Buf_t *_P_QUEUE_RTOS);
 void FIFO_print(FIFO_Buf_t *_P_QUEUE_RTOS);

@@ -15,6 +15,8 @@
 #include "Queue_RTOS.h"
 #include "Stm32f10xx_Address.h"
 #include <string.h>
+#include "Stm32_f10xx_Systick.h"
+#include "Stm32f10xx_EXTI.h"
 //==============================================================================
 
 
@@ -61,9 +63,6 @@ State_Typedef Create_MSP(void);
 State_Typedef Create_Task(Scheduler_Typedef *Tref);
 void Init_PSP_Task(Scheduler_Typedef *Tref);
 void Update_Schedular_Table(void);
-void BubbleSort(void);
-void Decide_WhatNext(void);
-void Idle_Task(void);
 void Call_SVC_Service(enum SVC_Services Service_Id);
 //==============================================================================
 
@@ -93,7 +92,7 @@ State_Typedef Create_MSP(void)
  * @brief This Ilde Task priority 255 the last priority
  * 
  */
-void Idle_Task(void)
+void Idle_Task_F(void)
 {
     while (1)
     {
@@ -119,7 +118,7 @@ void Init_PSP_Task(Scheduler_Typedef *Tref)
     Tref->Current_PSP--;
     *(Tref->Current_PSP) = 0xFFFFFFFD;
 
-    for(uint8_t i = 0; i < 14; i++)
+    for(uint8_t i = 0; i < 13; i++)
     {
         Tref->Current_PSP--;
         *(Tref->Current_PSP) = 0;
@@ -155,122 +154,6 @@ void Call_SVC_Service(enum SVC_Services Service_Id)
             break;
     }
 }
-
-
-/**
- * @brief This function is used to specify the task to be run
- */
-void Decide_WhatNext(void)
-{
-    if((Ready_Queue.counter == 0) && (OS_Control.Current_Task->Task_State != Suspend))
-    {
-        OS_Control.Current_Task->Task_State = Running;
-        // Add the current task again(round robin)
-        FIFO_push(&Ready_Queue, OS_Control.Current_Task);
-        OS_Control.Next_Task = OS_Control.Current_Task;
-    }else
-    {
-        FIFO_pop(&Ready_Queue, &OS_Control.Next_Task);
-        OS_Control.Next_Task->Task_State = Running;
-
-        if((OS_Control.Current_Task->priority == OS_Control.Next_Task->priority) && (OS_Control.Current_Task->Task_State != Suspend))
-        {
-            FIFO_push(&Ready_Queue, OS_Control.Current_Task);
-            OS_Control.Current_Task->Task_State = Ready;
-        }
-    }
-}
-
-
-/**
- * @brief 
- * 
- */
-void Trigger_Os_PendSV(void)
-{
-    SCB->ICSR |= 1UL << 28 ; // Set PendSV
-}
-
-
-/**
- * @brief This function is used to run SVC services
- * @param Stack_Frame   This variable takes the value of the SP before switching 
- *                      from thread mode to handler mode
- */
-void OS_SVC(int *Stack_Frame)
-{
-    uint8_t SVC_Sevice;
-    SVC_Sevice = *((uint8_t*)(((uint8_t*)Stack_Frame[6]) - 2));
-    switch(SVC_Sevice)
-    {
-        case Activate_SVC_Service:
-        case Terminate_SVC_Service:
-            Update_Schedular_Table();
-
-            if(OS_Control.OS_State == Running)
-            {
-                if(__builtin_memcpy(OS_Control.Current_Task->Taskname,"IdleTask",8) != 0)
-                {
-                    Decide_WhatNext();
-                    Trigger_Os_PendSV();
-                }
-            }
-            break;
-        case Wait_SVC_Service:
-            break;
-        case AquireMutex_SVC_Service:
-            break;
-        case ReleaseMutex_SVC_Service:
-            break;    
-        default:
-            break;
-    }
-}
-
-
-/**
- * @brief   This function is used to add a wait mode task based on the highest 
- *          priority to the Ready_Queue
- */
-void Update_Schedular_Table(void)
-{
-    Scheduler_Typedef *Cur_Task = NULL;
-    Scheduler_Typedef *Next_Task = NULL;
-    Scheduler_Typedef *Temp = NULL;
-    uint8_t counter = 0;
-
-    while((FIFO_pop(&Ready_Queue, &Temp)) != FIFO_emypt);
-
-    while(counter < OS_Control.NoOfActiveTasks)
-    {
-        Cur_Task = OS_Control.OS_Task_Table[counter];
-        Next_Task = OS_Control.OS_Task_Table[counter + 1];
-        if(Cur_Task->Task_State  != Suspend)
-        {
-            if((Cur_Task->priority) == (Next_Task->priority))
-            {
-                FIFO_push(&Ready_Queue, Cur_Task);
-                Cur_Task->Task_State = Ready;
-                counter++;
-                continue;
-            }else if((Cur_Task->priority) < (Next_Task->priority))
-            {
-                FIFO_push(&Ready_Queue, Cur_Task);
-                Cur_Task->Task_State = Ready;
-                break;
-            }else {break;}
-
-            if(Next_Task->Task_State == Suspend)
-            {
-                FIFO_push(&Ready_Queue, Cur_Task);
-                Cur_Task->Task_State = Ready;
-                break;
-            }
-        }
-        counter++;
-    }
-}
-
 
 
 /**
@@ -328,6 +211,131 @@ __attribute ((naked)) void PendSv_Handler(void)
     //--------------------------------------------------------------------------
 
 }
+
+
+/**
+ * @brief 
+ * 
+ */
+void Trigger_Os_PendSV(void)
+{
+    SCB->ICSR |= 1UL << 28 ; // Set PendSV
+}
+
+
+/**
+ * @brief This function is used to specify the task to be run
+ */
+void Decide_WhatNext(void)
+{
+    if((Ready_Queue.counter == 0) && (OS_Control.Current_Task->Task_State != Suspend))
+    {
+        OS_Control.Current_Task->Task_State = Running;
+        // Add the current task again(round robin)
+        FIFO_push(&Ready_Queue, OS_Control.Current_Task);
+        OS_Control.Next_Task = OS_Control.Current_Task;
+    }else
+    {
+        FIFO_pop(&Ready_Queue, &OS_Control.Next_Task);
+        OS_Control.Next_Task->Task_State = Running;
+
+        if((OS_Control.Current_Task->priority == OS_Control.Next_Task->priority) && (OS_Control.Current_Task->Task_State != Suspend))
+        {
+            FIFO_push(&Ready_Queue, OS_Control.Current_Task);
+            OS_Control.Current_Task->Task_State = Ready;
+        }
+    }
+}
+
+
+
+/**
+ * @brief This function is used to run SVC services
+ * @param Stack_Frame   This variable takes the value of the SP before switching 
+ *                      from thread mode to handler mode
+ */
+void OS_SVC(int *Stack_Frame)
+{
+    uint8_t SVC_Sevice;
+    SVC_Sevice = *((uint8_t*)(((uint8_t*)Stack_Frame[6]) - 2));
+    switch(SVC_Sevice)
+    {
+        case Activate_SVC_Service:
+        case Terminate_SVC_Service:
+            Update_Schedular_Table();
+
+            if(OS_Control.OS_State == Running)
+            {
+                // if(strcmp(OS_Control.Current_Task->Taskname,"IdleTask") != 0)
+                // {
+                //     Decide_WhatNext();
+                //     Trigger_Os_PendSV();
+                // }
+                if(__builtin_memcpy(OS_Control.Current_Task->Taskname,"IdleTask",8) != 0)
+                {
+                    Decide_WhatNext();
+                    Trigger_Os_PendSV();
+                }
+            }
+            break;
+        case Wait_SVC_Service:
+            break;
+        case AquireMutex_SVC_Service:
+            break;
+        case ReleaseMutex_SVC_Service:
+            break;    
+        default:
+            break;
+    }
+}
+
+
+/**
+ * @brief   This function is used to add a wait mode task based on the highest 
+ *          priority to the Ready_Queue
+ */
+void Update_Schedular_Table(void)
+{
+    Scheduler_Typedef *Cur_Task = NULL;
+    Scheduler_Typedef *Next_Task = NULL;
+    Scheduler_Typedef *Temp = NULL;
+    uint8_t counter = 0;
+
+    // // Sort Tasks base on priority
+    // BubbleSort();
+
+    while((FIFO_pop(&Ready_Queue, &Temp)) != FIFO_emypt);
+
+    while(counter < OS_Control.NoOfActiveTasks)
+    {
+        Cur_Task = OS_Control.OS_Task_Table[counter];
+        Next_Task = OS_Control.OS_Task_Table[counter + 1];
+        if(Cur_Task->Task_State  != Suspend)
+        {
+            if(Next_Task->Task_State == Suspend)
+            {
+                FIFO_push(&Ready_Queue, Cur_Task);
+                Cur_Task->Task_State = Ready;
+                break;
+            }
+
+            if((Cur_Task->priority) < (Next_Task->priority))
+            {
+                FIFO_push(&Ready_Queue, Cur_Task);
+                Cur_Task->Task_State = Ready;
+                break;
+            }else if((Cur_Task->priority) == (Next_Task->priority))
+            {
+                FIFO_push(&Ready_Queue, Cur_Task);
+                Cur_Task->Task_State = Ready;
+            }else {break;}
+
+        }
+        counter++;
+    }
+}
+
+
 //==============================================================================
 
 
@@ -338,7 +346,7 @@ __attribute ((naked)) void PendSv_Handler(void)
  * @return State_Typedef    0 : Ok
  *                          1 : Not_Ok 
  */
-State_Typedef Init_RTOS()
+State_Typedef Init_RTOS(void)
 {
     State_Typedef state = Ok;
 
@@ -350,7 +358,7 @@ State_Typedef Init_RTOS()
     //Configure IDLE TASK
     __builtin_memcpy(Task_Idle.Taskname, "IdleTask", 8);
     Task_Idle.priority = 255;
-    Task_Idle.f_TaskEntry = Idle_Task;
+    Task_Idle.f_TaskEntry = Idle_Task_F;
     Task_Idle.Task_PSP_Size = 300;
 
     if(Create_Task(&Task_Idle) != Ok) { return Not_Ok;}
@@ -379,7 +387,11 @@ State_Typedef Create_Task(Scheduler_Typedef *Tref)
     OS_Control.NoOfActiveTasks++;
 
     Tref->Task_State = Suspend;
-
+   
+   
+    // Sort Tasks base on priority
+    BubbleSort();
+   
     return state;
 }
 
@@ -427,7 +439,7 @@ State_Typedef Wait_Task(unsigned int NoTICKS,Scheduler_Typedef* SelfTref)
 State_Typedef Activate_Task(Scheduler_Typedef* Tref)
 {
     Tref->Task_State = Waiting;
-
+    Call_SVC_Service(Activate_SVC_Service);
 }
 
 
@@ -439,7 +451,8 @@ State_Typedef Activate_Task(Scheduler_Typedef* Tref)
  */
 State_Typedef Terminate_Task(Scheduler_Typedef* Tref)
 {
-
+    Tref->Task_State = Suspend;
+    Call_SVC_Service(Terminate_SVC_Service);
 }
 
 
@@ -448,9 +461,30 @@ State_Typedef Terminate_Task(Scheduler_Typedef* Tref)
  * @return State_Typedef    0 : Ok
  *                          1 : Not_Ok 
  */
-State_Typedef Activate_Os() 
+void Activate_Os(void) 
 {
 
+    // Switch Os State to Running Mode
+    OS_Control.OS_State = Running;
+
+    // Activate Idle Task
+    Activate_Task(&Task_Idle);
+    
+    // Enable Systick 1000 Ticks (1ms)
+    Systick_API.Clock_Source = Processor_Clock_AHB;
+    Systick_API.Current_Value = 0;
+    Systick_API.Enable_Interrupt = Enable_Systick_Req;
+    Systick_API.Reload_Value = 7999;
+    Init_Systick();
+
+    // Switch to PSP
+    Switch_SP(PSP_SP);
+
+    // Switch to Unprivilged
+    Access_level(Access_unprivileged);
+
+    // Call Idle Task
+    Task_Idle.f_TaskEntry();
 
 }
 //==============================================================================

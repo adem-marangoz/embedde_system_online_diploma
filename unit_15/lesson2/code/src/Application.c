@@ -34,16 +34,9 @@
 
 void config_Drives_and_Perpherals(void)
 {
-    //---------------------------- Systick Config ------------------------------
-    Systick_API.Clock_Source = Processor_Clock_AHB;
-    Systick_API.Current_Value = 0;
-    Systick_API.Enable_Interrupt = Enable_Systick_Req;
-    Systick_API.Reload_Value = 7999;
-    Init_Systick();
-    //==========================================================================
-
 
     //-------------------------- Set PendSV Pirority ---------------------------
+    NVIC_Set_Pirority(SysTick_IRQn, 9);
     NVIC_Set_Pirority(PendSV_IRQn, 15);
     //==========================================================================
 }

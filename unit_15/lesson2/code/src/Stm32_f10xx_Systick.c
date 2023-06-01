@@ -14,6 +14,7 @@
 #include "Stm32_f10xx_Systick.h"
 #include "Stm32f10xx_RCC.h"
 #include "Stm32f10xx_EXTI.h"
+#include "Scheduler.h"
 //==============================================================================
 
 
@@ -98,6 +99,8 @@ void Inc_Tick()
   */
 void SysTick_Handler(void)
 {
-    Inc_Tick();
+    // Inc_Tick();
+    Decide_WhatNext();
+    Trigger_Os_PendSV();
 }
 //==============================================================================

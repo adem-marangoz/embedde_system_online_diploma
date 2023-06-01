@@ -66,9 +66,12 @@ typedef struct
 
 
 //---------------------------- Global Functions -----------------------------
-State_Typedef Init_RTOS();
+State_Typedef Init_RTOS(void);
+void BubbleSort(void);
+void Idle_Task_F(void);
 void Trigger_Os_PendSV(void);
-State_Typedef Activate_Os() ;
+void Activate_Os(void) ;
+void Decide_WhatNext(void);
 State_Typedef Create_Task(Scheduler_Typedef* Tref);
 State_Typedef Activate_Task (Scheduler_Typedef* Tref);
 State_Typedef Terminate_Task (Scheduler_Typedef* Tref);
