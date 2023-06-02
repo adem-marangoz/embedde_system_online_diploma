@@ -63,7 +63,6 @@ FIFO_Status FIFO_push(FIFO_Buf_t *_P_QUEUE_RTOS,Task_Pointer value)
 
 	*(_P_QUEUE_RTOS->tail) = value;
 	_P_QUEUE_RTOS->counter++;
-	_P_QUEUE_RTOS->Task_counter = _P_QUEUE_RTOS->counter + 1;
 
 	/*for circular _P_QUEUE_RTOS again */
 
@@ -99,7 +98,6 @@ FIFO_Status FIFO_pop(FIFO_Buf_t *_P_QUEUE_RTOS, Task_Pointer *value)
 
 	*value = *(_P_QUEUE_RTOS->head);
 	_P_QUEUE_RTOS->counter--;
-	_P_QUEUE_RTOS->Task_counter = _P_QUEUE_RTOS->counter - 1;
 
 	/* circular dequeue */
 	if ((unsigned int)(_P_QUEUE_RTOS->head) == (((unsigned int)_P_QUEUE_RTOS->base + (4*_P_QUEUE_RTOS->length )) - 4 ))

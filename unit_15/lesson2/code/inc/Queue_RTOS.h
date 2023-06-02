@@ -28,7 +28,6 @@ typedef struct
 	Task_Pointer* head;
 	unsigned int counter;
 	unsigned int length;
-	unsigned int Task_counter;
 }FIFO_Buf_t;
 
 /**

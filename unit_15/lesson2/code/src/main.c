@@ -34,12 +34,12 @@ void Task_1(void)
     while (1)
     {
         Led1 ^= 1;
-        counter1++;
-        if(counter1 == 0xF)
-        {
-            counter1 = 0;
-            Activate_Task(&Task4);
-        }
+        // counter1++;
+        // if(counter1 == 0xF)
+        // {
+        //     counter1 = 0;
+        //     Activate_Task(&Task4);
+        // }
     }
 }
 

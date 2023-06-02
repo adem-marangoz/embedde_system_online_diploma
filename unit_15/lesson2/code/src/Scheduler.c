@@ -53,7 +53,9 @@ enum SVC_Services
 };
 
 FIFO_Buf_t Ready_Queue; // Control Ready Buffer Structure
+
 Scheduler_Typedef* Ready_QUEUE_FIFO[100]; // Ready Buffer
+
 Scheduler_Typedef Task_Idle; // Idle Task
 
 //==============================================================================
@@ -183,7 +185,6 @@ __attribute ((naked)) void PendSv_Handler(void)
     __asm volatile("mov %0,R11" :"=r" (*(OS_Control.Current_Task->Current_PSP)) : :);
     //--------------------------------------------------------------------------
 
-
     // ________________ Restore The Context of The Next Task ___________________
     OS_Control.Current_Task = OS_Control.Next_Task;
     OS_Control.Next_Task = NULL;
@@ -209,12 +210,11 @@ __attribute ((naked)) void PendSv_Handler(void)
     Set_PSP_Add(OS_Control.Current_Task->Current_PSP);
     __asm volatile("Bx LR");
     //--------------------------------------------------------------------------
-
 }
 
 
 /**
- * @brief 
+ * @brief Trigger PenSV IRQ handler
  * 
  */
 void Trigger_Os_PendSV(void)
@@ -266,11 +266,6 @@ void OS_SVC(int *Stack_Frame)
 
             if(OS_Control.OS_State == Running)
             {
-                // if(strcmp(OS_Control.Current_Task->Taskname,"IdleTask") != 0)
-                // {
-                //     Decide_WhatNext();
-                //     Trigger_Os_PendSV();
-                // }
                 if(__builtin_memcpy(OS_Control.Current_Task->Taskname,"IdleTask",8) != 0)
                 {
                     Decide_WhatNext();
@@ -301,9 +296,6 @@ void Update_Schedular_Table(void)
     Scheduler_Typedef *Temp = NULL;
     uint8_t counter = 0;
 
-    // // Sort Tasks base on priority
-    // BubbleSort();
-
     while((FIFO_pop(&Ready_Queue, &Temp)) != FIFO_emypt);
 
     while(counter < OS_Control.NoOfActiveTasks)
@@ -329,7 +321,6 @@ void Update_Schedular_Table(void)
                 FIFO_push(&Ready_Queue, Cur_Task);
                 Cur_Task->Task_State = Ready;
             }else {break;}
-
         }
         counter++;
     }
@@ -483,6 +474,8 @@ void Activate_Os(void)
     // Switch to Unprivilged
     Access_level(Access_unprivileged);
 
+    // Task_Idle.Task_State = Running;
+    // OS_Control.Current_Task = &Task_Idle;
     // Call Idle Task
     Task_Idle.f_TaskEntry();
 

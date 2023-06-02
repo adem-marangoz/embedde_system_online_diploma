@@ -35,7 +35,7 @@
 void config_Drives_and_Perpherals(void)
 {
 
-    //-------------------------- Set PendSV Pirority ---------------------------
+    //-------------------------- Set IRQn Pirority ---------------------------
     NVIC_Set_Pirority(SysTick_IRQn, 7);
     NVIC_Set_Pirority(PendSV_IRQn, 15);
     //==========================================================================
