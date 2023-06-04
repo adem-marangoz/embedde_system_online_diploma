@@ -27,19 +27,18 @@ void Task_4(void);
 void Task_5(void);
 //==============================================================================
 uint8_t Led1 = 0,Led2 = 0, Led3 = 0, Led4= 0;
-
+uint32_t counter1 = 0;
 void Task_1(void)
 {
-    static uint32_t counter1 = 0;
     while (1)
     {
         Led1 ^= 1;
-        counter1++;
         if(counter1 == 0xF)
         {
+            Wait_Task(100, &Task1);
             counter1 = 0;
-            Activate_Task(&Task4);
         }
+        counter1++;
     }
 }
 
@@ -49,6 +48,7 @@ void Task_2(void)
     while (1)
     {
         Led2 ^= 1;
+        Wait_Task(200, &Task2);
     }
 }
 
@@ -58,6 +58,7 @@ void Task_3(void)
     while (1)
     {
         Led3 ^= 1;
+        Wait_Task(300, &Task3);
     }
 }
 
@@ -87,25 +88,25 @@ int main(void)
 
     Task1.priority = 3;
     Task1.f_TaskEntry = Task_1;
-    Task1.Task_PSP_Size = 2000;
+    Task1.Task_PSP_Size = 1024;
     __builtin_memcpy(Task1.Taskname,"Task 1", 6);
     if(Create_Task(&Task1) != Ok) {while(1);}
     
     Task2.priority = 3;
     Task2.f_TaskEntry = Task_2;
-    Task2.Task_PSP_Size = 2000;
+    Task2.Task_PSP_Size = 1024;
     __builtin_memcpy(Task2.Taskname,"Task 2", 6);
     if(Create_Task(&Task2) != Ok) {while(1);}
     
     Task3.priority = 3;
     Task3.f_TaskEntry = Task_3;
-    Task3.Task_PSP_Size = 2000;
+    Task3.Task_PSP_Size = 1024;
     __builtin_memcpy(Task3.Taskname,"Task 3", 6);
     if(Create_Task(&Task3) != Ok) {while(1);}
     
     Task4.priority = 1;
     Task4.f_TaskEntry = Task_4;
-    Task4.Task_PSP_Size = 2000;
+    Task4.Task_PSP_Size = 1024;
     __builtin_memcpy(Task4.Taskname,"Task 4", 6);
     if(Create_Task(&Task4) != Ok) {while(1);}
     
