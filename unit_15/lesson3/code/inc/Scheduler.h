@@ -33,6 +33,14 @@ typedef enum
 }Task_State_Typedef;
 
 
+enum
+{
+    Mutex_Unlock,
+    Mutex_lock
+}Mutex_State;
+
+
+
 /**
  * @brief 
  * 
@@ -58,6 +66,14 @@ typedef struct
     uint8_t priority;                   // Priority Task Rang 0 - 255 High pirority 0
 }Scheduler_Typedef;
 
+
+typedef struct 
+{
+    Scheduler_Typedef *Cur_Task;
+    Scheduler_Typedef *Next_Task;
+}Mutex_Typedef;
+
+
 //==============================================================================
 
 //------------------------------ Local Functions -------------------------------
@@ -77,6 +93,8 @@ State_Typedef Activate_Task (Scheduler_Typedef* Tref);
 State_Typedef Terminate_Task (Scheduler_Typedef* Tref);
 State_Typedef Wait_Task(unsigned int NoTICKS,Scheduler_Typedef* Tref);
 void Check_Wait_Tasks(void);
+void AcquireMutex(Mutex_Typedef *mutex_ref, Scheduler_Typedef* Tref);
+void ReleaseMutex(Mutex_Typedef *mutex_ref);
 void OS_SVC(int *Stack_Frame);
 //==============================================================================
 

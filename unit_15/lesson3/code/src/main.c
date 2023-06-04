@@ -19,7 +19,7 @@
 //------------------------------- Local Objects --------------------------------
 
 Scheduler_Typedef Task1, Task2, Task3, Task4, Task5;
-
+Mutex_Typedef Mutex1;
 void Task_1(void);
 void Task_2(void);
 void Task_3(void);
@@ -27,16 +27,21 @@ void Task_4(void);
 void Task_5(void);
 //==============================================================================
 uint8_t Led1 = 0,Led2 = 0, Led3 = 0, Led4= 0;
-uint32_t counter1 = 0;
 void Task_1(void)
 {
+    static uint32_t counter1 = 0;
     while (1)
     {
         Led1 ^= 1;
-        if(counter1 == 0xF)
+        if(counter1 == 100)
         {
-            Wait_Task(100, &Task1);
+            AcquireMutex(&Mutex1, &Task1);
+            Activate_Task(&Task2);
+        }
+        if(counter1 == 200)
+        {
             counter1 = 0;
+            ReleaseMutex(&Mutex1);
         }
         counter1++;
     }
@@ -45,9 +50,20 @@ void Task_1(void)
 
 void Task_2(void)
 {
+    static uint32_t counter1 = 0;
     while (1)
     {
         Led2 ^= 1;
+        counter1++;
+        if(counter1 == 100)
+        {
+            Activate_Task(&Task3);
+        }
+        if(counter1 == 200)
+        {
+            counter1 = 0;
+            Terminate_Task(&Task2);
+        }
         Wait_Task(200, &Task2);
     }
 }
@@ -55,24 +71,39 @@ void Task_2(void)
 
 void Task_3(void)
 {
+    static uint32_t counter1 = 0;
     while (1)
     {
         Led3 ^= 1;
-        Wait_Task(300, &Task3);
+        counter1++;
+        if(counter1 == 100)
+        {
+            Activate_Task(&Task4);
+        }
+        if(counter1 == 200)
+        {
+            counter1 = 0;
+            Terminate_Task(&Task3);
+        }
     }
 }
 
 
 void Task_4(void)
 {
-    static uint32_t counter = 0;
+    static uint32_t counter1 = 0;
     while (1)
     {
         Led4 ^= 1;
-        counter++;
-        if(counter == 10)
+        counter1++;
+        if(counter1 == 3)
         {
-            counter = 0;
+            AcquireMutex(&Mutex1, &Task4);
+        }
+        if(counter1 == 200)
+        {
+            counter1 = 0;
+            ReleaseMutex(&Mutex1);
             Terminate_Task(&Task4);
         }
     }
@@ -109,6 +140,7 @@ int main(void)
     Task4.Task_PSP_Size = 1024;
     __builtin_memcpy(Task4.Taskname,"Task 4", 6);
     if(Create_Task(&Task4) != Ok) {while(1);}
+    
     
 
     Activate_Task(&Task1);

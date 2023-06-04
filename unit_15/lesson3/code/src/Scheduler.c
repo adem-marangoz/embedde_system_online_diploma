@@ -474,6 +474,40 @@ State_Typedef Terminate_Task(Scheduler_Typedef* Tref)
     Call_SVC_Service(Terminate_SVC_Service);
 }
 
+/**
+ * @brief 
+ * 
+ * @param mutex_ref 
+ * @param Tref 
+ * @return enum Mutex_State 
+ */
+void AcquireMutex(Mutex_Typedef *mutex_ref, Scheduler_Typedef* Tref)
+{
+    if(mutex_ref->Cur_Task == NULL)
+    {
+        mutex_ref->Cur_Task = Tref;
+    }else
+    {
+        if(mutex_ref->Next_Task == NULL)
+        {
+            mutex_ref->Next_Task = Tref;
+            Tref->Task_State = Suspend;
+            Call_SVC_Service(Terminate_SVC_Service);
+        }
+    }
+}
+
+
+void ReleaseMutex(Mutex_Typedef *mutex_ref)
+{
+    if(mutex_ref != NULL)
+    {
+        mutex_ref->Cur_Task = mutex_ref->Next_Task;
+        mutex_ref->Next_Task = NULL;
+        mutex_ref->Cur_Task->Task_State = Waiting;
+        Call_SVC_Service(Activate_SVC_Service);
+    }
+}
 
 /**
  * @brief This function is used to activate the OS
