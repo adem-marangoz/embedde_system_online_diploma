@@ -14,6 +14,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdarg.h>
 #define __IO              volatile           
 
 #define SET_BIT(REG, BIT)     ((REG) |= (BIT))
