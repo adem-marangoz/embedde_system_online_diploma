@@ -36,7 +36,16 @@
 
 #define UNUSED(X) (void)X      /* To avoid gcc/g++ warnings */
 
+#define Enable_Print_By_Uart      0x01
+#define Disable_Print_By_Uart     0x02
+#define Enable_Hal                0x01
+#define Disable_Hal               0x02
 
+#define Print_By_Uart             (Enable_Print_By_Uart)
+#define Use_Hal                   (Disable_Hal)
+
+// #define BL_DEBUG_UART                &huart2 
+#define BL_DEBUG_UART                             // Write Uart structure
 typedef enum
 {
   Ok = 0x00U,
@@ -76,5 +85,6 @@ typedef enum
 void clear_buffer(uint8_t *str, uint16_t start_add, uint16_t end_add, uint8_t ch);
 uint32_t add_unsigned_int_to_str(char *str, uint32_t num);
 uint8_t strcmp_(uint8_t *src, uint8_t *des, uint32_t len);
+void Print_With_Uart(char *format, ...);
 //==============================================================================
 #endif

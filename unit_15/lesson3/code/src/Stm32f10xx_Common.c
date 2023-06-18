@@ -68,4 +68,31 @@ uint8_t strcmp_(uint8_t *src, uint8_t *des, uint32_t len)
     }
     return 0;
 }
+
+
+// Example : BL_Print_Message("Passed -> Program ROP to Level : 0x%X \r\n", ROP_Level);
+void Print_With_Uart(char *format, ...)
+{
+    char Messsage[100] = {0};
+	/* holds the information needed by va_start, va_arg, va_end */
+	va_list args;
+	/* Enables access to the variable arguments */
+	va_start(args, format);
+	/* Write formatted data from variable argument list to string */
+	vsprintf(Messsage, format, args);
+
+    #if (Print_By_Uart == Enable_Print_By_Uart)
+        #if (Use_Hal == Enable_Hal)
+            /* Trasmit the formatted data through the defined UART */
+            HAL_UART_Transmit(BL_DEBUG_UART, (uint8_t *)Messsage, 
+                                sizeof(Messsage), HAL_MAX_DELAY);
+        #else
+            /* Trasmit the formatted data through the defined UART */
+
+        #endif
+    #endif
+    /* Performs cleanup for an ap object initialized by a call to va_start */
+	va_end(args);
+}
+
 //==============================================================================
