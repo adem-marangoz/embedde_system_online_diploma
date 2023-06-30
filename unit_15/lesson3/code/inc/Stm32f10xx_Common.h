@@ -86,6 +86,6 @@ typedef enum
 void clear_buffer(uint8_t *str, uint16_t start_add, uint16_t end_add, uint8_t ch);
 uint32_t add_unsigned_int_to_str(char *str, uint32_t num);
 uint8_t strcmp_(uint8_t *src, uint8_t *des, uint32_t len);
-void Print_With_Uart(char *format, ...);
+// void Print_With_Uart(char *format, ...);
 //==============================================================================
 #endif
