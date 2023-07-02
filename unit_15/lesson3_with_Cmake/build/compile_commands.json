@@ -1,0 +1,152 @@
+[
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Application.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Application.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Application.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Application.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Arm_CortexM4.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Arm_CortexM4.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Arm_CortexM4.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Arm_CortexM4.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Buffer.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Buffer.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Buffer.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Buffer.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Buzzer.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Buzzer.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Buzzer.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Buzzer.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\EEPROM.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\EEPROM.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/EEPROM.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/EEPROM.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\EEPROM_25xx256.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\EEPROM_25xx256.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/EEPROM_25xx256.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/EEPROM_25xx256.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Key_pad_Driver.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Key_pad_Driver.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Key_pad_Driver.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Key_pad_Driver.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\LCD_Driver.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\LCD_Driver.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/LCD_Driver.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/LCD_Driver.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Os_System.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Os_System.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Os_System.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Os_System.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Queue_RTOS.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Queue_RTOS.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Queue_RTOS.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Queue_RTOS.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Scheduler.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Scheduler.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Scheduler.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Scheduler.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Send_Atmega32.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Send_Atmega32.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Send_Atmega32.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Send_Atmega32.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Seven_Segment.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Seven_Segment.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Seven_Segment.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Seven_Segment.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32_f10xx_Systick.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32_f10xx_Systick.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32_f10xx_Systick.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32_f10xx_Systick.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10x_DMA.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10x_DMA.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10x_DMA.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10x_DMA.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10x_SPI.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10x_SPI.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10x_SPI.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10x_SPI.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10x_UART.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10x_UART.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10x_UART.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10x_UART.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_Common.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_Common.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_Common.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Common.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_EXTI.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_EXTI.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_EXTI.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_EXTI.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_GPIO.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_GPIO.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_GPIO.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_GPIO.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_I2C.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_I2C.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_I2C.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_I2C.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_RCC.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_RCC.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_RCC.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_RCC.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\Stm32f10xx_Timers.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\Stm32f10xx_Timers.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_Timers.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Timers.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\main.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\main.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/main.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/main.c.obj"
+},
+{
+  "directory": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build",
+  "command": "C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0  -IC:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\inc -g -std=gnu11 -mcpu=cortex-m3 -mthumb -gdwarf-2 -O0 -o CMakeFiles\\learn_embedded.dir\\src\\startup.c.obj -c C:\\Users\\MobiTurk\\Documents\\embedded_system_online_diploma\\unit_15\\lesson3_with_Cmake\\src\\startup.c",
+  "file": "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/startup.c",
+  "output": "CMakeFiles/learn_embedded.dir/src/startup.c.obj"
+}
+]

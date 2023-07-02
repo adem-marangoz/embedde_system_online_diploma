@@ -1,0 +1,3 @@
+C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/learn_embedded.dir
+C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/edit_cache.dir
+C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/rebuild_cache.dir
