@@ -1,4 +1,4 @@
-learn_embedded.elf: \
+learn_embedded.axf: \
   C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/linker_script.ld \
   c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7-m/nofp/crti.o \
   c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7-m/nofp/crtbegin.o \

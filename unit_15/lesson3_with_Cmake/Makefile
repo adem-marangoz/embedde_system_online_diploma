@@ -1,9 +1,9 @@
 .PHONY: all build cmake clean format
-LD := arm-none-eabi-ld
 BUILD_DIR := build
 BUILD_TYPE ?= Debug
-
 all: build
+
+
 
 ${BUILD_DIR}/Makefile:
 	cmake \

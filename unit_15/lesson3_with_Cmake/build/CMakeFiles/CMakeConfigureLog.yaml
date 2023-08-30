@@ -102,8 +102,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg"
-      binary: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg"
+      source: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj"
+      binary: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -112,14 +112,14 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg'
+        Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_063a9/fast
-        mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg'
-        C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_063a9.dir\\build.make CMakeFiles/cmTC_063a9.dir/build
-        mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg'
-        Building C object CMakeFiles/cmTC_063a9.dir/CMakeCCompilerABI.c.obj
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_96b77/fast
+        mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj'
+        C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_96b77.dir\\build.make CMakeFiles/cmTC_96b77.dir/build
+        mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj'
+        Building C object CMakeFiles/cmTC_96b77.dir/CMakeCCompilerABI.c.obj
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE
         Target: arm-none-eabi
@@ -127,8 +127,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib
         gcc version 10.2.1 20201103 (release) (GNU Arm Embedded Toolchain 10-2020-q4-major) 
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj -gdwarf-2 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccVdFj6F.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj -gdwarf-2 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccHmQir5.s
         GNU C17 (GNU Arm Embedded Toolchain 10-2020-q4-major) version 10.2.1 20201103 (release) (arm-none-eabi)
         	compiled by GNU C version 7.3-win32 20180312, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
         
@@ -149,19 +149,19 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: d0af1807fcd872df6b1165770acff16d
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccVdFj6F.s
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccHmQir5.s
         GNU assembler version 2.35.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10-2020-q4-major) 2.35.1.20201028
         COMPILER_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/;c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-        Linking C static library libcmTC_063a9.a
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_063a9.dir\\cmake_clean_target.cmake
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_063a9.dir\\link.txt --verbose=1
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_063a9.a CMakeFiles/cmTC_063a9.dir/CMakeCCompilerABI.c.obj
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_063a9.a
-        mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg'
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg'
+        COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+        Linking C static library libcmTC_96b77.a
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_96b77.dir\\cmake_clean_target.cmake
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_96b77.dir\\link.txt --verbose=1
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_96b77.a CMakeFiles/cmTC_96b77.dir/CMakeCCompilerABI.c.obj
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_96b77.a
+        mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj'
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj'
         
       exitCode: 0
   -
@@ -193,14 +193,14 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(arm-none-eabi-ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg']
+        ignore line: [Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_063a9/fast]
-        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg']
-        ignore line: [C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_063a9.dir\\build.make CMakeFiles/cmTC_063a9.dir/build]
-        ignore line: [mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg']
-        ignore line: [Building C object CMakeFiles/cmTC_063a9.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_96b77/fast]
+        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj']
+        ignore line: [C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_96b77.dir\\build.make CMakeFiles/cmTC_96b77.dir/build]
+        ignore line: [mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj']
+        ignore line: [Building C object CMakeFiles/cmTC_96b77.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR19DD~1.EXE]
         ignore line: [Target: arm-none-eabi]
@@ -208,8 +208,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 10.2.1 20201103 (release) (GNU Arm Embedded Toolchain 10-2020-q4-major) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj -gdwarf-2 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccVdFj6F.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj -gdwarf-2 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccHmQir5.s]
         ignore line: [GNU C17 (GNU Arm Embedded Toolchain 10-2020-q4-major) version 10.2.1 20201103 (release) (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 7.3-win32 20180312  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
         ignore line: []
@@ -230,8 +230,8 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: d0af1807fcd872df6b1165770acff16d]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccVdFj6F.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccHmQir5.s]
         ignore line: [GNU assembler version 2.35.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10-2020-q4-major) 2.35.1.20201028]
         ignore line: [COMPILER_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/]
@@ -243,14 +243,14 @@ events:
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_063a9.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [Linking C static library libcmTC_063a9.a]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_063a9.dir\\cmake_clean_target.cmake]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_063a9.dir\\link.txt --verbose=1]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_063a9.a CMakeFiles/cmTC_063a9.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_063a9.a]
-        ignore line: [mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg']
-        ignore line: [mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-zcwprg']
+        ignore line: [COLLECT_GCC_OPTIONS='-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_96b77.dir\\CMakeCCompilerABI.c.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [Linking C static library libcmTC_96b77.a]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_96b77.dir\\cmake_clean_target.cmake]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_96b77.dir\\link.txt --verbose=1]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_96b77.a CMakeFiles/cmTC_96b77.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_96b77.a]
+        ignore line: [mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj']
+        ignore line: [mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-g05bqj']
         ignore line: []
         ignore line: []
         implicit libs: []
@@ -268,8 +268,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf"
-      binary: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf"
+      source: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i"
+      binary: "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -278,14 +278,14 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf'
+        Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_b43d7/fast
-        mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf'
-        C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b43d7.dir\\build.make CMakeFiles/cmTC_b43d7.dir/build
-        mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf'
-        Building CXX object CMakeFiles/cmTC_b43d7.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0 -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_f72f2/fast
+        mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i'
+        C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f72f2.dir\\build.make CMakeFiles/cmTC_f72f2.dir/build
+        mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i'
+        Building CXX object CMakeFiles/cmTC_f72f2.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0 -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
         Using built-in specs.
         COLLECT_GCC=C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE
         Target: arm-none-eabi
@@ -293,8 +293,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib
         gcc version 10.2.1 20201103 (release) (GNU Arm Embedded Toolchain 10-2020-q4-major) 
-        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1plus.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj -gdwarf-2 -gdwarf-2 -O0 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccCrmjZZ.s
+        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1plus.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj -gdwarf-2 -gdwarf-2 -O0 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccsMA71U.s
         GNU C++14 (GNU Arm Embedded Toolchain 10-2020-q4-major) version 10.2.1 20201103 (release) (arm-none-eabi)
         	compiled by GNU C version 7.3-win32 20180312, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
         
@@ -321,19 +321,19 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: a4fe51cc32557f05b9d40da079bbd1f1
-        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccCrmjZZ.s
+        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+         c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccsMA71U.s
         GNU assembler version 2.35.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10-2020-q4-major) 2.35.1.20201028
         COMPILER_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/thumb/v7-m/nofp/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/;c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/;c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
-        Linking CXX static library libcmTC_b43d7.a
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_b43d7.dir\\cmake_clean_target.cmake
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_b43d7.dir\\link.txt --verbose=1
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_b43d7.a CMakeFiles/cmTC_b43d7.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_b43d7.a
-        mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf'
-        mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf'
+        COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m'
+        Linking CXX static library libcmTC_f72f2.a
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_f72f2.dir\\cmake_clean_target.cmake
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f72f2.dir\\link.txt --verbose=1
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_f72f2.a CMakeFiles/cmTC_f72f2.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_f72f2.a
+        mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i'
+        mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i'
         
       exitCode: 0
   -
@@ -371,14 +371,14 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(arm-none-eabi-ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf']
+        ignore line: [Change Dir: 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_b43d7/fast]
-        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf']
-        ignore line: [C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_b43d7.dir\\build.make CMakeFiles/cmTC_b43d7.dir/build]
-        ignore line: [mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf']
-        ignore line: [Building CXX object CMakeFiles/cmTC_b43d7.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0 -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_f72f2/fast]
+        ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i']
+        ignore line: [C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f72f2.dir\\build.make CMakeFiles/cmTC_f72f2.dir/build]
+        ignore line: [mingw32-make.exe[2]: Entering directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i']
+        ignore line: [Building CXX object CMakeFiles/cmTC_f72f2.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0 -mcpu=cortex-m3  -mthumb  -gdwarf-2 -O0   -v -o CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR10B2~1.EXE]
         ignore line: [Target: arm-none-eabi]
@@ -386,8 +386,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib]
         ignore line: [gcc version 10.2.1 20201103 (release) (GNU Arm Embedded Toolchain 10-2020-q4-major) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1plus.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj -gdwarf-2 -gdwarf-2 -O0 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccCrmjZZ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/cc1plus.exe -quiet -v -imultilib thumb/v7-m/nofp -iprefix c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../lib/gcc/arm-none-eabi/10.2.1/ -isysroot c:\\progra~2\\gnuarm~1\\102020~1\\bin\\../arm-none-eabi -D__USES_INITFINI__ C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -march=armv7-m -auxbase-strip CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj -gdwarf-2 -gdwarf-2 -O0 -O0 -version -o C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccsMA71U.s]
         ignore line: [GNU C++14 (GNU Arm Embedded Toolchain 10-2020-q4-major) version 10.2.1 20201103 (release) (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 7.3-win32 20180312  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
         ignore line: []
@@ -414,8 +414,8 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: a4fe51cc32557f05b9d40da079bbd1f1]
-        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccCrmjZZ.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [ c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv7-m -mfloat-abi=soft -meabi=5 -o CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\MobiTurk\\AppData\\Local\\Temp\\ccsMA71U.s]
         ignore line: [GNU assembler version 2.35.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10-2020-q4-major) 2.35.1.20201028]
         ignore line: [COMPILER_PATH=c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/]
@@ -427,14 +427,14 @@ events:
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/lib/]
         ignore line: [c:/progra~2/gnuarm~1/102020~1/bin/../arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_b43d7.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
-        ignore line: [Linking CXX static library libcmTC_b43d7.a]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_b43d7.dir\\cmake_clean_target.cmake]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_b43d7.dir\\link.txt --verbose=1]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_b43d7.a CMakeFiles/cmTC_b43d7.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_b43d7.a]
-        ignore line: [mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf']
-        ignore line: [mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-e04yaf']
+        ignore line: [COLLECT_GCC_OPTIONS='-gdwarf-2' '-O0' '-mcpu=cortex-m3' '-mthumb' '-gdwarf-2' '-O0' '-v' '-o' 'CMakeFiles\\cmTC_f72f2.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-mfloat-abi=soft' '-march=armv7-m']
+        ignore line: [Linking CXX static library libcmTC_f72f2.a]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -P CMakeFiles\\cmTC_f72f2.dir\\cmake_clean_target.cmake]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f72f2.dir\\link.txt --verbose=1]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\ARM-NO~2.EXE qc libcmTC_f72f2.a CMakeFiles/cmTC_f72f2.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\PROGRA~2\\GNUARM~1\\102020~1\\bin\\AR17F9~1.EXE libcmTC_f72f2.a]
+        ignore line: [mingw32-make.exe[2]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i']
+        ignore line: [mingw32-make.exe[1]: Leaving directory 'C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/CMakeFiles/CMakeScratch/TryCompile-trgb4i']
         ignore line: []
         ignore line: []
         implicit libs: []

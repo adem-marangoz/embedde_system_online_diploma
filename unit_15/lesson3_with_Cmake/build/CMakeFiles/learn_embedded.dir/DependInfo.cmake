@@ -33,7 +33,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/Stm32f10xx_Timers.c" "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Timers.c.obj" "gcc" "CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Timers.c.obj.d"
   "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/main.c" "CMakeFiles/learn_embedded.dir/src/main.c.obj" "gcc" "CMakeFiles/learn_embedded.dir/src/main.c.obj.d"
   "C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/src/startup.c" "CMakeFiles/learn_embedded.dir/src/startup.c.obj" "gcc" "CMakeFiles/learn_embedded.dir/src/startup.c.obj.d"
-  "" "learn_embedded.elf" "gcc" "CMakeFiles/learn_embedded.dir/link.d"
+  "" "learn_embedded.axf" "gcc" "CMakeFiles/learn_embedded.dir/link.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,5 +1,6 @@
 Include Files
 Local Objects
 Extern Objects
-Global Functions
+Declaration Global Functions
+Inline Static Functions
 Generic Objects

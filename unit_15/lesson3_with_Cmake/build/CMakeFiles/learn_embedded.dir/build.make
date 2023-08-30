@@ -449,42 +449,42 @@ learn_embedded_OBJECTS = \
 # External object files for target learn_embedded
 learn_embedded_EXTERNAL_OBJECTS =
 
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Application.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Arm_CortexM4.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Buffer.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Buzzer.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/EEPROM.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/EEPROM_25xx256.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Key_pad_Driver.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/LCD_Driver.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Os_System.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Queue_RTOS.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Scheduler.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Send_Atmega32.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Seven_Segment.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32_f10xx_Systick.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_DMA.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_SPI.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_UART.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Common.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_EXTI.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_GPIO.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_I2C.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_RCC.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Timers.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/main.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/src/startup.c.obj
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/build.make
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/compiler_depend.ts
-learn_embedded.elf: CMakeFiles/learn_embedded.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\MobiTurk\Documents\embedded_system_online_diploma\unit_15\lesson3_with_Cmake\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking C executable learn_embedded.elf"
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Application.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Arm_CortexM4.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Buffer.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Buzzer.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/EEPROM.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/EEPROM_25xx256.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Key_pad_Driver.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/LCD_Driver.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Os_System.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Queue_RTOS.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Scheduler.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Send_Atmega32.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Seven_Segment.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32_f10xx_Systick.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_DMA.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_SPI.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10x_UART.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Common.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_EXTI.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_GPIO.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_I2C.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_RCC.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/Stm32f10xx_Timers.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/main.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/src/startup.c.obj
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/build.make
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/compiler_depend.ts
+learn_embedded.axf: CMakeFiles/learn_embedded.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\MobiTurk\Documents\embedded_system_online_diploma\unit_15\lesson3_with_Cmake\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking C executable learn_embedded.axf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\learn_embedded.dir\link.txt --verbose=$(VERBOSE)
-	arm-none-eabi-size C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.elf
-	arm-none-eabi-objcopy -O ihex C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.elf learn_embedded.hex
-	arm-none-eabi-objcopy -O binary C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.elf learn_embedded.bin
+	arm-none-eabi-size C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.axf
+	arm-none-eabi-objcopy -O ihex C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.axf learn_embedded.hex
+	arm-none-eabi-objcopy -O binary C:/Users/MobiTurk/Documents/embedded_system_online_diploma/unit_15/lesson3_with_Cmake/build/learn_embedded.axf learn_embedded.bin
 
 # Rule to build all files generated by this target.
-CMakeFiles/learn_embedded.dir/build: learn_embedded.elf
+CMakeFiles/learn_embedded.dir/build: learn_embedded.axf
 .PHONY : CMakeFiles/learn_embedded.dir/build
 
 CMakeFiles/learn_embedded.dir/clean:

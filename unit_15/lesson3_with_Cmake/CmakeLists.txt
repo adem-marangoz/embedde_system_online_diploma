@@ -45,6 +45,10 @@ add_executable(${EXECUTABLE}
 
 target_include_directories(${EXECUTABLE} PRIVATE
     ${PROJECT_INCLUDE_DIRECTORIES})
+
+# set(tests test)
+# string(TOUPPER ${tests} VARNAME)
+# configure_file(Header_Files.h.in ${PROJECT_INCLUDE_DIRECTORIES}/test.h)
 ###############################################################################
 target_compile_options(${EXECUTABLE} PRIVATE
                         ${CPU_PARAMETERS})

@@ -50,8 +50,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/learn_embedded.dir/src/main.c.obj.d"
   "CMakeFiles/learn_embedded.dir/src/startup.c.obj"
   "CMakeFiles/learn_embedded.dir/src/startup.c.obj.d"
-  "learn_embedded.elf"
-  "learn_embedded.elf.manifest"
+  "learn_embedded.axf"
+  "learn_embedded.axf.manifest"
   "learn_embedded.pdb"
 )
 
