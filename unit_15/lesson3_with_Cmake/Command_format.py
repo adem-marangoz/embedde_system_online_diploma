@@ -3,7 +3,7 @@ command_start_format = '-'
 command_end_format = '='
 command_len = 78
 
-# file_name = r'C:\Users\MAHMMAD_ALNAJJAR\Documents\python scripts\command_format\text.txt'
+# file_names = r'C:\Users\MAHMMAD_ALNAJJAR\Documents\python scripts\command_format\text.txt'
 
 with open('text.txt') as read_f:
     lines = read_f.readlines()
